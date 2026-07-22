@@ -1,0 +1,61 @@
+# tutor-cat configuration (all PRD-configurable knobs live here)
+
+data:
+  scenarios: data/scenarios.jsonl
+  # PLACEHOLDER params (heuristic-v0) — swap back to the real calibration output
+  # when it lands; original Q-matrix file: data/rubrics_qmatrix.jsonl
+  rubrics: data/rubrics_calibrated.jsonl
+
+run:
+  seed: 42                 # master seed; per-(tutor, mode) run seeds derive from it
+  top_n: 5                 # top-n scenarios, uniform seeded pick (exposure control)
+  theta_init: [0.0, 0.0, 0.0]          # [content, diagnosis, scaffolding]
+  u_init_diag: [1.0, 1.0, 1.0]         # initial uncertainty diag (SE = 1.0 each)
+  max_se:                  # stopping rule: every skill below its max SE...
+    content: 0.30
+    diagnosis: 0.30
+    scaffolding: 0.30
+  min_evals_per_skill: 15  # ...and at least this many scorable evaluations each
+  max_scenarios: 50        # hard cap; stopping here reports precision not reached
+  output_dir: runs
+  # 1100 criteria map to no skill (tone/format/affect). "judge" = grade them so
+  # critical failures are caught (they never touch theta/SE); "skip" = save the calls.
+  unmapped_criteria: judge
+
+judge:
+  # Prometheus 2 7B served by vLLM on an AWS GPU instance, reached through an
+  # SSH tunnel (scripts/aws/tunnel.sh) -> appears at localhost:8000.
+  # Setup: scripts/aws/launch_prometheus.sh once, then tunnel.sh each session.
+  # (Bring-up alternative: point base_url at the TrueFoundry gateway and model
+  #  at openai-group/gpt-5.5 — manifest records judge_model per run.)
+  base_url: http://localhost:8000/v1
+  model: prometheus-eval/prometheus-7b-v2.0
+  api_key_env: JUDGE_API_KEY   # unused for the tunneled vLLM server
+  temperature: 0.0
+  max_tokens: 512
+  seed: 42
+
+# All tutors route through the TrueFoundry gateway (OpenAI-compatible).
+# Confirm the exact base_url from the gateway playground's "Get Code" snippet.
+tutors:
+  - name: gpt-5.5
+    provider: openai
+    model: openai-group/gpt-5.5
+    base_url: https://tfy.promptlens.trilogy.com/api/llm/api/inference/openai
+    api_key_env: TFY_API_KEY
+    temperature: 0.0
+  - name: opus-4.8
+    provider: openai          # gateway speaks OpenAI format for Claude too
+    model: claude-group/claude-opus-4-8
+    base_url: https://tfy.promptlens.trilogy.com/api/llm/api/inference/openai
+    api_key_env: TFY_API_KEY
+    temperature: 0.0
+    max_tokens: 4096
+  - name: gemini-3.6-flash    # note: gateway offers 3.6, PRD said 3.5
+    provider: openai
+    model: gemini-group/gemini-3.6-flash
+    base_url: https://tfy.promptlens.trilogy.com/api/llm/api/inference/openai
+    api_key_env: TFY_API_KEY
+    temperature: 0.0
+
+cache_dir: cache               # tutor responses cached per (model, scenario)

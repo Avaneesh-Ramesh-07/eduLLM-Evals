@@ -1,0 +1,53 @@
+# Environment variables
+.env
+!.env.example
+
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv
+
+# Testing and linting caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Project-specific output directories
+runs/
+cache/
+dryrun/
+smoke_runs/
+
+# Data: the benchmark dataset IS tracked (needed on every machine that runs
+# the pipeline); ignore only ad-hoc/derived jsonl dropped here later.
+data/*.jsonl
+!data/scenarios.jsonl
+!data/rubrics_qmatrix.jsonl
+!data/rubrics_calibrated.jsonl
+
+# AWS key pairs must never be committed
+*.pem
+
+# Generated plots
+*.png
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+.impeccable
