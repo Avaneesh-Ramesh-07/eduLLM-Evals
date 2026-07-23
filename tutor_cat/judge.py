@@ -1,8 +1,11 @@
-"""LLM Judge: one direct pass/fail call per criterion (PRD "Judge Evaluation").
+"""LLM Judge: one grading call per criterion (PRD "Judge Evaluation").
 
 The judge receives the scenario prompt, the conversation context (if any), the
-tutor's response, and the criterion text. It does NOT receive expected_evidence
-(not produced in this submission) or the reference solution.
+tutor's response, and ONE criterion rendered as a 1-5 score rubric. Prometheus 2
+is fine-tuned for this absolute-grading format and replies with
+"Feedback: ... [RESULT] <1-5>"; parse_verdict maps that score to pass/fail at
+result_pass_threshold (default 4), so the pass/fail semantics are unchanged.
+It does NOT receive expected_evidence or the reference solution.
 
 Transport is an OpenAI-compatible chat-completions endpoint (works with vLLM
 serving Prometheus 2 7B, or any compatible server); endpoint/model/key are
@@ -23,46 +26,62 @@ import httpx
 
 from .schemas import JudgeVerdict, Rubric, Scenario
 
-PROMPT_VERSION = "judge-v1"
+PROMPT_VERSION = "judge-v2"  # Prometheus 2 native absolute grading (1-5 [RESULT])
 
+# Graded judges (e.g. Prometheus 2) reply with a 1-5 "[RESULT] <n>" score even
+# when asked for pass/fail; map score >= this threshold to a pass. Overridable
+# via config (judge.result_pass_threshold) and recorded in every run manifest.
+RESULT_PASS_THRESHOLD_DEFAULT = 4
+
+# Prometheus 2's own absolute-grading format. Given an instruction, a response,
+# and a 1-5 score rubric, it reliably emits "Feedback: ... [RESULT] <1-5>" — the
+# format it was fine-tuned on. The earlier JSON prompt fought that training and
+# produced mostly unparseable prose; this one works with the model, not against.
 _SYSTEM_PROMPT = (
-    "You are a strict, consistent grader of AI tutoring responses. "
-    "You will be given a tutoring scenario, the tutor's response, and exactly ONE "
-    "grading criterion. Decide only whether the response satisfies that criterion. "
-    "Respond with ONLY a JSON object, no other text:\n"
-    '{"verdict": "pass" or "fail", '
-    '"evidence": "<short quote from the tutor response supporting your verdict>", '
-    '"rationale": "<one sentence explaining the verdict>"}\n'
-    "If the criterion cannot be evaluated against this response, output "
-    '{"verdict": "fail", "evidence": "", "rationale": "<why>", '
-    '"unscorable_reason": "<why it could not be scored>"}.'
+    "You are a fair judge assistant tasked with providing clear, objective "
+    "feedback based on specific criteria, ensuring each assessment reflects the "
+    "absolute standards set for performance."
 )
 
-_USER_TEMPLATE = """## Scenario (what the student asked the tutor)
-{prompt}
-{context_block}
-## Tutor response being graded
+# One binary criterion rendered as a 1-5 rubric. With the default threshold of 4,
+# scores 4-5 (satisfies with at most minor gaps) map to pass; 1-3 map to fail.
+_SCORE_RUBRIC = """[Does the tutor's response satisfy this criterion: {criterion}]
+Score 1: The response does not satisfy the criterion at all.
+Score 2: The response largely fails to satisfy the criterion.
+Score 3: The response only partially satisfies the criterion.
+Score 4: The response satisfies the criterion with only minor gaps.
+Score 5: The response fully satisfies the criterion."""
+
+_USER_TEMPLATE = """###Task Description:
+An instruction (the tutoring scenario), a response to evaluate, and a score rubric representing one evaluation criterion are given.
+1. Write detailed feedback that assesses the response strictly against the score rubric, not in general.
+2. After the feedback, write a score that is an integer between 1 and 5, referring to the rubric.
+3. The output format must be exactly: "Feedback: (feedback) [RESULT] (an integer between 1 and 5)"
+4. Do not add any other opening, closing, or explanation.
+
+###The instruction to evaluate:
+{instruction}
+
+###Response to evaluate:
 {response}
 
-## Criterion (grade ONLY this)
-{criterion}
+###Score Rubrics:
+{rubric}
 
-Output the JSON verdict now."""
+###Feedback:"""
 
 
 def build_messages(scenario: Scenario, rubric: Rubric, response: str) -> list[dict[str, str]]:
+    instruction = scenario.prompt
     if scenario.conversation_context:
         turns = "\n".join(
             f"[{t.get('role', '?')}] {t.get('content', '')}" for t in scenario.conversation_context
         )
-        context_block = f"\n## Prior conversation context\n{turns}\n"
-    else:
-        context_block = ""
+        instruction = f"{scenario.prompt}\n\nPrior conversation context:\n{turns}"
     user = _USER_TEMPLATE.format(
-        prompt=scenario.prompt,
-        context_block=context_block,
+        instruction=instruction,
         response=response,
-        criterion=rubric.criterion,
+        rubric=_SCORE_RUBRIC.format(criterion=rubric.criterion),
     )
     return [
         {"role": "system", "content": _SYSTEM_PROMPT},
@@ -70,9 +89,12 @@ def build_messages(scenario: Scenario, rubric: Rubric, response: str) -> list[di
     ]
 
 
-def parse_verdict(text: str) -> JudgeVerdict:
-    """Parse the judge's output. Strict JSON first, then a keyword fallback;
-    anything else is unscorable → fail (per the PRD)."""
+def parse_verdict(
+    text: str, result_pass_threshold: int = RESULT_PASS_THRESHOLD_DEFAULT
+) -> JudgeVerdict:
+    """Parse the judge's output. Strict JSON first, then a Prometheus-style
+    "[RESULT] <1-5>" score (mapped to pass/fail at ``result_pass_threshold``),
+    then a keyword fallback; anything else is unscorable → fail (per the PRD)."""
     match = re.search(r"\{.*\}", text, flags=re.DOTALL)
     if match:
         try:
@@ -88,6 +110,19 @@ def parse_verdict(text: str) -> JudgeVerdict:
                 )
         except json.JSONDecodeError:
             pass
+
+    # We keep the pass/fail prompt, but Prometheus 2 (and similar graded judges)
+    # often revert to their native "<feedback> [RESULT] <1-5>" format. Recover
+    # those by mapping the score to pass/fail at a configurable threshold.
+    result_match = re.search(r"\[RESULT\]\s*([1-5])", text, flags=re.IGNORECASE)
+    if result_match:
+        score = int(result_match.group(1))
+        verdict = "pass" if score >= result_pass_threshold else "fail"
+        return JudgeVerdict(
+            verdict=verdict,
+            rationale=text.strip()[:500],
+            raw_output=text,
+        )
 
     # Keyword fallback for models that ignore the JSON instruction.
     lowered = text.lower()
@@ -119,6 +154,7 @@ class OpenAICompatibleJudge:
         temperature: float = 0.0,
         max_tokens: int = 512,
         seed: int = 42,
+        result_pass_threshold: int = RESULT_PASS_THRESHOLD_DEFAULT,
         timeout: float = 120.0,
         max_retries: int = 3,
     ):
@@ -128,6 +164,7 @@ class OpenAICompatibleJudge:
         self.temperature = temperature
         self.max_tokens = max_tokens
         self.seed = seed
+        self.result_pass_threshold = result_pass_threshold
         self.prompt_version = PROMPT_VERSION
         self._client = httpx.Client(timeout=timeout)
         self._max_retries = max_retries
@@ -156,7 +193,7 @@ class OpenAICompatibleJudge:
                 )
                 r.raise_for_status()
                 text = r.json()["choices"][0]["message"]["content"] or ""
-                return parse_verdict(text)
+                return parse_verdict(text, self.result_pass_threshold)
             except (httpx.HTTPError, KeyError, IndexError, ValueError) as e:
                 last_error = e
                 time.sleep(2.0 * (attempt + 1))

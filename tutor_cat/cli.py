@@ -11,7 +11,7 @@ import yaml
 
 from .dataio import load_bank, summarize
 from .engine import RunConfig, run_evaluation
-from .judge import OpenAICompatibleJudge
+from .judge import OpenAICompatibleJudge, RESULT_PASS_THRESHOLD_DEFAULT
 from .tutors import build_tutor
 
 
@@ -85,6 +85,9 @@ def cmd_run(args: argparse.Namespace) -> int:
         temperature=jcfg.get("temperature", 0.0),
         max_tokens=jcfg.get("max_tokens", 512),
         seed=jcfg.get("seed", 42),
+        result_pass_threshold=jcfg.get(
+            "result_pass_threshold", RESULT_PASS_THRESHOLD_DEFAULT
+        ),
     )
 
     specs = cfg["tutors"]
@@ -96,6 +99,8 @@ def cmd_run(args: argparse.Namespace) -> int:
             return 1
 
     run_cfg = _run_config(cfg)
+    if args.max_scenarios is not None:
+        run_cfg.max_scenarios = args.max_scenarios
     cache_dir = cfg.get("cache_dir", "cache")
     modes = ["cat", "baseline"] if args.mode == "both" else [args.mode]
 
@@ -127,6 +132,8 @@ def main(argv: list[str] | None = None) -> int:
     p_run.add_argument("--config", default="config.yaml")
     p_run.add_argument("--tutor", default="all", help="tutor name from config, or 'all'")
     p_run.add_argument("--mode", choices=["cat", "baseline", "both"], default="cat")
+    p_run.add_argument("--max-scenarios", type=int, default=None,
+                       help="override run.max_scenarios (e.g. 3 for a quick smoke test)")
     p_run.set_defaults(fn=cmd_run)
 
     p_plot = sub.add_parser("plot", help="plot SE trajectories for one or more runs")

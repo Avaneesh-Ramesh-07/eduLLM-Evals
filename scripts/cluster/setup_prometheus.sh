@@ -7,7 +7,7 @@
 #   1. Files -> Home Directory -> Upload: this script + serve_prometheus.sbatch
 #   2. Clusters -> Shell Access
 #   3. bash setup_prometheus.sh       # ~15 min (pip install + 15GB download)
-# (Or classic: scp both scripts to <user>@orcd-login001.mit.edu and ssh in.)
+# (Or classic: scp both scripts to <user>@orcd-login.mit.edu and ssh in.)
 #
 # If python3 is too old on the login node, load a module first (check
 # `module avail python miniforge`), e.g.:  module load miniforge

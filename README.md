@@ -42,7 +42,7 @@ pipeline stays on your laptop and reaches it through an SSH tunnel at
 `localhost:8000` — config.yaml already points there.
 
 Cluster: **MIT ORCD / Engaging** — web portal at <https://orcd-ood.mit.edu>,
-ssh login nodes `orcd-login001.mit.edu` … `orcd-login004.mit.edu`. The sbatch
+ssh login node `orcd-login.mit.edu`. The sbatch
 script is preconfigured for the `mit_normal_gpu` partition (L40S 48GB).
 
 **One-time cluster setup** — entirely in the browser if you like:
@@ -61,13 +61,13 @@ bash setup_prometheus.sh        # venv + vLLM + pre-downloads the 15GB model (~1
 **Each work session:**
 
 ```bash
-# on the cluster (OOD web shell or ssh to orcd-login001.mit.edu):
+# on the cluster (OOD web shell or ssh to orcd-login.mit.edu):
 sbatch serve_prometheus.sbatch
 squeue --me                             # wait for state R, note the node name
 tail -f prometheus-judge-<jobid>.log    # "Uvicorn running" = ready
 
 # on your laptop (keep open; Git Bash on Windows):
-scripts/cluster/tunnel.sh <node> <user>@orcd-login001.mit.edu
+scripts/cluster/tunnel.sh <node> <user>@orcd-login.mit.edu
 curl http://localhost:8000/v1/models    # sanity check from another terminal
 
 # then run the pipeline as usual:
@@ -77,11 +77,12 @@ tutor-cat run --tutor all --mode both
 scancel <jobid>
 ```
 
-The tunnel always targets a **login node** (`orcd-login00X.mit.edu`), never
+The tunnel always targets a **login node** (`orcd-login.mit.edu`), never
 `orcd-ood.mit.edu` — that's the web portal, not an ssh host.
 
-The sbatch job auto-expires after 8h (`--time`); the model stays cached on the
-cluster, so the next `sbatch` is ready in ~2 minutes.
+The sbatch job auto-expires after 6h (`--time`; `mit_normal_gpu` caps at 6h, so
+8h is rejected at submit); the model stays cached on the cluster, so the next
+`sbatch` is ready in ~2 minutes.
 
 ## Data
 

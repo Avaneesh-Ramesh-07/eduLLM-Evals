@@ -11,7 +11,7 @@
 #   scancel <jobid>
 #
 # Preconfigured for MIT ORCD / Engaging (orcd-ood.mit.edu portal,
-# orcd-login00X.mit.edu ssh). If partition names changed, check `sinfo`.
+# orcd-login.mit.edu ssh). If partition names changed, check `sinfo`.
 # The 7B model needs a >=24GB GPU — Engaging's L40S (48GB) is plenty.
 
 #SBATCH --job-name=prometheus-judge
@@ -19,7 +19,7 @@
 #SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=48G
-#SBATCH --time=08:00:00
+#SBATCH --time=06:00:00     # mit_normal_gpu caps at 6h; 8h is rejected at submit
 #SBATCH --output=prometheus-judge-%j.log
 
 set -euo pipefail
@@ -34,7 +34,7 @@ echo "NODE: $NODE"
 echo "PORT: $PORT"
 echo ""
 echo "From your laptop, open the tunnel (keep it open while running the pipeline):"
-echo "  ssh -N -o ServerAliveInterval=60 -L ${PORT}:${NODE}:${PORT} $USER@orcd-login001.mit.edu"
+echo "  ssh -N -o ServerAliveInterval=60 -L ${PORT}:${NODE}:${PORT} $USER@orcd-login.mit.edu"
 echo "then verify:  curl http://localhost:${PORT}/v1/models"
 echo ""
 

@@ -131,3 +131,46 @@ def test_judge_parsing_unscorable_counts_as_fail():
 
     v3 = parse_verdict("Feedback: weak answer [RESULT] fail")
     assert v3.verdict == "fail"
+
+
+def test_judge_parsing_maps_result_score_to_pass_fail():
+    """Prometheus 2 keeps the pass/fail prompt but replies with a 1-5 score;
+    parse_verdict maps it at result_pass_threshold instead of auto-failing."""
+    from tutor_cat.judge import parse_verdict
+
+    # default threshold = 4: scores 4-5 pass, 1-3 fail
+    assert parse_verdict("Feedback: strong answer. [RESULT] 5").verdict == "pass"
+    assert parse_verdict("Feedback: solid. [RESULT] 4").verdict == "pass"
+    assert parse_verdict("Feedback: partial. [RESULT] 3").verdict == "fail"
+    assert parse_verdict("Feedback: poor. [RESULT] 1").verdict == "fail"
+
+    # scored outputs are scorable — NOT unscorable auto-fails
+    scored = parse_verdict("Feedback: partial. [RESULT] 2")
+    assert scored.verdict == "fail" and scored.unscorable_reason is None
+
+    # threshold is configurable (e.g. the looser >= 3)
+    assert parse_verdict("Feedback: partial. [RESULT] 3", result_pass_threshold=3).verdict == "pass"
+
+    # a real tutor response full of braces must not be mistaken for JSON, and
+    # still resolves via its trailing score
+    messy = "Here is code {int x = 5;} and math \\frac{a}{b}. [RESULT] 5"
+    assert parse_verdict(messy).verdict == "pass"
+
+
+def test_build_messages_uses_prometheus_absolute_format(bank):
+    """The judge prompt is Prometheus 2's absolute-grading format: it instructs
+    a [RESULT] score and embeds the criterion, the response, and a 1-5 rubric."""
+    from tutor_cat.judge import build_messages
+
+    sid = sorted(bank.scenarios)[0]
+    scenario = bank.scenarios[sid]
+    rubric = bank.rubrics_for(sid)[0]
+    msgs = build_messages(scenario, rubric, "some tutor response")
+
+    assert len(msgs) == 2
+    assert msgs[0]["role"] == "system" and msgs[1]["role"] == "user"
+    user = msgs[1]["content"]
+    assert "[RESULT]" in user            # asks for the score token we parse
+    assert rubric.criterion in user      # the criterion under test
+    assert "some tutor response" in user # the response being graded
+    assert "Score 5:" in user            # the 1-5 rubric anchors
