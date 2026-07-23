@@ -35,36 +35,53 @@ tutor-cat validate                 # dataset ships in data/, should print OK
 Tutors route through the TrueFoundry gateway (config.yaml is preconfigured);
 the only secret needed is `TFY_API_KEY`.
 
-## Judge: Prometheus 2 7B on AWS (3 commands)
+## Judge: Prometheus 2 7B on the MIT cluster
 
-The judge runs on an EC2 GPU instance (g5.xlarge, ~$1/hr) and is reached
-through an SSH tunnel at `localhost:8000` — config.yaml already points there.
-Needs: AWS CLI v2 with credentials (`aws configure`), ssh. On Windows run these
-in Git Bash.
+Only the **model** lives on the cluster (vLLM server on a GPU node); the
+pipeline stays on your laptop and reaches it through an SSH tunnel at
+`localhost:8000` — config.yaml already points there.
+
+Cluster: **MIT ORCD / Engaging** — web portal at <https://orcd-ood.mit.edu>,
+ssh login nodes `orcd-login001.mit.edu` … `orcd-login004.mit.edu`. The sbatch
+script is preconfigured for the `mit_normal_gpu` partition (L40S 48GB).
+
+**One-time cluster setup** — entirely in the browser if you like:
+
+1. <https://orcd-ood.mit.edu> → **Files → Home Directory → Upload**:
+   `scripts/cluster/setup_prometheus.sh` and `scripts/cluster/serve_prometheus.sbatch`
+2. **Clusters → Shell Access**, then:
 
 ```bash
-scripts/aws/launch_prometheus.sh     # once: provisions key, firewall, GPU box;
-                                     # vLLM + model install themselves (~10-15 min)
-scripts/aws/prometheus_ctl.sh status # repeat until it prints JUDGE READY
-scripts/aws/tunnel.sh                # keep this terminal open while running
+bash setup_prometheus.sh        # venv + vLLM + pre-downloads the 15GB model (~15 min)
 ```
 
-Then in another terminal:
+(Heads-up: the model cache needs ~15GB — if your home quota is tight, set
+`HF_HOME` to scratch; see the comment in `setup_prometheus.sh`.)
+
+**Each work session:**
 
 ```bash
+# on the cluster (OOD web shell or ssh to orcd-login001.mit.edu):
+sbatch serve_prometheus.sbatch
+squeue --me                             # wait for state R, note the node name
+tail -f prometheus-judge-<jobid>.log    # "Uvicorn running" = ready
+
+# on your laptop (keep open; Git Bash on Windows):
+scripts/cluster/tunnel.sh <node> <user>@orcd-login001.mit.edu
+curl http://localhost:8000/v1/models    # sanity check from another terminal
+
+# then run the pipeline as usual:
 tutor-cat run --tutor all --mode both
+
+# done for the day (frees the GPU):
+scancel <jobid>
 ```
 
-Daily driver commands:
+The tunnel always targets a **login node** (`orcd-login00X.mit.edu`), never
+`orcd-ood.mit.edu` — that's the web portal, not an ssh host.
 
-```bash
-scripts/aws/prometheus_ctl.sh stop   # done for the day -> stops billing, keeps model
-scripts/aws/prometheus_ctl.sh start  # next session -> ready in ~2 min
-scripts/aws/prometheus_ctl.sh terminate  # project over -> delete everything
-```
-
-Security notes: port 8000 is never exposed to the internet (SSH tunnel only,
-SSH restricted to the launching IP); the key pair pem is gitignored.
+The sbatch job auto-expires after 8h (`--time`); the model stays cached on the
+cluster, so the next `sbatch` is ready in ~2 minutes.
 
 ## Data
 

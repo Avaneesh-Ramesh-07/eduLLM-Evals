@@ -23,9 +23,11 @@ run:
   unmapped_criteria: judge
 
 judge:
-  # Prometheus 2 7B served by vLLM on an AWS GPU instance, reached through an
-  # SSH tunnel (scripts/aws/tunnel.sh) -> appears at localhost:8000.
-  # Setup: scripts/aws/launch_prometheus.sh once, then tunnel.sh each session.
+  # Prometheus 2 7B served by vLLM on an MIT-cluster GPU node, reached through
+  # an SSH tunnel -> appears at localhost:8000. Only the MODEL runs on the
+  # cluster; this pipeline stays local. See scripts/cluster/:
+  #   setup_prometheus.sh (once, on login node) -> sbatch serve_prometheus.sbatch
+  #   -> scripts/cluster/tunnel.sh <node> <user>@<login-host>  (local, keep open)
   # (Bring-up alternative: point base_url at the TrueFoundry gateway and model
   #  at openai-group/gpt-5.5 — manifest records judge_model per run.)
   base_url: http://localhost:8000/v1
