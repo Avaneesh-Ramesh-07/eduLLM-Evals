@@ -61,6 +61,10 @@ class RunConfig:
     min_evals_per_skill: int = 15
     max_scenarios: int = 50
     output_dir: str = "runs"
+    # Data provenance, echoed into the manifest so runs on different q-matrices /
+    # calibrations are distinguishable after the fact.
+    data_scenarios: str | None = None
+    data_rubrics: str | None = None
     # All-zero q_mapping criteria carry no skill information; "judge" grades them
     # anyway so critical failures are still caught, "skip" saves the judge calls.
     unmapped_criteria: str = "judge"  # "judge" | "skip"
@@ -107,6 +111,14 @@ def run_evaluation(
     administered: list[str] = []
     critical_failures: list[dict[str, Any]] = []
 
+    # Calibration marker for the manifest: the distinct calibration_version(s)
+    # carried by the loaded rubrics (single string if uniform, list if mixed,
+    # None if the file doesn't set one).
+    cal_versions = sorted(
+        {r.calibration_version for r in bank.rubrics.values() if r.calibration_version}
+    )
+    calibration_version = cal_versions[0] if len(cal_versions) == 1 else (cal_versions or None)
+
     manifest = {
         "run_id": run_id,
         "mode": mode,
@@ -126,6 +138,9 @@ def run_evaluation(
         "min_evals_per_skill": cfg.min_evals_per_skill,
         "max_scenarios": cfg.max_scenarios,
         "n_scenarios_in_bank": len(bank.scenarios),
+        "data_scenarios": cfg.data_scenarios,
+        "data_rubrics": cfg.data_rubrics,
+        "calibration_version": calibration_version,
         "started_at": datetime.now().isoformat(timespec="seconds"),
     }
     (out_dir / "manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")

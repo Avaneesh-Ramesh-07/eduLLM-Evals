@@ -174,3 +174,18 @@ def test_build_messages_uses_prometheus_absolute_format(bank):
     assert rubric.criterion in user      # the criterion under test
     assert "some tutor response" in user # the response being graded
     assert "Score 5:" in user            # the 1-5 rubric anchors
+
+
+def test_manifest_records_data_provenance(tmp_path, bank):
+    """Manifest echoes which rubrics/scenarios a run used (plus calibration_version)
+    so runs on different q-matrices/calibrations are distinguishable afterward."""
+    run_evaluation(
+        bank, SimTutor(), SimJudge(TRUE_THETA),
+        _cfg(tmp_path, data_scenarios="data/scenarios.jsonl",
+             data_rubrics="data/rubrics_qmatrix_final.jsonl"),
+        mode="cat", run_id="prov",
+    )
+    m = json.loads((tmp_path / "runs" / "prov" / "manifest.json").read_text())
+    assert m["data_scenarios"] == "data/scenarios.jsonl"
+    assert m["data_rubrics"] == "data/rubrics_qmatrix_final.jsonl"
+    assert "calibration_version" in m

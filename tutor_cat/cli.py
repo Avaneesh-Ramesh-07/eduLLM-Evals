@@ -48,6 +48,8 @@ def _run_config(cfg: dict) -> RunConfig:
         min_evals_per_skill=run.get("min_evals_per_skill", 15),
         max_scenarios=run.get("max_scenarios", 50),
         output_dir=run.get("output_dir", "runs"),
+        data_scenarios=cfg.get("data", {}).get("scenarios"),
+        data_rubrics=cfg.get("data", {}).get("rubrics"),
         unmapped_criteria=run.get("unmapped_criteria", "judge"),
     )
 

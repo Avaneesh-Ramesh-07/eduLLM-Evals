@@ -2,9 +2,11 @@
 
 data:
   scenarios: data/scenarios.jsonl
-  # PLACEHOLDER params (heuristic-v0) — swap back to the real calibration output
-  # when it lands; original Q-matrix file: data/rubrics_qmatrix.jsonl
-  rubrics: data/rubrics_calibrated.jsonl
+  # Q-matrix + item params used by the MIRT model. rubrics_qmatrix_final.jsonl
+  # carries metadata_heuristic_v1 params (still synthetic, not empirical MIRT
+  # calibration). Alternatives: rubrics_calibrated.jsonl (heuristic-v0 placeholder),
+  # rubrics_qmatrix.jsonl (q-mapping only). Swap here when real calibration lands.
+  rubrics: data/rubrics_qmatrix_final.jsonl
 
 run:
   seed: 42                 # master seed; per-(tutor, mode) run seeds derive from it

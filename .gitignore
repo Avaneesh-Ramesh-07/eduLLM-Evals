@@ -35,6 +35,7 @@ data/*.jsonl
 !data/scenarios.jsonl
 !data/rubrics_qmatrix.jsonl
 !data/rubrics_calibrated.jsonl
+!data/rubrics_qmatrix_final.jsonl
 
 # AWS key pairs must never be committed
 *.pem
