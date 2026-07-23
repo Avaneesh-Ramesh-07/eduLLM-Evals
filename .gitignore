@@ -39,8 +39,9 @@ data/*.jsonl
 # AWS key pairs must never be committed
 *.pem
 
-# Generated plots
+# Generated plots (ignored by default; keep the shared result plot below)
 *.png
+!se_gpt-5.5_cat_vs_baseline.png
 
 # IDE and editor files
 .vscode/

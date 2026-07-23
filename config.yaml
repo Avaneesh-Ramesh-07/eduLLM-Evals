@@ -34,8 +34,14 @@ judge:
   model: prometheus-eval/prometheus-7b-v2.0
   api_key_env: JUDGE_API_KEY   # unused for the tunneled vLLM server
   temperature: 0.0
-  max_tokens: 512
+  # Prometheus writes a feedback paragraph before the "[RESULT] <n>" line; 512
+  # truncated it mid-feedback (no score -> unparseable), so give it room.
+  max_tokens: 1024
   seed: 42
+  # Prometheus 2 answers with a 1-5 "[RESULT] <n>" score even though the prompt
+  # asks for pass/fail; map score >= this threshold to a pass. Tune during judge
+  # validation (Macro-F1, critical-failure sensitivity). Recorded per manifest.
+  result_pass_threshold: 4
 
 # All tutors route through the TrueFoundry gateway (OpenAI-compatible).
 # Confirm the exact base_url from the gateway playground's "Get Code" snippet.

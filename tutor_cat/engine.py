@@ -116,6 +116,7 @@ def run_evaluation(
         "judge_model": judge.name,
         "judge_prompt_version": judge.prompt_version,
         "judge_seed": judge.seed,
+        "judge_result_pass_threshold": getattr(judge, "result_pass_threshold", None),
         "master_seed": cfg.seed,
         "run_seed": run_seed,
         "top_n": cfg.top_n,
@@ -218,6 +219,7 @@ def run_evaluation(
                         "evidence": verdict.evidence,
                         "rationale": verdict.rationale,
                         "unscorable_reason": verdict.unscorable_reason,
+                        "raw_output": verdict.raw_output,
                         "seed": judge.seed,
                     }
                 )
