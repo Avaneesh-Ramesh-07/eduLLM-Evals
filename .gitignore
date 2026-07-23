@@ -40,9 +40,9 @@ data/*.jsonl
 # AWS key pairs must never be committed
 *.pem
 
-# Generated plots (ignored by default; keep the shared result plot below)
+# Generated plots (ignored by default; the curated set lives in plots/)
 *.png
-!se_gpt-5.5_cat_vs_baseline.png
+!plots/*.png
 
 # IDE and editor files
 .vscode/
