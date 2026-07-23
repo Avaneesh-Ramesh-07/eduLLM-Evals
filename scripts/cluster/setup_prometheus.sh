@@ -27,7 +27,15 @@ python3 -m venv "$VENV"
 "$VENV/bin/pip" install vllm "huggingface_hub[cli]"
 
 echo "== pre-downloading $MODEL to the HF cache (~15GB) =="
-"$VENV/bin/huggingface-cli" download "$MODEL"
+# newer huggingface_hub renamed the CLI: huggingface-cli -> hf
+if [[ -x "$VENV/bin/hf" ]]; then
+  "$VENV/bin/hf" download "$MODEL"
+else
+  "$VENV/bin/huggingface-cli" download "$MODEL"
+fi
+
+echo "== verifying cache =="
+du -sh "$HF_HOME/hub/models--${MODEL//\//--}"
 
 echo ""
 echo "Setup done. Start the judge with:"
