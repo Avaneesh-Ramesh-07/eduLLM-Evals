@@ -1,0 +1,129 @@
+Scenario Schema: 
+{
+  "scenario_id": "tb_001",
+  "use_case": "assessment_feedback",  - TutorBench’s label for the problem
+  "subject": "mathematics",
+  "grade_band": "6-8",
+  "modality": "text", - For now all of these will be text until image/multimodal is added
+  "prompt": "A student claims that 3/5 + 1/5 = 4/10...", - request for the actual tutor LLM
+  "conversation_context": [], 
+  "reference_solution": "The denominator remains five...", - what the LLM should generally be answering with
+  "criterion_ids": ["tb_001_c01", "tb_001_c02"], - link to specific criteria entries used for evaluation,
+  "source": "TutorBench", - which dataset it came from
+  "split": "calibration", - which training portion this is part of
+  "version": "1.0"
+}
+
+Rubric Schema:
+{
+  "criterion_id": "tb_001_c01",
+  "scenario_id": "tb_001",
+  "criterion": "The response identifies that the denominator remains five.", - atomized metric/criteria
+  "expected_evidence": [ 
+    "Fractions with a common denominator retain that denominator.",
+    "3/5 + 1/5 = 4/5."
+  ], - supporting context for the criterion/what’s expected in the response
+  "scoring_type": "binary", - no polytumous for now
+  "score_anchors": null, - if polytumous, specific definitions for each level in the score range
+  "primary_skill": "diagnosis", - most important skill in q_mapping (one of the marked skills; null if none marked)
+  "q_mapping": {
+    "content": 0,
+    "diagnosis": 1,
+    "scaffolding": 0
+  }, - MIRT skill mapping
+  "q_rationale": "The criterion requires identifying the student's specific misconception.",
+  "difficulty": 0.31, - MIRT item difficulty b_i (scalar). Synthetic for now (see irt_params); higher = harder
+  "discrimination": {
+    "content": 0.0,
+    "diagnosis": 1.34,
+    "scaffolding": 0.0
+  }, - MIRT per-skill discrimination a_i; 0.0 where q_mapping=0 (masked by q_i ⊙ a_i regardless)
+  "irt_params": {
+    "source": "synthetic",
+    "method": "metadata_heuristic_v1",
+    "seed": 42,
+    "version": "1.0"
+  }, - provenance for difficulty/discrimination; "synthetic" = generated (not calibrated), swappable later
+  "criticality": "critical", - if it fails here, it’s a major error
+  "objectivity": "objective", - if it’s externally verifiable
+  "explicitness": "explicit", - if the criteria is explicitly asked for in the scenario prompt
+  "source": "TutorBench",
+  "status": "approved", - if the criteria is finalized/approved
+  "version": "1.0"
+}
+
+Judge Result Schema:
+{
+  "run_id": "run_20260721_001",
+  "candidate_model": "edullm-checkpoint-1200",
+  "scenario_id": "tb_001",
+  "criterion_id": "tb_001_c01",
+  "candidate_response": "...",
+  "judge_model": "prometheus-2",
+  "judge_prompt_version": "judge-v3", - which judging instructions being used
+  "verdict": "pass",
+  "score": 1,
+  "evidence": "The response states that the common denominator stays five.",
+  "rationale": "This directly corrects the identified misconception.",
+  "unscorable_reason": null,
+  "seed": 42
+}
+
+
+Running MIRT Ability Estimate Schema:
+{
+  "run_id": "run_20260721_001",
+  "candidate_model": "edullm-checkpoint-1200",
+  "ability_estimates": {
+    "content": {
+      "theta": 0.91,
+      "standard_error": 0.18
+    },
+    "diagnosis": {
+      "theta": 0.64,
+      "standard_error": 0.23
+    },
+    "scaffolding": {
+      "theta": -0.12,
+      "standard_error": 0.29
+    }
+  },
+  "scenarios_administered": 47,
+  "critical_failures": [
+    {
+      "scenario_id": "tb_019",
+      "criterion_id": "tb_019_c04",
+      "type": "answer_leakage"
+    }
+  ],
+  "calibration_version": "mirt-v1",
+  "q_matrix_version": "q-v2"
+}
+
+Calibration Monitoring Schema:
+{
+  "criterion_id": "tb_001_c01",
+  "monitoring_window": "2026-Q4",
+  "new_models_observed": 35,
+  "expected_pass_rate": 0.61, - MIRT expected value
+  "observed_pass_rate": 0.48, 
+  "average_raw_residual": -0.13, - difference
+  "residual_ci_lower": -0.29,
+  "residual_ci_upper": 0.03,
+  "drift_status": "watch", - whether the criterion MIRT 
+  "practical_threshold_exceeded": true,
+  "statistical_threshold_exceeded": false,
+  "judge_version": "judge-v3",
+  "calibration_version": "mirt-v1"
+}
+{
+  "criterion_id": "tb_001_c01",
+  "monitoring_window": "2026-Q4",
+  "new_models_observed": 35, 
+  "expected_pass_rate": 0.61, - MIRT expected value
+  "observed_pass_rate": 0.48, -
+  "average_residual": -0.13, - difference
+  "drift_flag": true, - large residual given sufficient sample size
+  "judge_version": "judge-v3", 
+  "calibration_version": "mirt-v1"
+}
