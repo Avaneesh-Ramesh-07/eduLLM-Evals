@@ -242,7 +242,7 @@ Upon dilution, the percent ionization **increases**. Dilution initially lowers a
 - Criterion: The response must provide the answer for the ionization constant. (e.g., Ka = 1.847 x 10 ^-5)
 - Primary skill: `content`
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0001_c02
@@ -250,7 +250,7 @@ Upon dilution, the percent ionization **increases**. Dilution initially lowers a
 - Criterion: The response must include the formula to be used to calculate the ionic concentration. (e.g., pH to [H⁺] conversion formula: $[H^+] = 10^{-pH}$)
 - Primary skill: `content`
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0001_c03
@@ -258,7 +258,7 @@ Upon dilution, the percent ionization **increases**. Dilution initially lowers a
 - Criterion: The Response must explain the Le-Chatelier principle (e.g., the  equilibrium system shifts either to the left or to the right to reduce the change applied)
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0001_c04
@@ -266,7 +266,7 @@ Upon dilution, the percent ionization **increases**. Dilution initially lowers a
 - Criterion: The response must address why we need to calculate HA again even if it is already given (e.g., because ionization is calculated for equilibrium equation HA = H⁺ + A⁻).
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0001_c05
@@ -274,7 +274,7 @@ Upon dilution, the percent ionization **increases**. Dilution initially lowers a
 - Criterion: The response should present a step-by-step solution, beginning with the calculation of $[H^+]$, followed by $[A^-]$, then computing the $K_a$ value and percent ionization. It should conclude with an explanation grounded in equilibrium principles.
 - Primary skill: `scaffolding`
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0001_c06
@@ -282,7 +282,7 @@ Upon dilution, the percent ionization **increases**. Dilution initially lowers a
 - Criterion: The response must provide the answer for the percentage ionization. (e.g. %ionization = 1.35)
 - Primary skill: `content`
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0001_c07
@@ -290,7 +290,7 @@ Upon dilution, the percent ionization **increases**. Dilution initially lowers a
 - Criterion: The response must include the formula to be used to calculate percentage ionization. (e.g., % ionization = [H⁺] or [A⁻] / [HA] initial × 100)
 - Primary skill: `content`
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0001_c08
@@ -298,7 +298,7 @@ Upon dilution, the percent ionization **increases**. Dilution initially lowers a
 - Criterion: The response must include the formula used to calculate Ka. (e.g., K_a = \frac{[H^+][A^-]}{[HA]} \]))
 - Primary skill: `content`
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0001_c09
@@ -306,7 +306,7 @@ Upon dilution, the percent ionization **increases**. Dilution initially lowers a
 - Criterion: The response must provide the answer for the percentage ionization after dilution. (e.g. %ionization = 1.9%)
 - Primary skill: `content`
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0001_c10
@@ -314,7 +314,7 @@ Upon dilution, the percent ionization **increases**. Dilution initially lowers a
 - Criterion: The model should acknowledge the student's confusion regarding the re-calculation of HA concentration.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 ## grader_01_item_02
