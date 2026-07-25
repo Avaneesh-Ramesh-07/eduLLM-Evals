@@ -18,6 +18,17 @@ ENV/
 env/
 .venv
 
+# keep generated runs ignored by default
+runs/
+
+# allow human judge-validation grader packet artifacts
+!runs/judge_validation_v1/
+!runs/judge_validation_v1/grader_packets/
+!runs/judge_validation_v1/grader_packets/*.md
+!runs/judge_validation_v1/grader_packets/*.csv
+!runs/judge_validation_v1/sample_scenarios.jsonl
+!runs/judge_validation_v1/sample_rubrics.jsonl
+
 # Testing and linting caches
 .pytest_cache/
 .mypy_cache/
