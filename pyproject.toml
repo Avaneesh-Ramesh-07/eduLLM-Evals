@@ -21,6 +21,17 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = ["pytest>=8.0"]
+# Response-generation runtime (GPU host only — vllm/torch have no Windows wheels).
+# The respgen pure modules (manifest/registry/prompts/records/shard) don't need
+# these; only backends/runner/orchestrator/s3 import them, lazily.
+gen = [
+    "vllm>=0.6",
+    "transformers>=4.44",
+    "huggingface_hub>=0.24",
+    "torch>=2.4",
+    "accelerate>=0.33",
+    "boto3>=1.34",
+]
 
 [project.scripts]
 tutor-cat = "tutor_cat.cli:main"

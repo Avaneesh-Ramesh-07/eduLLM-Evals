@@ -19,6 +19,7 @@ rule is met.
 | Schemas + validation | `tutor_cat/schemas.py`, `tutor_cat/dataio.py` |
 | Tutor adapters (GPT-5.5 / Opus 4.8 / Gemini 3.5 Flash) + response cache | `tutor_cat/tutors.py` |
 | SE-over-time plots (CAT vs baseline) | `tutor_cat/plotting.py` |
+| Open-model response generation (vLLM/HF on GPU, sharded + resumable) | `tutor_cat/respgen/`, `tutor-cat generate` |
 
 ## Quickstart on a new machine (fresh clone)
 
@@ -111,6 +112,53 @@ Each run writes `runs/<run_id>/` with: `manifest.json` (seeds, config echo),
 `judge_results.jsonl` (PRD judge-result schema), `criterion_updates.jsonl`
 (per-criterion θ/SE trace), `steps.jsonl` (per-scenario trace),
 `critical_failures.json`, `final_result.json`.
+
+## Generating open-model responses (AWS P6 / 8×B200)
+
+`tutor-cat generate` runs the open-weight calibration models in `models.yaml`
+over all 662 TutorBench scenarios and writes one JSONL shard per model (the PRD
+Model Output schema). This is a separate stage from the CAT/judge pipeline
+above — it only produces the response matrix.
+
+The GPU deps have no Windows wheels, so this stage runs on the Linux GPU box; the
+pure logic (prompt building, manifest/registry, output schema) is importable and
+tested anywhere. Pull the repo on the box and:
+
+```bash
+pip install -e ".[gen]"
+export HF_TOKEN=<token>            # for gated repos (meta-llama, gemma). Never committed.
+
+# smoke: 2 scenarios on one GPU, one model
+tutor-cat generate --model Qwen/Qwen2.5-0.5B-Instruct --limit 2 --gpus 1
+
+# full run: all models across all GPUs, upload each shard to S3 (instance IAM)
+tutor-cat generate --s3-uri s3://<bucket>/tutorbench-responses
+
+# pin the whole run to one specific GPU (e.g. device 8), leaving the rest free
+tutor-cat generate --gpu-ids 8 --s3-uri s3://<bucket>/tutorbench-responses
+```
+
+Design notes:
+
+- **8-way data parallelism**: each ≤3B model fits one B200, so one worker per GPU
+  runs a whole model (`tensor_parallel_size=1`); the fleet pulls models off a
+  shared queue. Not tensor parallelism. `--gpu-ids <i,j,…>` restricts the fleet to
+  specific physical devices (each worker gets `CUDA_VISIBLE_DEVICES=<id>`, so it
+  cannot touch any other GPU); `--gpu-ids 8` runs the entire roster on GPU 8 alone.
+- **Resumable**: one shard per model, keyed by `Scenario` id. Re-running skips
+  completed cells, so an interrupted run just continues (`--no-resume` to force).
+- **Backends**: vLLM by default; a transformers fallback (`hf_fallback`) serves
+  SSM/hybrid (mamba, OpenELM) and encoder-decoder (flan-t5, via
+  `AutoModelForSeq2SeqLM`) models vLLM can't. `registry.py` derives the backend,
+  chat-template flag, gated flag, and `max_model_len` clamp from each model id;
+  override any of these per model in `models.yaml`.
+- **Failure isolation**: a load/generation error becomes an `Issue=1` cell rather
+  than crashing the fleet, so the matrix always has an entry per (model, scenario).
+- **Preview without a GPU**: `tutor-cat generate --dry-run --limit 5` prints the
+  resolved config and rendered prompts with no model load and no network.
+- **`Latency (s)`**: per-request from vLLM metrics when available; under batched
+  decode per-scenario wall-clock is otherwise ill-defined (use `elapsed_s` /
+  throughput in the run summary for per-model timing).
 
 ## Tests (offline, no API keys needed)
 

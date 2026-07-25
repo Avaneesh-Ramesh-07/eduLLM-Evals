@@ -1,0 +1,66 @@
+# TutorBench response-generation manifest.
+#
+# `defaults` apply to every model; a per-model key overrides them. registry.py
+# derives apply_chat_template / gated / backend / architecture / max_model_len
+# from the model id, so most entries need only `id`. Add an explicit key only
+# when the heuristic would be wrong.
+#
+# NOTE (numeric fields): keep temperature/top_p/repetition_penalty as bare
+# numbers — a trailing comma (e.g. `1.1,`) makes YAML parse a *string* and the
+# loader will reject it.
+#
+# This roster is diverse across families/architectures/sizes (0-3B) and covers
+# every backend path (chat + base, gated, SSM/mamba + OpenELM hf_fallback,
+# seq2seq flan-t5, Qwen3 thinking). Append rows to reach the full calibration
+# set; the pipeline is manifest-driven, so nothing else changes.
+
+defaults:
+  max_model_len_cap: 32768      # hard ceiling; clamped down to the model's own limit
+  max_new_tokens: 4096          # output budget (bounds base-model rambling)
+  tensor_parallel_size: 1       # one <=3B model per B200; parallelism is across models
+  scoring_method: generate
+  temperature: 0.0              # deterministic decode for construct validity
+  top_p: 1.0                    # inert at temperature 0
+  repetition_penalty: 1.1       # low + uniform; still shifts argmax at temp 0
+  seed: 0
+
+models:
+  # --- instruction / chat-tuned (chat template applied) ---
+  - id: google/gemma-2-2b-it
+  - id: meta-llama/Llama-3.2-1B-Instruct
+  - id: meta-llama/Llama-3.2-3B-Instruct
+  - id: Qwen/Qwen2.5-0.5B-Instruct
+  - id: Qwen/Qwen2.5-1.5B-Instruct
+  - id: Qwen/Qwen2.5-3B-Instruct
+  - id: Qwen/Qwen2.5-Math-1.5B-Instruct
+  - id: Qwen/Qwen2.5-Coder-1.5B-Instruct
+  - id: HuggingFaceTB/SmolLM2-135M-Instruct
+  - id: HuggingFaceTB/SmolLM2-360M-Instruct
+  - id: HuggingFaceTB/SmolLM2-1.7B-Instruct
+  - id: TinyLlama/TinyLlama-1.1B-Chat-v1.0
+  - id: microsoft/Phi-3.5-mini-instruct
+  - id: stabilityai/stablelm-2-zephyr-1_6b
+  - id: allenai/OLMo-2-0425-1B-Instruct
+  - id: ibm-granite/granite-3.1-2b-instruct
+
+  # --- Qwen3 family: thinking mode disabled for clean tutor output ---
+  - id: Qwen/Qwen3-0.6B
+  - id: Qwen/Qwen3-1.7B
+  - id: Qwen/Qwen3-4B
+
+  # --- base / pretrained controls (no chat template -> flat rendering) ---
+  - id: meta-llama/Llama-3.2-1B
+  - id: Qwen/Qwen2.5-0.5B
+  - id: HuggingFaceTB/SmolLM2-1.7B
+  - id: EleutherAI/pythia-410m
+  - id: EleutherAI/pythia-1b
+  - id: bigscience/bloomz-560m
+
+  # --- SSM / hybrid / non-vLLM architectures -> transformers fallback ---
+  - id: state-spaces/mamba-790m-hf
+  - id: state-spaces/mamba-1.4b-hf
+  - id: apple/OpenELM-1_1B-Instruct
+
+  # --- encoder-decoder (seq2seq): AutoModelForSeq2SeqLM, no chat template ---
+  - id: google/flan-t5-large
+  - id: google/flan-t5-xl
