@@ -1174,12 +1174,15 @@ document.getElementById("export").addEventListener("click", () => {
       form.elements[`${cid}__confidence`].value,
       form.elements[`${cid}__notes`].value]);
   });
-  const csv = rows.map(row => row.map(csvCell).join(",")).join("
-") + "
-";
+  const csv = rows.map(row => row.map(csvCell).join(",")).join("\n") + "\n";
   const url = URL.createObjectURL(new Blob([csv], {type: "text/csv;charset=utf-8"}));
-  const link = document.createElement("a"); link.href = url; link.download = `qmatrix_review_${reviewer}.csv`; link.click();
-  URL.revokeObjectURL(url);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = `qmatrix_review_${reviewer}.csv`;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
 });
 form.addEventListener("change", save); form.addEventListener("input", save); restore(); updateProgress();
 </script>
