@@ -131,7 +131,7 @@ If forced to choose, X-linked recessive is slightly *favored* by the pattern (mo
 - Criterion: The response must explicitly acknowledge the student's stated confusion and respond empathetically before giving the explanation
 - Primary skill: ``
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0012_c02
@@ -139,7 +139,7 @@ If forced to choose, X-linked recessive is slightly *favored* by the pattern (mo
 - Criterion: The response must clearly state that autosomal recessive inheritance is highly improbable (very unlikely) in this pedigree compared with X-linked recessive inheritance.
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): F  
 - Notes: ____
 
 #### tb_0012_c03
@@ -147,7 +147,7 @@ If forced to choose, X-linked recessive is slightly *favored* by the pattern (mo
 - Criterion: The response must explain, step-by-step, why AR is highly improbable, citing at least one key distinguishing pattern (e.g., 100 % affected sons of an affected female, absence of affected daughters in that cross, or the need for two independent carrier marriages).
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0012_c04
@@ -155,7 +155,7 @@ If forced to choose, X-linked recessive is slightly *favored* by the pattern (mo
 - Criterion: The response must positively reinforce what the student already got right (that an unaffected female carrier could have affected sons in an AR scenario).
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0012_c05
@@ -163,7 +163,7 @@ If forced to choose, X-linked recessive is slightly *favored* by the pattern (mo
 - Criterion: The response must supply the missing background contrast in transmission probabilities between AR (50 % risk per child) and XLR (100 % risk to sons of an affected female).
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0012_c06
@@ -171,7 +171,7 @@ If forced to choose, X-linked recessive is slightly *favored* by the pattern (mo
 - Criterion: The response should use clear, student-friendly language and an encouraging tone.
 - Primary skill: ``
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0012_c07
@@ -179,7 +179,7 @@ If forced to choose, X-linked recessive is slightly *favored* by the pattern (mo
 - Criterion: The response should employ structured formatting (bullet points, numbering, or headings) to organize ideas.
 - Primary skill: ``
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 ## grader_06_item_02
@@ -295,7 +295,7 @@ The original concentration of the weak acid $\text{HA}$ in the 25 mL sample is *
 - Criterion: The response must acknowledge the student's expressed confusion.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0355_c02
@@ -303,7 +303,7 @@ The original concentration of the weak acid $\text{HA}$ in the 25 mL sample is *
 - Criterion: The response must acknowledge that the student has correctly calculated the pKa (4.75) and Ka (1.78 × 10^(-5)) using the pH of 4.75 and the relationship pH = pKa at the half equivalence point for the titration of a weak acid.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0355_c03
@@ -311,7 +311,7 @@ The original concentration of the weak acid $\text{HA}$ in the 25 mL sample is *
 - Criterion: The response must clarify that the student is unable to proceed because using the Ka with the molarity and the volume of NaOH is not the right approach, nor is finding the [H⁺] from the endpoint pH.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0355_c04
@@ -319,7 +319,7 @@ The original concentration of the weak acid $\text{HA}$ in the 25 mL sample is *
 - Criterion: The response needs to guide the student to identify that the endpoint of the titration is reached when the pH is measured at 9.25.
 - Primary skill: `scaffolding`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0355_c05
@@ -327,7 +327,7 @@ The original concentration of the weak acid $\text{HA}$ in the 25 mL sample is *
 - Criterion: The response must guide the student to calculate the moles of NaOH at the endpoint of the titration.
 - Primary skill: `scaffolding`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0355_c06
@@ -335,7 +335,7 @@ The original concentration of the weak acid $\text{HA}$ in the 25 mL sample is *
 - Criterion: The response needs to guide the student to realize that the moles of NaOH at the endpoint are approximately equal to the initial moles of HA. 
 - Primary skill: `scaffolding`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0355_c07
@@ -343,7 +343,7 @@ The original concentration of the weak acid $\text{HA}$ in the 25 mL sample is *
 - Criterion: The response must not reveal that the moles of NaOH at the endpoint is calculated using the equation n= cV or n=MV or moles = concentration/molarity x volume as the student needs to work this out for themselves.
 - Primary skill: `scaffolding`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0355_c08
@@ -351,7 +351,7 @@ The original concentration of the weak acid $\text{HA}$ in the 25 mL sample is *
 - Criterion: The response must not reveal that the final answer is given by: n(NaOH) = 0.1M x 0.05L = 0.005 mol, so n(HA) = 0.005 mol. Original concentration of HA = 0.005 mol / 0.025 L = 0.2M
 - Primary skill: `scaffolding`
 - Criticality: `critical_negative`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0355_c09
@@ -359,7 +359,7 @@ The original concentration of the weak acid $\text{HA}$ in the 25 mL sample is *
 - Criterion: The response should be written in second-person narrative, using the terms "you/your" rather than "they/the student."
 - Primary skill: ``
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 ## grader_06_item_03
@@ -585,7 +585,7 @@ is likely used to demonstrate polymorphism — although in this particular code,
 - Criterion: The response must clearly explain that private methods are resolved based on the class where the method is defined, not the runtime type of the object, and must directly refute the idea that the secret() method from class B is ever called.
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0335_c02
@@ -593,7 +593,7 @@ is likely used to demonstrate polymorphism — although in this particular code,
 - Criterion: The explanation must explicitly note that the secret() method in class B is not overriding the secret() method in class A, but instead defines a completely separate method.
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0335_c03
@@ -601,7 +601,7 @@ is likely used to demonstrate polymorphism — although in this particular code,
 - Criterion: The response must clarify that reveal() is defined in class A and therefore always executes A's version of secret(), regardless of the runtime type of obj
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0335_c04
@@ -609,7 +609,7 @@ is likely used to demonstrate polymorphism — although in this particular code,
 - Criterion: The response must correctly identifies that private methods are not inherited therefore are not overridden.
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0335_c05
@@ -617,7 +617,7 @@ is likely used to demonstrate polymorphism — although in this particular code,
 - Criterion: The response must avoids describing the program as "failing to compile" based solely on private method naming overlap.
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0335_c06
@@ -625,7 +625,7 @@ is likely used to demonstrate polymorphism — although in this particular code,
 - Criterion: The explanation must clarify that the method call to secret() is resolved at compile time based on the reference type (A), not the runtime type (B), and that polymorphism does not apply to private methods.
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0335_c07
@@ -633,7 +633,7 @@ is likely used to demonstrate polymorphism — although in this particular code,
 - Criterion: The response must explicitly state that a private method can be called only by other methods within its own class.
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0335_c08
@@ -641,7 +641,7 @@ is likely used to demonstrate polymorphism — although in this particular code,
 - Criterion: The model's response should be written in the second person, addressed to the student.
 - Primary skill: ``
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 ## grader_06_item_04
@@ -730,7 +730,7 @@ You had the right idea—you just needed to switch from comparing against 25 to 
 - Criterion: The response must acknowledge elements of the student's current work, such as identifying 2^7 as the largest power of two in an 8-bit representation or calculating digits up to the fourth place.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0500_c02
@@ -738,7 +738,7 @@ You had the right idea—you just needed to switch from comparing against 25 to 
 - Criterion: The response must identify that the student is unable to proceed due to unfamiliarity using the "powers of two" approach to convert numbers into their binary representations.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0500_c03
@@ -746,7 +746,7 @@ You had the right idea—you just needed to switch from comparing against 25 to 
 - Criterion: The response must acknowledge the student's confusion about calculating binary representations.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0500_c04
@@ -754,15 +754,15 @@ You had the right idea—you just needed to switch from comparing against 25 to 
 - Criterion: The response must hint for the student to consider that the value 2^4 was seen inside of 25, so a simplification is possible to determine the next number to compare against the powers of two.
 - Primary skill: `scaffolding`
 - Criticality: `critical`
-- Grade (P/F): ____
-- Notes: ____
+- Grade (P/F): F
+- Notes: directly tells what to do without the hint
 
 #### tb_0500_c05
 
 - Criterion: The response must hint for the student to consider that the word "significant" in an unsigned binary context refers to the magnitude of the number, or how much value a digit contributes to the overall number.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0500_c06
@@ -770,7 +770,7 @@ You had the right idea—you just needed to switch from comparing against 25 to 
 - Criterion: The response must hint for the student to consider that binary representations of small numbers order the bits from most significant to least significant.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0500_c07
@@ -778,7 +778,7 @@ You had the right idea—you just needed to switch from comparing against 25 to 
 - Criterion: The response must state the mathematical equation for the "powers of two" approach for 8-bit integers: the summation of x_n * 2^n when n goes from 0 to 7.
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0500_c08
@@ -786,7 +786,7 @@ You had the right idea—you just needed to switch from comparing against 25 to 
 - Criterion: The response must avoid providing a next step directly by telling the student to subtract 16 from 25 after determining that 16 is inside 25.
 - Primary skill: `scaffolding`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0500_c09
@@ -794,7 +794,7 @@ You had the right idea—you just needed to switch from comparing against 25 to 
 - Criterion: The response must not provide the full solution: 00011001, the 8-bit binary representation of 25.
 - Primary skill: `scaffolding`
 - Criticality: `critical_negative`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0500_c10
@@ -802,7 +802,7 @@ You had the right idea—you just needed to switch from comparing against 25 to 
 - Criterion: The response can use at least one bold header to label and organize the text.
 - Primary skill: ``
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 ## grader_06_item_05
@@ -910,7 +910,7 @@ Measure the total mass ($m$) and the time for 10 swings to get the period ($T$).
 - Criterion: The response must acknowledge the student's expressed feeling of being 'puzzled' or 'stuck'.
 - Primary skill: ``
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0507_c02
@@ -918,7 +918,7 @@ Measure the total mass ($m$) and the time for 10 swings to get the period ($T$).
 - Criterion: The response must address the student's direct question about mass by guiding them to consider the total mass of the system (box + weight).
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0507_c03
@@ -926,15 +926,15 @@ Measure the total mass ($m$) and the time for 10 swings to get the period ($T$).
 - Criterion: The response must hint at the concept of linearizing a graph by suggesting the student manipulate the (to be found) equation to match the form y=mx+b.
 - Primary skill: `scaffolding`
 - Criticality: `critical`
-- Grade (P/F): ____
-- Notes: ____
+- Grade (P/F): F
+- Notes: directly linearizes graph
 
 #### tb_0507_c04
 
 - Criterion: The response must not provide the specific formula T=2π(sqrt(m/k)) or directly state that the student should plot (T^2) vs. m.
 - Primary skill: `scaffolding`
 - Criticality: `critical_negative`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0507_c05
@@ -942,7 +942,7 @@ Measure the total mass ($m$) and the time for 10 swings to get the period ($T$).
 - Criterion: The response should validate the student's initial thoughts by praising their idea to think about the relationship between mass/period and graphing (e.g., 'You're on the right track...').
 - Primary skill: `diagnosis`
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0507_c06
@@ -950,7 +950,7 @@ Measure the total mass ($m$) and the time for 10 swings to get the period ($T$).
 - Criterion: The response should use formatting (like bullet points or bolding) to separate distinct hints, making them easier for the student to read.
 - Primary skill: ``
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0507_c07
@@ -958,5 +958,5 @@ Measure the total mass ($m$) and the time for 10 swings to get the period ($T$).
 - Criterion: The response must provide the key hint to address the forgotten formula by suggesting the student find or refer to a formula sheet.
 - Primary skill: `scaffolding`
 - Criticality: `critical`
-- Grade (P/F): ____
-- Notes: ____
+- Grade (P/F): F
+- Notes: directly tells formula

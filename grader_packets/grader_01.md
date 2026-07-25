@@ -242,7 +242,7 @@ Upon dilution, the percent ionization **increases**. Dilution initially lowers a
 - Criterion: The response must provide the answer for the ionization constant. (e.g., Ka = 1.847 x 10 ^-5)
 - Primary skill: `content`
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0001_c02
@@ -250,7 +250,7 @@ Upon dilution, the percent ionization **increases**. Dilution initially lowers a
 - Criterion: The response must include the formula to be used to calculate the ionic concentration. (e.g., pH to [H⁺] conversion formula: $[H^+] = 10^{-pH}$)
 - Primary skill: `content`
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0001_c03
@@ -258,7 +258,7 @@ Upon dilution, the percent ionization **increases**. Dilution initially lowers a
 - Criterion: The Response must explain the Le-Chatelier principle (e.g., the  equilibrium system shifts either to the left or to the right to reduce the change applied)
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0001_c04
@@ -266,7 +266,7 @@ Upon dilution, the percent ionization **increases**. Dilution initially lowers a
 - Criterion: The response must address why we need to calculate HA again even if it is already given (e.g., because ionization is calculated for equilibrium equation HA = H⁺ + A⁻).
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0001_c05
@@ -274,7 +274,7 @@ Upon dilution, the percent ionization **increases**. Dilution initially lowers a
 - Criterion: The response should present a step-by-step solution, beginning with the calculation of $[H^+]$, followed by $[A^-]$, then computing the $K_a$ value and percent ionization. It should conclude with an explanation grounded in equilibrium principles.
 - Primary skill: `scaffolding`
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0001_c06
@@ -282,7 +282,7 @@ Upon dilution, the percent ionization **increases**. Dilution initially lowers a
 - Criterion: The response must provide the answer for the percentage ionization. (e.g. %ionization = 1.35)
 - Primary skill: `content`
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0001_c07
@@ -290,7 +290,7 @@ Upon dilution, the percent ionization **increases**. Dilution initially lowers a
 - Criterion: The response must include the formula to be used to calculate percentage ionization. (e.g., % ionization = [H⁺] or [A⁻] / [HA] initial × 100)
 - Primary skill: `content`
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0001_c08
@@ -298,7 +298,7 @@ Upon dilution, the percent ionization **increases**. Dilution initially lowers a
 - Criterion: The response must include the formula used to calculate Ka. (e.g., K_a = \frac{[H^+][A^-]}{[HA]} \]))
 - Primary skill: `content`
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0001_c09
@@ -306,7 +306,7 @@ Upon dilution, the percent ionization **increases**. Dilution initially lowers a
 - Criterion: The response must provide the answer for the percentage ionization after dilution. (e.g. %ionization = 1.9%)
 - Primary skill: `content`
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0001_c10
@@ -314,7 +314,7 @@ Upon dilution, the percent ionization **increases**. Dilution initially lowers a
 - Criterion: The model should acknowledge the student's confusion regarding the re-calculation of HA concentration.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 ## grader_01_item_02
@@ -547,8 +547,8 @@ The key takeaway: when substituting $u = x+y$, don't forget the $\frac{dx}{dx} =
 \]) should be used to solve the differential equation.
 - Primary skill: `content`
 - Criticality: `not_critical`
-- Grade (P/F): ____
-- Notes: ____
+- Grade (P/F): F
+- Notes: doesn't explicitly state these terms in this way
 
 #### tb_0003_c02
 
@@ -557,7 +557,7 @@ y = 2\arctan(x + C) - x
 \].
 - Primary skill: `content`
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0003_c03
@@ -565,7 +565,7 @@ y = 2\arctan(x + C) - x
 - Criterion: The response must identify that the student's solution [let u=x+y, \(\frac{du}{dx} = \frac{dy}{dx}\)] is incorrect.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0003_c04
@@ -573,7 +573,7 @@ y = 2\arctan(x + C) - x
 - Criterion: The response must correct the error [let u=x+y, \(\frac{du}{dx} = \frac{dy}{dx}\)], i.e. since u=x+y, take derivative respect to x, \(\frac{du}{dx} = \frac{d(x+y)}{dx} = 1 + \frac{dy}{dx}\).
 - Primary skill: `diagnosis`
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0003_c05
@@ -583,7 +583,7 @@ y = 2\arctan(x + C) - x
 \] is incorrect.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0003_c06
@@ -595,15 +595,15 @@ y = 2\arctan(x + C) - x
 \].
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
-- Notes: ____
+- Grade (P/F): F
+- Notes: doesn't add a note accounting for student's confusion
 
 #### tb_0003_c07
 
 - Criterion: The response must identify that the antiderivative \(\int dx = Cx\) is incorrect.
 - Primary skill: `diagnosis`
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0003_c08
@@ -613,7 +613,7 @@ y = 2\arctan(x + C) - x
 \], .
 - Primary skill: `content`
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0003_c09
@@ -623,7 +623,7 @@ y = 2\arctan(x + C) - x
 \], and \(\int dx = Cx\), these incorrect steps lead to your incorrect final answer [\( y = \arcsin(Cx) - x \)].
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0003_c10
@@ -631,7 +631,7 @@ y = 2\arctan(x + C) - x
 - Criterion: The response should be formatted by using headings, bold text, and correct LaTeX.
 - Primary skill: ``
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 ## grader_01_item_03
@@ -815,7 +815,7 @@ The thermal energy generated is equal to the loss in mechanical energy ($\Delta 
 - Criterion: The response must identify that in part a), the student used the incorrect formula for the moment of inertia of a solid cylinder, using $\frac{2}{5}MR^2$ (for a sphere) instead of $\frac{1}{2}MR^2$.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0336_c02
@@ -823,31 +823,31 @@ The thermal energy generated is equal to the loss in mechanical energy ($\Delta 
 - Criterion: The response must identify that the student made a conceptual error in part b) by using the linear acceleration $a$ in the kinematic equation for angular velocity instead of the angular acceleration $\alpha$.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
-- Notes: ____
+- Grade (P/F): F
+- Notes: doesn't state that, mainly just mentions a unit error
 
 #### tb_0336_c03
 
 - Criterion: The response must identify that the student made an arithmetic error in part c) by equating $\frac{1}{5}$ to $\frac{5}{35}$, when it should be $\frac{7}{35}$. If done correctly, the answer should have been $\frac{1}{7}MR^2\omega_0^2$, not $\frac{3}{35}MR^2\omega_0^2$.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
-- Notes: ____
+- Grade (P/F): F
+- Notes: doesn't mention any errors in part c
 
 #### tb_0336_c04
 
 - Criterion: The response can explicitly note that the error of using the wrong moment of inertia leads to an incorrect result for both parts a) and b), since the result carry forward.
 - Primary skill: `diagnosis`
 - Criticality: `not_critical`
-- Grade (P/F): ____
-- Notes: ____
+- Grade (P/F): F
+- Notes: doesn't mention the error carrying forward
 
 #### tb_0336_c05
 
 - Criterion: The response must explain that using conservation of angular momentum with the correct moment of inertial for a cylinder ($\frac{1}{2}MR^2$), you find that the linear velocity after the cylinder stops rolling is $v=\frac{1}{3}R\omega_0$.
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0336_c06
@@ -855,31 +855,31 @@ The thermal energy generated is equal to the loss in mechanical energy ($\Delta 
 - Criterion: The response must explain that you need to use angular acceleration  $\alpha=\frac{\tau}{I_{CM}}$ (not linear acceleration $a$) when considering angular velocity so that the kinematics equation becomes $\omega=\omega_0+\alpha t$.
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
-- Notes: ____
+- Grade (P/F): F
+- Notes: Not clearly identified
 
 #### tb_0336_c07
 
 - Criterion: The response must explain that using the correct moment of inertia, the angular acceleration is $-\frac{2\mu_kg}{R}$, leading to a time interval of $t=\frac{R\omega_0}{3\mu_kg}$.
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
-- Notes: ____
+- Grade (P/F): F
+- Notes: does calculate value but without significant explanation
 
 #### tb_0336_c08
 
 - Criterion: The response must explicitly acknowledge the student's expressed confusion in part b).
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
-- Notes: ____
+- Grade (P/F): F
+- Notes: doesn't acknowledge confusions
 
 #### tb_0336_c09
 
 - Criterion: The response should be written in the second person from the perspective of a teacher or tutor addressing their student.
 - Primary skill: ``
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0336_c10
@@ -887,7 +887,7 @@ The thermal energy generated is equal to the loss in mechanical energy ($\Delta 
 - Criterion: The response should use Markdown (sections, bullets, etc.) to demarcate separate ideas, and should use LaTeX to render all mathematical expressions. 
 - Primary skill: ``
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 ## grader_01_item_04
@@ -974,47 +974,47 @@ Because the residual is positive, the elk weighed about **8.13 kg more than pred
 - Criterion: The response must include that the student's formula formula, "predicted - actual," is incorrect.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
-- Notes: ____
+- Grade (P/F): F
+- Notes: only says what the formula usually is
 
 #### tb_0340_c02
 
 - Criterion: The response must include that the student's final answer, "-8.14," is incorrect.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
-- Notes: ____
+- Grade (P/F): F
+- Notes: doesn't explicitly state incorrectness
 
 #### tb_0340_c03
 
 - Criterion: The response must include that the student makes the correct assumption about their answer of "-8.14" that "if I got the sign backward then like maybe it just means the elk weighed more than expected?", because +8.14 is the correct answer and the elk weigh more than expected in this situation.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
-- Notes: ____
+- Grade (P/F): F
+- Notes: doesn't state this
 
 #### tb_0340_c04
 
 - Criterion: The response must include that the student's words and their numerical answer don't align because they expressed verbally that the elk "weighs more," but their numerical answer is negative.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
-- Notes: ____
+- Grade (P/F): F
+- Notes: doesn't state this
 
 #### tb_0340_c05
 
 - Criterion: The response must include the correct formula for the answer: Residual Weight = (Weighed Elk) - (Predicted Weight) = 204.3 kg - 196.16 kg = 8.14 kg.
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
-- Notes: ____
+- Grade (P/F): P
+- Notes: essentially states this formula and gets a close enough answer
 
 #### tb_0340_c06
 
 - Criterion: The response must include that the answer is positive because the elk from the problem (204.3 kg) weighs more than the expected value (196.16 kg).
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0340_c07
@@ -1022,7 +1022,7 @@ Because the residual is positive, the elk weighed about **8.13 kg more than pred
 - Criterion: The response must include that the student seemed confused as they explained their negative answer: "...maybe it just means the elk weighed more than expect."
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0340_c08
@@ -1030,7 +1030,7 @@ Because the residual is positive, the elk weighed about **8.13 kg more than pred
 - Criterion: The response must include a validation for the student's question: "That means the prediction was 8.14 kg more than the actual weight, right?" similar to: "Totally! But does that align with what we are actually trying to do in the problem?"
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0340_c09
@@ -1038,7 +1038,7 @@ Because the residual is positive, the elk weighed about **8.13 kg more than pred
 - Criterion: The response should include an analogy for thinking about finding residual weight similar to finding the difference between a cookie recipe's expected yield and how many cookies are actually baked.
 - Primary skill: `scaffolding`
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0340_c10
@@ -1046,7 +1046,7 @@ Because the residual is positive, the elk weighed about **8.13 kg more than pred
 - Criterion: The response should be written  from the perspective of the teacher with the use of "you" and "we."
 - Primary skill: ``
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 ## grader_01_item_05
@@ -1172,15 +1172,15 @@ $$\boxed{(-1.40, \ 5.888)}$$
 - Criterion: The response must say the student correctly found the equation of the tangent line at x=0.45 (y=-1.54x+3.732).
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
-- Notes: ____
+- Grade (P/F): F
+- Notes: doesn't explicitly say this
 
 #### tb_0497_c02
 
 - Criterion: The response must say the student correctly calculated (8x^3+4x^2-8.46x+2.268) / (x-0.45) = 8x^2+7.6x-5.04.
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0497_c03
@@ -1188,23 +1188,23 @@ $$\boxed{(-1.40, \ 5.888)}$$
 - Criterion: The response must provide a hint on how to find the solutions for the quadratic function without explicitly saying to use the quadratic formula.
 - Primary skill: `scaffolding`
 - Criticality: `critical`
-- Grade (P/F): ____
-- Notes: ____
+- Grade (P/F): F
+- Notes: says to use quadratic formula
 
 #### tb_0497_c04
 
 - Criterion: The response must not provide the final correct answer, (-1.4, 5.89).
 - Primary skill: `scaffolding`
 - Criticality: `critical_negative`
-- Grade (P/F): ____
-- Notes: ____
+- Grade (P/F): F
+- Notes: gives correct answer
 
 #### tb_0497_c05
 
 - Criterion: The response should refer to the student in the second person.
 - Primary skill: ``
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0497_c06
@@ -1212,5 +1212,5 @@ $$\boxed{(-1.40, \ 5.888)}$$
 - Criterion: The response must acknowledge that the student is frustrated, and so it has to provide support by indicating that they are going in the right direction.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____

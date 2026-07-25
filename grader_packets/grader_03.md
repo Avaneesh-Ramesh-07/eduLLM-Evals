@@ -157,7 +157,7 @@ To restore equilibrium, $Q$ must increase until it equals $K_a$ again. The only 
 - Criterion: The response must provide the answer for the ionization constant. (e.g., Ka = 1.847 x 10 ^-5)
 - Primary skill: `content`
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0001_c02
@@ -165,7 +165,7 @@ To restore equilibrium, $Q$ must increase until it equals $K_a$ again. The only 
 - Criterion: The response must include the formula to be used to calculate the ionic concentration. (e.g., pH to [H‚Å∫] conversion formula: $[H^+] = 10^{-pH}$)
 - Primary skill: `content`
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0001_c03
@@ -173,7 +173,7 @@ To restore equilibrium, $Q$ must increase until it equals $K_a$ again. The only 
 - Criterion: The Response must explain the Le-Chatelier principle (e.g., the  equilibrium system shifts either to the left or to the right to reduce the change applied)
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0001_c04
@@ -181,7 +181,7 @@ To restore equilibrium, $Q$ must increase until it equals $K_a$ again. The only 
 - Criterion: The response must address why we need to calculate HA again even if it is already given (e.g., because ionization is calculated for equilibrium equation HA = H‚Å∫ + A‚Åª).
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0001_c05
@@ -189,7 +189,7 @@ To restore equilibrium, $Q$ must increase until it equals $K_a$ again. The only 
 - Criterion: The response should present a step-by-step solution, beginning with the calculation of $[H^+]$, followed by $[A^-]$, then computing the $K_a$ value and percent ionization. It should conclude with an explanation grounded in equilibrium principles.
 - Primary skill: `scaffolding`
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0001_c06
@@ -197,7 +197,7 @@ To restore equilibrium, $Q$ must increase until it equals $K_a$ again. The only 
 - Criterion: The response must provide the answer for the percentage ionization. (e.g. %ionization = 1.35)
 - Primary skill: `content`
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0001_c07
@@ -205,7 +205,7 @@ To restore equilibrium, $Q$ must increase until it equals $K_a$ again. The only 
 - Criterion: The response must include the formula to be used to calculate percentage ionization. (e.g., % ionization = [H‚Å∫] or [A‚Åª] / [HA] initial √ó 100)
 - Primary skill: `content`
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0001_c08
@@ -213,7 +213,7 @@ To restore equilibrium, $Q$ must increase until it equals $K_a$ again. The only 
 - Criterion: The response must include the formula used to calculate Ka. (e.g., K_a = \frac{[H^+][A^-]}{[HA]} \]))
 - Primary skill: `content`
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0001_c09
@@ -221,7 +221,7 @@ To restore equilibrium, $Q$ must increase until it equals $K_a$ again. The only 
 - Criterion: The response must provide the answer for the percentage ionization after dilution. (e.g. %ionization = 1.9%)
 - Primary skill: `content`
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0001_c10
@@ -229,7 +229,7 @@ To restore equilibrium, $Q$ must increase until it equals $K_a$ again. The only 
 - Criterion: The model should acknowledge the student's confusion regarding the re-calculation of HA concentration.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 ## grader_03_item_02
@@ -614,7 +614,7 @@ not just \(\frac{dy}{dx}\).
 \]) should be used to solve the differential equation.
 - Primary skill: `content`
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0003_c02
@@ -624,7 +624,7 @@ y = 2\arctan(x + C) - x
 \].
 - Primary skill: `content`
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0003_c03
@@ -632,7 +632,7 @@ y = 2\arctan(x + C) - x
 - Criterion: The response must identify that the student's solution [let u=x+y, \(\frac{du}{dx} = \frac{dy}{dx}\)] is incorrect.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0003_c04
@@ -640,7 +640,7 @@ y = 2\arctan(x + C) - x
 - Criterion: The response must correct the error [let u=x+y, \(\frac{du}{dx} = \frac{dy}{dx}\)], i.e. since u=x+y, take derivative respect to x, \(\frac{du}{dx} = \frac{d(x+y)}{dx} = 1 + \frac{dy}{dx}\).
 - Primary skill: `diagnosis`
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0003_c05
@@ -650,7 +650,7 @@ y = 2\arctan(x + C) - x
 \] is incorrect.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0003_c06
@@ -662,7 +662,7 @@ y = 2\arctan(x + C) - x
 \].
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0003_c07
@@ -670,7 +670,7 @@ y = 2\arctan(x + C) - x
 - Criterion: The response must identify that the antiderivative \(\int dx = Cx\) is incorrect.
 - Primary skill: `diagnosis`
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0003_c08
@@ -680,7 +680,7 @@ y = 2\arctan(x + C) - x
 \], .
 - Primary skill: `content`
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0003_c09
@@ -690,7 +690,7 @@ y = 2\arctan(x + C) - x
 \], and \(\int dx = Cx\), these incorrect steps lead to your incorrect final answer [\( y = \arcsin(Cx) - x \)].
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0003_c10
@@ -698,7 +698,7 @@ y = 2\arctan(x + C) - x
 - Criterion: The response should be formatted by using headings, bold text, and correct LaTeX.
 - Primary skill: ``
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 ## grader_03_item_03
@@ -798,7 +798,7 @@ So a positive residual = the real data point sits *above* the regression line. 
 - Criterion: The response must include that the student's formula formula, "predicted - actual," is incorrect.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0340_c02
@@ -806,7 +806,7 @@ So a positive residual = the real data point sits *above* the regression line. 
 - Criterion: The response must include that the student's final answer, "-8.14," is incorrect.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0340_c03
@@ -814,7 +814,7 @@ So a positive residual = the real data point sits *above* the regression line. 
 - Criterion: The response must include that the student makes the correct assumption about their answer of "-8.14" that "if I got the sign backward then like maybe it just means the elk weighed more than expected?", because +8.14 is the correct answer and the elk weigh more than expected in this situation.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0340_c04
@@ -822,7 +822,7 @@ So a positive residual = the real data point sits *above* the regression line. 
 - Criterion: The response must include that the student's words and their numerical answer don't align because they expressed verbally that the elk "weighs more," but their numerical answer is negative.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0340_c05
@@ -830,7 +830,7 @@ So a positive residual = the real data point sits *above* the regression line. 
 - Criterion: The response must include the correct formula for the answer: Residual Weight = (Weighed Elk) - (Predicted Weight) = 204.3 kg - 196.16 kg = 8.14 kg.
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0340_c06
@@ -838,7 +838,7 @@ So a positive residual = the real data point sits *above* the regression line. 
 - Criterion: The response must include that the answer is positive because the elk from the problem (204.3 kg) weighs more than the expected value (196.16 kg).
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0340_c07
@@ -846,7 +846,7 @@ So a positive residual = the real data point sits *above* the regression line. 
 - Criterion: The response must include that the student seemed confused as they explained their negative answer: "...maybe it just means the elk weighed more than expect."
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0340_c08
@@ -854,7 +854,7 @@ So a positive residual = the real data point sits *above* the regression line. 
 - Criterion: The response must include a validation for the student's question: "That means the prediction was 8.14 kg more than the actual weight, right?" similar to: "Totally! But does that align with what we are actually trying to do in the problem?"
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0340_c09
@@ -862,7 +862,7 @@ So a positive residual = the real data point sits *above* the regression line. 
 - Criterion: The response should include an analogy for thinking about finding residual weight similar to finding the difference between a cookie recipe's expected yield and how many cookies are actually baked.
 - Primary skill: `scaffolding`
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0340_c10
@@ -870,7 +870,7 @@ So a positive residual = the real data point sits *above* the regression line. 
 - Criterion: The response should be written  from the perspective of the teacher with the use of "you" and "we."
 - Primary skill: ``
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 ## grader_03_item_04
@@ -1015,7 +1015,7 @@ If they had written `B obj = new B();`, it would have made the question slightly
 - Criterion: The response must clearly explain that private methods are resolved based on the class where the method is defined, not the runtime type of the object, and must directly refute the idea that the secret() method from class B is ever called.
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0335_c02
@@ -1023,7 +1023,7 @@ If they had written `B obj = new B();`, it would have made the question slightly
 - Criterion: The explanation must explicitly note that the secret() method in class B is not overriding the secret() method in class A, but instead defines a completely separate method.
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0335_c03
@@ -1031,7 +1031,7 @@ If they had written `B obj = new B();`, it would have made the question slightly
 - Criterion: The response must clarify that reveal() is defined in class A and therefore always executes A's version of secret(), regardless of the runtime type of obj
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0335_c04
@@ -1039,7 +1039,7 @@ If they had written `B obj = new B();`, it would have made the question slightly
 - Criterion: The response must correctly identifies that private methods are not inherited therefore are not overridden.
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0335_c05
@@ -1047,7 +1047,7 @@ If they had written `B obj = new B();`, it would have made the question slightly
 - Criterion: The response must avoids describing the program as "failing to compile" based solely on private method naming overlap.
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0335_c06
@@ -1055,7 +1055,7 @@ If they had written `B obj = new B();`, it would have made the question slightly
 - Criterion: The explanation must clarify that the method call to secret() is resolved at compile time based on the reference type (A), not the runtime type (B), and that polymorphism does not apply to private methods.
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0335_c07
@@ -1063,7 +1063,7 @@ If they had written `B obj = new B();`, it would have made the question slightly
 - Criterion: The response must explicitly state that a private method can be called only by other methods within its own class.
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0335_c08
@@ -1071,7 +1071,7 @@ If they had written `B obj = new B();`, it would have made the question slightly
 - Criterion: The model's response should be written in the second person, addressed to the student.
 - Primary skill: ``
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 ## grader_03_item_05
@@ -1290,7 +1290,7 @@ If mass is measured in kilograms and time in seconds, the spring constant will c
 - Criterion: The response must acknowledge the student's expressed feeling of being 'puzzled' or 'stuck'.
 - Primary skill: ``
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0507_c02
@@ -1298,7 +1298,7 @@ If mass is measured in kilograms and time in seconds, the spring constant will c
 - Criterion: The response must address the student's direct question about mass by guiding them to consider the total mass of the system (box + weight).
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0507_c03
@@ -1306,7 +1306,7 @@ If mass is measured in kilograms and time in seconds, the spring constant will c
 - Criterion: The response must hint at the concept of linearizing a graph by suggesting the student manipulate the (to be found) equation to match the form y=mx+b.
 - Primary skill: `scaffolding`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0507_c04
@@ -1314,7 +1314,7 @@ If mass is measured in kilograms and time in seconds, the spring constant will c
 - Criterion: The response must not provide the specific formula T=2œÄ(sqrt(m/k)) or directly state that the student should plot (T^2) vs. m.
 - Primary skill: `scaffolding`
 - Criticality: `critical_negative`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0507_c05
@@ -1322,7 +1322,7 @@ If mass is measured in kilograms and time in seconds, the spring constant will c
 - Criterion: The response should validate the student's initial thoughts by praising their idea to think about the relationship between mass/period and graphing (e.g., 'You're on the right track...').
 - Primary skill: `diagnosis`
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0507_c06
@@ -1330,7 +1330,7 @@ If mass is measured in kilograms and time in seconds, the spring constant will c
 - Criterion: The response should use formatting (like bullet points or bolding) to separate distinct hints, making them easier for the student to read.
 - Primary skill: ``
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0507_c07
@@ -1338,5 +1338,5 @@ If mass is measured in kilograms and time in seconds, the spring constant will c
 - Criterion: The response must provide the key hint to address the forgotten formula by suggesting the student find or refer to a formula sheet.
 - Primary skill: `scaffolding`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
