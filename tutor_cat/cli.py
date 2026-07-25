@@ -1,4 +1,4 @@
-"""CLI: tutor-cat validate | run | plot   (or: python -m tutor_cat ...)"""
+"""CLI: tutor-cat validate | run | plot | generate   (or: python -m tutor_cat ...)"""
 
 from __future__ import annotations
 
@@ -122,7 +122,74 @@ def cmd_plot(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_generate(args: argparse.Namespace) -> int:
+    """Run open-weight models over TutorBench scenarios (vLLM/HF on GPU).
+
+    respgen imports are deferred to here so `validate`/`run`/`plot` work without
+    the heavy [gen] deps. --dry-run stays fully offline (no torch/vllm, no Hub)."""
+    _load_env()  # HF_TOKEN from .env for gated models (never committed/pushed)
+    from .respgen.manifest import load_manifest
+    from .respgen.runner import dry_run, load_scenarios
+
+    specs = load_manifest(args.models)
+    if args.model:
+        specs = [s for s in specs if s.id == args.model]
+        if not specs:
+            print(f"unknown model id '{args.model}' (not in {args.models})", file=sys.stderr)
+            return 1
+
+    if args.dry_run:
+        n = args.limit or 5
+        scenarios = load_scenarios(args.scenarios, limit=n)
+        # no-network config fetch => max_model_len falls back to the cap
+        print(dry_run(specs, scenarios, fetch_config=lambda _id: {}, n=n))
+        return 0
+
+    gpu_ids = None
+    if args.gpu_ids:
+        try:
+            gpu_ids = [int(x) for x in args.gpu_ids.split(",") if x.strip() != ""]
+        except ValueError:
+            print(f"--gpu-ids must be comma-separated integers, got {args.gpu_ids!r}",
+                  file=sys.stderr)
+            return 1
+        if not gpu_ids:
+            print("--gpu-ids was empty", file=sys.stderr)
+            return 1
+
+    from .respgen.orchestrator import run_fleet
+
+    results = run_fleet(
+        specs,
+        args.scenarios,
+        args.out_dir,
+        s3_uri=args.s3_uri,
+        resume=not args.no_resume,
+        gpus=args.gpus,
+        gpu_ids=gpu_ids,
+        limit=args.limit,
+    )
+    for r in results:
+        print(json.dumps(r, ensure_ascii=False))
+    failed = [r for r in results if r.get("status") not in ("ok", "already_complete")]
+    print(f"generate: {len(results) - len(failed)}/{len(results)} models ok", file=sys.stderr)
+    return 1 if failed else 0
+
+
+def _force_utf8_stdio() -> None:
+    # Model prompts/outputs contain arbitrary Unicode (math superscripts, CJK,
+    # emoji). The Windows console defaults to cp1252 and raises
+    # UnicodeEncodeError on write; UTF-8 with errors="replace" keeps a long run
+    # from dying on one stray glyph. No-op where already UTF-8 (Linux GPU box).
+    for stream in (sys.stdout, sys.stderr):
+        try:
+            stream.reconfigure(encoding="utf-8", errors="replace")
+        except (AttributeError, ValueError):
+            pass
+
+
 def main(argv: list[str] | None = None) -> int:
+    _force_utf8_stdio()
     parser = argparse.ArgumentParser(prog="tutor-cat", description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
 
@@ -142,6 +209,29 @@ def main(argv: list[str] | None = None) -> int:
     p_plot.add_argument("runs", nargs="+", help="paths to runs/<run_id> directories")
     p_plot.add_argument("--out", default="se_trajectories.png")
     p_plot.set_defaults(fn=cmd_plot)
+
+    p_gen = sub.add_parser(
+        "generate", help="run open-weight models over TutorBench scenarios (AWS/vLLM)"
+    )
+    p_gen.add_argument("--models", default="models.yaml", help="model manifest YAML")
+    p_gen.add_argument("--scenarios", default="data/scenarios.jsonl")
+    p_gen.add_argument("--out-dir", default="runs/responses",
+                       help="one JSONL shard per model is written here")
+    p_gen.add_argument("--s3-uri", default=None,
+                       help="s3://bucket/prefix to upload each finished shard (instance IAM)")
+    p_gen.add_argument("--gpus", type=int, default=None,
+                       help="worker processes (default: detected GPU count)")
+    p_gen.add_argument("--gpu-ids", default=None,
+                       help="comma-separated physical CUDA device indices to pin "
+                            "workers to (e.g. '8' = GPU 8 only); overrides --gpus")
+    p_gen.add_argument("--limit", type=int, default=None,
+                       help="cap scenarios per model (smoke test)")
+    p_gen.add_argument("--model", default=None, help="run only this model id")
+    p_gen.add_argument("--dry-run", action="store_true",
+                       help="print resolved config + sample prompts; no model load, no network")
+    p_gen.add_argument("--no-resume", action="store_true",
+                       help="ignore existing shards and regenerate")
+    p_gen.set_defaults(fn=cmd_generate)
 
     args = parser.parse_args(argv)
     return args.fn(args)
