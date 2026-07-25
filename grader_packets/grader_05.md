@@ -160,7 +160,7 @@ If the pedigree question expects a single answer, it is probably aiming for **X-
 - Criterion: The response must explicitly acknowledge the student's stated confusion and respond empathetically before giving the explanation
 - Primary skill: ``
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0012_c02
@@ -168,23 +168,23 @@ If the pedigree question expects a single answer, it is probably aiming for **X-
 - Criterion: The response must clearly state that autosomal recessive inheritance is highly improbable (very unlikely) in this pedigree compared with X-linked recessive inheritance.
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
-- Notes: ____
+- Grade (P/F): F
+- Notes: doesn't say this properly; hints at X-linked recessive being more likely, but doesn't say anything about autosomal recessive inheritance being highly improbable (tries to find ways to make it work)
 
 #### tb_0012_c03
 
 - Criterion: The response must explain, step-by-step, why AR is highly improbable, citing at least one key distinguishing pattern (e.g., 100 % affected sons of an affected female, absence of affected daughters in that cross, or the need for two independent carrier marriages).
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
-- Notes: ____
+- Grade (P/F): F
+- Notes: The response shows why AR could be possible, but that X-linked is a closer match, as opposed to explaining why AR is improbable.
 
 #### tb_0012_c04
 
 - Criterion: The response must positively reinforce what the student already got right (that an unaffected female carrier could have affected sons in an AR scenario).
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0012_c05
@@ -192,7 +192,7 @@ If the pedigree question expects a single answer, it is probably aiming for **X-
 - Criterion: The response must supply the missing background contrast in transmission probabilities between AR (50 % risk per child) and XLR (100 % risk to sons of an affected female).
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0012_c06
@@ -200,7 +200,7 @@ If the pedigree question expects a single answer, it is probably aiming for **X-
 - Criterion: The response should use clear, student-friendly language and an encouraging tone.
 - Primary skill: ``
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0012_c07
@@ -208,7 +208,7 @@ If the pedigree question expects a single answer, it is probably aiming for **X-
 - Criterion: The response should employ structured formatting (bullet points, numbering, or headings) to organize ideas.
 - Primary skill: ``
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 ## grader_05_item_02
@@ -295,7 +295,7 @@ In this case, this specific male tule elk weighs **$8.13\text{ kg}$ more** than 
 - Criterion: The response must include that the student's formula formula, "predicted - actual," is incorrect.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0340_c02
@@ -303,7 +303,7 @@ In this case, this specific male tule elk weighs **$8.13\text{ kg}$ more** than 
 - Criterion: The response must include that the student's final answer, "-8.14," is incorrect.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0340_c03
@@ -311,23 +311,23 @@ In this case, this specific male tule elk weighs **$8.13\text{ kg}$ more** than 
 - Criterion: The response must include that the student makes the correct assumption about their answer of "-8.14" that "if I got the sign backward then like maybe it just means the elk weighed more than expected?", because +8.14 is the correct answer and the elk weigh more than expected in this situation.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
-- Notes: ____
+- Grade (P/F): F
+- Notes: the only comment on the student's work is to say that their formula was incorrect
 
 #### tb_0340_c04
 
 - Criterion: The response must include that the student's words and their numerical answer don't align because they expressed verbally that the elk "weighs more," but their numerical answer is negative.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
-- Notes: ____
+- Grade (P/F): F
+- Notes: the only comment on the student's work is to say that their formula was incorrect
 
 #### tb_0340_c05
 
 - Criterion: The response must include the correct formula for the answer: Residual Weight = (Weighed Elk) - (Predicted Weight) = 204.3 kg - 196.16 kg = 8.14 kg.
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0340_c06
@@ -335,7 +335,7 @@ In this case, this specific male tule elk weighs **$8.13\text{ kg}$ more** than 
 - Criterion: The response must include that the answer is positive because the elk from the problem (204.3 kg) weighs more than the expected value (196.16 kg).
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0340_c07
@@ -343,23 +343,23 @@ In this case, this specific male tule elk weighs **$8.13\text{ kg}$ more** than 
 - Criterion: The response must include that the student seemed confused as they explained their negative answer: "...maybe it just means the elk weighed more than expect."
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
-- Notes: ____
+- Grade (P/F): F
+- Notes: the only comment on the student's work is to say that their formula was incorrect
 
 #### tb_0340_c08
 
 - Criterion: The response must include a validation for the student's question: "That means the prediction was 8.14 kg more than the actual weight, right?" similar to: "Totally! But does that align with what we are actually trying to do in the problem?"
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
-- Notes: ____
+- Grade (P/F): F
+- Notes: It doesn't address the student's error by asking this follow up question; it just goes into the correct formula
 
 #### tb_0340_c09
 
 - Criterion: The response should include an analogy for thinking about finding residual weight similar to finding the difference between a cookie recipe's expected yield and how many cookies are actually baked.
 - Primary skill: `scaffolding`
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0340_c10
@@ -367,7 +367,7 @@ In this case, this specific male tule elk weighs **$8.13\text{ kg}$ more** than 
 - Criterion: The response should be written  from the perspective of the teacher with the use of "you" and "we."
 - Primary skill: ``
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 ## grader_05_item_03
@@ -503,7 +503,7 @@ This example was designed to teach the "private methods aren't overridden" gotch
 - Criterion: The response must clearly explain that private methods are resolved based on the class where the method is defined, not the runtime type of the object, and must directly refute the idea that the secret() method from class B is ever called.
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0335_c02
@@ -511,7 +511,7 @@ This example was designed to teach the "private methods aren't overridden" gotch
 - Criterion: The explanation must explicitly note that the secret() method in class B is not overriding the secret() method in class A, but instead defines a completely separate method.
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0335_c03
@@ -519,7 +519,7 @@ This example was designed to teach the "private methods aren't overridden" gotch
 - Criterion: The response must clarify that reveal() is defined in class A and therefore always executes A's version of secret(), regardless of the runtime type of obj
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0335_c04
@@ -527,7 +527,7 @@ This example was designed to teach the "private methods aren't overridden" gotch
 - Criterion: The response must correctly identifies that private methods are not inherited therefore are not overridden.
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0335_c05
@@ -535,7 +535,7 @@ This example was designed to teach the "private methods aren't overridden" gotch
 - Criterion: The response must avoids describing the program as "failing to compile" based solely on private method naming overlap.
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0335_c06
@@ -543,7 +543,7 @@ This example was designed to teach the "private methods aren't overridden" gotch
 - Criterion: The explanation must clarify that the method call to secret() is resolved at compile time based on the reference type (A), not the runtime type (B), and that polymorphism does not apply to private methods.
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0335_c07
@@ -551,7 +551,7 @@ This example was designed to teach the "private methods aren't overridden" gotch
 - Criterion: The response must explicitly state that a private method can be called only by other methods within its own class.
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0335_c08
@@ -559,7 +559,7 @@ This example was designed to teach the "private methods aren't overridden" gotch
 - Criterion: The model's response should be written in the second person, addressed to the student.
 - Primary skill: ``
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 ## grader_05_item_04
@@ -696,15 +696,15 @@ Equivalently, in fractions:
 - Criterion: The response must say the student correctly found the equation of the tangent line at x=0.45 (y=-1.54x+3.732).
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
-- Notes: ____
+- Grade (P/F): P
+- Notes: maybe doesn't say this explicitly, but says that the existing work is correct which includes finding the tangent line equation
 
 #### tb_0497_c02
 
 - Criterion: The response must say the student correctly calculated (8x^3+4x^2-8.46x+2.268) / (x-0.45) = 8x^2+7.6x-5.04.
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0497_c03
@@ -712,15 +712,15 @@ Equivalently, in fractions:
 - Criterion: The response must provide a hint on how to find the solutions for the quadratic function without explicitly saying to use the quadratic formula.
 - Primary skill: `scaffolding`
 - Criticality: `critical`
-- Grade (P/F): ____
-- Notes: ____
+- Grade (P/F): F
+- Notes: solves it by factoring and doesn't scaffold at all
 
 #### tb_0497_c04
 
 - Criterion: The response must not provide the final correct answer, (-1.4, 5.89).
 - Primary skill: `scaffolding`
 - Criticality: `critical_negative`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0497_c05
@@ -728,7 +728,7 @@ Equivalently, in fractions:
 - Criterion: The response should refer to the student in the second person.
 - Primary skill: ``
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0497_c06
@@ -736,7 +736,7 @@ Equivalently, in fractions:
 - Criterion: The response must acknowledge that the student is frustrated, and so it has to provide support by indicating that they are going in the right direction.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 ## grader_05_item_05
@@ -848,15 +848,15 @@ You've got everything you need — the key insight was squaring the period to tu
 - Criterion: The response must acknowledge the student's expressed feeling of being 'puzzled' or 'stuck'.
 - Primary skill: ``
 - Criticality: `critical`
-- Grade (P/F): ____
-- Notes: ____
+- Grade (P/F): F
+- Notes: doesn't acknowledge this directly; indirectly encourages the student
 
 #### tb_0507_c02
 
 - Criterion: The response must address the student's direct question about mass by guiding them to consider the total mass of the system (box + weight).
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0507_c03
@@ -864,7 +864,7 @@ You've got everything you need — the key insight was squaring the period to tu
 - Criterion: The response must hint at the concept of linearizing a graph by suggesting the student manipulate the (to be found) equation to match the form y=mx+b.
 - Primary skill: `scaffolding`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0507_c04
@@ -872,7 +872,7 @@ You've got everything you need — the key insight was squaring the period to tu
 - Criterion: The response must not provide the specific formula T=2π(sqrt(m/k)) or directly state that the student should plot (T^2) vs. m.
 - Primary skill: `scaffolding`
 - Criticality: `critical_negative`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0507_c05
@@ -880,7 +880,7 @@ You've got everything you need — the key insight was squaring the period to tu
 - Criterion: The response should validate the student's initial thoughts by praising their idea to think about the relationship between mass/period and graphing (e.g., 'You're on the right track...').
 - Primary skill: `diagnosis`
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0507_c06
@@ -888,7 +888,7 @@ You've got everything you need — the key insight was squaring the period to tu
 - Criterion: The response should use formatting (like bullet points or bolding) to separate distinct hints, making them easier for the student to read.
 - Primary skill: ``
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0507_c07
@@ -896,5 +896,5 @@ You've got everything you need — the key insight was squaring the period to tu
 - Criterion: The response must provide the key hint to address the forgotten formula by suggesting the student find or refer to a formula sheet.
 - Primary skill: `scaffolding`
 - Criticality: `critical`
-- Grade (P/F): ____
-- Notes: ____
+- Grade (P/F): F
+- Notes: just gives the formula directly
