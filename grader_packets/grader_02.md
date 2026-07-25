@@ -180,7 +180,7 @@ I apologize for the confusing wording in my earlier response!
 - Criterion: The response must provide the answer for the ionization constant. (e.g., Ka = 1.847 x 10 ^-5)
 - Primary skill: `content`
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0001_c02
@@ -188,7 +188,7 @@ I apologize for the confusing wording in my earlier response!
 - Criterion: The response must include the formula to be used to calculate the ionic concentration. (e.g., pH to [H⁺] conversion formula: $[H^+] = 10^{-pH}$)
 - Primary skill: `content`
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0001_c03
@@ -196,7 +196,7 @@ I apologize for the confusing wording in my earlier response!
 - Criterion: The Response must explain the Le-Chatelier principle (e.g., the  equilibrium system shifts either to the left or to the right to reduce the change applied)
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0001_c04
@@ -204,7 +204,7 @@ I apologize for the confusing wording in my earlier response!
 - Criterion: The response must address why we need to calculate HA again even if it is already given (e.g., because ionization is calculated for equilibrium equation HA = H⁺ + A⁻).
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0001_c05
@@ -212,7 +212,7 @@ I apologize for the confusing wording in my earlier response!
 - Criterion: The response should present a step-by-step solution, beginning with the calculation of $[H^+]$, followed by $[A^-]$, then computing the $K_a$ value and percent ionization. It should conclude with an explanation grounded in equilibrium principles.
 - Primary skill: `scaffolding`
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0001_c06
@@ -220,7 +220,7 @@ I apologize for the confusing wording in my earlier response!
 - Criterion: The response must provide the answer for the percentage ionization. (e.g. %ionization = 1.35)
 - Primary skill: `content`
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0001_c07
@@ -228,7 +228,7 @@ I apologize for the confusing wording in my earlier response!
 - Criterion: The response must include the formula to be used to calculate percentage ionization. (e.g., % ionization = [H⁺] or [A⁻] / [HA] initial × 100)
 - Primary skill: `content`
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0001_c08
@@ -236,7 +236,7 @@ I apologize for the confusing wording in my earlier response!
 - Criterion: The response must include the formula used to calculate Ka. (e.g., K_a = \frac{[H^+][A^-]}{[HA]} \]))
 - Primary skill: `content`
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0001_c09
@@ -244,7 +244,7 @@ I apologize for the confusing wording in my earlier response!
 - Criterion: The response must provide the answer for the percentage ionization after dilution. (e.g. %ionization = 1.9%)
 - Primary skill: `content`
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0001_c10
@@ -252,7 +252,7 @@ I apologize for the confusing wording in my earlier response!
 - Criterion: The model should acknowledge the student's confusion regarding the re-calculation of HA concentration.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 ## grader_02_item_02
@@ -370,7 +370,7 @@ You are 100% correct that autosomal recessive is possible. However, because auto
 - Criterion: The response must explicitly acknowledge the student's stated confusion and respond empathetically before giving the explanation
 - Primary skill: ``
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0012_c02
@@ -378,7 +378,7 @@ You are 100% correct that autosomal recessive is possible. However, because auto
 - Criterion: The response must clearly state that autosomal recessive inheritance is highly improbable (very unlikely) in this pedigree compared with X-linked recessive inheritance.
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0012_c03
@@ -386,7 +386,7 @@ You are 100% correct that autosomal recessive is possible. However, because auto
 - Criterion: The response must explain, step-by-step, why AR is highly improbable, citing at least one key distinguishing pattern (e.g., 100 % affected sons of an affected female, absence of affected daughters in that cross, or the need for two independent carrier marriages).
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0012_c04
@@ -394,7 +394,7 @@ You are 100% correct that autosomal recessive is possible. However, because auto
 - Criterion: The response must positively reinforce what the student already got right (that an unaffected female carrier could have affected sons in an AR scenario).
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0012_c05
@@ -402,7 +402,7 @@ You are 100% correct that autosomal recessive is possible. However, because auto
 - Criterion: The response must supply the missing background contrast in transmission probabilities between AR (50 % risk per child) and XLR (100 % risk to sons of an affected female).
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0012_c06
@@ -410,7 +410,7 @@ You are 100% correct that autosomal recessive is possible. However, because auto
 - Criterion: The response should use clear, student-friendly language and an encouraging tone.
 - Primary skill: ``
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0012_c07
@@ -418,7 +418,7 @@ You are 100% correct that autosomal recessive is possible. However, because auto
 - Criterion: The response should employ structured formatting (bullet points, numbering, or headings) to organize ideas.
 - Primary skill: ``
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 ## grader_02_item_03
@@ -750,7 +750,7 @@ So the corrected answers are:
 - Criterion: The response must identify that in part a), the student used the incorrect formula for the moment of inertia of a solid cylinder, using $\frac{2}{5}MR^2$ (for a sphere) instead of $\frac{1}{2}MR^2$.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0336_c02
@@ -758,7 +758,7 @@ So the corrected answers are:
 - Criterion: The response must identify that the student made a conceptual error in part b) by using the linear acceleration $a$ in the kinematic equation for angular velocity instead of the angular acceleration $\alpha$.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0336_c03
@@ -766,7 +766,7 @@ So the corrected answers are:
 - Criterion: The response must identify that the student made an arithmetic error in part c) by equating $\frac{1}{5}$ to $\frac{5}{35}$, when it should be $\frac{7}{35}$. If done correctly, the answer should have been $\frac{1}{7}MR^2\omega_0^2$, not $\frac{3}{35}MR^2\omega_0^2$.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0336_c04
@@ -774,7 +774,7 @@ So the corrected answers are:
 - Criterion: The response can explicitly note that the error of using the wrong moment of inertia leads to an incorrect result for both parts a) and b), since the result carry forward.
 - Primary skill: `diagnosis`
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0336_c05
@@ -782,7 +782,7 @@ So the corrected answers are:
 - Criterion: The response must explain that using conservation of angular momentum with the correct moment of inertial for a cylinder ($\frac{1}{2}MR^2$), you find that the linear velocity after the cylinder stops rolling is $v=\frac{1}{3}R\omega_0$.
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0336_c06
@@ -790,7 +790,7 @@ So the corrected answers are:
 - Criterion: The response must explain that you need to use angular acceleration  $\alpha=\frac{\tau}{I_{CM}}$ (not linear acceleration $a$) when considering angular velocity so that the kinematics equation becomes $\omega=\omega_0+\alpha t$.
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0336_c07
@@ -798,7 +798,7 @@ So the corrected answers are:
 - Criterion: The response must explain that using the correct moment of inertia, the angular acceleration is $-\frac{2\mu_kg}{R}$, leading to a time interval of $t=\frac{R\omega_0}{3\mu_kg}$.
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0336_c08
@@ -806,7 +806,7 @@ So the corrected answers are:
 - Criterion: The response must explicitly acknowledge the student's expressed confusion in part b).
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0336_c09
@@ -814,7 +814,7 @@ So the corrected answers are:
 - Criterion: The response should be written in the second person from the perspective of a teacher or tutor addressing their student.
 - Primary skill: ``
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0336_c10
@@ -822,7 +822,7 @@ So the corrected answers are:
 - Criterion: The response should use Markdown (sections, bullets, etc.) to demarcate separate ideas, and should use LaTeX to render all mathematical expressions. 
 - Primary skill: ``
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 ## grader_02_item_04
@@ -921,7 +921,7 @@ The pH = 9.25 wasn't meant for a direct [H⁺] calculation — it was a **clue**
 - Criterion: The response must acknowledge the student's expressed confusion.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0355_c02
@@ -929,7 +929,7 @@ The pH = 9.25 wasn't meant for a direct [H⁺] calculation — it was a **clue**
 - Criterion: The response must acknowledge that the student has correctly calculated the pKa (4.75) and Ka (1.78 × 10^(-5)) using the pH of 4.75 and the relationship pH = pKa at the half equivalence point for the titration of a weak acid.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0355_c03
@@ -937,7 +937,7 @@ The pH = 9.25 wasn't meant for a direct [H⁺] calculation — it was a **clue**
 - Criterion: The response must clarify that the student is unable to proceed because using the Ka with the molarity and the volume of NaOH is not the right approach, nor is finding the [H⁺] from the endpoint pH.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0355_c04
@@ -945,7 +945,7 @@ The pH = 9.25 wasn't meant for a direct [H⁺] calculation — it was a **clue**
 - Criterion: The response needs to guide the student to identify that the endpoint of the titration is reached when the pH is measured at 9.25.
 - Primary skill: `scaffolding`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0355_c05
@@ -953,7 +953,7 @@ The pH = 9.25 wasn't meant for a direct [H⁺] calculation — it was a **clue**
 - Criterion: The response must guide the student to calculate the moles of NaOH at the endpoint of the titration.
 - Primary skill: `scaffolding`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0355_c06
@@ -961,7 +961,7 @@ The pH = 9.25 wasn't meant for a direct [H⁺] calculation — it was a **clue**
 - Criterion: The response needs to guide the student to realize that the moles of NaOH at the endpoint are approximately equal to the initial moles of HA. 
 - Primary skill: `scaffolding`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0355_c07
@@ -969,7 +969,7 @@ The pH = 9.25 wasn't meant for a direct [H⁺] calculation — it was a **clue**
 - Criterion: The response must not reveal that the moles of NaOH at the endpoint is calculated using the equation n= cV or n=MV or moles = concentration/molarity x volume as the student needs to work this out for themselves.
 - Primary skill: `scaffolding`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0355_c08
@@ -977,7 +977,7 @@ The pH = 9.25 wasn't meant for a direct [H⁺] calculation — it was a **clue**
 - Criterion: The response must not reveal that the final answer is given by: n(NaOH) = 0.1M x 0.05L = 0.005 mol, so n(HA) = 0.005 mol. Original concentration of HA = 0.005 mol / 0.025 L = 0.2M
 - Primary skill: `scaffolding`
 - Criticality: `critical_negative`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0355_c09
@@ -985,7 +985,7 @@ The pH = 9.25 wasn't meant for a direct [H⁺] calculation — it was a **clue**
 - Criterion: The response should be written in second-person narrative, using the terms "you/your" rather than "they/the student."
 - Primary skill: ``
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 ## grader_02_item_05
@@ -1075,7 +1075,7 @@ In 8-bit binary, the decimal number 25 is represented as:
 - Criterion: The response must acknowledge elements of the student's current work, such as identifying 2^7 as the largest power of two in an 8-bit representation or calculating digits up to the fourth place.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0500_c02
@@ -1083,7 +1083,7 @@ In 8-bit binary, the decimal number 25 is represented as:
 - Criterion: The response must identify that the student is unable to proceed due to unfamiliarity using the "powers of two" approach to convert numbers into their binary representations.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0500_c03
@@ -1091,7 +1091,7 @@ In 8-bit binary, the decimal number 25 is represented as:
 - Criterion: The response must acknowledge the student's confusion about calculating binary representations.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0500_c04
@@ -1099,7 +1099,7 @@ In 8-bit binary, the decimal number 25 is represented as:
 - Criterion: The response must hint for the student to consider that the value 2^4 was seen inside of 25, so a simplification is possible to determine the next number to compare against the powers of two.
 - Primary skill: `scaffolding`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0500_c05
@@ -1107,15 +1107,15 @@ In 8-bit binary, the decimal number 25 is represented as:
 - Criterion: The response must hint for the student to consider that the word "significant" in an unsigned binary context refers to the magnitude of the number, or how much value a digit contributes to the overall number.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
-- Notes: ____
+- Grade (P/F): F
+- Notes: Slightly borderline. They explain the meaning of significance wiithout using the word "significant"
 
 #### tb_0500_c06
 
 - Criterion: The response must hint for the student to consider that binary representations of small numbers order the bits from most significant to least significant.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0500_c07
@@ -1123,7 +1123,7 @@ In 8-bit binary, the decimal number 25 is represented as:
 - Criterion: The response must state the mathematical equation for the "powers of two" approach for 8-bit integers: the summation of x_n * 2^n when n goes from 0 to 7.
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0500_c08
@@ -1131,7 +1131,7 @@ In 8-bit binary, the decimal number 25 is represented as:
 - Criterion: The response must avoid providing a next step directly by telling the student to subtract 16 from 25 after determining that 16 is inside 25.
 - Primary skill: `scaffolding`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0500_c09
@@ -1139,7 +1139,7 @@ In 8-bit binary, the decimal number 25 is represented as:
 - Criterion: The response must not provide the full solution: 00011001, the 8-bit binary representation of 25.
 - Primary skill: `scaffolding`
 - Criticality: `critical_negative`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0500_c10
@@ -1147,5 +1147,5 @@ In 8-bit binary, the decimal number 25 is represented as:
 - Criterion: The response can use at least one bold header to label and organize the text.
 - Primary skill: ``
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
