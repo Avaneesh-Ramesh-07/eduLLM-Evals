@@ -730,7 +730,7 @@ You had the right idea—you just needed to switch from comparing against 25 to 
 - Criterion: The response must acknowledge elements of the student's current work, such as identifying 2^7 as the largest power of two in an 8-bit representation or calculating digits up to the fourth place.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0500_c02
@@ -738,7 +738,7 @@ You had the right idea—you just needed to switch from comparing against 25 to 
 - Criterion: The response must identify that the student is unable to proceed due to unfamiliarity using the "powers of two" approach to convert numbers into their binary representations.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0500_c03
@@ -746,7 +746,7 @@ You had the right idea—you just needed to switch from comparing against 25 to 
 - Criterion: The response must acknowledge the student's confusion about calculating binary representations.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0500_c04
@@ -754,15 +754,15 @@ You had the right idea—you just needed to switch from comparing against 25 to 
 - Criterion: The response must hint for the student to consider that the value 2^4 was seen inside of 25, so a simplification is possible to determine the next number to compare against the powers of two.
 - Primary skill: `scaffolding`
 - Criticality: `critical`
-- Grade (P/F): ____
-- Notes: ____
+- Grade (P/F): F
+- Notes: directly tells what to do without the hint
 
 #### tb_0500_c05
 
 - Criterion: The response must hint for the student to consider that the word "significant" in an unsigned binary context refers to the magnitude of the number, or how much value a digit contributes to the overall number.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0500_c06
@@ -770,7 +770,7 @@ You had the right idea—you just needed to switch from comparing against 25 to 
 - Criterion: The response must hint for the student to consider that binary representations of small numbers order the bits from most significant to least significant.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0500_c07
@@ -778,7 +778,7 @@ You had the right idea—you just needed to switch from comparing against 25 to 
 - Criterion: The response must state the mathematical equation for the "powers of two" approach for 8-bit integers: the summation of x_n * 2^n when n goes from 0 to 7.
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0500_c08
@@ -786,7 +786,7 @@ You had the right idea—you just needed to switch from comparing against 25 to 
 - Criterion: The response must avoid providing a next step directly by telling the student to subtract 16 from 25 after determining that 16 is inside 25.
 - Primary skill: `scaffolding`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0500_c09
@@ -794,7 +794,7 @@ You had the right idea—you just needed to switch from comparing against 25 to 
 - Criterion: The response must not provide the full solution: 00011001, the 8-bit binary representation of 25.
 - Primary skill: `scaffolding`
 - Criticality: `critical_negative`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0500_c10
@@ -802,7 +802,7 @@ You had the right idea—you just needed to switch from comparing against 25 to 
 - Criterion: The response can use at least one bold header to label and organize the text.
 - Primary skill: ``
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 ## grader_06_item_05
@@ -910,7 +910,7 @@ Measure the total mass ($m$) and the time for 10 swings to get the period ($T$).
 - Criterion: The response must acknowledge the student's expressed feeling of being 'puzzled' or 'stuck'.
 - Primary skill: ``
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0507_c02
@@ -918,7 +918,7 @@ Measure the total mass ($m$) and the time for 10 swings to get the period ($T$).
 - Criterion: The response must address the student's direct question about mass by guiding them to consider the total mass of the system (box + weight).
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0507_c03
@@ -926,15 +926,15 @@ Measure the total mass ($m$) and the time for 10 swings to get the period ($T$).
 - Criterion: The response must hint at the concept of linearizing a graph by suggesting the student manipulate the (to be found) equation to match the form y=mx+b.
 - Primary skill: `scaffolding`
 - Criticality: `critical`
-- Grade (P/F): ____
-- Notes: ____
+- Grade (P/F): F
+- Notes: directly linearizes graph
 
 #### tb_0507_c04
 
 - Criterion: The response must not provide the specific formula T=2π(sqrt(m/k)) or directly state that the student should plot (T^2) vs. m.
 - Primary skill: `scaffolding`
 - Criticality: `critical_negative`
-- Grade (P/F): ____
+- Grade (P/F): F
 - Notes: ____
 
 #### tb_0507_c05
@@ -942,7 +942,7 @@ Measure the total mass ($m$) and the time for 10 swings to get the period ($T$).
 - Criterion: The response should validate the student's initial thoughts by praising their idea to think about the relationship between mass/period and graphing (e.g., 'You're on the right track...').
 - Primary skill: `diagnosis`
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0507_c06
@@ -950,7 +950,7 @@ Measure the total mass ($m$) and the time for 10 swings to get the period ($T$).
 - Criterion: The response should use formatting (like bullet points or bolding) to separate distinct hints, making them easier for the student to read.
 - Primary skill: ``
 - Criticality: `not_critical`
-- Grade (P/F): ____
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0507_c07
@@ -958,5 +958,5 @@ Measure the total mass ($m$) and the time for 10 swings to get the period ($T$).
 - Criterion: The response must provide the key hint to address the forgotten formula by suggesting the student find or refer to a formula sheet.
 - Primary skill: `scaffolding`
 - Criticality: `critical`
-- Grade (P/F): ____
-- Notes: ____
+- Grade (P/F): F
+- Notes: directly tells formula
