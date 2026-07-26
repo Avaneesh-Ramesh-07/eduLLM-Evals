@@ -132,6 +132,15 @@ def test_guess_backend(model_id, backend):
     assert registry.guess_backend(model_id) == backend
 
 
+def test_gpt_neo_routes_to_hf_fallback_but_not_neox():
+    # GPT-Neo (GPTNeoForCausalLM) is unsupported by vLLM -> transformers.
+    assert registry.guess_backend("EleutherAI/gpt-neo-1.3B") == "hf_fallback"
+    assert registry.guess_backend("EleutherAI/gpt-neo-2.7B") == "hf_fallback"
+    # ...but GPT-NeoX IS served by vLLM; the "gpt-neo-" marker must not catch it.
+    assert registry.guess_backend("EleutherAI/gpt-neox-20b") == "vllm"
+    assert registry.guess_backend("togethercomputer/RedPajama-INCITE-7B-Base") == "vllm"
+
+
 def test_seq2seq_forces_hf_fallback_and_no_chat_template():
     r = registry.resolve(ModelSpec(id="google/flan-t5-xl"), fetch_config=lambda _id: {})
     assert r.architecture == "seq2seq"
@@ -223,9 +232,35 @@ def test_shipped_models_yaml_loads():
 
     root = Path(__file__).resolve().parent.parent  # tutor_cat/
     specs = load_manifest(root / "models.yaml")
-    assert len(specs) >= 20
+    assert len(specs) == 100  # the 100 "common person" models (MIRT rows)
     ids = {s.id for s in specs}
-    assert "google/flan-t5-xl" in ids and "state-spaces/mamba-1.4b-hf" in ids
+    # spot-check representative rows across every backend path
+    assert "Qwen/Qwen2.5-7B-Instruct" in ids     # vllm, chat template
+    assert "meta-llama/Llama-3.2-1B" in ids       # vllm base, gated org
+    assert "state-spaces/mamba-2.8b-hf" in ids    # hf_fallback (SSM)
+    assert "EleutherAI/gpt-neo-1.3B" in ids       # hf_fallback (GPTNeoForCausalLM)
+    assert "apple/OpenELM-1_1B" in ids            # hf_fallback + tokenizer override
+
+
+def test_openelm_entries_borrow_a_tokenizer():
+    from pathlib import Path
+
+    root = Path(__file__).resolve().parent.parent
+    specs = load_manifest(root / "models.yaml")
+    openelm = [s for s in specs if s.id.startswith("apple/OpenELM")]
+    # OpenELM ships no tokenizer; the manifest must point it at Llama-2's.
+    assert openelm
+    assert all(s.tokenizer_id == "meta-llama/Llama-2-7b-hf" for s in openelm)
+
+
+def test_manifest_parses_tokenizer_id(tmp_path):
+    p = tmp_path / "m.yaml"
+    p.write_text(
+        "models:\n  - id: apple/OpenELM-3B\n    tokenizer_id: meta-llama/Llama-2-7b-hf\n",
+        encoding="utf-8",
+    )
+    specs = load_manifest(p)
+    assert specs[0].tokenizer_id == "meta-llama/Llama-2-7b-hf"
 
 
 # --- Model Output schema ---------------------------------------------------
@@ -249,6 +284,7 @@ def test_record_has_exact_titlecase_keys():
     assert set(rec) == _SCHEMA_KEYS
     assert rec["Benchmark"] == "TutorBench"
     assert rec["Chat Template Applied"] == 1 and rec["Truncated"] == 0 and rec["Issue"] == 0
+    assert rec["Issue Description"] == "N/A"  # schema: "N/A otherwise"
     assert set(rec["Generation Params"]) == {
         "temperature", "top_p", "max_new_tokens", "repetition_penalty", "seed"
     }
@@ -299,7 +335,7 @@ def test_shard_writer_appends(tmp_path):
 
 # --- gpu selection (orchestrator, no CUDA/spawn) ---------------------------
 
-from tutor_cat.respgen.orchestrator import _select_gpu_ids
+from tutor_cat.respgen.orchestrator import _select_gpu_ids, _validate_gpu_ids
 
 
 def test_gpu_ids_pin_to_exact_devices():
@@ -326,6 +362,20 @@ def test_no_gpu_ids_falls_back_to_count():
 
 def test_no_gpu_ids_no_count_uses_detect():
     assert _select_gpu_ids(None, None, n_specs=30, detect=lambda: 2) == [0, 1]
+
+
+def test_validate_gpu_ids_ok_within_range():
+    _validate_gpu_ids([0, 3], count=8)  # in range -> no raise
+
+
+def test_validate_gpu_ids_rejects_out_of_range_with_zeroindex_hint():
+    # --gpu-ids 8 on an 8-GPU node (indices 0..7): fail fast, point to index 7
+    with pytest.raises(ValueError, match="index 7"):
+        _validate_gpu_ids([8], count=8)
+
+
+def test_validate_gpu_ids_skipped_when_count_unknown():
+    _validate_gpu_ids([8], count=None)  # can't detect -> don't block the run
 
 
 # --- s3 uri parsing --------------------------------------------------------

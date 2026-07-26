@@ -93,6 +93,7 @@ def _load_backend(resolved: ResolvedModel):
             revision=rev,
             max_model_len=resolved.max_model_len,
             architecture=resolved.architecture,
+            tokenizer_id=spec.tokenizer_id,
         )
     else:
         from .backends import VLLMBackend

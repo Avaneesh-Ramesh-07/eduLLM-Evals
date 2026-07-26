@@ -22,9 +22,11 @@ _INSTRUCT_MARKERS = (
     "-dpo", "-rlhf", "-tulu", "openhermes", "-hermes",
 )
 # Architectures/families vLLM often can't serve -> transformers fallback.
+# "gpt-neo-" (with trailing hyphen) matches GPT-Neo 1.3B/2.7B (GPTNeoForCausalLM,
+# unsupported by vLLM) WITHOUT matching gpt-neox, which vLLM serves fine.
 _HF_FALLBACK_MARKERS = (
     "mamba", "openelm", "gemma-3", "falcon-h1", "granite-4.0-h",
-    "lfm2", "rwkv", "zamba", "recurrentgemma",
+    "lfm2", "rwkv", "zamba", "recurrentgemma", "gpt-neo-",
 )
 # Encoder-decoder (seq2seq) families: need AutoModelForSeq2SeqLM, no chat template.
 _SEQ2SEQ_MARKERS = ("flan-t5", "t5-", "-t5", "bart", "pegasus", "flan-ul2", "ul2")

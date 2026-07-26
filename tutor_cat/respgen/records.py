@@ -49,6 +49,8 @@ def build_record(
     issue_description: str = "",
 ) -> dict[str, Any]:
     """Assemble one Model Output row with the exact PRD Title-Case keys."""
+    if not issue and not issue_description:
+        issue_description = "N/A"  # schema: "<desc> if there was an issue, N/A otherwise"
     return {
         "Benchmark": BENCHMARK,
         "Scenario": scenario_id,

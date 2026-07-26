@@ -11,7 +11,7 @@ from __future__ import annotations
 
 import multiprocessing as mp
 from pathlib import Path
-from typing import Any
+from typing import Any, Callable
 
 from .manifest import ModelSpec
 
@@ -23,6 +23,39 @@ def _detect_gpus() -> int:
         return max(1, torch.cuda.device_count())
     except Exception:
         return 1
+
+
+def _cuda_device_count() -> int | None:
+    """Physical GPU count for validation, or None if it can't be determined
+    (torch missing, or CUDA unavailable). None means "don't block" — we only
+    reject an index we can prove is out of range."""
+    try:
+        import torch  # lazy
+
+        if not torch.cuda.is_available():
+            return None
+        return torch.cuda.device_count()
+    except Exception:
+        return None
+
+
+def _validate_gpu_ids(gpu_ids: list[int], count: int | None) -> None:
+    """Fail fast in the PARENT (before spawning) when a requested physical device
+    index doesn't exist on this node — otherwise each worker sets an invalid
+    CUDA_VISIBLE_DEVICES and dies mid-load with a cryptic "invalid device
+    ordinal". Skipped when `count` is None (can't tell -> don't block)."""
+    if count is None:
+        return
+    bad = [i for i in gpu_ids if i < 0 or i >= count]
+    if not bad:
+        return
+    hint = ""
+    if count in bad:  # classic 0-index off-by-one: asked for N with N GPUs (0..N-1)
+        hint = f" — GPUs are 0-indexed, so the {count}th GPU is index {count - 1}"
+    raise ValueError(
+        f"--gpu-ids {bad} not present: this node has {count} GPU(s), "
+        f"valid indices 0..{count - 1}{hint}"
+    )
 
 
 def _select_gpu_ids(
@@ -83,13 +116,16 @@ def run_fleet(
     gpus: int | None = None,
     gpu_ids: list[int] | None = None,
     limit: int | None = None,
+    count_devices: Callable[[], int | None] = _cuda_device_count,
 ) -> list[dict[str, Any]]:
     """Distribute `specs` across worker processes, one per GPU. Blocks until all
     models are done; returns one summary dict per model.
 
     `gpu_ids` pins to explicit physical device indices (e.g. `[8]` = GPU 8 only);
-    otherwise `gpus` (or all detected) devices 0..n-1 are used."""
+    otherwise `gpus` (or all detected) devices 0..n-1 are used. Raises ValueError
+    if a requested index is out of range for this node (checked before spawning)."""
     ids = _select_gpu_ids(gpu_ids, gpus, len(specs))
+    _validate_gpu_ids(ids, count_devices())
     ctx = mp.get_context("spawn")  # required for CUDA + clean env inheritance
     task_q: mp.Queue = ctx.Queue()
     result_q: mp.Queue = ctx.Queue()

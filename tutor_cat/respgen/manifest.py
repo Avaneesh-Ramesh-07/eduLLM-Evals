@@ -47,6 +47,7 @@ class ModelSpec:
     architecture: str | None = None     # "causal" | "seq2seq"
     enable_thinking: bool | None = None  # Qwen3: False to suppress <think> traces
     revision: str | None = None          # pin a commit SHA; None => resolve at load
+    tokenizer_id: str | None = None      # borrow another repo's tokenizer (OpenELM -> Llama-2)
     extra: dict = field(default_factory=dict)
 
 
