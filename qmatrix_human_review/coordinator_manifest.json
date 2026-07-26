@@ -1,0 +1,555 @@
+{
+  "sampling_version": "qmatrix-human-review-v1",
+  "generated_at": "2026-07-25T21:23:12.388684+00:00",
+  "seed": 42,
+  "blind_review": true,
+  "n_unique_criteria": 25,
+  "reviews_per_reviewer": {
+    "A": 20,
+    "B": 20,
+    "C": 20
+  },
+  "design": {
+    "CORE": "ABC",
+    "AB": "AB",
+    "AC": "AC",
+    "BC": "BC"
+  },
+  "criteria": [
+    {
+      "criterion_id": "tb_0620_c05",
+      "scenario_id": "tb_0620",
+      "review_group": "CORE",
+      "reviewers": [
+        "A",
+        "B",
+        "C"
+      ],
+      "sampling_target": "changed_0_to_1:content",
+      "generated_q_mapping": {
+        "content": 0,
+        "diagnosis": 0,
+        "scaffolding": 1
+      },
+      "final_q_mapping": {
+        "content": 1,
+        "diagnosis": 0,
+        "scaffolding": 1
+      },
+      "final_primary_skill": "scaffolding"
+    },
+    {
+      "criterion_id": "tb_0125_c01",
+      "scenario_id": "tb_0125",
+      "review_group": "CORE",
+      "reviewers": [
+        "A",
+        "B",
+        "C"
+      ],
+      "sampling_target": "changed_0_to_1:diagnosis",
+      "generated_q_mapping": {
+        "content": 0,
+        "diagnosis": 0,
+        "scaffolding": 0
+      },
+      "final_q_mapping": {
+        "content": 0,
+        "diagnosis": 1,
+        "scaffolding": 0
+      },
+      "final_primary_skill": "diagnosis"
+    },
+    {
+      "criterion_id": "tb_0016_c04",
+      "scenario_id": "tb_0016",
+      "review_group": "CORE",
+      "reviewers": [
+        "A",
+        "B",
+        "C"
+      ],
+      "sampling_target": "changed_0_to_1:scaffolding",
+      "generated_q_mapping": {
+        "content": 1,
+        "diagnosis": 0,
+        "scaffolding": 0
+      },
+      "final_q_mapping": {
+        "content": 1,
+        "diagnosis": 0,
+        "scaffolding": 1
+      },
+      "final_primary_skill": "content"
+    },
+    {
+      "criterion_id": "tb_0569_c08",
+      "scenario_id": "tb_0569",
+      "review_group": "CORE",
+      "reviewers": [
+        "A",
+        "B",
+        "C"
+      ],
+      "sampling_target": "changed_1_to_0:content",
+      "generated_q_mapping": {
+        "content": 1,
+        "diagnosis": 0,
+        "scaffolding": 1
+      },
+      "final_q_mapping": {
+        "content": 0,
+        "diagnosis": 0,
+        "scaffolding": 1
+      },
+      "final_primary_skill": "scaffolding"
+    },
+    {
+      "criterion_id": "tb_0240_c07",
+      "scenario_id": "tb_0240",
+      "review_group": "CORE",
+      "reviewers": [
+        "A",
+        "B",
+        "C"
+      ],
+      "sampling_target": "changed_1_to_0:diagnosis",
+      "generated_q_mapping": {
+        "content": 1,
+        "diagnosis": 1,
+        "scaffolding": 0
+      },
+      "final_q_mapping": {
+        "content": 1,
+        "diagnosis": 0,
+        "scaffolding": 0
+      },
+      "final_primary_skill": "content"
+    },
+    {
+      "criterion_id": "tb_0215_c05",
+      "scenario_id": "tb_0215",
+      "review_group": "CORE",
+      "reviewers": [
+        "A",
+        "B",
+        "C"
+      ],
+      "sampling_target": "changed_1_to_0:scaffolding",
+      "generated_q_mapping": {
+        "content": 1,
+        "diagnosis": 0,
+        "scaffolding": 1
+      },
+      "final_q_mapping": {
+        "content": 1,
+        "diagnosis": 0,
+        "scaffolding": 0
+      },
+      "final_primary_skill": "content"
+    },
+    {
+      "criterion_id": "tb_0091_c06",
+      "scenario_id": "tb_0091",
+      "review_group": "CORE",
+      "reviewers": [
+        "A",
+        "B",
+        "C"
+      ],
+      "sampling_target": "stable_positive:content",
+      "generated_q_mapping": {
+        "content": 1,
+        "diagnosis": 0,
+        "scaffolding": 0
+      },
+      "final_q_mapping": {
+        "content": 1,
+        "diagnosis": 0,
+        "scaffolding": 0
+      },
+      "final_primary_skill": "content"
+    },
+    {
+      "criterion_id": "tb_0162_c06",
+      "scenario_id": "tb_0162",
+      "review_group": "CORE",
+      "reviewers": [
+        "A",
+        "B",
+        "C"
+      ],
+      "sampling_target": "stable_positive:diagnosis",
+      "generated_q_mapping": {
+        "content": 1,
+        "diagnosis": 1,
+        "scaffolding": 0
+      },
+      "final_q_mapping": {
+        "content": 1,
+        "diagnosis": 1,
+        "scaffolding": 0
+      },
+      "final_primary_skill": "diagnosis"
+    },
+    {
+      "criterion_id": "tb_0615_c06",
+      "scenario_id": "tb_0615",
+      "review_group": "CORE",
+      "reviewers": [
+        "A",
+        "B",
+        "C"
+      ],
+      "sampling_target": "stable_positive:scaffolding",
+      "generated_q_mapping": {
+        "content": 1,
+        "diagnosis": 0,
+        "scaffolding": 1
+      },
+      "final_q_mapping": {
+        "content": 1,
+        "diagnosis": 0,
+        "scaffolding": 1
+      },
+      "final_primary_skill": "scaffolding"
+    },
+    {
+      "criterion_id": "tb_0120_c02",
+      "scenario_id": "tb_0120",
+      "review_group": "CORE",
+      "reviewers": [
+        "A",
+        "B",
+        "C"
+      ],
+      "sampling_target": "stable_all_zero",
+      "generated_q_mapping": {
+        "content": 0,
+        "diagnosis": 0,
+        "scaffolding": 0
+      },
+      "final_q_mapping": {
+        "content": 0,
+        "diagnosis": 0,
+        "scaffolding": 0
+      },
+      "final_primary_skill": null
+    },
+    {
+      "criterion_id": "tb_0576_c05",
+      "scenario_id": "tb_0576",
+      "review_group": "AB",
+      "reviewers": [
+        "A",
+        "B"
+      ],
+      "sampling_target": "changed_0_to_1:content",
+      "generated_q_mapping": {
+        "content": 0,
+        "diagnosis": 0,
+        "scaffolding": 1
+      },
+      "final_q_mapping": {
+        "content": 1,
+        "diagnosis": 0,
+        "scaffolding": 1
+      },
+      "final_primary_skill": "scaffolding"
+    },
+    {
+      "criterion_id": "tb_0433_c05",
+      "scenario_id": "tb_0433",
+      "review_group": "AB",
+      "reviewers": [
+        "A",
+        "B"
+      ],
+      "sampling_target": "changed_1_to_0:diagnosis",
+      "generated_q_mapping": {
+        "content": 1,
+        "diagnosis": 1,
+        "scaffolding": 0
+      },
+      "final_q_mapping": {
+        "content": 1,
+        "diagnosis": 0,
+        "scaffolding": 0
+      },
+      "final_primary_skill": "content"
+    },
+    {
+      "criterion_id": "tb_0056_c06",
+      "scenario_id": "tb_0056",
+      "review_group": "AB",
+      "reviewers": [
+        "A",
+        "B"
+      ],
+      "sampling_target": "stable_positive:scaffolding",
+      "generated_q_mapping": {
+        "content": 1,
+        "diagnosis": 0,
+        "scaffolding": 1
+      },
+      "final_q_mapping": {
+        "content": 1,
+        "diagnosis": 0,
+        "scaffolding": 1
+      },
+      "final_primary_skill": "content"
+    },
+    {
+      "criterion_id": "tb_0020_c07",
+      "scenario_id": "tb_0020",
+      "review_group": "AB",
+      "reviewers": [
+        "A",
+        "B"
+      ],
+      "sampling_target": "stable_positive:content",
+      "generated_q_mapping": {
+        "content": 1,
+        "diagnosis": 0,
+        "scaffolding": 0
+      },
+      "final_q_mapping": {
+        "content": 1,
+        "diagnosis": 0,
+        "scaffolding": 0
+      },
+      "final_primary_skill": "content"
+    },
+    {
+      "criterion_id": "tb_0129_c01",
+      "scenario_id": "tb_0129",
+      "review_group": "AB",
+      "reviewers": [
+        "A",
+        "B"
+      ],
+      "sampling_target": "stable_all_zero",
+      "generated_q_mapping": {
+        "content": 0,
+        "diagnosis": 0,
+        "scaffolding": 0
+      },
+      "final_q_mapping": {
+        "content": 0,
+        "diagnosis": 0,
+        "scaffolding": 0
+      },
+      "final_primary_skill": null
+    },
+    {
+      "criterion_id": "tb_0113_c01",
+      "scenario_id": "tb_0113",
+      "review_group": "AC",
+      "reviewers": [
+        "A",
+        "C"
+      ],
+      "sampling_target": "changed_0_to_1:diagnosis",
+      "generated_q_mapping": {
+        "content": 0,
+        "diagnosis": 0,
+        "scaffolding": 0
+      },
+      "final_q_mapping": {
+        "content": 0,
+        "diagnosis": 1,
+        "scaffolding": 0
+      },
+      "final_primary_skill": "diagnosis"
+    },
+    {
+      "criterion_id": "tb_0219_c09",
+      "scenario_id": "tb_0219",
+      "review_group": "AC",
+      "reviewers": [
+        "A",
+        "C"
+      ],
+      "sampling_target": "changed_1_to_0:scaffolding",
+      "generated_q_mapping": {
+        "content": 1,
+        "diagnosis": 0,
+        "scaffolding": 1
+      },
+      "final_q_mapping": {
+        "content": 1,
+        "diagnosis": 0,
+        "scaffolding": 0
+      },
+      "final_primary_skill": "content"
+    },
+    {
+      "criterion_id": "tb_0314_c04",
+      "scenario_id": "tb_0314",
+      "review_group": "AC",
+      "reviewers": [
+        "A",
+        "C"
+      ],
+      "sampling_target": "stable_positive:content",
+      "generated_q_mapping": {
+        "content": 1,
+        "diagnosis": 0,
+        "scaffolding": 0
+      },
+      "final_q_mapping": {
+        "content": 1,
+        "diagnosis": 0,
+        "scaffolding": 0
+      },
+      "final_primary_skill": "content"
+    },
+    {
+      "criterion_id": "tb_0047_c07",
+      "scenario_id": "tb_0047",
+      "review_group": "AC",
+      "reviewers": [
+        "A",
+        "C"
+      ],
+      "sampling_target": "stable_positive:diagnosis",
+      "generated_q_mapping": {
+        "content": 1,
+        "diagnosis": 1,
+        "scaffolding": 0
+      },
+      "final_q_mapping": {
+        "content": 1,
+        "diagnosis": 1,
+        "scaffolding": 0
+      },
+      "final_primary_skill": "diagnosis"
+    },
+    {
+      "criterion_id": "tb_0268_c03",
+      "scenario_id": "tb_0268",
+      "review_group": "AC",
+      "reviewers": [
+        "A",
+        "C"
+      ],
+      "sampling_target": "stable_all_zero",
+      "generated_q_mapping": {
+        "content": 0,
+        "diagnosis": 0,
+        "scaffolding": 0
+      },
+      "final_q_mapping": {
+        "content": 0,
+        "diagnosis": 0,
+        "scaffolding": 0
+      },
+      "final_primary_skill": null
+    },
+    {
+      "criterion_id": "tb_0554_c02",
+      "scenario_id": "tb_0554",
+      "review_group": "BC",
+      "reviewers": [
+        "B",
+        "C"
+      ],
+      "sampling_target": "changed_0_to_1:scaffolding",
+      "generated_q_mapping": {
+        "content": 1,
+        "diagnosis": 1,
+        "scaffolding": 0
+      },
+      "final_q_mapping": {
+        "content": 1,
+        "diagnosis": 1,
+        "scaffolding": 1
+      },
+      "final_primary_skill": "diagnosis"
+    },
+    {
+      "criterion_id": "tb_0550_c04",
+      "scenario_id": "tb_0550",
+      "review_group": "BC",
+      "reviewers": [
+        "B",
+        "C"
+      ],
+      "sampling_target": "changed_1_to_0:content",
+      "generated_q_mapping": {
+        "content": 1,
+        "diagnosis": 1,
+        "scaffolding": 1
+      },
+      "final_q_mapping": {
+        "content": 0,
+        "diagnosis": 0,
+        "scaffolding": 1
+      },
+      "final_primary_skill": "scaffolding"
+    },
+    {
+      "criterion_id": "tb_0546_c07",
+      "scenario_id": "tb_0546",
+      "review_group": "BC",
+      "reviewers": [
+        "B",
+        "C"
+      ],
+      "sampling_target": "stable_positive:diagnosis",
+      "generated_q_mapping": {
+        "content": 1,
+        "diagnosis": 1,
+        "scaffolding": 0
+      },
+      "final_q_mapping": {
+        "content": 1,
+        "diagnosis": 1,
+        "scaffolding": 0
+      },
+      "final_primary_skill": "diagnosis"
+    },
+    {
+      "criterion_id": "tb_0582_c01",
+      "scenario_id": "tb_0582",
+      "review_group": "BC",
+      "reviewers": [
+        "B",
+        "C"
+      ],
+      "sampling_target": "stable_positive:scaffolding",
+      "generated_q_mapping": {
+        "content": 0,
+        "diagnosis": 0,
+        "scaffolding": 1
+      },
+      "final_q_mapping": {
+        "content": 0,
+        "diagnosis": 0,
+        "scaffolding": 1
+      },
+      "final_primary_skill": "scaffolding"
+    },
+    {
+      "criterion_id": "tb_0378_c14",
+      "scenario_id": "tb_0378",
+      "review_group": "BC",
+      "reviewers": [
+        "B",
+        "C"
+      ],
+      "sampling_target": "stable_all_zero",
+      "generated_q_mapping": {
+        "content": 0,
+        "diagnosis": 0,
+        "scaffolding": 0
+      },
+      "final_q_mapping": {
+        "content": 0,
+        "diagnosis": 0,
+        "scaffolding": 0
+      },
+      "final_primary_skill": null
+    }
+  ]
+}

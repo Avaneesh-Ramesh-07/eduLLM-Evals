@@ -1,0 +1,1190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Q-matrix human review — Reviewer C</title>
+<style>
+body { font-family: system-ui, sans-serif; max-width: 1050px; margin: 0 auto; padding: 24px; line-height: 1.45; color: #17202a; }
+.sticky { position: sticky; top: 0; background: white; border-bottom: 1px solid #bbb; padding: 10px 0; z-index: 3; }
+.item { border: 1px solid #bbb; border-radius: 10px; margin: 22px 0; padding: 18px; background: #fafafa; }
+.criterion { font-size: 1.08rem; background: #eef5ff; padding: 12px; border-radius: 6px; margin: 12px 0; }
+.evidence { margin: 10px 0; }
+.skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.skill { border: 1px solid #aaa; border-radius: 6px; }
+.skill label { display: block; margin: 8px 0; }
+.definition { min-height: 7em; font-size: .9rem; color: #39434d; }
+select, textarea { display: block; width: 100%; max-width: 700px; margin: 4px 0 12px; padding: 6px; }
+button { padding: 9px 15px; font-weight: 600; cursor: pointer; }
+.instruction { font-weight: 600; }
+@media (max-width: 760px) { .skills { grid-template-columns: 1fr; } .definition { min-height: auto; } }
+</style>
+</head>
+<body>
+<h1>Q-matrix human review — Reviewer C</h1>
+<p>You have 20 criteria. Budget about 45–60 seconds each. Review the criterion itself—not whether a particular tutor answered it correctly.</p>
+<p><strong>Decision rule:</strong> assign 1 only if a tutor cannot reasonably satisfy the criterion without demonstrating that skill. Otherwise assign 0. Do not infer that every desirable tutoring behavior is required.</p>
+<div class="sticky"><strong>Progress:</strong> <span id="progress">0 / 20 complete</span> &nbsp; <button type="button" id="export">Validate and download CSV</button></div>
+<form id="review-form">
+    <section class="item" data-criterion-id="tb_0620_c05">
+      <h2>1. Criterion <code>tb_0620_c05</code></h2>
+      <details>
+        <summary>Scenario context</summary>
+        <h3>Prompt</h3><p>Umm, I think we&#x27;re supposed to use StringBuilder for this because our teacher said string concatenation in loops is inefficient? Let me try...<br><br>```java<br>/**<br>* Concatenates &#x27;b&#x27; to &#x27;a&#x27; &#x27;count&#x27; number of times<br>*/<br>public String concatenateStrings(String a, String b, int count) {<br>    StringBuilder builder = new StringBuilder();<br>    <br>    // I add the first string<br>    builder.append(a);<br>    <br>    // Now I need to add string b multiple times<br>    for (int i = 0; i &lt; count; i++) {<br>        builder.append(b);<br>    }<br>    <br>    // I think I return it like this?<br>    return builder;  // This gives me an error but I don&#x27;t know why<br>}<br>```<br><br>Wait, I&#x27;m getting a compile error. The IDE says &quot;incompatible types: StringBuilder cannot be converted to String&quot;. I don&#x27;t get it - I thought StringBuilder was supposed to help with string operations? I&#x27;m not sure how to get the actual String back from the StringBuilder...</p>
+        <h3>Conversation context</h3><p><strong>student:</strong> Read the following code snippet:<br><br>```java<br>/**<br>* Concatenates &#x27;b&#x27; to &#x27;a&#x27; &#x27;count&#x27; number of times<br>*/<br>public String concatenateStrings(String a, String b, int count) {<br>    for (int i = 0; i &lt; count; i++) {<br>        a = a + b;<br>    }<br>    return a;<br>}<br>```<br><br>What class can I use to make this method more efficient?</p>
+        <h3>Reference solution</h3><p></p>
+      </details>
+      <div class="criterion"><strong>Criterion:</strong> The response must include a hint in the form of probing questions or suggestions for the student to identify what the error is trying to say about incompatible types. </div>
+      <div class="evidence"><strong>Expected evidence:</strong> <em>No separate expected-evidence field.</em></div>
+      <p class="instruction">Mark 1 only when this criterion cannot reasonably be satisfied without the skill.</p>
+      <div class="skills">
+            <fieldset class="skill">
+              <legend>Content</legend>
+              <div class="definition">Accurate subject-matter knowledge, calculations, facts, concepts, or domain reasoning needed to satisfy the criterion.</div>
+              <label><input type="radio" name="tb_0620_c05__content" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0620_c05__content" value="0"> 0 — not required</label>
+            </fieldset>
+            
+            <fieldset class="skill">
+              <legend>Diagnosis</legend>
+              <div class="definition">Identifying or reasoning about the student&#x27;s specific understanding, error, misconception, or likely source of difficulty.</div>
+              <label><input type="radio" name="tb_0620_c05__diagnosis" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0620_c05__diagnosis" value="0"> 0 — not required</label>
+            </fieldset>
+            
+            <fieldset class="skill">
+              <legend>Scaffolding</legend>
+              <div class="definition">Structuring guidance that helps the student make progress: hints, questions, intermediate steps, or appropriately withheld support.</div>
+              <label><input type="radio" name="tb_0620_c05__scaffolding" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0620_c05__scaffolding" value="0"> 0 — not required</label>
+            </fieldset>
+            </div>
+      <label>Primary skill
+        <select name="tb_0620_c05__primary">
+          <option value="">Select…</option>
+          <option value="content">Content</option>
+          <option value="diagnosis">Diagnosis</option>
+          <option value="scaffolding">Scaffolding</option>
+          <option value="none">None</option>
+        </select>
+      </label>
+      <label>Confidence
+        <select name="tb_0620_c05__confidence">
+          <option value="">Select…</option>
+          <option value="high">High</option>
+          <option value="medium">Medium</option>
+          <option value="low">Low</option>
+        </select>
+      </label>
+      <label>Optional note
+        <textarea name="tb_0620_c05__notes" rows="2" placeholder="Only needed for ambiguity or a difficult decision"></textarea>
+      </label>
+    </section>
+    
+    <section class="item" data-criterion-id="tb_0125_c01">
+      <h2>2. Criterion <code>tb_0125_c01</code></h2>
+      <details>
+        <summary>Scenario context</summary>
+        <h3>Prompt</h3><p>I’m a little stuck on the part where you calculate P(Positive).<br>Why do you multiply 0.02 by 0.995 instead of using 0.98, and where exactly does that 0.02 come from?</p>
+        <h3>Conversation context</h3><p><strong>student:</strong> A disease affects 0.5% of a population. A test for this disease has a sensitivity (true positivity rate) of 99% and a specificity (true negative rate) of 98%. What is the probability that a person has the disease given that they have had a positive test result?</p><p><strong>tutor:</strong> # Finding Probability of Disease Given a Positive Test<br><br>This problem requires us to use Bayes&#x27; theorem to find the probability of having the disease given a positive test result.<br><br>## Given information:<br>- Disease prevalence: 0.5% of population (P(D) = 0.005)<br>- Sensitivity: 99% (P(Positive|Disease) = 0.99)<br>- Specificity: 98% (P(Negative|No Disease) = 0.98)<br><br>## Solution using Bayes&#x27; theorem:<br><br>P(Disease|Positive) = [P(Positive|Disease) × P(Disease)] ÷ P(Positive)<br><br>First, we need to find P(Positive), the overall probability of getting a positive test:<br>P(Positive) = P(Positive|Disease)×P(Disease) + P(Positive|No Disease)×P(No Disease)<br><br>Since specificity is 98%, the false positive rate is 2%:<br>P(Positive|No Disease) = 1 - 0.98 = 0.02<br><br>And P(No Disease) = 1 - 0.005 = 0.995<br><br>Therefore:<br>P(Positive) = (0.99 × 0.005) + (0.02 × 0.995)<br>P(Positive) = 0.00495 + 0.0199 = 0.02485<br><br>Now we can calculate:<br>P(Disease|Positive) = (0.99 × 0.005) ÷ 0.02485<br>P(Disease|Positive) = 0.00495 ÷ 0.02485 ≈ 0.199 or 19.9%<br><br>The probability that a person who tests positive actually has the disease is approximately 19.9%.</p>
+        <h3>Reference solution</h3><p># Finding Probability of Disease Given a Positive Test<br><br>This problem requires us to use Bayes&#x27; theorem to find the probability of having the disease given a positive test result.<br><br>## Given information:<br>- Disease prevalence: 0.5% of population (P(D) = 0.005)<br>- Sensitivity: 99% (P(Positive|Disease) = 0.99)<br>- Specificity: 98% (P(Negative|No Disease) = 0.98)<br><br>## Solution using Bayes&#x27; theorem:<br><br>P(Disease|Positive) = [P(Positive|Disease) × P(Disease)] ÷ P(Positive)<br><br>First, we need to find P(Positive), the overall probability of getting a positive test:<br>P(Positive) = P(Positive|Disease)×P(Disease) + P(Positive|No Disease)×P(No Disease)<br><br>Since specificity is 98%, the false positive rate is 2%:<br>P(Positive|No Disease) = 1 - 0.98 = 0.02<br><br>And P(No Disease) = 1 - 0.005 = 0.995<br><br>Therefore:<br>P(Positive) = (0.99 × 0.005) + (0.02 × 0.995)<br>P(Positive) = 0.00495 + 0.0199 = 0.02485<br><br>Now we can calculate:<br>P(Disease|Positive) = (0.99 × 0.005) ÷ 0.02485<br>P(Disease|Positive) = 0.00495 ÷ 0.02485 ≈ 0.199 or 19.9%<br><br>The probability that a person who tests positive actually has the disease is approximately 19.9%.</p>
+      </details>
+      <div class="criterion"><strong>Criterion:</strong> Must explicitly acknowledge the student’s stated worry that “multiplying the 2 % by 99.5 % feels like double-counting,” and respond with an empathetic phrase (e.g., “I hear your concern,” “Great question—let’s unpack it”).</div>
+      <div class="evidence"><strong>Expected evidence:</strong> <em>No separate expected-evidence field.</em></div>
+      <p class="instruction">Mark 1 only when this criterion cannot reasonably be satisfied without the skill.</p>
+      <div class="skills">
+            <fieldset class="skill">
+              <legend>Content</legend>
+              <div class="definition">Accurate subject-matter knowledge, calculations, facts, concepts, or domain reasoning needed to satisfy the criterion.</div>
+              <label><input type="radio" name="tb_0125_c01__content" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0125_c01__content" value="0"> 0 — not required</label>
+            </fieldset>
+            
+            <fieldset class="skill">
+              <legend>Diagnosis</legend>
+              <div class="definition">Identifying or reasoning about the student&#x27;s specific understanding, error, misconception, or likely source of difficulty.</div>
+              <label><input type="radio" name="tb_0125_c01__diagnosis" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0125_c01__diagnosis" value="0"> 0 — not required</label>
+            </fieldset>
+            
+            <fieldset class="skill">
+              <legend>Scaffolding</legend>
+              <div class="definition">Structuring guidance that helps the student make progress: hints, questions, intermediate steps, or appropriately withheld support.</div>
+              <label><input type="radio" name="tb_0125_c01__scaffolding" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0125_c01__scaffolding" value="0"> 0 — not required</label>
+            </fieldset>
+            </div>
+      <label>Primary skill
+        <select name="tb_0125_c01__primary">
+          <option value="">Select…</option>
+          <option value="content">Content</option>
+          <option value="diagnosis">Diagnosis</option>
+          <option value="scaffolding">Scaffolding</option>
+          <option value="none">None</option>
+        </select>
+      </label>
+      <label>Confidence
+        <select name="tb_0125_c01__confidence">
+          <option value="">Select…</option>
+          <option value="high">High</option>
+          <option value="medium">Medium</option>
+          <option value="low">Low</option>
+        </select>
+      </label>
+      <label>Optional note
+        <textarea name="tb_0125_c01__notes" rows="2" placeholder="Only needed for ambiguity or a difficult decision"></textarea>
+      </label>
+    </section>
+    
+    <section class="item" data-criterion-id="tb_0016_c04">
+      <h2>3. Criterion <code>tb_0016_c04</code></h2>
+      <details>
+        <summary>Scenario context</summary>
+        <h3>Prompt</h3><p>Why does the equation show 2 moles of silver nitrate reacting with only 1 mole of copper(II)chloride? Shouldn&#x27;t the amounts be the same if they are just swapping ions?</p>
+        <h3>Conversation context</h3><p><strong>student:</strong> Copper(II) chloride reacts with silver(I) nitrate to form silver(I) chloride and copper(II) nitrate. Write a balanced equation for this reaction, and then calculate how many grams of silver nitrate are needed to make 100mL of a 0.25M solution of copper (II) nitrate.</p><p><strong>tutor:</strong> # Balancing the Chemical Equation<br><br>First, let&#x27;s write the chemical equation with the correct formulas and then balance it:<br><br>CuCl₂ + AgNO₃ → AgCl + Cu(NO₃)₂<br><br>Looking at this, we need to balance the Ag, Cl, and NO₃ ions. Since we have 2 Cl on the left side, we need 2 AgCl on the right. This means we need 2 AgNO₃ on the left:<br><br>CuCl₂ + 2AgNO₃ → 2AgCl + Cu(NO₃)₂<br><br>Now the equation is balanced.<br><br># Calculating the Amount of Silver Nitrate Needed<br><br>Step 1: Determine how many moles of Cu(NO₃)₂ are in our target solution.<br>- Volume = 100 mL = 0.100 L<br>- Molarity = 0.25 M<br>- Moles of Cu(NO₃)₂ = 0.25 mol/L × 0.100 L = 0.025 mol<br><br>Step 2: Use the balanced equation to find moles of AgNO₃ needed.<br>- From the equation: 2 mol AgNO₃ produces 1 mol Cu(NO₃)₂<br>- So: Moles of AgNO₃ = 2 × 0.025 mol = 0.050 mol<br><br>Step 3: Convert moles of AgNO₃ to grams.<br>- Molar mass of AgNO₃ = 107.87 (Ag) + 14.01 (N) + 48.00 (3×O) = 169.88 g/mol<br>- Mass of AgNO₃ = 0.050 mol × 169.88 g/mol = 8.49 g<br><br>Therefore, 8.49 grams of silver nitrate are needed to make 100 mL of a 0.25 M solution of copper(II) nitrate.</p>
+        <h3>Reference solution</h3><p># Balancing the Chemical Equation<br><br>First, let&#x27;s write the chemical equation with the correct formulas and then balance it:<br><br>CuCl₂ + AgNO₃ → AgCl + Cu(NO₃)₂<br><br>Looking at this, we need to balance the Ag, Cl, and NO₃ ions. Since we have 2 Cl on the left side, we need 2 AgCl on the right. This means we need 2 AgNO₃ on the left:<br><br>CuCl₂ + 2AgNO₃ → 2AgCl + Cu(NO₃)₂<br><br>Now the equation is balanced.<br><br># Calculating the Amount of Silver Nitrate Needed<br><br>Step 1: Determine how many moles of Cu(NO₃)₂ are in our target solution.<br>- Volume = 100 mL = 0.100 L<br>- Molarity = 0.25 M<br>- Moles of Cu(NO₃)₂ = 0.25 mol/L × 0.100 L = 0.025 mol<br><br>Step 2: Use the balanced equation to find moles of AgNO₃ needed.<br>- From the equation: 2 mol AgNO₃ produces 1 mol Cu(NO₃)₂<br>- So: Moles of AgNO₃ = 2 × 0.025 mol = 0.050 mol<br><br>Step 3: Convert moles of AgNO₃ to grams.<br>- Molar mass of AgNO₃ = 107.87 (Ag) + 14.01 (N) + 48.00 (3×O) = 169.88 g/mol<br>- Mass of AgNO₃ = 0.050 mol × 169.88 g/mol = 8.49 g<br><br>Therefore, 8.49 grams of silver nitrate are needed to make 100 mL of a 0.25 M solution of copper(II) nitrate.</p>
+      </details>
+      <div class="criterion"><strong>Criterion:</strong> Response must clearly state ionic dissociation of both reactants before describing the reaction.</div>
+      <div class="evidence"><strong>Expected evidence:</strong> <em>No separate expected-evidence field.</em></div>
+      <p class="instruction">Mark 1 only when this criterion cannot reasonably be satisfied without the skill.</p>
+      <div class="skills">
+            <fieldset class="skill">
+              <legend>Content</legend>
+              <div class="definition">Accurate subject-matter knowledge, calculations, facts, concepts, or domain reasoning needed to satisfy the criterion.</div>
+              <label><input type="radio" name="tb_0016_c04__content" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0016_c04__content" value="0"> 0 — not required</label>
+            </fieldset>
+            
+            <fieldset class="skill">
+              <legend>Diagnosis</legend>
+              <div class="definition">Identifying or reasoning about the student&#x27;s specific understanding, error, misconception, or likely source of difficulty.</div>
+              <label><input type="radio" name="tb_0016_c04__diagnosis" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0016_c04__diagnosis" value="0"> 0 — not required</label>
+            </fieldset>
+            
+            <fieldset class="skill">
+              <legend>Scaffolding</legend>
+              <div class="definition">Structuring guidance that helps the student make progress: hints, questions, intermediate steps, or appropriately withheld support.</div>
+              <label><input type="radio" name="tb_0016_c04__scaffolding" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0016_c04__scaffolding" value="0"> 0 — not required</label>
+            </fieldset>
+            </div>
+      <label>Primary skill
+        <select name="tb_0016_c04__primary">
+          <option value="">Select…</option>
+          <option value="content">Content</option>
+          <option value="diagnosis">Diagnosis</option>
+          <option value="scaffolding">Scaffolding</option>
+          <option value="none">None</option>
+        </select>
+      </label>
+      <label>Confidence
+        <select name="tb_0016_c04__confidence">
+          <option value="">Select…</option>
+          <option value="high">High</option>
+          <option value="medium">Medium</option>
+          <option value="low">Low</option>
+        </select>
+      </label>
+      <label>Optional note
+        <textarea name="tb_0016_c04__notes" rows="2" placeholder="Only needed for ambiguity or a difficult decision"></textarea>
+      </label>
+    </section>
+    
+    <section class="item" data-criterion-id="tb_0569_c08">
+      <h2>4. Criterion <code>tb_0569_c08</code></h2>
+      <details>
+        <summary>Scenario context</summary>
+        <h3>Prompt</h3><p>I saw that maltose levels climbed quickly at first, which makes sense because there was plenty of starch for the amylase to work on. After about 25 minutes, the increase slowed down, and by 60 minutes it stopped altogether. I’m thinking the starch might have been used up, but I’m not entirely sure if that’s the only reason.<br><br>For environmental factors, I know temperature plays a role; warmer conditions speed up amylase activity, but I’m not clear on how changes in pH would affect the reaction. I recall that pH can change an enzyme’s shape, but I don’t know how that applies here when the reaction mixture sits at room temperature.</p>
+        <h3>Conversation context</h3><p><strong>student:</strong> A student conducted an experiment to investigate the reaction rate of the human salivary enzyme amylase. In this reaction, 1.0 mL of amylase solution and 20 mL of a concentrated starch solution were mixed in a test tube at 25 °C, then left at room temperature. The amount of product (maltose) was measured every 10 minutes. The student found that the concentration of maltose increased rapidly over the first 25 minutes, after which the increase in concentration slowed. At 60 minutes, the concentration did not change. Explain why the reaction rate changed throughout the experiment and describe two environmental factors that might impact the change in rate in this type of reaction.</p>
+        <h3>Reference solution</h3><p></p>
+      </details>
+      <div class="criterion"><strong>Criterion:</strong> The response must not provide the full answer that the reaction rate changed because the substrate (starch) concentration decreased to the point that there was little to no substrate for the enzyme to act on and the enzyme may have even started to denature or deactivate. Temperature impacts the reaction rate because it can speed up a reaction at an optimal temperature, slow down a reaction at colder temperatures, and denature the enzyme, halting the reaction at temperatures past optimum. pH changes can change an enzyme&#x27;s active site or denature an enzyme, causing a change in reaction rate.</div>
+      <div class="evidence"><strong>Expected evidence:</strong> <em>No separate expected-evidence field.</em></div>
+      <p class="instruction">Mark 1 only when this criterion cannot reasonably be satisfied without the skill.</p>
+      <div class="skills">
+            <fieldset class="skill">
+              <legend>Content</legend>
+              <div class="definition">Accurate subject-matter knowledge, calculations, facts, concepts, or domain reasoning needed to satisfy the criterion.</div>
+              <label><input type="radio" name="tb_0569_c08__content" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0569_c08__content" value="0"> 0 — not required</label>
+            </fieldset>
+            
+            <fieldset class="skill">
+              <legend>Diagnosis</legend>
+              <div class="definition">Identifying or reasoning about the student&#x27;s specific understanding, error, misconception, or likely source of difficulty.</div>
+              <label><input type="radio" name="tb_0569_c08__diagnosis" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0569_c08__diagnosis" value="0"> 0 — not required</label>
+            </fieldset>
+            
+            <fieldset class="skill">
+              <legend>Scaffolding</legend>
+              <div class="definition">Structuring guidance that helps the student make progress: hints, questions, intermediate steps, or appropriately withheld support.</div>
+              <label><input type="radio" name="tb_0569_c08__scaffolding" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0569_c08__scaffolding" value="0"> 0 — not required</label>
+            </fieldset>
+            </div>
+      <label>Primary skill
+        <select name="tb_0569_c08__primary">
+          <option value="">Select…</option>
+          <option value="content">Content</option>
+          <option value="diagnosis">Diagnosis</option>
+          <option value="scaffolding">Scaffolding</option>
+          <option value="none">None</option>
+        </select>
+      </label>
+      <label>Confidence
+        <select name="tb_0569_c08__confidence">
+          <option value="">Select…</option>
+          <option value="high">High</option>
+          <option value="medium">Medium</option>
+          <option value="low">Low</option>
+        </select>
+      </label>
+      <label>Optional note
+        <textarea name="tb_0569_c08__notes" rows="2" placeholder="Only needed for ambiguity or a difficult decision"></textarea>
+      </label>
+    </section>
+    
+    <section class="item" data-criterion-id="tb_0240_c07">
+      <h2>5. Criterion <code>tb_0240_c07</code></h2>
+      <details>
+        <summary>Scenario context</summary>
+        <h3>Prompt</h3><p>I&#x27;m a bit confused about the conduction part. If the orb only touches the marble on a small flat spot, how can that tiny contact area still suck away more heat than all the air around the ribbon? Can you explain why that conduction path outweighs convection or radiation here?</p>
+        <h3>Conversation context</h3><p><strong>student:</strong> Consider two identical solid chocolate orbs weighing \(20g\) each are warmed under identical heat lamps. One rest on a slab of marble in aerogel, the other hangs from a silk ribbon. After absorbing the same heat pulse, which orb ends up fractionally hotter and why?</p><p><strong>tutor:</strong> # Heat Transfer in Chocolate Orbs<br><br>To solve this problem, I need to analyze how each orb can lose the heat it absorbs.<br><br>## Setup Analysis<br>Both orbs:<br>- Are identical (20g solid chocolate)<br>- Absorb the same heat pulse<br><br>The difference lies in their surroundings:<br>- Orb 1: Rests on marble slab in aerogel<br>- Orb 2: Hangs from silk ribbon<br><br>## Heat Transfer Pathways<br><br>For Orb 1 (on marble in aerogel):<br>- Loses heat through conduction to the marble slab<br>- Aerogel is an extremely effective insulator (one of the best known)<br>- The aerogel prevents heat loss through convection and radiation<br><br>For Orb 2 (hanging from ribbon):<br>- Loses minimal heat through conduction to the silk ribbon (silk is a poor conductor)<br>- Loses heat through convection to the surrounding air<br>- Has greater surface area exposed for heat loss<br><br>## Conclusion<br>Orb 1 will end up fractionally hotter because:<br>- The aerogel significantly limits heat loss except at the marble contact point<br>- While marble is a good conductor, the contact area is limited<br>- Orb 2 loses heat through convection across its entire surface<br><br>The insulating properties of the aerogel outweigh the conductive properties of the marble contact point.</p>
+        <h3>Reference solution</h3><p># Heat Transfer in Chocolate Orbs<br><br>To solve this problem, I need to analyze how each orb can lose the heat it absorbs.<br><br>## Setup Analysis<br>Both orbs:<br>- Are identical (20g solid chocolate)<br>- Absorb the same heat pulse<br><br>The difference lies in their surroundings:<br>- Orb 1: Rests on marble slab in aerogel<br>- Orb 2: Hangs from silk ribbon<br><br>## Heat Transfer Pathways<br><br>For Orb 1 (on marble in aerogel):<br>- Loses heat through conduction to the marble slab<br>- Aerogel is an extremely effective insulator (one of the best known)<br>- The aerogel prevents heat loss through convection and radiation<br><br>For Orb 2 (hanging from ribbon):<br>- Loses minimal heat through conduction to the silk ribbon (silk is a poor conductor)<br>- Loses heat through convection to the surrounding air<br>- Has greater surface area exposed for heat loss<br><br>## Conclusion<br>Orb 1 will end up fractionally hotter because:<br>- The aerogel significantly limits heat loss except at the marble contact point<br>- While marble is a good conductor, the contact area is limited<br>- Orb 2 loses heat through convection across its entire surface<br><br>The insulating properties of the aerogel outweigh the conductive properties of the marble contact point.</p>
+      </details>
+      <div class="criterion"><strong>Criterion:</strong> The response must use the internal energy reasoning to clarify that the gravitational energy lost by the hanging orb adds to its internal-energy gain, making the hanging orb the hotter one.</div>
+      <div class="evidence"><strong>Expected evidence:</strong> <em>No separate expected-evidence field.</em></div>
+      <p class="instruction">Mark 1 only when this criterion cannot reasonably be satisfied without the skill.</p>
+      <div class="skills">
+            <fieldset class="skill">
+              <legend>Content</legend>
+              <div class="definition">Accurate subject-matter knowledge, calculations, facts, concepts, or domain reasoning needed to satisfy the criterion.</div>
+              <label><input type="radio" name="tb_0240_c07__content" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0240_c07__content" value="0"> 0 — not required</label>
+            </fieldset>
+            
+            <fieldset class="skill">
+              <legend>Diagnosis</legend>
+              <div class="definition">Identifying or reasoning about the student&#x27;s specific understanding, error, misconception, or likely source of difficulty.</div>
+              <label><input type="radio" name="tb_0240_c07__diagnosis" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0240_c07__diagnosis" value="0"> 0 — not required</label>
+            </fieldset>
+            
+            <fieldset class="skill">
+              <legend>Scaffolding</legend>
+              <div class="definition">Structuring guidance that helps the student make progress: hints, questions, intermediate steps, or appropriately withheld support.</div>
+              <label><input type="radio" name="tb_0240_c07__scaffolding" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0240_c07__scaffolding" value="0"> 0 — not required</label>
+            </fieldset>
+            </div>
+      <label>Primary skill
+        <select name="tb_0240_c07__primary">
+          <option value="">Select…</option>
+          <option value="content">Content</option>
+          <option value="diagnosis">Diagnosis</option>
+          <option value="scaffolding">Scaffolding</option>
+          <option value="none">None</option>
+        </select>
+      </label>
+      <label>Confidence
+        <select name="tb_0240_c07__confidence">
+          <option value="">Select…</option>
+          <option value="high">High</option>
+          <option value="medium">Medium</option>
+          <option value="low">Low</option>
+        </select>
+      </label>
+      <label>Optional note
+        <textarea name="tb_0240_c07__notes" rows="2" placeholder="Only needed for ambiguity or a difficult decision"></textarea>
+      </label>
+    </section>
+    
+    <section class="item" data-criterion-id="tb_0215_c05">
+      <h2>6. Criterion <code>tb_0215_c05</code></h2>
+      <details>
+        <summary>Scenario context</summary>
+        <h3>Prompt</h3><p>I don&#x27;t understand why we even include the kinetic energy. Doesn&#x27;t the problem just state that the body can roll? How is it possible to know that the body is not just sliding? I have a really hard time visualizing this in my head.</p>
+        <h3>Conversation context</h3><p><strong>student:</strong> A body with the mass m kilograms is tied to a spring with the stiffness k = mg/L. The body starts to roll without slipping along an inclined plane, with the angle x. A constant force F = 4mg starts to act on the body when the body is in rest and the spring is unstretched. Determine the velocity of the body when it has moved a distance of L meters.</p><p><strong>tutor:</strong> # Finding Velocity after a Spring-Mass System Moves on an Inclined Plane<br><br>Let me solve this step by step using the work-energy principle.<br><br>## Given information:<br>- Mass = m kg<br>- Spring stiffness k = mg/L<br>- Initial state: body at rest, spring unstretched<br>- Force F = 4mg acts on the body<br>- Body rolls without slipping on an inclined plane with angle x<br>- Need to find velocity after moving distance L<br><br>## Physical analysis:<br>When the body moves distance L, we need to account for:<br>1. Work done by the external force (F)<br>2. Work done by gravity along the incline<br>3. Energy stored in the spring<br>4. Change in kinetic energy<br><br>## Solution using work-energy principle:<br>Let&#x27;s calculate all the work and energy changes:<br><br>- Work done by external force: W_F = F·L = 4mg·L<br>- Work done by gravitational force along incline: W_g = mg·sin(x)·L<br>- Energy stored in spring when stretched by L: E_spring = ½k·L² = ½(mg/L)·L² = mg·L/2<br><br>By energy conservation:<br>Initial energy + Work done = Final energy<br>0 + W_F + W_g = ½mv² + E_spring<br><br>Substituting:<br>4mg·L + mg·sin(x)·L = ½mv² + mg·L/2<br><br>Solving for v:<br>½mv² = 4mg·L + mg·sin(x)·L - mg·L/2<br>½mv² = mg·L(4 + sin(x) - ½)<br>½mv² = mg·L(7/2 + sin(x))<br>v² = 2g·L(7/2 + sin(x))<br>v = √(g·L·(7 + 2sin(x)))<br><br>Therefore, the velocity after moving distance L is:<br>v = √(g·L·(7 + 2sin(x)))</p>
+        <h3>Reference solution</h3><p># Finding Velocity after a Spring-Mass System Moves on an Inclined Plane<br><br>Let me solve this step by step using the work-energy principle.<br><br>## Given information:<br>- Mass = m kg<br>- Spring stiffness k = mg/L<br>- Initial state: body at rest, spring unstretched<br>- Force F = 4mg acts on the body<br>- Body rolls without slipping on an inclined plane with angle x<br>- Need to find velocity after moving distance L<br><br>## Physical analysis:<br>When the body moves distance L, we need to account for:<br>1. Work done by the external force (F)<br>2. Work done by gravity along the incline<br>3. Energy stored in the spring<br>4. Change in kinetic energy<br><br>## Solution using work-energy principle:<br>Let&#x27;s calculate all the work and energy changes:<br><br>- Work done by external force: W_F = F·L = 4mg·L<br>- Work done by gravitational force along incline: W_g = mg·sin(x)·L<br>- Energy stored in spring when stretched by L: E_spring = ½k·L² = ½(mg/L)·L² = mg·L/2<br><br>By energy conservation:<br>Initial energy + Work done = Final energy<br>0 + W_F + W_g = ½mv² + E_spring<br><br>Substituting:<br>4mg·L + mg·sin(x)·L = ½mv² + mg·L/2<br><br>Solving for v:<br>½mv² = 4mg·L + mg·sin(x)·L - mg·L/2<br>½mv² = mg·L(4 + sin(x) - ½)<br>½mv² = mg·L(7/2 + sin(x))<br>v² = 2g·L(7/2 + sin(x))<br>v = √(g·L·(7 + 2sin(x)))<br><br>Therefore, the velocity after moving distance L is:<br>v = √(g·L·(7 + 2sin(x)))</p>
+      </details>
+      <div class="criterion"><strong>Criterion:</strong> The response must explain, not just state, why rolling without slipping means the point of contact has zero relative velocity.</div>
+      <div class="evidence"><strong>Expected evidence:</strong> <em>No separate expected-evidence field.</em></div>
+      <p class="instruction">Mark 1 only when this criterion cannot reasonably be satisfied without the skill.</p>
+      <div class="skills">
+            <fieldset class="skill">
+              <legend>Content</legend>
+              <div class="definition">Accurate subject-matter knowledge, calculations, facts, concepts, or domain reasoning needed to satisfy the criterion.</div>
+              <label><input type="radio" name="tb_0215_c05__content" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0215_c05__content" value="0"> 0 — not required</label>
+            </fieldset>
+            
+            <fieldset class="skill">
+              <legend>Diagnosis</legend>
+              <div class="definition">Identifying or reasoning about the student&#x27;s specific understanding, error, misconception, or likely source of difficulty.</div>
+              <label><input type="radio" name="tb_0215_c05__diagnosis" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0215_c05__diagnosis" value="0"> 0 — not required</label>
+            </fieldset>
+            
+            <fieldset class="skill">
+              <legend>Scaffolding</legend>
+              <div class="definition">Structuring guidance that helps the student make progress: hints, questions, intermediate steps, or appropriately withheld support.</div>
+              <label><input type="radio" name="tb_0215_c05__scaffolding" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0215_c05__scaffolding" value="0"> 0 — not required</label>
+            </fieldset>
+            </div>
+      <label>Primary skill
+        <select name="tb_0215_c05__primary">
+          <option value="">Select…</option>
+          <option value="content">Content</option>
+          <option value="diagnosis">Diagnosis</option>
+          <option value="scaffolding">Scaffolding</option>
+          <option value="none">None</option>
+        </select>
+      </label>
+      <label>Confidence
+        <select name="tb_0215_c05__confidence">
+          <option value="">Select…</option>
+          <option value="high">High</option>
+          <option value="medium">Medium</option>
+          <option value="low">Low</option>
+        </select>
+      </label>
+      <label>Optional note
+        <textarea name="tb_0215_c05__notes" rows="2" placeholder="Only needed for ambiguity or a difficult decision"></textarea>
+      </label>
+    </section>
+    
+    <section class="item" data-criterion-id="tb_0091_c06">
+      <h2>7. Criterion <code>tb_0091_c06</code></h2>
+      <details>
+        <summary>Scenario context</summary>
+        <h3>Prompt</h3><p>I am confused on how to set up the binomial because the ratio is 44 for black pots, but I keep getting .00009 which is so small that I cannot round to three significant figures. Where am I going wrong in the calculation? </p>
+        <h3>Conversation context</h3><p><strong>student:</strong> The are 400 paint pots of 4 different colours; black, blue, brown and purple, split in the ratio 44:30:80:46 respectively. A random sample of 25 paint pots are selected, after each paint pot is selected it is put back and available for selection again. Find the probability that exactly 2 paint points are black to 3 significant figures.</p><p><strong>tutor:</strong> To find the probability that exactly 2 out of 25 paint pots selected are black, we use the binomial probability formula. Here are the key steps:<br><br>1. **Determine the probability of selecting a black paint pot:**<br>   - The ratio of black paint pots is 44 out of 200 total parts.<br>   - Each part corresponds to 2 paint pots (since 200 parts * 2 = 400 pots).<br>   - Number of black pots: \(44 \times 2 = 88\).<br>   - Probability of selecting a black pot: \( \frac{88}{400} = 0.22 \).<br><br>2. **Set up the binomial probability formula:**<br>   - Number of trials (\(n\)) = 25.<br>   - Number of successes (\(k\)) = 2.<br>   - Probability of success (\(p\)) = 0.22.<br>   - Probability of failure (\(1 - p\)) = 0.78.<br><br>3. **Calculate the binomial coefficient:**<br>   \[<br>   \binom{25}{2} = \frac{25!}{2!(25-2)!} = \frac{25 \times 24}{2 \times 1} = 300<br>   \]<br><br>4. **Compute the probabilities:**<br>   - \( (0.22)^2 = 0.0484 \)<br>   - \( (0.78)^{23} \approx 0.003297431 \) (using a calculator for precision)<br><br>5. **Combine all components:**<br>   \[<br>   \text{Probability} = 300 \times 0.0484 \times 0.003297431 \approx 0.0478786<br>   \]<br><br>6. **Round to three significant figures:**<br>   - The result \(0.0478786\) rounds to \(0.0479\).<br><br>Thus, the probability that exactly 2 paint pots are black is \(\boxed{0.0479}\).</p>
+        <h3>Reference solution</h3><p>To find the probability that exactly 2 out of 25 paint pots selected are black, we use the binomial probability formula. Here are the key steps:<br><br>1. **Determine the probability of selecting a black paint pot:**<br>   - The ratio of black paint pots is 44 out of 200 total parts.<br>   - Each part corresponds to 2 paint pots (since 200 parts * 2 = 400 pots).<br>   - Number of black pots: \(44 \times 2 = 88\).<br>   - Probability of selecting a black pot: \( \frac{88}{400} = 0.22 \).<br><br>2. **Set up the binomial probability formula:**<br>   - Number of trials (\(n\)) = 25.<br>   - Number of successes (\(k\)) = 2.<br>   - Probability of success (\(p\)) = 0.22.<br>   - Probability of failure (\(1 - p\)) = 0.78.<br><br>3. **Calculate the binomial coefficient:**<br>   \[<br>   \binom{25}{2} = \frac{25!}{2!(25-2)!} = \frac{25 \times 24}{2 \times 1} = 300<br>   \]<br><br>4. **Compute the probabilities:**<br>   - \( (0.22)^2 = 0.0484 \)<br>   - \( (0.78)^{23} \approx 0.003297431 \) (using a calculator for precision)<br><br>5. **Combine all components:**<br>   \[<br>   \text{Probability} = 300 \times 0.0484 \times 0.003297431 \approx 0.0478786<br>   \]<br><br>6. **Round to three significant figures:**<br>   - The result \(0.0478786\) rounds to \(0.0479\).<br><br>Thus, the probability that exactly 2 paint pots are black is \(\boxed{0.0479}\).</p>
+      </details>
+      <div class="criterion"><strong>Criterion:</strong> The response must calculate the correct probability of choosing two black pots out of 25 as .0479 by using p = .22 and 1-p = .78.</div>
+      <div class="evidence"><strong>Expected evidence:</strong> <em>No separate expected-evidence field.</em></div>
+      <p class="instruction">Mark 1 only when this criterion cannot reasonably be satisfied without the skill.</p>
+      <div class="skills">
+            <fieldset class="skill">
+              <legend>Content</legend>
+              <div class="definition">Accurate subject-matter knowledge, calculations, facts, concepts, or domain reasoning needed to satisfy the criterion.</div>
+              <label><input type="radio" name="tb_0091_c06__content" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0091_c06__content" value="0"> 0 — not required</label>
+            </fieldset>
+            
+            <fieldset class="skill">
+              <legend>Diagnosis</legend>
+              <div class="definition">Identifying or reasoning about the student&#x27;s specific understanding, error, misconception, or likely source of difficulty.</div>
+              <label><input type="radio" name="tb_0091_c06__diagnosis" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0091_c06__diagnosis" value="0"> 0 — not required</label>
+            </fieldset>
+            
+            <fieldset class="skill">
+              <legend>Scaffolding</legend>
+              <div class="definition">Structuring guidance that helps the student make progress: hints, questions, intermediate steps, or appropriately withheld support.</div>
+              <label><input type="radio" name="tb_0091_c06__scaffolding" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0091_c06__scaffolding" value="0"> 0 — not required</label>
+            </fieldset>
+            </div>
+      <label>Primary skill
+        <select name="tb_0091_c06__primary">
+          <option value="">Select…</option>
+          <option value="content">Content</option>
+          <option value="diagnosis">Diagnosis</option>
+          <option value="scaffolding">Scaffolding</option>
+          <option value="none">None</option>
+        </select>
+      </label>
+      <label>Confidence
+        <select name="tb_0091_c06__confidence">
+          <option value="">Select…</option>
+          <option value="high">High</option>
+          <option value="medium">Medium</option>
+          <option value="low">Low</option>
+        </select>
+      </label>
+      <label>Optional note
+        <textarea name="tb_0091_c06__notes" rows="2" placeholder="Only needed for ambiguity or a difficult decision"></textarea>
+      </label>
+    </section>
+    
+    <section class="item" data-criterion-id="tb_0162_c06">
+      <h2>8. Criterion <code>tb_0162_c06</code></h2>
+      <details>
+        <summary>Scenario context</summary>
+        <h3>Prompt</h3><p>I&#x27;m sorry, but I think I&#x27;m confused. How did you get RW/Tt, RW/tt, WW/Tt, and WW/tt from plant 1 and plant 2? I don&#x27;t really understand this step. Wouldn&#x27;t the plant 1 R,T gamete combine with the plant 2 W,t gamete to produce RW, TW, Rt, and Tt gametes?</p>
+        <h3>Conversation context</h3><p><strong>student:</strong> Petal color in a plant is determined by a single gene with two alleles: R (red) and W (white). The inheritance pattern for this gene demonstrates incomplete dominance. Another gene, T, controls plant height. Tall plants (T) are dominant to short plants (t). The genes for petal color and height are located on different chromosomes. A plant heterozygous for both traits (RW/Tt) is testcrossed with a white, short plant (WW/tt). What are the expected phenotypic ratios of the offspring, and how does the principle of independent assortment apply to this cross?</p><p><strong>tutor:</strong> # Testcross Analysis: Petal Color and Plant Height<br><br>## Genetic Information<br>- **Petal Color Gene**: R (red) and W (white) alleles with incomplete dominance<br>- **Height Gene**: T (tall, dominant) and t (short, recessive)<br>- **Chromosome Location**: Different chromosomes (unlinked genes)<br><br>## Parental Genotypes<br>- **Plant 1**: RW/Tt (heterozygous for both traits)<br>- **Plant 2**: WW/tt (white, short plant - testcross parent)<br><br>## Phenotypes of Parents<br>- **Plant 1**: Pink petals (incomplete dominance of RW), tall (due to dominant T)<br>- **Plant 2**: White petals, short<br><br>## Gamete Formation<br>Due to independent assortment (genes on different chromosomes):<br><br>**Plant 1 (RW/Tt) produces 4 types of gametes:**<br>- R,T (25%)<br>- R,t (25%)<br>- W,T (25%)<br>- W,t (25%)<br><br>**Plant 2 (WW/tt) produces only one type of gamete:**<br>- W,t (100%)<br><br>## Expected Offspring<br>When these gametes combine:<br><br>1. **RW/Tt** (25%): Pink petals, tall plant<br>2. **RW/tt** (25%): Pink petals, short plant<br>3. **WW/Tt** (25%): White petals, tall plant<br>4. **WW/tt** (25%): White petals, short plant<br><br>## Phenotypic Ratio<br>The expected phenotypic ratio is **1:1:1:1** for the four different phenotypic combinations.<br><br>## Independent Assortment Principle<br>This cross demonstrates Mendel&#x27;s principle of independent assortment because:<br>- The genes for petal color and height segregate independently during gamete formation<br>- The inheritance pattern of one trait does not influence the inheritance of the other<br>- This results in all possible combinations of the two traits appearing in the offspring in equal proportions<br>- The 1:1:1:1 ratio is characteristic of a dihybrid testcross with independently assorting genes<br><br>The results confirm that genes located on different chromosomes undergo independent assortment during meiosis, leading to genetic diversity in offspring.</p>
+        <h3>Reference solution</h3><p># Testcross Analysis: Petal Color and Plant Height<br><br>## Genetic Information<br>- **Petal Color Gene**: R (red) and W (white) alleles with incomplete dominance<br>- **Height Gene**: T (tall, dominant) and t (short, recessive)<br>- **Chromosome Location**: Different chromosomes (unlinked genes)<br><br>## Parental Genotypes<br>- **Plant 1**: RW/Tt (heterozygous for both traits)<br>- **Plant 2**: WW/tt (white, short plant - testcross parent)<br><br>## Phenotypes of Parents<br>- **Plant 1**: Pink petals (incomplete dominance of RW), tall (due to dominant T)<br>- **Plant 2**: White petals, short<br><br>## Gamete Formation<br>Due to independent assortment (genes on different chromosomes):<br><br>**Plant 1 (RW/Tt) produces 4 types of gametes:**<br>- R,T (25%)<br>- R,t (25%)<br>- W,T (25%)<br>- W,t (25%)<br><br>**Plant 2 (WW/tt) produces only one type of gamete:**<br>- W,t (100%)<br><br>## Expected Offspring<br>When these gametes combine:<br><br>1. **RW/Tt** (25%): Pink petals, tall plant<br>2. **RW/tt** (25%): Pink petals, short plant<br>3. **WW/Tt** (25%): White petals, tall plant<br>4. **WW/tt** (25%): White petals, short plant<br><br>## Phenotypic Ratio<br>The expected phenotypic ratio is **1:1:1:1** for the four different phenotypic combinations.<br><br>## Independent Assortment Principle<br>This cross demonstrates Mendel&#x27;s principle of independent assortment because:<br>- The genes for petal color and height segregate independently during gamete formation<br>- The inheritance pattern of one trait does not influence the inheritance of the other<br>- This results in all possible combinations of the two traits appearing in the offspring in equal proportions<br>- The 1:1:1:1 ratio is characteristic of a dihybrid testcross with independently assorting genes<br><br>The results confirm that genes located on different chromosomes undergo independent assortment during meiosis, leading to genetic diversity in offspring.</p>
+      </details>
+      <div class="criterion"><strong>Criterion:</strong> The model must correct the student&#x27;s error by explaining that fertilization does not create &quot;RW, TW, Rt, and Tt gametes&quot; but rather creates single diploid individuals with complete genotypes like RW/Tt. </div>
+      <div class="evidence"><strong>Expected evidence:</strong> <em>No separate expected-evidence field.</em></div>
+      <p class="instruction">Mark 1 only when this criterion cannot reasonably be satisfied without the skill.</p>
+      <div class="skills">
+            <fieldset class="skill">
+              <legend>Content</legend>
+              <div class="definition">Accurate subject-matter knowledge, calculations, facts, concepts, or domain reasoning needed to satisfy the criterion.</div>
+              <label><input type="radio" name="tb_0162_c06__content" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0162_c06__content" value="0"> 0 — not required</label>
+            </fieldset>
+            
+            <fieldset class="skill">
+              <legend>Diagnosis</legend>
+              <div class="definition">Identifying or reasoning about the student&#x27;s specific understanding, error, misconception, or likely source of difficulty.</div>
+              <label><input type="radio" name="tb_0162_c06__diagnosis" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0162_c06__diagnosis" value="0"> 0 — not required</label>
+            </fieldset>
+            
+            <fieldset class="skill">
+              <legend>Scaffolding</legend>
+              <div class="definition">Structuring guidance that helps the student make progress: hints, questions, intermediate steps, or appropriately withheld support.</div>
+              <label><input type="radio" name="tb_0162_c06__scaffolding" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0162_c06__scaffolding" value="0"> 0 — not required</label>
+            </fieldset>
+            </div>
+      <label>Primary skill
+        <select name="tb_0162_c06__primary">
+          <option value="">Select…</option>
+          <option value="content">Content</option>
+          <option value="diagnosis">Diagnosis</option>
+          <option value="scaffolding">Scaffolding</option>
+          <option value="none">None</option>
+        </select>
+      </label>
+      <label>Confidence
+        <select name="tb_0162_c06__confidence">
+          <option value="">Select…</option>
+          <option value="high">High</option>
+          <option value="medium">Medium</option>
+          <option value="low">Low</option>
+        </select>
+      </label>
+      <label>Optional note
+        <textarea name="tb_0162_c06__notes" rows="2" placeholder="Only needed for ambiguity or a difficult decision"></textarea>
+      </label>
+    </section>
+    
+    <section class="item" data-criterion-id="tb_0615_c06">
+      <h2>9. Criterion <code>tb_0615_c06</code></h2>
+      <details>
+        <summary>Scenario context</summary>
+        <h3>Prompt</h3><p># Partial Solution: Invasive Species Problem<br><br>## Part (a)<br><br>To find the average number of acres affected over the time interval \[0, 5\], I need to use the formula:<br><br>Average value = (1/(b-a)) \* ∫\[a,b\] f(t) dt<br><br>In this problem:<br><br>- f(t) = X(t) = 7.6 \* arctan(0.2t)<br>- a = 0<br>- b = 5<br><br>So I need to calculate: Average value = (1/5) \* ∫\[0,5\] 7.6 \* arctan(0.2t) dt<br><br>Setting up the integral: Average value = (1/5) \* 7.6 \* ∫\[0,5\] arctan(0.2t) dt<br><br>I&#x27;m not sure how to integrate arctan(0.2t) directly. I know that: ∫ arctan(t) dt = t\*arctan(t) - (1/2)ln(1+t²) + C<br><br>But I have arctan(0.2t), which has a coefficient inside. I think I need to use substitution, but I&#x27;m getting confused about how to set it up correctly.<br><br>Let u = 0.2t, so du = 0.2 dt Then dt = du/0.2 = 5du<br><br>So my integral becomes: ∫ arctan(0.2t) dt = ∫ arctan(u) \* 5 du = 5 ∫ arctan(u) du<br><br>But now I&#x27;m stuck because I don&#x27;t remember how to integrate arctan(u). I know the answer involves logarithms somehow, but I can&#x27;t remember the exact formula.<br><br>## Part (b)<br><br>I understand that X&#x27;(t) = 38/(25+t²) represents the rate at which the affected area is changing at time t.<br><br>If I calculate (1/5) \* ∫\[0,5\] X&#x27;(t) dt, I think that would give me the average rate of change of the affected area over the 5-week period, not the average number of acres affected.<br><br>I&#x27;m not completely sure why this doesn&#x27;t answer part (a), though. Does it have something to do with the fact that X&#x27;(t) measures acres per week, while X(t) measures acres?</p>
+        <h3>Conversation context</h3><p><strong>student:</strong> An invasive species of plant appears in a fruit grove at time $t=0$ and begins to spread. The function $X$ defined by:<br><br>X(t) = 7.6 * arctan(0.2t)<br><br>models the number of acres in the grove affected by the species, $t$ weeks after it appears. It can be shown that the derivative of this function is <br><br>X&#x27;(t) = 38 / (25 + t^2)<br><br>(Note: You should use radian mode for all calculations)<br><br>**Questions:**<br><br>(a) Calculate the exact average number of acres affected by the invasive species over the time interval from t=0 to t=5 weeks. Show the work that leads to your answer, including the setup of the integral. Then, provide a numerical approximation rounded to three decimal places. <br><br>(b) In the context of this problem, explain why using the provided derivative, X&#x27;(t), to calculate the average value would not answer the question in part (a). What would the result of calculating  (1/5) * int[0,5] (X&#x27;(t) dt)  represent?</p>
+        <h3>Reference solution</h3><p></p>
+      </details>
+      <div class="criterion"><strong>Criterion:</strong> The response must provide a conceptual hint for part (b), either through an analogy (e.g. prompting the student to consider the difference between position vs. speed) or by directly asking about what it means for $X(t)$ to measure acres (while $X’(t)$ measures acres/week).</div>
+      <div class="evidence"><strong>Expected evidence:</strong> <em>No separate expected-evidence field.</em></div>
+      <p class="instruction">Mark 1 only when this criterion cannot reasonably be satisfied without the skill.</p>
+      <div class="skills">
+            <fieldset class="skill">
+              <legend>Content</legend>
+              <div class="definition">Accurate subject-matter knowledge, calculations, facts, concepts, or domain reasoning needed to satisfy the criterion.</div>
+              <label><input type="radio" name="tb_0615_c06__content" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0615_c06__content" value="0"> 0 — not required</label>
+            </fieldset>
+            
+            <fieldset class="skill">
+              <legend>Diagnosis</legend>
+              <div class="definition">Identifying or reasoning about the student&#x27;s specific understanding, error, misconception, or likely source of difficulty.</div>
+              <label><input type="radio" name="tb_0615_c06__diagnosis" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0615_c06__diagnosis" value="0"> 0 — not required</label>
+            </fieldset>
+            
+            <fieldset class="skill">
+              <legend>Scaffolding</legend>
+              <div class="definition">Structuring guidance that helps the student make progress: hints, questions, intermediate steps, or appropriately withheld support.</div>
+              <label><input type="radio" name="tb_0615_c06__scaffolding" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0615_c06__scaffolding" value="0"> 0 — not required</label>
+            </fieldset>
+            </div>
+      <label>Primary skill
+        <select name="tb_0615_c06__primary">
+          <option value="">Select…</option>
+          <option value="content">Content</option>
+          <option value="diagnosis">Diagnosis</option>
+          <option value="scaffolding">Scaffolding</option>
+          <option value="none">None</option>
+        </select>
+      </label>
+      <label>Confidence
+        <select name="tb_0615_c06__confidence">
+          <option value="">Select…</option>
+          <option value="high">High</option>
+          <option value="medium">Medium</option>
+          <option value="low">Low</option>
+        </select>
+      </label>
+      <label>Optional note
+        <textarea name="tb_0615_c06__notes" rows="2" placeholder="Only needed for ambiguity or a difficult decision"></textarea>
+      </label>
+    </section>
+    
+    <section class="item" data-criterion-id="tb_0120_c02">
+      <h2>10. Criterion <code>tb_0120_c02</code></h2>
+      <details>
+        <summary>Scenario context</summary>
+        <h3>Prompt</h3><p>Wait I&#x27;m confused. Given these are half reactions, I thought the values needed to be cut in half. So wouldn&#x27;t it be .40-.17 to get .23?</p>
+        <h3>Conversation context</h3><p><strong>student:</strong> Consider the galvanic cell with the following half-reactions and standard reduction potentials: <br>Ag⁺ (aq) + e⁻ → Ag (s) E° = +0.80 V <br>Cu²⁺ (aq) + 2e⁻ → Cu (s) E° = +0.34 V<br>The half-cells are connected, and a spontaneous reaction is observed. What is the overall cell potential (E°cell)?</p><p><strong>tutor:</strong> # Finding the Overall Cell Potential (E°cell)<br><br>To solve this problem, I need to determine which half-reaction is the reduction and which is the oxidation, then calculate the overall cell potential.<br><br>## Step 1: Identify which reaction occurs at each electrode<br>In a galvanic cell, the spontaneous reaction always has:<br>- The species with the more positive reduction potential gets reduced (cathode)<br>- The species with the less positive reduction potential gets oxidized (anode)<br><br>Since Ag⁺/Ag has a more positive reduction potential (+0.80 V) than Cu²⁺/Cu (+0.34 V):<br>- Silver ions will be reduced at the cathode: Ag⁺ (aq) + e⁻ → Ag (s)<br>- Copper metal will be oxidized at the anode: Cu (s) → Cu²⁺ (aq) + 2e⁻<br><br>## Step 2: Calculate the cell potential<br>The formula for cell potential is: E°cell = E°cathode - E°anode<br><br>When we reverse a half-reaction to make it an oxidation reaction, we also reverse the sign of its potential. So:<br>- E°cathode = +0.80 V (reduction of Ag⁺)<br>- E°anode = -0.34 V (oxidation of Cu, sign flipped from +0.34 V)<br><br>Therefore:<br>E°cell = +0.80 V - (-0.34 V) = +0.80 V + 0.34 V = +1.14 V<br><br>The overall cell potential is +1.14 V, which is positive, confirming that the reaction is spontaneous.</p>
+        <h3>Reference solution</h3><p># Finding the Overall Cell Potential (E°cell)<br><br>To solve this problem, I need to determine which half-reaction is the reduction and which is the oxidation, then calculate the overall cell potential.<br><br>## Step 1: Identify which reaction occurs at each electrode<br>In a galvanic cell, the spontaneous reaction always has:<br>- The species with the more positive reduction potential gets reduced (cathode)<br>- The species with the less positive reduction potential gets oxidized (anode)<br><br>Since Ag⁺/Ag has a more positive reduction potential (+0.80 V) than Cu²⁺/Cu (+0.34 V):<br>- Silver ions will be reduced at the cathode: Ag⁺ (aq) + e⁻ → Ag (s)<br>- Copper metal will be oxidized at the anode: Cu (s) → Cu²⁺ (aq) + 2e⁻<br><br>## Step 2: Calculate the cell potential<br>The formula for cell potential is: E°cell = E°cathode - E°anode<br><br>When we reverse a half-reaction to make it an oxidation reaction, we also reverse the sign of its potential. So:<br>- E°cathode = +0.80 V (reduction of Ag⁺)<br>- E°anode = -0.34 V (oxidation of Cu, sign flipped from +0.34 V)<br><br>Therefore:<br>E°cell = +0.80 V - (-0.34 V) = +0.80 V + 0.34 V = +1.14 V<br><br>The overall cell potential is +1.14 V, which is positive, confirming that the reaction is spontaneous.</p>
+      </details>
+      <div class="criterion"><strong>Criterion:</strong> The response must acknowledge the student&#x27;s state of confusion.</div>
+      <div class="evidence"><strong>Expected evidence:</strong> <em>No separate expected-evidence field.</em></div>
+      <p class="instruction">Mark 1 only when this criterion cannot reasonably be satisfied without the skill.</p>
+      <div class="skills">
+            <fieldset class="skill">
+              <legend>Content</legend>
+              <div class="definition">Accurate subject-matter knowledge, calculations, facts, concepts, or domain reasoning needed to satisfy the criterion.</div>
+              <label><input type="radio" name="tb_0120_c02__content" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0120_c02__content" value="0"> 0 — not required</label>
+            </fieldset>
+            
+            <fieldset class="skill">
+              <legend>Diagnosis</legend>
+              <div class="definition">Identifying or reasoning about the student&#x27;s specific understanding, error, misconception, or likely source of difficulty.</div>
+              <label><input type="radio" name="tb_0120_c02__diagnosis" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0120_c02__diagnosis" value="0"> 0 — not required</label>
+            </fieldset>
+            
+            <fieldset class="skill">
+              <legend>Scaffolding</legend>
+              <div class="definition">Structuring guidance that helps the student make progress: hints, questions, intermediate steps, or appropriately withheld support.</div>
+              <label><input type="radio" name="tb_0120_c02__scaffolding" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0120_c02__scaffolding" value="0"> 0 — not required</label>
+            </fieldset>
+            </div>
+      <label>Primary skill
+        <select name="tb_0120_c02__primary">
+          <option value="">Select…</option>
+          <option value="content">Content</option>
+          <option value="diagnosis">Diagnosis</option>
+          <option value="scaffolding">Scaffolding</option>
+          <option value="none">None</option>
+        </select>
+      </label>
+      <label>Confidence
+        <select name="tb_0120_c02__confidence">
+          <option value="">Select…</option>
+          <option value="high">High</option>
+          <option value="medium">Medium</option>
+          <option value="low">Low</option>
+        </select>
+      </label>
+      <label>Optional note
+        <textarea name="tb_0120_c02__notes" rows="2" placeholder="Only needed for ambiguity or a difficult decision"></textarea>
+      </label>
+    </section>
+    
+    <section class="item" data-criterion-id="tb_0113_c01">
+      <h2>11. Criterion <code>tb_0113_c01</code></h2>
+      <details>
+        <summary>Scenario context</summary>
+        <h3>Prompt</h3><p>Mostly clear, but there is one particular element that confuses me. Why do you bother about finding the forces perpendicular to the incline? I thought we were just calculating the forces along the incline. And how could the block supposedly be moving upward while all forces along the incline are acting downward?</p>
+        <h3>Conversation context</h3><p><strong>student:</strong> Suppose that initially, we have a block of weight $200 \, \text{N}$ on an incline of $\theta = 60^\circ$. If the coefficient of static friction is $\mu_s = 0.4$, what minimum horizontal force $F$ would cause the block to move upward?</p><p><strong>tutor:</strong> # Finding the Minimum Horizontal Force<br><br>I&#x27;ll solve this step-by-step by analyzing all the forces acting on the block.<br><br>## Step 1: Identify and set up the forces<br>- Weight of block: $W = 200$ N (downward)<br>- Normal force: $N$ (perpendicular to incline)<br>- Static friction: $f_s = μ_s N$ (opposing motion, so down the incline)<br>- Horizontal force: $F$ (horizontal)<br><br>## Step 2: Set up a coordinate system<br>Let&#x27;s use coordinates parallel (x) and perpendicular (y) to the incline.<br><br>## Step 3: Decompose forces<br>For the weight:<br>- Down the incline: $W\sin(60°) = 200 \cdot \frac{\sqrt{3}}{2} = 100\sqrt{3}$ N<br>- Into the incline: $W\cos(60°) = 200 \cdot \frac{1}{2} = 100$ N<br><br>For the horizontal force $F$:<br>- Up the incline: $F\cos(60°) = \frac{F}{2}$<br>- Away from the incline: $F\sin(60°) = \frac{F\sqrt{3}}{2}$<br><br>## Step 4: Find the normal force<br>From the perpendicular components:<br>$N = W\cos(60°) - F\sin(60°) = 100 - \frac{F\sqrt{3}}{2}$<br><br>## Step 5: Find the minimum force for upward motion<br>For the block to move upward, the sum of forces parallel to the incline must overcome the weight component and friction:<br><br>$F\cos(60°) = W\sin(60°) + f_s$<br><br>Where $f_s = μ_s N = 0.4(100 - \frac{F\sqrt{3}}{2})$<br><br>Substituting and solving:<br>$\frac{F}{2} = 100\sqrt{3} + 0.4(100 - \frac{F\sqrt{3}}{2})$<br>$\frac{F}{2} = 100\sqrt{3} + 40 - \frac{0.4F\sqrt{3}}{2}$<br>$\frac{F}{2} + \frac{0.4F\sqrt{3}}{2} = 100\sqrt{3} + 40$<br>$F(1 + 0.4\sqrt{3}) = 2(100\sqrt{3} + 40)$<br><br>Therefore:<br>$F = \frac{2(100\sqrt{3} + 40)}{1 + 0.4\sqrt{3}} ≈ 258.8$ N</p>
+        <h3>Reference solution</h3><p># Finding the Minimum Horizontal Force<br><br>I&#x27;ll solve this step-by-step by analyzing all the forces acting on the block.<br><br>## Step 1: Identify and set up the forces<br>- Weight of block: $W = 200$ N (downward)<br>- Normal force: $N$ (perpendicular to incline)<br>- Static friction: $f_s = μ_s N$ (opposing motion, so down the incline)<br>- Horizontal force: $F$ (horizontal)<br><br>## Step 2: Set up a coordinate system<br>Let&#x27;s use coordinates parallel (x) and perpendicular (y) to the incline.<br><br>## Step 3: Decompose forces<br>For the weight:<br>- Down the incline: $W\sin(60°) = 200 \cdot \frac{\sqrt{3}}{2} = 100\sqrt{3}$ N<br>- Into the incline: $W\cos(60°) = 200 \cdot \frac{1}{2} = 100$ N<br><br>For the horizontal force $F$:<br>- Up the incline: $F\cos(60°) = \frac{F}{2}$<br>- Away from the incline: $F\sin(60°) = \frac{F\sqrt{3}}{2}$<br><br>## Step 4: Find the normal force<br>From the perpendicular components:<br>$N = W\cos(60°) - F\sin(60°) = 100 - \frac{F\sqrt{3}}{2}$<br><br>## Step 5: Find the minimum force for upward motion<br>For the block to move upward, the sum of forces parallel to the incline must overcome the weight component and friction:<br><br>$F\cos(60°) = W\sin(60°) + f_s$<br><br>Where $f_s = μ_s N = 0.4(100 - \frac{F\sqrt{3}}{2})$<br><br>Substituting and solving:<br>$\frac{F}{2} = 100\sqrt{3} + 0.4(100 - \frac{F\sqrt{3}}{2})$<br>$\frac{F}{2} = 100\sqrt{3} + 40 - \frac{0.4F\sqrt{3}}{2}$<br>$\frac{F}{2} + \frac{0.4F\sqrt{3}}{2} = 100\sqrt{3} + 40$<br>$F(1 + 0.4\sqrt{3}) = 2(100\sqrt{3} + 40)$<br><br>Therefore:<br>$F = \frac{2(100\sqrt{3} + 40)}{1 + 0.4\sqrt{3}} ≈ 258.8$ N</p>
+      </details>
+      <div class="criterion"><strong>Criterion:</strong> The model response must acknowledge the student&#x27;s confusion.</div>
+      <div class="evidence"><strong>Expected evidence:</strong> <em>No separate expected-evidence field.</em></div>
+      <p class="instruction">Mark 1 only when this criterion cannot reasonably be satisfied without the skill.</p>
+      <div class="skills">
+            <fieldset class="skill">
+              <legend>Content</legend>
+              <div class="definition">Accurate subject-matter knowledge, calculations, facts, concepts, or domain reasoning needed to satisfy the criterion.</div>
+              <label><input type="radio" name="tb_0113_c01__content" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0113_c01__content" value="0"> 0 — not required</label>
+            </fieldset>
+            
+            <fieldset class="skill">
+              <legend>Diagnosis</legend>
+              <div class="definition">Identifying or reasoning about the student&#x27;s specific understanding, error, misconception, or likely source of difficulty.</div>
+              <label><input type="radio" name="tb_0113_c01__diagnosis" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0113_c01__diagnosis" value="0"> 0 — not required</label>
+            </fieldset>
+            
+            <fieldset class="skill">
+              <legend>Scaffolding</legend>
+              <div class="definition">Structuring guidance that helps the student make progress: hints, questions, intermediate steps, or appropriately withheld support.</div>
+              <label><input type="radio" name="tb_0113_c01__scaffolding" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0113_c01__scaffolding" value="0"> 0 — not required</label>
+            </fieldset>
+            </div>
+      <label>Primary skill
+        <select name="tb_0113_c01__primary">
+          <option value="">Select…</option>
+          <option value="content">Content</option>
+          <option value="diagnosis">Diagnosis</option>
+          <option value="scaffolding">Scaffolding</option>
+          <option value="none">None</option>
+        </select>
+      </label>
+      <label>Confidence
+        <select name="tb_0113_c01__confidence">
+          <option value="">Select…</option>
+          <option value="high">High</option>
+          <option value="medium">Medium</option>
+          <option value="low">Low</option>
+        </select>
+      </label>
+      <label>Optional note
+        <textarea name="tb_0113_c01__notes" rows="2" placeholder="Only needed for ambiguity or a difficult decision"></textarea>
+      </label>
+    </section>
+    
+    <section class="item" data-criterion-id="tb_0219_c09">
+      <h2>12. Criterion <code>tb_0219_c09</code></h2>
+      <details>
+        <summary>Scenario context</summary>
+        <h3>Prompt</h3><p>Doesn&#x27;t it just need to return the values of `a` and `b` to be correct?</p>
+        <h3>Conversation context</h3><p><strong>student:</strong> Read the following code snippet:<br><br>```java<br>/**<br>* Swaps the values between two variables<br>*/<br>public void swap(int a, int b) {<br>    a = b;<br>    b = a;<br>}<br>```<br><br>How should this `swap()` method be implemented so it is correct? Do not change the method signature.</p><p><strong>tutor:</strong> # Understanding the `swap()` Method<br><br>The current implementation of `swap()` has a couple of issues:<br><br>```java<br>public void swap(int a, int b) {<br>    a = b;  // Now a has b&#x27;s value<br>    b = a;  // Now b has the new a&#x27;s value (which is already b&#x27;s value)<br>}<br>```<br><br>## Issues with the Current Code:<br><br>1. **Logic Error**: After setting `a = b`, both variables have the same value. So when `b = a` executes, we&#x27;re just setting `b` to its own value.<br><br>2. **Pass-by-Value Problem**: Even if we fix the logic, this method won&#x27;t work because Java passes primitive types by value. When you call this method, Java creates copies of the original variables, so changes inside the method don&#x27;t affect the original variables.<br><br>## Correct Implementation:<br><br>While we can fix the logic error, we can&#x27;t make this method signature work for swapping external variables:<br><br>```java<br>public void swap(int a, int b) {<br>    int temp = a;  // Store a&#x27;s original value<br>    a = b;         // Set a to b&#x27;s value<br>    b = temp;      // Set b to a&#x27;s original value<br>}<br>```<br><br>This fixes the logic, but due to Java&#x27;s pass-by-value nature, it still won&#x27;t swap the original variables.<br><br>## What Actually Works in Java:<br><br>If you really need to swap values, you could:<br>1. Use an array or wrapper objects (requires changing the signature)<br>2. Have the method return the swapped values<br>3. Make the variables instance fields of a class<br><br>Would you like me to explain any of these alternative approaches?</p>
+        <h3>Reference solution</h3><p># Understanding the `swap()` Method<br><br>The current implementation of `swap()` has a couple of issues:<br><br>```java<br>public void swap(int a, int b) {<br>    a = b;  // Now a has b&#x27;s value<br>    b = a;  // Now b has the new a&#x27;s value (which is already b&#x27;s value)<br>}<br>```<br><br>## Issues with the Current Code:<br><br>1. **Logic Error**: After setting `a = b`, both variables have the same value. So when `b = a` executes, we&#x27;re just setting `b` to its own value.<br><br>2. **Pass-by-Value Problem**: Even if we fix the logic, this method won&#x27;t work because Java passes primitive types by value. When you call this method, Java creates copies of the original variables, so changes inside the method don&#x27;t affect the original variables.<br><br>## Correct Implementation:<br><br>While we can fix the logic error, we can&#x27;t make this method signature work for swapping external variables:<br><br>```java<br>public void swap(int a, int b) {<br>    int temp = a;  // Store a&#x27;s original value<br>    a = b;         // Set a to b&#x27;s value<br>    b = temp;      // Set b to a&#x27;s original value<br>}<br>```<br><br>This fixes the logic, but due to Java&#x27;s pass-by-value nature, it still won&#x27;t swap the original variables.<br><br>## What Actually Works in Java:<br><br>If you really need to swap values, you could:<br>1. Use an array or wrapper objects (requires changing the signature)<br>2. Have the method return the swapped values<br>3. Make the variables instance fields of a class<br><br>Would you like me to explain any of these alternative approaches?</p>
+      </details>
+      <div class="criterion"><strong>Criterion:</strong> The response must include an example that does not change the signature method by modifying the void method to use the temp variable. </div>
+      <div class="evidence"><strong>Expected evidence:</strong> <em>No separate expected-evidence field.</em></div>
+      <p class="instruction">Mark 1 only when this criterion cannot reasonably be satisfied without the skill.</p>
+      <div class="skills">
+            <fieldset class="skill">
+              <legend>Content</legend>
+              <div class="definition">Accurate subject-matter knowledge, calculations, facts, concepts, or domain reasoning needed to satisfy the criterion.</div>
+              <label><input type="radio" name="tb_0219_c09__content" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0219_c09__content" value="0"> 0 — not required</label>
+            </fieldset>
+            
+            <fieldset class="skill">
+              <legend>Diagnosis</legend>
+              <div class="definition">Identifying or reasoning about the student&#x27;s specific understanding, error, misconception, or likely source of difficulty.</div>
+              <label><input type="radio" name="tb_0219_c09__diagnosis" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0219_c09__diagnosis" value="0"> 0 — not required</label>
+            </fieldset>
+            
+            <fieldset class="skill">
+              <legend>Scaffolding</legend>
+              <div class="definition">Structuring guidance that helps the student make progress: hints, questions, intermediate steps, or appropriately withheld support.</div>
+              <label><input type="radio" name="tb_0219_c09__scaffolding" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0219_c09__scaffolding" value="0"> 0 — not required</label>
+            </fieldset>
+            </div>
+      <label>Primary skill
+        <select name="tb_0219_c09__primary">
+          <option value="">Select…</option>
+          <option value="content">Content</option>
+          <option value="diagnosis">Diagnosis</option>
+          <option value="scaffolding">Scaffolding</option>
+          <option value="none">None</option>
+        </select>
+      </label>
+      <label>Confidence
+        <select name="tb_0219_c09__confidence">
+          <option value="">Select…</option>
+          <option value="high">High</option>
+          <option value="medium">Medium</option>
+          <option value="low">Low</option>
+        </select>
+      </label>
+      <label>Optional note
+        <textarea name="tb_0219_c09__notes" rows="2" placeholder="Only needed for ambiguity or a difficult decision"></textarea>
+      </label>
+    </section>
+    
+    <section class="item" data-criterion-id="tb_0314_c04">
+      <h2>13. Criterion <code>tb_0314_c04</code></h2>
+      <details>
+        <summary>Scenario context</summary>
+        <h3>Prompt</h3><p>In part \((c)\), you found the maximum of the derivative \(s&#x27;(t)\) by simplifying the differentiation again. However, I am confused about how you got \(s&#x27;&#x27;(t)\) in the solution.</p>
+        <h3>Conversation context</h3><p><strong>student:</strong> Two rescue robots depart simultaneously from the origin.<br>Robot A moves east so that its position is $( t^2, 0 )$, while Robot B climbs vertically so that its position is $( 0, 3t )$.<br>Their separation after $t$ seconds is<br><br>$$s(t) = sqrt[ tS^4 + 9t^2 ]$$.<br><br>(a) For $t = 4$ and a non-zero increment $t$, write the exact average rate of change of S between $t = 4$ and $t = 4 + \Delta t$.<br><br>(b) Describe what rate the average rate of change approaches as $\Delta t \longrightarrow 0$.<br><br>(c) On $0 &lt; t &lt; 10$, determine when the robots’ separation is increasing fastest and explain your reasoning in the context of part (b).</p><p><strong>tutor:</strong> # Understanding Robot Separation Problem<br><br>Let me work through this step-by-step with you.<br><br>## Initial Setup<br>We have two robots:<br>- Robot A at position $(t^2, 0)$ - moving along x-axis<br>- Robot B at position $(0, 3t)$ - moving along y-axis<br><br>Their separation is given by:<br>$$s(t) = \sqrt{t^4 + 9t^2}$$<br><br>### (a) Average Rate of Change at t = 4<br><br>The average rate of change between $t = 4$ and $t = 4 + \Delta t$ is:<br><br>$$\text{Average rate} = \frac{s(4 + \Delta t) - s(4)}{\Delta t}$$<br><br>First, let&#x27;s calculate $s(4)$:<br>$s(4) = \sqrt{4^4 + 9(4^2)} = \sqrt{256 + 144} = \sqrt{400} = 20$<br><br>So our exact average rate of change is:<br>$$\frac{\sqrt{(4 + \Delta t)^4 + 9(4 + \Delta t)^2} - 20}{\Delta t}$$<br><br>### (b) As Δt approaches 0<br><br>As $\Delta t \to 0$, the average rate of change approaches the instantaneous rate of change, which is the derivative $s&#x27;(4)$.<br><br>To find $s&#x27;(t)$, I&#x27;ll use the chain rule:<br>$$s&#x27;(t) = \frac{1}{2}(t^4 + 9t^2)^{-1/2} \cdot (4t^3 + 18t)$$<br><br>Simplifying:<br>$$s&#x27;(t) = \frac{4t^3 + 18t}{2\sqrt{t^4 + 9t^2}}$$<br><br>At $t = 4$:<br>$$s&#x27;(4) = \frac{4(4^3) + 18(4)}{2\sqrt{4^4 + 9(4^2)}} = \frac{256 + 72}{2(20)} = \frac{328}{40} = 8.2$$<br><br>So as $\Delta t \to 0$, the average rate approaches 8.2 units/second.<br><br>### (c) When separation increases fastest<br><br>To find when the separation increases fastest, I need to find when $s&#x27;(t)$ is maximum.<br><br>Let me simplify $s&#x27;(t)$ further:<br>$$s&#x27;(t) = \frac{4t^3 + 18t}{2\sqrt{t^4 + 9t^2}} = \frac{4t^3 + 18t}{2t\sqrt{t^2 + 9}} = \frac{4t^2 + 18}{2\sqrt{t^2 + 9}}$$<br><br>Taking the derivative and setting it equal to zero:<br>$$s&#x27;&#x27;(t) = \frac{8t(t^2+9) - (4t^2+18)t/\sqrt{t^2+9}}{2(t^2+9)^{3/2}} = 0$$<br><br>After solving (this involves some algebra), we find that $s&#x27;(t)$ reaches its maximum at $t = 3/2 = 1.5$<br><br>Therefore, the robots&#x27; separation is increasing fastest at $t = 1.5$ seconds, when the instantaneous rate of change of their separation is at its maximum.</p>
+        <h3>Reference solution</h3><p># Understanding Robot Separation Problem<br><br>Let me work through this step-by-step with you.<br><br>## Initial Setup<br>We have two robots:<br>- Robot A at position $(t^2, 0)$ - moving along x-axis<br>- Robot B at position $(0, 3t)$ - moving along y-axis<br><br>Their separation is given by:<br>$$s(t) = \sqrt{t^4 + 9t^2}$$<br><br>### (a) Average Rate of Change at t = 4<br><br>The average rate of change between $t = 4$ and $t = 4 + \Delta t$ is:<br><br>$$\text{Average rate} = \frac{s(4 + \Delta t) - s(4)}{\Delta t}$$<br><br>First, let&#x27;s calculate $s(4)$:<br>$s(4) = \sqrt{4^4 + 9(4^2)} = \sqrt{256 + 144} = \sqrt{400} = 20$<br><br>So our exact average rate of change is:<br>$$\frac{\sqrt{(4 + \Delta t)^4 + 9(4 + \Delta t)^2} - 20}{\Delta t}$$<br><br>### (b) As Δt approaches 0<br><br>As $\Delta t \to 0$, the average rate of change approaches the instantaneous rate of change, which is the derivative $s&#x27;(4)$.<br><br>To find $s&#x27;(t)$, I&#x27;ll use the chain rule:<br>$$s&#x27;(t) = \frac{1}{2}(t^4 + 9t^2)^{-1/2} \cdot (4t^3 + 18t)$$<br><br>Simplifying:<br>$$s&#x27;(t) = \frac{4t^3 + 18t}{2\sqrt{t^4 + 9t^2}}$$<br><br>At $t = 4$:<br>$$s&#x27;(4) = \frac{4(4^3) + 18(4)}{2\sqrt{4^4 + 9(4^2)}} = \frac{256 + 72}{2(20)} = \frac{328}{40} = 8.2$$<br><br>So as $\Delta t \to 0$, the average rate approaches 8.2 units/second.<br><br>### (c) When separation increases fastest<br><br>To find when the separation increases fastest, I need to find when $s&#x27;(t)$ is maximum.<br><br>Let me simplify $s&#x27;(t)$ further:<br>$$s&#x27;(t) = \frac{4t^3 + 18t}{2\sqrt{t^4 + 9t^2}} = \frac{4t^3 + 18t}{2t\sqrt{t^2 + 9}} = \frac{4t^2 + 18}{2\sqrt{t^2 + 9}}$$<br><br>Taking the derivative and setting it equal to zero:<br>$$s&#x27;&#x27;(t) = \frac{8t(t^2+9) - (4t^2+18)t/\sqrt{t^2+9}}{2(t^2+9)^{3/2}} = 0$$<br><br>After solving (this involves some algebra), we find that $s&#x27;(t)$ reaches its maximum at $t = 3/2 = 1.5$<br><br>Therefore, the robots&#x27; separation is increasing fastest at $t = 1.5$ seconds, when the instantaneous rate of change of their separation is at its maximum.</p>
+      </details>
+      <div class="criterion"><strong>Criterion:</strong> The response must analyze the sign of $$s&#x27;&#x27;(t)$$ by explaining that since $$t &gt; 0$$, every term in the expression $\frac{t(2t^2 + 27)}{(t^2+9)^{3/2}}$ is positive, which proves that $$s&#x27;&#x27;(t) &gt; 0$</div>
+      <div class="evidence"><strong>Expected evidence:</strong> <em>No separate expected-evidence field.</em></div>
+      <p class="instruction">Mark 1 only when this criterion cannot reasonably be satisfied without the skill.</p>
+      <div class="skills">
+            <fieldset class="skill">
+              <legend>Content</legend>
+              <div class="definition">Accurate subject-matter knowledge, calculations, facts, concepts, or domain reasoning needed to satisfy the criterion.</div>
+              <label><input type="radio" name="tb_0314_c04__content" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0314_c04__content" value="0"> 0 — not required</label>
+            </fieldset>
+            
+            <fieldset class="skill">
+              <legend>Diagnosis</legend>
+              <div class="definition">Identifying or reasoning about the student&#x27;s specific understanding, error, misconception, or likely source of difficulty.</div>
+              <label><input type="radio" name="tb_0314_c04__diagnosis" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0314_c04__diagnosis" value="0"> 0 — not required</label>
+            </fieldset>
+            
+            <fieldset class="skill">
+              <legend>Scaffolding</legend>
+              <div class="definition">Structuring guidance that helps the student make progress: hints, questions, intermediate steps, or appropriately withheld support.</div>
+              <label><input type="radio" name="tb_0314_c04__scaffolding" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0314_c04__scaffolding" value="0"> 0 — not required</label>
+            </fieldset>
+            </div>
+      <label>Primary skill
+        <select name="tb_0314_c04__primary">
+          <option value="">Select…</option>
+          <option value="content">Content</option>
+          <option value="diagnosis">Diagnosis</option>
+          <option value="scaffolding">Scaffolding</option>
+          <option value="none">None</option>
+        </select>
+      </label>
+      <label>Confidence
+        <select name="tb_0314_c04__confidence">
+          <option value="">Select…</option>
+          <option value="high">High</option>
+          <option value="medium">Medium</option>
+          <option value="low">Low</option>
+        </select>
+      </label>
+      <label>Optional note
+        <textarea name="tb_0314_c04__notes" rows="2" placeholder="Only needed for ambiguity or a difficult decision"></textarea>
+      </label>
+    </section>
+    
+    <section class="item" data-criterion-id="tb_0047_c07">
+      <h2>14. Criterion <code>tb_0047_c07</code></h2>
+      <details>
+        <summary>Scenario context</summary>
+        <h3>Prompt</h3><p>Ok, just wondering why the slope and y-intercept in the given problem van der Waals equation depend on b, but in your final equation, only the slope ((V-b)/aR) depends on b, and it&#x27;s inverted for some reason? And there&#x27;s some kind of problem with your intercept value (a(V-b)/(RV)^2) because a negative value for T at P=0 doesn&#x27;t seem possible. I mean, physically, what does it even mean to have no pressure? </p>
+        <h3>Conversation context</h3><p><strong>student:</strong> Consider a gas that obeys the van der Waals equation of state: \( P = \frac{RT}{V - b} - \frac{a}{V^2}\) where a, b, and R are constants, p is the pressure, T is the absolute temperature, and v is the molar volume of the gas.<br>Suppose the gas undergoes a reversible transformation in which the molar volume is kept constant. The T versus P diagram of this transformation is a straight line. What is the slope of this line?</p><p><strong>tutor:</strong> # Finding the Slope of T vs P Diagram for van der Waals Gas at Constant Volume<br><br>To find the slope of the T versus P diagram for this transformation, I need to determine the relationship between temperature and pressure when volume is constant.<br><br>Given:<br>- van der Waals equation: $P = \frac{RT}{V - b} - \frac{a}{V^2}$<br>- Volume V is constant during the transformation<br>- The T vs P diagram is a straight line<br><br>## Solution Approach<br><br>Since I&#x27;m looking for the slope of a T vs P diagram, I need to express T in terms of P and then identify the coefficient of P in that expression.<br><br>Starting with the van der Waals equation:<br>$P = \frac{RT}{V - b} - \frac{a}{V^2}$<br><br>Rearranging to solve for T:<br>$\frac{RT}{V - b} = P + \frac{a}{V^2}$<br><br>$T = \frac{(V-b)}{R}\left(P + \frac{a}{V^2}\right)$<br><br>$T = \frac{(V-b)}{R}P + \frac{a(V-b)}{RV^2}$<br><br>This is in the form of a linear equation $T = mP + c$ where $m$ is the slope.<br><br>## Answer<br>The slope of the T versus P diagram is $\frac{V-b}{R}$</p>
+        <h3>Reference solution</h3><p># Finding the Slope of T vs P Diagram for van der Waals Gas at Constant Volume<br><br>To find the slope of the T versus P diagram for this transformation, I need to determine the relationship between temperature and pressure when volume is constant.<br><br>Given:<br>- van der Waals equation: $P = \frac{RT}{V - b} - \frac{a}{V^2}$<br>- Volume V is constant during the transformation<br>- The T vs P diagram is a straight line<br><br>## Solution Approach<br><br>Since I&#x27;m looking for the slope of a T vs P diagram, I need to express T in terms of P and then identify the coefficient of P in that expression.<br><br>Starting with the van der Waals equation:<br>$P = \frac{RT}{V - b} - \frac{a}{V^2}$<br><br>Rearranging to solve for T:<br>$\frac{RT}{V - b} = P + \frac{a}{V^2}$<br><br>$T = \frac{(V-b)}{R}\left(P + \frac{a}{V^2}\right)$<br><br>$T = \frac{(V-b)}{R}P + \frac{a(V-b)}{RV^2}$<br><br>This is in the form of a linear equation $T = mP + c$ where $m$ is the slope.<br><br>## Answer<br>The slope of the T versus P diagram is $\frac{V-b}{R}$</p>
+      </details>
+      <div class="criterion"><strong>Criterion:</strong> The response must correct the student stating that the correct y-intercept term does not square R: the correct term is  a(V – b)/(R V²).</div>
+      <div class="evidence"><strong>Expected evidence:</strong> <em>No separate expected-evidence field.</em></div>
+      <p class="instruction">Mark 1 only when this criterion cannot reasonably be satisfied without the skill.</p>
+      <div class="skills">
+            <fieldset class="skill">
+              <legend>Content</legend>
+              <div class="definition">Accurate subject-matter knowledge, calculations, facts, concepts, or domain reasoning needed to satisfy the criterion.</div>
+              <label><input type="radio" name="tb_0047_c07__content" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0047_c07__content" value="0"> 0 — not required</label>
+            </fieldset>
+            
+            <fieldset class="skill">
+              <legend>Diagnosis</legend>
+              <div class="definition">Identifying or reasoning about the student&#x27;s specific understanding, error, misconception, or likely source of difficulty.</div>
+              <label><input type="radio" name="tb_0047_c07__diagnosis" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0047_c07__diagnosis" value="0"> 0 — not required</label>
+            </fieldset>
+            
+            <fieldset class="skill">
+              <legend>Scaffolding</legend>
+              <div class="definition">Structuring guidance that helps the student make progress: hints, questions, intermediate steps, or appropriately withheld support.</div>
+              <label><input type="radio" name="tb_0047_c07__scaffolding" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0047_c07__scaffolding" value="0"> 0 — not required</label>
+            </fieldset>
+            </div>
+      <label>Primary skill
+        <select name="tb_0047_c07__primary">
+          <option value="">Select…</option>
+          <option value="content">Content</option>
+          <option value="diagnosis">Diagnosis</option>
+          <option value="scaffolding">Scaffolding</option>
+          <option value="none">None</option>
+        </select>
+      </label>
+      <label>Confidence
+        <select name="tb_0047_c07__confidence">
+          <option value="">Select…</option>
+          <option value="high">High</option>
+          <option value="medium">Medium</option>
+          <option value="low">Low</option>
+        </select>
+      </label>
+      <label>Optional note
+        <textarea name="tb_0047_c07__notes" rows="2" placeholder="Only needed for ambiguity or a difficult decision"></textarea>
+      </label>
+    </section>
+    
+    <section class="item" data-criterion-id="tb_0268_c03">
+      <h2>15. Criterion <code>tb_0268_c03</code></h2>
+      <details>
+        <summary>Scenario context</summary>
+        <h3>Prompt</h3><p>I think I&#x27;m misunderstanding something here. I totally understand why the trait cannot be either autosomal dominant or X-linked dominant. I even understand that the trait must be recessive. But I&#x27;m confused why I-2 having affected children with an unaffected male partner (I-1) would rule out autosomal recessive inheritance. With an autosomal recessive trait, couldn&#x27;t I-2 still have affected children with I-1 if he is a heterozygous carrier of the affected allele?</p>
+        <h3>Conversation context</h3><p><strong>student:</strong> In a three-generation pedigree showing the inheritance of a specific trait, an unaffected male (I-1) and an affected female (I-2) produce three offspring: II-2 (unaffected female), II-3 (affected male), and II-4 (affected male). II-2 mates with an unaffected male (II-1), producing three offspring: III-1 (affected male), III-2 (unaffected female), and III-3 (affected male). II-4 mates with an affected female (II-5), producing three affected offspring: III-4 (male), III-5 (male), and III-6 (female). What is the inheritance mode of the trait in question?</p><p><strong>tutor:</strong> # Analyzing the Inheritance Pattern<br><br>To determine the inheritance mode, I&#x27;ll analyze how this trait is passed through the family.<br><br>## Key Observations:<br>1. An affected female (I-2) has both affected sons (II-3, II-4) and an unaffected daughter (II-2)<br>2. The unaffected daughter (II-2) has an affected son (III-3)<br>3. When an affected male (II-4) mates with an affected female (II-5), all their children are affected<br><br>## Analysis of Possible Inheritance Modes:<br><br>- **Autosomal dominant**: Ruled out because II-2 is unaffected but has an affected child (III-3)<br>- **Autosomal recessive**: Ruled out because the affected female (I-2) had affected children with an unaffected male<br>- **X-linked dominant**: Ruled out because II-2 is unaffected despite having an affected mother<br><br>- **X-linked recessive**: This fits our observations:<br>  - Affected females (I-2) pass the trait to sons (II-3, II-4)<br>  - Unaffected female II-2 must be a carrier and passes the trait to her son (III-3)<br>  - When both parents have the trait (II-4 and II-5), all offspring are affected<br><br>The pattern is consistent with **X-linked recessive inheritance**.</p>
+        <h3>Reference solution</h3><p># Analyzing the Inheritance Pattern<br><br>To determine the inheritance mode, I&#x27;ll analyze how this trait is passed through the family.<br><br>## Key Observations:<br>1. An affected female (I-2) has both affected sons (II-3, II-4) and an unaffected daughter (II-2)<br>2. The unaffected daughter (II-2) has an affected son (III-3)<br>3. When an affected male (II-4) mates with an affected female (II-5), all their children are affected<br><br>## Analysis of Possible Inheritance Modes:<br><br>- **Autosomal dominant**: Ruled out because II-2 is unaffected but has an affected child (III-3)<br>- **Autosomal recessive**: Ruled out because the affected female (I-2) had affected children with an unaffected male<br>- **X-linked dominant**: Ruled out because II-2 is unaffected despite having an affected mother<br><br>- **X-linked recessive**: This fits our observations:<br>  - Affected females (I-2) pass the trait to sons (II-3, II-4)<br>  - Unaffected female II-2 must be a carrier and passes the trait to her son (III-3)<br>  - When both parents have the trait (II-4 and II-5), all offspring are affected<br><br>The pattern is consistent with **X-linked recessive inheritance**.</p>
+      </details>
+      <div class="criterion"><strong>Criterion:</strong> The model must acknowledge the student&#x27;s confusion.</div>
+      <div class="evidence"><strong>Expected evidence:</strong> <em>No separate expected-evidence field.</em></div>
+      <p class="instruction">Mark 1 only when this criterion cannot reasonably be satisfied without the skill.</p>
+      <div class="skills">
+            <fieldset class="skill">
+              <legend>Content</legend>
+              <div class="definition">Accurate subject-matter knowledge, calculations, facts, concepts, or domain reasoning needed to satisfy the criterion.</div>
+              <label><input type="radio" name="tb_0268_c03__content" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0268_c03__content" value="0"> 0 — not required</label>
+            </fieldset>
+            
+            <fieldset class="skill">
+              <legend>Diagnosis</legend>
+              <div class="definition">Identifying or reasoning about the student&#x27;s specific understanding, error, misconception, or likely source of difficulty.</div>
+              <label><input type="radio" name="tb_0268_c03__diagnosis" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0268_c03__diagnosis" value="0"> 0 — not required</label>
+            </fieldset>
+            
+            <fieldset class="skill">
+              <legend>Scaffolding</legend>
+              <div class="definition">Structuring guidance that helps the student make progress: hints, questions, intermediate steps, or appropriately withheld support.</div>
+              <label><input type="radio" name="tb_0268_c03__scaffolding" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0268_c03__scaffolding" value="0"> 0 — not required</label>
+            </fieldset>
+            </div>
+      <label>Primary skill
+        <select name="tb_0268_c03__primary">
+          <option value="">Select…</option>
+          <option value="content">Content</option>
+          <option value="diagnosis">Diagnosis</option>
+          <option value="scaffolding">Scaffolding</option>
+          <option value="none">None</option>
+        </select>
+      </label>
+      <label>Confidence
+        <select name="tb_0268_c03__confidence">
+          <option value="">Select…</option>
+          <option value="high">High</option>
+          <option value="medium">Medium</option>
+          <option value="low">Low</option>
+        </select>
+      </label>
+      <label>Optional note
+        <textarea name="tb_0268_c03__notes" rows="2" placeholder="Only needed for ambiguity or a difficult decision"></textarea>
+      </label>
+    </section>
+    
+    <section class="item" data-criterion-id="tb_0554_c02">
+      <h2>16. Criterion <code>tb_0554_c02</code></h2>
+      <details>
+        <summary>Scenario context</summary>
+        <h3>Prompt</h3><p># Hemoglobin Mutation in Sickle Cell Disease<br><br>Wild type is glutamic acid (Gln, Q) -&gt; CAA, CAG\<br>Mutant is valine (Val, V) -&gt; GUU, GUA, GUC, GUG\<br>More than one is substituted?<br><br>Well glutamic acid to valine will impact structure and function because glutamic acid has bulky, charged side chain. Valine is hydrophobic and small. If it&#x27;s on the surface of hemoglobin, it&#x27;s going to want to hide away from the aqueous environment around it. </p>
+        <h3>Conversation context</h3><p><strong>student:</strong> Hemoglobin is the oxygen-binding protein found in red blood cells that is responsible for transporting oxygen from the lungs to the tissues. It consists of four subunits: two beta-globin subunits and two alpha-globin subunits. A point mutation in the sixth codon of the HBB gene can change the amino acid sequence of beta-globin, resulting in sickle cell disease. Specifically, the wild-type allele codes for glutamic acid at this position, while the mutant allele codes for valine. Identify the change in the nucleotide sequence that results in the mutant protein, and describe the effect of this mutation on the protein&#x27;s structure and function.</p>
+        <h3>Reference solution</h3><p></p>
+      </details>
+      <div class="criterion"><strong>Criterion:</strong> The response must suggest that the student recheck the abbreviations they used for glutamic acid and valine. </div>
+      <div class="evidence"><strong>Expected evidence:</strong> <em>No separate expected-evidence field.</em></div>
+      <p class="instruction">Mark 1 only when this criterion cannot reasonably be satisfied without the skill.</p>
+      <div class="skills">
+            <fieldset class="skill">
+              <legend>Content</legend>
+              <div class="definition">Accurate subject-matter knowledge, calculations, facts, concepts, or domain reasoning needed to satisfy the criterion.</div>
+              <label><input type="radio" name="tb_0554_c02__content" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0554_c02__content" value="0"> 0 — not required</label>
+            </fieldset>
+            
+            <fieldset class="skill">
+              <legend>Diagnosis</legend>
+              <div class="definition">Identifying or reasoning about the student&#x27;s specific understanding, error, misconception, or likely source of difficulty.</div>
+              <label><input type="radio" name="tb_0554_c02__diagnosis" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0554_c02__diagnosis" value="0"> 0 — not required</label>
+            </fieldset>
+            
+            <fieldset class="skill">
+              <legend>Scaffolding</legend>
+              <div class="definition">Structuring guidance that helps the student make progress: hints, questions, intermediate steps, or appropriately withheld support.</div>
+              <label><input type="radio" name="tb_0554_c02__scaffolding" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0554_c02__scaffolding" value="0"> 0 — not required</label>
+            </fieldset>
+            </div>
+      <label>Primary skill
+        <select name="tb_0554_c02__primary">
+          <option value="">Select…</option>
+          <option value="content">Content</option>
+          <option value="diagnosis">Diagnosis</option>
+          <option value="scaffolding">Scaffolding</option>
+          <option value="none">None</option>
+        </select>
+      </label>
+      <label>Confidence
+        <select name="tb_0554_c02__confidence">
+          <option value="">Select…</option>
+          <option value="high">High</option>
+          <option value="medium">Medium</option>
+          <option value="low">Low</option>
+        </select>
+      </label>
+      <label>Optional note
+        <textarea name="tb_0554_c02__notes" rows="2" placeholder="Only needed for ambiguity or a difficult decision"></textarea>
+      </label>
+    </section>
+    
+    <section class="item" data-criterion-id="tb_0550_c04">
+      <h2>17. Criterion <code>tb_0550_c04</code></h2>
+      <details>
+        <summary>Scenario context</summary>
+        <h3>Prompt</h3><p>Alright, let&#x27;s look at the data.<br><br>I know that DNA methylation is an epigenetic modification where methyl groups attach to DNA, usually resulting in gene silencing or reduced expression. This matches what we see here - high methylation near Gene X correlates with low expression of Gene X.<br><br>Hm. I&#x27;m perplexed. The cancer rate is throwing me off. I would expect that more methylation would cause more cancer, because methylation is usually harmful and linked to silencing genes. However, the methyl-deficient group had LOW methylation, high expression of the tumor suppressor gene, but also had MORE cancer (60%). This means that the gene is an oncogene, not a tumor suppressor.</p>
+        <h3>Conversation context</h3><p><strong>student:</strong> A researcher investigates how environmental factors affect gene expression in mice. Pregnant mice are fed diets rich in methyl donors (i.e., folic acid) or methyl-deficient. The offspring are analyzed for DNA methylation near Gene X, which is a tumor suppressor; Gene X expression levels; and phenotypic outcomes in terms of cancer incidence. The data are as follows:<br><br>Methyl-rich diet group: High Gene X methylation; low Gene X expression; 10% cancer incidence<br>Methyl-deficient diet group: Low Gene X methylation; high Gene X expression; 60% cancer incidence<br><br>Analyze the data to describe the relationship between DNA methylation, Gene X expression, and cancer incidence.</p>
+        <h3>Reference solution</h3><p></p>
+      </details>
+      <div class="criterion"><strong>Criterion:</strong> The response must not provide the next step directly, by explicitly stating that Gene X is indeed a tumor suppressor, not an oncogene.</div>
+      <div class="evidence"><strong>Expected evidence:</strong> <em>No separate expected-evidence field.</em></div>
+      <p class="instruction">Mark 1 only when this criterion cannot reasonably be satisfied without the skill.</p>
+      <div class="skills">
+            <fieldset class="skill">
+              <legend>Content</legend>
+              <div class="definition">Accurate subject-matter knowledge, calculations, facts, concepts, or domain reasoning needed to satisfy the criterion.</div>
+              <label><input type="radio" name="tb_0550_c04__content" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0550_c04__content" value="0"> 0 — not required</label>
+            </fieldset>
+            
+            <fieldset class="skill">
+              <legend>Diagnosis</legend>
+              <div class="definition">Identifying or reasoning about the student&#x27;s specific understanding, error, misconception, or likely source of difficulty.</div>
+              <label><input type="radio" name="tb_0550_c04__diagnosis" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0550_c04__diagnosis" value="0"> 0 — not required</label>
+            </fieldset>
+            
+            <fieldset class="skill">
+              <legend>Scaffolding</legend>
+              <div class="definition">Structuring guidance that helps the student make progress: hints, questions, intermediate steps, or appropriately withheld support.</div>
+              <label><input type="radio" name="tb_0550_c04__scaffolding" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0550_c04__scaffolding" value="0"> 0 — not required</label>
+            </fieldset>
+            </div>
+      <label>Primary skill
+        <select name="tb_0550_c04__primary">
+          <option value="">Select…</option>
+          <option value="content">Content</option>
+          <option value="diagnosis">Diagnosis</option>
+          <option value="scaffolding">Scaffolding</option>
+          <option value="none">None</option>
+        </select>
+      </label>
+      <label>Confidence
+        <select name="tb_0550_c04__confidence">
+          <option value="">Select…</option>
+          <option value="high">High</option>
+          <option value="medium">Medium</option>
+          <option value="low">Low</option>
+        </select>
+      </label>
+      <label>Optional note
+        <textarea name="tb_0550_c04__notes" rows="2" placeholder="Only needed for ambiguity or a difficult decision"></textarea>
+      </label>
+    </section>
+    
+    <section class="item" data-criterion-id="tb_0546_c07">
+      <h2>18. Criterion <code>tb_0546_c07</code></h2>
+      <details>
+        <summary>Scenario context</summary>
+        <h3>Prompt</h3><p># <br><br>```java<br>ppublic class ArithmeticProgression extends Progression {<br>    private long increment;<br><br>    // Constructor sets default increment<br>    public ArithmeticProgression() {<br>        this(0, 1);  // default start = 0, increment = 1<br>    }<br><br>    // Constructor with increment only<br>    public ArithmeticProgression(long inc) {<br>        this.increment = inc;<br>    }<br><br>    // Constructor with start and increment<br>    public ArithmeticProgression(long start, long inc) {<br>        increment = inc;<br>        start = current;  // trying to set current to start<br>    }<br><br>    // I think I also need to override advance?<br>}<br>```</p>
+        <h3>Conversation context</h3><p><strong>student:</strong> Read the following code:<br><br>```java<br>public class Progression {<br>    protected long current;<br><br>    public Progression() {<br>        current = 0;<br>    }<br><br>    public Progression(long n) {<br>        current = n;<br>    }<br><br>    protected void advance() {<br>        currrent++;<br>    }<br><br>    public long nextValue() {<br>        long answer = current;<br>        advance();<br>        return answer;<br>    }<br>}<br>```<br><br>Create a subclass of this `Progression` class called `ArithmeticProgression` that creates an arithmetic progression based on an `increment`  given at the class&#x27;s instantiation.</p>
+        <h3>Reference solution</h3><p></p>
+      </details>
+      <div class="criterion"><strong>Criterion:</strong> The response must identify the student is unable to proceed because without calling `super(start)`, the inherited `current` field remains uninitialized, so `advance()` logic never applies to the right starting value.</div>
+      <div class="evidence"><strong>Expected evidence:</strong> <em>No separate expected-evidence field.</em></div>
+      <p class="instruction">Mark 1 only when this criterion cannot reasonably be satisfied without the skill.</p>
+      <div class="skills">
+            <fieldset class="skill">
+              <legend>Content</legend>
+              <div class="definition">Accurate subject-matter knowledge, calculations, facts, concepts, or domain reasoning needed to satisfy the criterion.</div>
+              <label><input type="radio" name="tb_0546_c07__content" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0546_c07__content" value="0"> 0 — not required</label>
+            </fieldset>
+            
+            <fieldset class="skill">
+              <legend>Diagnosis</legend>
+              <div class="definition">Identifying or reasoning about the student&#x27;s specific understanding, error, misconception, or likely source of difficulty.</div>
+              <label><input type="radio" name="tb_0546_c07__diagnosis" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0546_c07__diagnosis" value="0"> 0 — not required</label>
+            </fieldset>
+            
+            <fieldset class="skill">
+              <legend>Scaffolding</legend>
+              <div class="definition">Structuring guidance that helps the student make progress: hints, questions, intermediate steps, or appropriately withheld support.</div>
+              <label><input type="radio" name="tb_0546_c07__scaffolding" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0546_c07__scaffolding" value="0"> 0 — not required</label>
+            </fieldset>
+            </div>
+      <label>Primary skill
+        <select name="tb_0546_c07__primary">
+          <option value="">Select…</option>
+          <option value="content">Content</option>
+          <option value="diagnosis">Diagnosis</option>
+          <option value="scaffolding">Scaffolding</option>
+          <option value="none">None</option>
+        </select>
+      </label>
+      <label>Confidence
+        <select name="tb_0546_c07__confidence">
+          <option value="">Select…</option>
+          <option value="high">High</option>
+          <option value="medium">Medium</option>
+          <option value="low">Low</option>
+        </select>
+      </label>
+      <label>Optional note
+        <textarea name="tb_0546_c07__notes" rows="2" placeholder="Only needed for ambiguity or a difficult decision"></textarea>
+      </label>
+    </section>
+    
+    <section class="item" data-criterion-id="tb_0582_c01">
+      <h2>19. Criterion <code>tb_0582_c01</code></h2>
+      <details>
+        <summary>Scenario context</summary>
+        <h3>Prompt</h3><p><br>```java<br>public void simulateOneDay(int numPeople) {<br>    // I need to determine if today is a normal day (95% chance) or abnormal day (5% chance)<br>    double randomValue = Math.random();<br>    <br>    if (randomValue &lt;= 0.95) {  // Normal day<br>        // I don&#x27;t know how to calculate this<br>        int foodPerPerson = ???;<br>        <br>    } else {  // Abnormal day - mold infestation<br>        // All food is wiped out<br>        currentFood = 0;<br>    }<br>}<br>```</p>
+        <h3>Conversation context</h3><p><strong>student:</strong> The following class simulates a food bank, which contains information about how much food is at the food bank, and simulates how much food is eaten.<br><br>```java<br>public class FoodBank {<br><br>    /**<br>    * The amount of food, in grams, currently at the food bank<br>    * Initialized in the constructor and is always greater than or equal to zero<br>    */<br>    private int currentFood;<br><br>    /**<br>    * Simulates one day with numPeople or possibly a mold infestation at the food bank<br>    * @param numPeople - will always be greater than 0<br>    */<br>    public void simulateOneDay(int numPeople) {<br>        /* To be implemented */<br>    }<br>}<br>```<br><br>Implement `simulateOneDay()`, which simulates the `numPeople` or possibly a mold infestation at the food bank for one day. The method determines the amount of food taken from the food bank on this day and updates `currentFood`. The simulation accounts for normal conditions, which occur 95% of the time, and abnormal conditions, which occur 5% of the time.<br><br>Under normal conditions, the simulation assumes that on any given day, the food bank operates normally and each person that arrives consumes the same amount of food. The amount of food on a given day is between 10 and 50 grams of food, inclusive, in 1-gram increments.<br><br>Under abnormal conditions, a mold infestation wipes out all the food at the food bank, and the amount of food left at the end of the day is zero.</p>
+        <h3>Reference solution</h3><p></p>
+      </details>
+      <div class="criterion"><strong>Criterion:</strong> The response must not give a specific formula for the student to implement, such as `int randomNumber = min + (int) (Math.random() * (max - min + 1))`.</div>
+      <div class="evidence"><strong>Expected evidence:</strong> <em>No separate expected-evidence field.</em></div>
+      <p class="instruction">Mark 1 only when this criterion cannot reasonably be satisfied without the skill.</p>
+      <div class="skills">
+            <fieldset class="skill">
+              <legend>Content</legend>
+              <div class="definition">Accurate subject-matter knowledge, calculations, facts, concepts, or domain reasoning needed to satisfy the criterion.</div>
+              <label><input type="radio" name="tb_0582_c01__content" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0582_c01__content" value="0"> 0 — not required</label>
+            </fieldset>
+            
+            <fieldset class="skill">
+              <legend>Diagnosis</legend>
+              <div class="definition">Identifying or reasoning about the student&#x27;s specific understanding, error, misconception, or likely source of difficulty.</div>
+              <label><input type="radio" name="tb_0582_c01__diagnosis" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0582_c01__diagnosis" value="0"> 0 — not required</label>
+            </fieldset>
+            
+            <fieldset class="skill">
+              <legend>Scaffolding</legend>
+              <div class="definition">Structuring guidance that helps the student make progress: hints, questions, intermediate steps, or appropriately withheld support.</div>
+              <label><input type="radio" name="tb_0582_c01__scaffolding" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0582_c01__scaffolding" value="0"> 0 — not required</label>
+            </fieldset>
+            </div>
+      <label>Primary skill
+        <select name="tb_0582_c01__primary">
+          <option value="">Select…</option>
+          <option value="content">Content</option>
+          <option value="diagnosis">Diagnosis</option>
+          <option value="scaffolding">Scaffolding</option>
+          <option value="none">None</option>
+        </select>
+      </label>
+      <label>Confidence
+        <select name="tb_0582_c01__confidence">
+          <option value="">Select…</option>
+          <option value="high">High</option>
+          <option value="medium">Medium</option>
+          <option value="low">Low</option>
+        </select>
+      </label>
+      <label>Optional note
+        <textarea name="tb_0582_c01__notes" rows="2" placeholder="Only needed for ambiguity or a difficult decision"></textarea>
+      </label>
+    </section>
+    
+    <section class="item" data-criterion-id="tb_0378_c14">
+      <h2>20. Criterion <code>tb_0378_c14</code></h2>
+      <details>
+        <summary>Scenario context</summary>
+        <h3>Prompt</h3><p>I am super stuck on this and I&#x27;m losing my mind. I am attempting this question and can&#x27;t seem to be able to figure out the next few steps, kindly help me. I feel like I understand atom economy but I keep getting confused.<br><br> I know this is an addition reaction and the prompt says 100% atom economy, giving the product iodoacetylene. So i need to find X in the following reaction  X + Y + HI &lt;--&gt; C2H3I, making sure all the reactants are used up. Ok, so balancing the atoms from C2H3I if we minus idodine and hydrogen we get C2H2 and all atoms are accounted for. Usually there isn&#x27;t 100% economy in real life because there are so many side products, but for this theoretical problem, it works out perfectly, implying no other atoms are created or destroyed. So, it&#x27;s definitely ethene. It also fits with Markovnikov&#x27;s rule, as the iodine in HI can go to either carbocation since they both are unsaturated. The final reaction will produce iodoethylene: C2H2 + HI &lt;--&gt; C2HI3. But, something seems a little off!</p>
+        <h3>Conversation context</h3><p><strong>student:</strong> In a simple addition reaction with 100% atom economy, hydrogen iodide is reacted with reactant X, the product is iodoethylene, what is reactant X?</p>
+        <h3>Reference solution</h3><p></p>
+      </details>
+      <div class="criterion"><strong>Criterion:</strong> The response should use the 2nd person point of view. Use “You” instead of “The student”/“They”.</div>
+      <div class="evidence"><strong>Expected evidence:</strong> <em>No separate expected-evidence field.</em></div>
+      <p class="instruction">Mark 1 only when this criterion cannot reasonably be satisfied without the skill.</p>
+      <div class="skills">
+            <fieldset class="skill">
+              <legend>Content</legend>
+              <div class="definition">Accurate subject-matter knowledge, calculations, facts, concepts, or domain reasoning needed to satisfy the criterion.</div>
+              <label><input type="radio" name="tb_0378_c14__content" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0378_c14__content" value="0"> 0 — not required</label>
+            </fieldset>
+            
+            <fieldset class="skill">
+              <legend>Diagnosis</legend>
+              <div class="definition">Identifying or reasoning about the student&#x27;s specific understanding, error, misconception, or likely source of difficulty.</div>
+              <label><input type="radio" name="tb_0378_c14__diagnosis" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0378_c14__diagnosis" value="0"> 0 — not required</label>
+            </fieldset>
+            
+            <fieldset class="skill">
+              <legend>Scaffolding</legend>
+              <div class="definition">Structuring guidance that helps the student make progress: hints, questions, intermediate steps, or appropriately withheld support.</div>
+              <label><input type="radio" name="tb_0378_c14__scaffolding" value="1"> 1 — required</label>
+              <label><input type="radio" name="tb_0378_c14__scaffolding" value="0"> 0 — not required</label>
+            </fieldset>
+            </div>
+      <label>Primary skill
+        <select name="tb_0378_c14__primary">
+          <option value="">Select…</option>
+          <option value="content">Content</option>
+          <option value="diagnosis">Diagnosis</option>
+          <option value="scaffolding">Scaffolding</option>
+          <option value="none">None</option>
+        </select>
+      </label>
+      <label>Confidence
+        <select name="tb_0378_c14__confidence">
+          <option value="">Select…</option>
+          <option value="high">High</option>
+          <option value="medium">Medium</option>
+          <option value="low">Low</option>
+        </select>
+      </label>
+      <label>Optional note
+        <textarea name="tb_0378_c14__notes" rows="2" placeholder="Only needed for ambiguity or a difficult decision"></textarea>
+      </label>
+    </section>
+    </form>
+<script>
+const reviewer = "C";
+const storageKey = "qmatrix-human-review-v1-C";
+const skills = ["content", "diagnosis", "scaffolding"];
+const form = document.getElementById("review-form");
+function state() {
+  const out = {};
+  new FormData(form).forEach((value, key) => out[key] = value);
+  return out;
+}
+function save() { localStorage.setItem(storageKey, JSON.stringify(state())); updateProgress(); }
+function restore() {
+  const saved = JSON.parse(localStorage.getItem(storageKey) || "{}");
+  Object.entries(saved).forEach(([name, value]) => {
+    const fields = form.elements[name];
+    if (!fields) return;
+    if (fields.length && fields[0] && fields[0].type === "radio") {
+      [...fields].forEach(field => field.checked = field.value === value);
+    } else { fields.value = value; }
+  });
+}
+function complete(card) {
+  const cid = card.dataset.criterionId;
+  return skills.every(skill => form.querySelector(`input[name="${cid}__${skill}"]:checked`))
+    && form.elements[`${cid}__primary`].value
+    && form.elements[`${cid}__confidence`].value;
+}
+function updateProgress() {
+  const cards = [...document.querySelectorAll(".item")];
+  document.getElementById("progress").textContent = `${cards.filter(complete).length} / ${cards.length} complete`;
+}
+function csvCell(value) { return '"' + String(value ?? "").replaceAll('"', '""') + '"'; }
+document.getElementById("export").addEventListener("click", () => {
+  const cards = [...document.querySelectorAll(".item")];
+  const missing = cards.filter(card => !complete(card));
+  if (missing.length) { alert(`Please finish all required fields. ${missing.length} criteria remain incomplete.`); return; }
+  const header = ["reviewer", "criterion_id", "content", "diagnosis", "scaffolding", "primary_skill", "confidence", "notes"];
+  const rows = [header];
+  cards.forEach(card => {
+    const cid = card.dataset.criterionId;
+    rows.push([reviewer, cid,
+      form.querySelector(`input[name="${cid}__content"]:checked`).value,
+      form.querySelector(`input[name="${cid}__diagnosis"]:checked`).value,
+      form.querySelector(`input[name="${cid}__scaffolding"]:checked`).value,
+      form.elements[`${cid}__primary`].value,
+      form.elements[`${cid}__confidence`].value,
+      form.elements[`${cid}__notes`].value]);
+  });
+  const csv = rows.map(row => row.map(csvCell).join(",")).join("\n") + "\n";
+  const url = URL.createObjectURL(new Blob([csv], {type: "text/csv;charset=utf-8"}));
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = `qmatrix_review_${reviewer}.csv`;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+});
+form.addEventListener("change", save); form.addEventListener("input", save); restore(); updateProgress();
+</script>
+</body>
+</html>
