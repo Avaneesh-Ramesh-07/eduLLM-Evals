@@ -115,10 +115,12 @@ Each run writes `runs/<run_id>/` with: `manifest.json` (seeds, config echo),
 
 ## Generating open-model responses (AWS P6 / 8×B200)
 
-`tutor-cat generate` runs the open-weight calibration models in `models.yaml`
-over all 662 TutorBench scenarios and writes one JSONL shard per model (the PRD
-Model Output schema). This is a separate stage from the CAT/judge pipeline
-above — it only produces the response matrix.
+`tutor-cat generate` runs the **100 open-weight "common person" models** in
+`models.yaml` over all 662 TutorBench scenarios and writes one JSONL shard per
+model (the PRD Model Output schema). Those 100 checkpoints are the rows of the
+MIRT response matrix; a wide, diverse roster is what powers item calibration.
+This is a separate stage from the CAT/judge pipeline above — it only produces
+the response matrix.
 
 The GPU deps have no Windows wheels, so this stage runs on the Linux GPU box; the
 pure logic (prompt building, manifest/registry, output schema) is importable and
@@ -140,18 +142,21 @@ tutor-cat generate --gpu-ids 8 --s3-uri s3://<bucket>/tutorbench-responses
 
 Design notes:
 
-- **8-way data parallelism**: each ≤3B model fits one B200, so one worker per GPU
-  runs a whole model (`tensor_parallel_size=1`); the fleet pulls models off a
-  shared queue. Not tensor parallelism. `--gpu-ids <i,j,…>` restricts the fleet to
-  specific physical devices (each worker gets `CUDA_VISIBLE_DEVICES=<id>`, so it
-  cannot touch any other GPU); `--gpu-ids 8` runs the entire roster on GPU 8 alone.
+- **8-way data parallelism**: each ≤7B model fits one B200, so one worker per GPU
+  runs a whole model (`tensor_parallel_size=1`); the fleet pulls the 100 models
+  off a shared queue. Not tensor parallelism. `--gpu-ids <i,j,…>` restricts the
+  fleet to specific physical devices (each worker gets `CUDA_VISIBLE_DEVICES=<id>`,
+  so it cannot touch any other GPU); `--gpu-ids 8` runs the entire roster on GPU 8
+  alone.
 - **Resumable**: one shard per model, keyed by `Scenario` id. Re-running skips
   completed cells, so an interrupted run just continues (`--no-resume` to force).
 - **Backends**: vLLM by default; a transformers fallback (`hf_fallback`) serves
-  SSM/hybrid (mamba, OpenELM) and encoder-decoder (flan-t5, via
-  `AutoModelForSeq2SeqLM`) models vLLM can't. `registry.py` derives the backend,
-  chat-template flag, gated flag, and `max_model_len` clamp from each model id;
-  override any of these per model in `models.yaml`.
+  the architectures vLLM can't — SSM (mamba-2.8b), OpenELM, gemma-3, and GPT-Neo
+  (`GPTNeoForCausalLM`). `registry.py` derives the backend, chat-template flag,
+  gated flag, and `max_model_len` clamp from each model id; override any per model
+  in `models.yaml`. Two OpenELM rows also set `tokenizer_id: meta-llama/Llama-2-7b-hf`
+  because their repos ship no tokenizer. (Encoder-decoder seq2seq — flan-t5 via
+  `AutoModelForSeq2SeqLM` — is still supported by the code but isn't in the 100.)
 - **Failure isolation**: a load/generation error becomes an `Issue=1` cell rather
   than crashing the fleet, so the matrix always has an entry per (model, scenario).
 - **Preview without a GPU**: `tutor-cat generate --dry-run --limit 5` prints the
@@ -159,6 +164,68 @@ Design notes:
 - **`Latency (s)`**: per-request from vLLM metrics when available; under batched
   decode per-scenario wall-clock is otherwise ill-defined (use `elapsed_s` /
   throughput in the run summary for per-model timing).
+
+### Running it on the P6 node from your laptop
+
+The job runs *on* the GPU node (vLLM loads the B200s); you just drive it over
+SSH. This uses only the P6 box you already pay for — it provisions nothing and
+incurs no extra AWS spend. Results come back over `scp`, so S3 is optional.
+
+```bash
+# 1. from your laptop: get the code onto the node (data/*.jsonl ride along in git)
+ssh <user>@<p6-node>
+git clone <repo-url> tutor_cat && cd tutor_cat      # or, if already cloned: git pull
+
+# 2. one-time env (heavy [gen] deps: vllm/torch/transformers)
+python -m venv .venv && source .venv/bin/activate
+pip install -e ".[gen]"
+export HF_TOKEN=<token>          # gated repos; set on the node, never committed/pushed
+
+# 3. confirm how THIS node numbers its GPUs — indices are 0-based and per-node
+nvidia-smi -L                    # e.g. 8 GPUs => "GPU 0 ... GPU 7"
+
+# 4. smoke test on the target GPU (1 small model, 2 scenarios)
+tutor-cat generate --model Qwen/Qwen2.5-0.5B-Instruct --limit 2 --gpu-ids 8
+
+# 5. full run, pinned to that GPU, surviving laptop disconnect
+tmux new -s respgen
+tutor-cat generate --gpu-ids 8 --out-dir runs/responses
+#   detach: Ctrl-b then d    |    reattach later: tmux attach -t respgen
+
+# 6. pull the shards back to your laptop (no S3, no extra spend)
+#   run this ON YOUR LAPTOP:
+scp -r <user>@<p6-node>:~/tutor_cat/runs/responses ./runs/
+```
+
+**GPU numbering (read before step 4):** CUDA indices are 0-based and per-node, so
+on the standard 8×B200 node the eighth GPU is `--gpu-ids 7`, **not** `8`. If
+`nvidia-smi -L` shows only GPU 0–7, use `--gpu-ids 7`; `--gpu-ids 8` now fails
+fast with the valid range (`this node has 8 GPU(s), valid indices 0..7`) instead
+of crashing each worker mid-load. `--gpu-ids 8` only works if the node actually
+has ≥9 GPUs.
+
+**Interrupted?** Re-run the exact same command — shards are resumable (completed
+scenarios are skipped), so it continues where it stopped. `--no-resume` forces a
+clean regen. If the node runs Slurm rather than bare SSH, wrap step 5 in an
+sbatch script that requests one GPU (see `scripts/cluster/serve_prometheus.sbatch`
+for the pattern) and run `tutor-cat generate` in the job body.
+
+#### Helper scripts: run on one shared GPU without disturbing neighbors
+
+When the P6 box is shared and only one GPU is yours, use the pinned launchers in
+`scripts/aws/` (default: **GPU index 2**):
+
+```bash
+bash scripts/aws/setup_respgen.sh          # one-time: venv + pip install -e ".[gen]" (no GPU touched)
+source .venv/bin/activate && export HF_TOKEN=<token>
+bash scripts/aws/run_respgen_gpu2.sh       # all 100 models on GPU 2 only; S3_URI=s3://… to upload
+```
+
+`run_respgen_gpu2.sh` runs `tutor-cat generate --gpu-ids 2`, so every worker gets
+`CUDA_VISIBLE_DEVICES=2` and cannot see any other GPU. It **pre-flight refuses to
+start if GPU 2 already has a compute process**, so it never disturbs an existing
+job — free the GPU or set `GPU=<free index>` instead of killing anything. Change
+the target with `GPU=<n> bash scripts/aws/run_respgen_gpu2.sh`.
 
 ## Tests (offline, no API keys needed)
 

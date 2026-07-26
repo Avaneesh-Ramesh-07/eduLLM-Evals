@@ -159,16 +159,20 @@ def cmd_generate(args: argparse.Namespace) -> int:
 
     from .respgen.orchestrator import run_fleet
 
-    results = run_fleet(
-        specs,
-        args.scenarios,
-        args.out_dir,
-        s3_uri=args.s3_uri,
-        resume=not args.no_resume,
-        gpus=args.gpus,
-        gpu_ids=gpu_ids,
-        limit=args.limit,
-    )
+    try:
+        results = run_fleet(
+            specs,
+            args.scenarios,
+            args.out_dir,
+            s3_uri=args.s3_uri,
+            resume=not args.no_resume,
+            gpus=args.gpus,
+            gpu_ids=gpu_ids,
+            limit=args.limit,
+        )
+    except ValueError as e:  # e.g. --gpu-ids out of range for this node
+        print(f"generate: {e}", file=sys.stderr)
+        return 1
     for r in results:
         print(json.dumps(r, ensure_ascii=False))
     failed = [r for r in results if r.get("status") not in ("ok", "already_complete")]

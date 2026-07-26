@@ -32,6 +32,12 @@ gen = [
     "accelerate>=0.33",
     "boto3>=1.34",
 ]
+# MCQ IRT calibration + CAT over existing loglikelihood grids (CPU only).
+irt = [
+    "girth>=0.8",
+    "scipy>=1.11",
+    "pandas>=2.0",
+]
 
 [project.scripts]
 tutor-cat = "tutor_cat.cli:main"

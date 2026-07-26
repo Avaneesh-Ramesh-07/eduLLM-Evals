@@ -117,13 +117,13 @@ class HFBackend:
         self.device = device
         self._torch = torch
 
-        # Models that ship no tokenizer (OpenELM) point tokenizer_id at an
-        # ungated mirror; the tokenizer revision must NOT be the model's SHA, so
-        # only pin the revision when loading from the model repo itself.
+        # Some repos ship no tokenizer (e.g. apple/OpenELM expects Llama-2's).
+        # When borrowing another repo's tokenizer, don't reuse this model's
+        # revision SHA — it doesn't exist in the tokenizer repo.
         tok_src = tokenizer_id or model_id
-        tok_revision = revision if tokenizer_id is None else None
+        tok_rev = revision if tok_src == model_id else None
         self.tokenizer = AutoTokenizer.from_pretrained(
-            tok_src, revision=tok_revision, trust_remote_code=True
+            tok_src, revision=tok_rev, trust_remote_code=True
         )
         if self.tokenizer.pad_token is None:
             self.tokenizer.pad_token = self.tokenizer.eos_token
