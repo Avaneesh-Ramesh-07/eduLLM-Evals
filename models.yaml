@@ -254,12 +254,15 @@ models:
     params_b: 4
 
   # --- Apple OpenELM (repo ships NO tokenizer -> borrow Llama-2's) ---
+  # Use the UNGATED NousResearch mirror (byte-identical to meta-llama/Llama-2-7b-hf,
+  # which is gated and 403s). registry.guess_tokenizer_id also derives this, so the
+  # key here is belt-and-suspenders / documentation.
   - id: apple/OpenELM-1_1B
     params_b: 1.1
-    tokenizer_id: meta-llama/Llama-2-7b-hf
+    tokenizer_id: NousResearch/Llama-2-7b-hf
   - id: apple/OpenELM-3B
     params_b: 3
-    tokenizer_id: meta-llama/Llama-2-7b-hf
+    tokenizer_id: NousResearch/Llama-2-7b-hf
 
   # --- LLM360 Amber (fully-open LLaMA-arch checkpoint) ---
   - id: LLM360/Amber

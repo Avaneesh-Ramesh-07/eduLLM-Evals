@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "C:\Users\Avane\UT-Austin\AlphaIA\LLM-From-Scratch\tutor_cat\_make_english_subset.py", line 64, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\Avane\UT-Austin\AlphaIA\LLM-From-Scratch\tutor_cat\_make_english_subset.py", line 55, in main
+    os.replace(TMP, OUT)
+    ~~~~~~~~~~^^^^^^^^^^
+PermissionError: [WinError 5] Access is denied: 'rurbichub_v1_sample_220rows.tmp.csv' -> 'rurbichub_v1_sample_220rows.csv'

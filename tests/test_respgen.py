@@ -190,6 +190,24 @@ def test_clamp_reads_nested_text_config():
     assert mml == 2048
 
 
+def test_clamp_reads_openelm_max_context_length():
+    # OpenELM's config names its window "max_context_length"; without that probe key
+    # it would fall through to the 32768 cap instead of its true ~2048 window.
+    mml = registry.resolve_max_model_len(
+        "apple/OpenELM-3B", cap=32768, fetch_config=lambda _id: {"max_context_length": 2048}
+    )
+    assert mml == 2048
+
+
+def test_clamp_prefers_standard_key_over_max_context_length():
+    # when both are present the standard key wins (checked first).
+    mml = registry.resolve_max_model_len(
+        "x", cap=32768,
+        fetch_config=lambda _id: {"max_position_embeddings": 4096, "max_context_length": 999},
+    )
+    assert mml == 4096
+
+
 # --- manifest parsing ------------------------------------------------------
 
 def test_manifest_merges_defaults(tmp_path):
@@ -242,25 +260,62 @@ def test_shipped_models_yaml_loads():
     assert "apple/OpenELM-1_1B" in ids            # hf_fallback + tokenizer override
 
 
-def test_openelm_entries_borrow_a_tokenizer():
+def test_openelm_entries_borrow_the_ungated_tokenizer():
     from pathlib import Path
 
     root = Path(__file__).resolve().parent.parent
     specs = load_manifest(root / "models.yaml")
     openelm = [s for s in specs if s.id.startswith("apple/OpenELM")]
-    # OpenELM ships no tokenizer; the manifest must point it at Llama-2's.
+    # OpenELM ships no tokenizer; the manifest must point it at the UNGATED Llama-2
+    # mirror. meta-llama/Llama-2-7b-hf is gated and 403s (the Bug #1 Group C cause).
     assert openelm
-    assert all(s.tokenizer_id == "meta-llama/Llama-2-7b-hf" for s in openelm)
+    assert all(s.tokenizer_id == "NousResearch/Llama-2-7b-hf" for s in openelm)
 
 
 def test_manifest_parses_tokenizer_id(tmp_path):
     p = tmp_path / "m.yaml"
     p.write_text(
-        "models:\n  - id: apple/OpenELM-3B\n    tokenizer_id: meta-llama/Llama-2-7b-hf\n",
+        "models:\n  - id: apple/OpenELM-3B\n    tokenizer_id: NousResearch/Llama-2-7b-hf\n",
         encoding="utf-8",
     )
     specs = load_manifest(p)
-    assert specs[0].tokenizer_id == "meta-llama/Llama-2-7b-hf"
+    assert specs[0].tokenizer_id == "NousResearch/Llama-2-7b-hf"
+
+
+def test_guess_tokenizer_id_only_for_openelm():
+    # OpenELM (any casing/variant) borrows the ungated Llama-2 mirror; everything
+    # else uses its own repo tokenizer (None => don't override).
+    assert registry.guess_tokenizer_id("apple/OpenELM-1_1B") == "NousResearch/Llama-2-7b-hf"
+    assert registry.guess_tokenizer_id("apple/OpenELM-3B-Instruct") == "NousResearch/Llama-2-7b-hf"
+    assert registry.guess_tokenizer_id("Qwen/Qwen2.5-1.5B") is None
+    assert registry.guess_tokenizer_id("meta-llama/Llama-3.2-1B") is None
+
+
+def test_resolve_sets_openelm_tokenizer_without_manifest_key():
+    # Even a bare spec (no tokenizer_id) must resolve OpenELM to the ungated mirror,
+    # so the heuristic — not just the manifest — protects against the gated 403.
+    r = registry.resolve(ModelSpec(id="apple/OpenELM-3B"), fetch_config=lambda _id: {})
+    assert r.tokenizer_id == "NousResearch/Llama-2-7b-hf"
+    # an explicit manifest override still wins
+    r2 = registry.resolve(
+        ModelSpec(id="apple/OpenELM-3B", tokenizer_id="some/other-tok"),
+        fetch_config=lambda _id: {},
+    )
+    assert r2.tokenizer_id == "some/other-tok"
+
+
+def test_manifest_parses_vllm_engine_knobs(tmp_path):
+    # enforce_eager / gpu_memory_utilization are per-model vLLM tuning knobs; the
+    # float coercion must accept gpu_memory_utilization (via _FLOAT_FIELDS).
+    p = tmp_path / "m.yaml"
+    p.write_text(
+        "models:\n  - id: a/b\n    enforce_eager: true\n"
+        "    gpu_memory_utilization: 0.6\n",
+        encoding="utf-8",
+    )
+    specs = load_manifest(p)
+    assert specs[0].enforce_eager is True
+    assert specs[0].gpu_memory_utilization == 0.6
 
 
 # --- Model Output schema ---------------------------------------------------
@@ -333,6 +388,211 @@ def test_shard_writer_appends(tmp_path):
     assert shard.completed_ids(path) == {"s1", "s2"}
 
 
+# --- resume: valid-only scan + compaction ----------------------------------
+
+def _row(sid, issue=0, prompt_tokens=500):
+    return {"Scenario": sid, "Model": "a/b", "Issue": issue,
+            "Prompt Tokens": prompt_tokens, "Output": "ok"}
+
+
+def _write_rows(path, rows):
+    with path.open("w", encoding="utf-8") as f:
+        for r in rows:
+            f.write(json.dumps(r) + "\n")
+
+
+def test_scan_shard_skips_issue_and_truncation_bug_rows(tmp_path):
+    p = tmp_path / "m.jsonl"
+    _write_rows(p, [
+        _row("s1"),                       # valid -> done
+        _row("s2", issue=1, prompt_tokens=0),   # hard failure -> retry
+        _row("s3", prompt_tokens=1),      # 1-token truncation bug -> retry
+    ])
+    done, valid_rows, had_invalid = shard.scan_shard(p)
+    assert done == {"s1"}
+    assert [r["Scenario"] for r in valid_rows] == ["s1"]
+    assert had_invalid is True
+
+
+def test_scan_shard_clean_shard_needs_no_compaction(tmp_path):
+    p = tmp_path / "m.jsonl"
+    _write_rows(p, [_row("s1"), _row("s2"), _row("s3")])
+    done, valid_rows, had_invalid = shard.scan_shard(p)
+    assert done == {"s1", "s2", "s3"}
+    assert had_invalid is False  # all valid, unique -> shard is left untouched
+
+
+def test_scan_shard_flags_duplicate_valid_rows(tmp_path):
+    p = tmp_path / "m.jsonl"
+    _write_rows(p, [_row("s1"), _row("s1")])  # duplicate -> compact to one
+    done, valid_rows, had_invalid = shard.scan_shard(p)
+    assert done == {"s1"} and len(valid_rows) == 1 and had_invalid is True
+
+
+def test_rewrite_shard_compacts_to_valid_rows(tmp_path):
+    p = tmp_path / "m.jsonl"
+    _write_rows(p, [_row("s1"), _row("s2", issue=1, prompt_tokens=0), _row("s3", prompt_tokens=1)])
+    _, valid_rows, _ = shard.scan_shard(p)
+    shard.rewrite_shard(p, valid_rows)
+    # only the valid scenario survives; a re-scan is now clean
+    assert shard.completed_ids(p) == {"s1"}
+    done2, _, had_invalid2 = shard.scan_shard(p)
+    assert done2 == {"s1"} and had_invalid2 is False
+
+
+def test_scan_shard_missing_file(tmp_path):
+    done, valid_rows, had_invalid = shard.scan_shard(tmp_path / "nope.jsonl")
+    assert done == set() and valid_rows == [] and had_invalid is False
+
+
+# --- prompt fit + per-scenario generation budget (the truncation-bug fix) ---
+
+from tutor_cat.respgen import runner
+
+
+class _CharTok:
+    """Minimal tokenizer stub: one token per character (no torch needed)."""
+
+    def __call__(self, text, add_special_tokens=False):
+        return {"input_ids": list(range(len(text)))}
+
+    def decode(self, ids, skip_special_tokens=False):
+        return "x" * len(ids)
+
+
+@pytest.mark.parametrize("max_model_len", [2048, 4096, 8192, 32768])
+def test_fit_prompt_never_guts_the_prompt(max_model_len):
+    # a typical ~600-token TutorBench prompt: the old code left 1 token at mml<=4096
+    text, ptok, trunc, gen = runner._fit_prompt_and_budget(
+        "x" * 600, _CharTok(), max_model_len, max_new_tokens=4096
+    )
+    assert ptok == 600 and trunc is False
+    assert ptok > 1                                   # the bug regression guard
+    assert ptok + gen <= max_model_len               # fits the window
+    assert gen >= runner.MIN_GEN                      # room to actually answer
+
+
+def test_fit_prompt_long_prompt_reserves_min_gen(tmp_path):
+    # a prompt longer than the whole small window: keep as much as fits, still
+    # guarantee MIN_GEN output tokens.
+    text, ptok, trunc, gen = runner._fit_prompt_and_budget(
+        "x" * 5000, _CharTok(), 2048, max_new_tokens=4096
+    )
+    assert trunc is True
+    assert ptok == 2048 - runner.MIN_GEN
+    assert gen == runner.MIN_GEN
+    assert ptok + gen == 2048
+
+
+def test_fit_prompt_large_window_gets_full_budget():
+    text, ptok, trunc, gen = runner._fit_prompt_and_budget(
+        "x" * 600, _CharTok(), 32768, max_new_tokens=4096
+    )
+    assert gen == 4096  # short prompt on a big model -> full requested budget
+
+
+# --- latency fallback (Bug #3.1: vLLM V1 leaves per-request metrics empty) --
+
+def test_effective_latency_prefers_backend_value():
+    # HF supplies a real per-request latency; use it verbatim.
+    assert runner._effective_latency(1.25, elapsed=10.0, n=4) == 1.25
+
+
+def test_effective_latency_falls_back_to_batch_average():
+    # vLLM leaves latency None -> record the per-scenario average, not a null column.
+    assert runner._effective_latency(None, elapsed=10.0, n=4) == 2.5
+
+
+def test_effective_latency_none_when_empty_batch():
+    assert runner._effective_latency(None, elapsed=10.0, n=0) is None
+
+
+# --- load robustness: retries + vLLM->HF fallback (Bug #1 A/B) --------------
+
+class _FakeBackend:
+    """Stands in for a constructed backend; its smoke generate() always yields."""
+
+    def __init__(self, tokenizer="TOK"):
+        self.tokenizer = tokenizer
+
+    def generate(self, prompts, params, max_tokens_per_prompt=None):
+        return [runner.GenResult(text="OK", output_tokens=1, finish_reason="stop")]
+
+
+def test_try_backend_retries_then_succeeds():
+    # transient Hub blip on the first attempt (Bug #1 Group B), success on retry.
+    calls = {"n": 0}
+
+    def make():
+        calls["n"] += 1
+        if calls["n"] < 2:
+            raise RuntimeError("HTTP 429 rate limited")
+        return _FakeBackend()
+
+    slept = []
+    b = runner._try_backend(make, attempts=3, delay=5.0, sleep=slept.append)
+    assert isinstance(b, _FakeBackend)
+    assert calls["n"] == 2 and slept == [5.0]  # retried once, slept once
+
+
+def test_try_backend_raises_last_error_after_exhausting():
+    def make():
+        raise RuntimeError("still broken")
+
+    with pytest.raises(RuntimeError, match="still broken"):
+        runner._try_backend(make, attempts=2, delay=0.0, sleep=lambda _s: None)
+
+
+def test_load_backend_falls_back_to_hf_when_vllm_fails(monkeypatch):
+    # vLLM engine won't come up (Group A); the model must still load via transformers
+    # instead of dead-lettering all 662 scenarios.
+    from tutor_cat.respgen import backends
+
+    def boom_vllm(*a, **k):
+        raise RuntimeError("Engine core initialization failed. Failed core proc(s): {}")
+
+    monkeypatch.setattr(backends, "VLLMBackend", boom_vllm)
+    monkeypatch.setattr(backends, "HFBackend", lambda *a, **k: _FakeBackend("HFTOK"))
+    monkeypatch.setattr(runner, "_resolve_revision", lambda _id, _o: "")
+
+    resolved = registry.resolve(ModelSpec(id="some/vllm-model"), fetch_config=lambda _id: {})
+    assert resolved.backend == "vllm"
+    backend, revision, tok = runner._load_backend(resolved, sleep=lambda _s: None)
+    assert tok == "HFTOK"  # fell back to the HF backend
+
+
+def test_load_backend_raises_with_stderr_tail_when_both_fail(monkeypatch):
+    from tutor_cat.respgen import backends
+
+    def boom_vllm(*a, **k):
+        raise RuntimeError("vLLM dead")
+
+    def boom_hf(*a, **k):
+        raise RuntimeError("HF dead too")
+
+    monkeypatch.setattr(backends, "VLLMBackend", boom_vllm)
+    monkeypatch.setattr(backends, "HFBackend", boom_hf)
+    monkeypatch.setattr(runner, "_resolve_revision", lambda _id, _o: "")
+
+    resolved = registry.resolve(ModelSpec(id="some/vllm-model"), fetch_config=lambda _id: {})
+    with pytest.raises(RuntimeError, match="transformers fallback also failed"):
+        runner._load_backend(resolved, sleep=lambda _s: None)
+
+
+# --- ShardWriter truncate (Bug #3.2: --no-resume must not duplicate rows) ----
+
+def test_shard_writer_truncate_overwrites(tmp_path):
+    path = tmp_path / "m.jsonl"
+    with shard.ShardWriter(path) as w:            # first run (append/default)
+        w.write({"Scenario": "s1"})
+        w.write({"Scenario": "s2"})
+    with shard.ShardWriter(path, truncate=True) as w:  # --no-resume regeneration
+        w.write({"Scenario": "s1"})
+    # the old rows are gone, not stacked underneath -> no duplicate cells
+    rows = list(shard._iter_rows(path))
+    assert [r["Scenario"] for r in rows] == ["s1"]
+
+
 # --- gpu selection (orchestrator, no CUDA/spawn) ---------------------------
 
 from tutor_cat.respgen.orchestrator import _select_gpu_ids, _validate_gpu_ids
@@ -376,6 +636,50 @@ def test_validate_gpu_ids_rejects_out_of_range_with_zeroindex_hint():
 
 def test_validate_gpu_ids_skipped_when_count_unknown():
     _validate_gpu_ids([8], count=None)  # can't detect -> don't block the run
+
+
+# --- run_fleet dispatch (injected run_one, no CUDA/spawn) -------------------
+
+def test_run_fleet_dispatches_every_model_once():
+    from tutor_cat.respgen import orchestrator
+
+    specs = [ModelSpec(id=f"org/m{i}") for i in range(5)]
+    seen = []
+    lock = __import__("threading").Lock()
+
+    def fake_run_one(spec, gpu_id):
+        with lock:
+            seen.append((spec.id, gpu_id))
+        return {"model": spec.id, "status": "ok", "gpu": gpu_id}
+
+    results = orchestrator.run_fleet(
+        specs, "scenarios.jsonl", "out",
+        gpu_ids=[2, 3], count_devices=lambda: None, run_one=fake_run_one,
+    )
+    # every model ran exactly once, and only on the pinned devices
+    assert len(results) == 5
+    assert {r["model"] for r in results} == {s.id for s in specs}
+    assert {sid for sid, _ in seen} == {s.id for s in specs}
+    assert all(gpu in (2, 3) for _, gpu in seen)
+
+
+def test_run_fleet_isolates_a_dispatch_failure():
+    from tutor_cat.respgen import orchestrator
+
+    specs = [ModelSpec(id="org/good"), ModelSpec(id="org/bad")]
+
+    def fake_run_one(spec, gpu_id):
+        if spec.id == "org/bad":
+            raise RuntimeError("dispatch blew up")
+        return {"model": spec.id, "status": "ok"}
+
+    results = orchestrator.run_fleet(
+        specs, "scenarios.jsonl", "out",
+        gpu_ids=[0], count_devices=lambda: None, run_one=fake_run_one,
+    )
+    by_id = {r["model"]: r for r in results}
+    assert by_id["org/good"]["status"] == "ok"
+    assert by_id["org/bad"]["status"] == "worker_error"  # isolated, fleet survived
 
 
 # --- s3 uri parsing --------------------------------------------------------

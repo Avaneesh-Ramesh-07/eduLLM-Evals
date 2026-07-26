@@ -48,11 +48,17 @@ class ModelSpec:
     enable_thinking: bool | None = None  # Qwen3: False to suppress <think> traces
     revision: str | None = None          # pin a commit SHA; None => resolve at load
     tokenizer_id: str | None = None      # borrow another repo's tokenizer (OpenELM -> Llama-2)
+    # vLLM engine knobs, tunable per model on a shared/constrained box. None/False
+    # => vLLM defaults. enforce_eager skips CUDA-graph capture (less memory, some
+    # engine-init asserts avoided); gpu_memory_utilization caps the KV-cache
+    # reservation so a co-tenant on the same GPU doesn't OOM engine init.
+    enforce_eager: bool | None = None
+    gpu_memory_utilization: float | None = None
     extra: dict = field(default_factory=dict)
 
 
 _INT_FIELDS = {"max_model_len_cap", "max_new_tokens", "tensor_parallel_size", "seed"}
-_FLOAT_FIELDS = {"temperature", "top_p", "repetition_penalty"}
+_FLOAT_FIELDS = {"temperature", "top_p", "repetition_penalty", "gpu_memory_utilization"}
 _SPEC_FIELDS = {f.name for f in fields(ModelSpec)} - {"extra"}
 
 

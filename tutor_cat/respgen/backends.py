@@ -49,30 +49,52 @@ class VLLMBackend:
         revision: str | None = None,
         max_model_len: int = 32768,
         dtype: str = "auto",
+        gpu_memory_utilization: float | None = None,
+        enforce_eager: bool = False,
     ):
         from vllm import LLM  # lazy
 
         self.model_id = model_id
-        self.llm = LLM(
+        kwargs: dict = dict(
             model=model_id,
             revision=revision,
             tensor_parallel_size=1,
             max_model_len=max_model_len,
             dtype=dtype,
             trust_remote_code=True,
+            enforce_eager=enforce_eager,
         )
+        # Only pass gpu_memory_utilization when set, so the vLLM default (0.9) is
+        # used unless a model explicitly needs a smaller reservation (shared GPU).
+        if gpu_memory_utilization is not None:
+            kwargs["gpu_memory_utilization"] = gpu_memory_utilization
+        self.llm = LLM(**kwargs)
         self.tokenizer = self.llm.get_tokenizer()
 
-    def generate(self, prompts: list[str], params: GenParams) -> list[GenResult]:
+    def generate(
+        self,
+        prompts: list[str],
+        params: GenParams,
+        max_tokens_per_prompt: list[int] | None = None,
+    ) -> list[GenResult]:
         from vllm import SamplingParams  # lazy
 
-        sp = SamplingParams(
-            temperature=params.temperature,
-            top_p=params.top_p,
-            max_tokens=params.max_new_tokens,
-            repetition_penalty=params.repetition_penalty,
-            seed=params.seed,
-        )
+        def _sp(max_tokens: int) -> "SamplingParams":
+            return SamplingParams(
+                temperature=params.temperature,
+                top_p=params.top_p,
+                max_tokens=max_tokens,
+                repetition_penalty=params.repetition_penalty,
+                seed=params.seed,
+            )
+
+        # vLLM accepts a list of SamplingParams aligned to prompts, so each
+        # scenario decodes with its own budget (short prompt -> full budget; long
+        # prompt on a small window -> whatever context is left, >= MIN_GEN).
+        if max_tokens_per_prompt is None:
+            sp = _sp(params.max_new_tokens)
+        else:
+            sp = [_sp(mt) for mt in max_tokens_per_prompt]
         outputs = self.llm.generate(prompts, sp)
         results: list[GenResult] = []
         for out in outputs:
@@ -127,6 +149,12 @@ class HFBackend:
         )
         if self.tokenizer.pad_token is None:
             self.tokenizer.pad_token = self.tokenizer.eos_token
+        # Match the runner's tail-keeping truncation (ids[-cap:]): if a re-encode
+        # of the already-fit prompt drifts a token or two over input_cap, drop from
+        # the HEAD so the generation cue ("Tutor:"/chat gen token) at the tail — the
+        # part that makes the model answer — always survives. HF defaults to "right"
+        # (tail-dropping), the opposite; set it explicitly.
+        self.tokenizer.truncation_side = "left"
 
         if architecture == "seq2seq":
             from transformers import AutoModelForSeq2SeqLM
@@ -145,31 +173,39 @@ class HFBackend:
         )
         self.model.eval()
 
-    def generate(self, prompts: list[str], params: GenParams) -> list[GenResult]:
+    def generate(
+        self,
+        prompts: list[str],
+        params: GenParams,
+        max_tokens_per_prompt: list[int] | None = None,
+    ) -> list[GenResult]:
         import time
 
         torch = self._torch
         greedy = params.temperature == 0.0
-        gen_kwargs = dict(
-            max_new_tokens=params.max_new_tokens,
+        base_kwargs = dict(
             repetition_penalty=params.repetition_penalty,
             pad_token_id=self.tokenizer.pad_token_id,
             do_sample=not greedy,
         )
         if not greedy:
-            gen_kwargs.update(temperature=params.temperature, top_p=params.top_p)
+            base_kwargs.update(temperature=params.temperature, top_p=params.top_p)
 
-        # Reserve the generation budget so the input never crowds out the output.
-        input_cap = max(1, self.max_model_len - params.max_new_tokens)
         results: list[GenResult] = []
-        for prompt in prompts:
+        for i, prompt in enumerate(prompts):
+            mt = params.max_new_tokens if max_tokens_per_prompt is None else max_tokens_per_prompt[i]
+            # Reserve this scenario's generation budget so the input never crowds
+            # out the output (the runner already fit the prompt; this is the hard
+            # guarantee against decode->re-encode drift). max(1, ...) is safe now
+            # because mt <= max_model_len - prompt_tokens, so input_cap >= prompt.
+            input_cap = max(1, self.max_model_len - mt)
             t0 = time.time()
             enc = self.tokenizer(
                 prompt, return_tensors="pt", truncation=True, max_length=input_cap
             ).to(self.model.device)
             n_in = int(enc["input_ids"].shape[1])
             with torch.no_grad():
-                out = self.model.generate(**enc, **gen_kwargs)
+                out = self.model.generate(**enc, max_new_tokens=mt, **base_kwargs)
             # seq2seq returns only new tokens; causal LM returns prompt + new.
             gen_ids = out[0] if self.architecture == "seq2seq" else out[0][n_in:]
             text = self.tokenizer.decode(gen_ids, skip_special_tokens=True)
@@ -178,7 +214,7 @@ class HFBackend:
                 GenResult(
                     text=text,
                     output_tokens=n_out,
-                    finish_reason="length" if n_out >= params.max_new_tokens else "stop",
+                    finish_reason="length" if n_out >= mt else "stop",
                     latency_s=time.time() - t0,
                     prompt_tokens=n_in,
                 )

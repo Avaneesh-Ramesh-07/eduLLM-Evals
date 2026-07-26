@@ -31,6 +31,12 @@ _HF_FALLBACK_MARKERS = (
 # Encoder-decoder (seq2seq) families: need AutoModelForSeq2SeqLM, no chat template.
 _SEQ2SEQ_MARKERS = ("flan-t5", "t5-", "-t5", "bart", "pegasus", "flan-ul2", "ul2")
 
+# OpenELM ships NO tokenizer and documents "use the Llama-2 tokenizer". The
+# obvious source (meta-llama/Llama-2-7b-hf) is GATED and 403s without an accepted
+# license — the exact Bug #1 Group C load failure. NousResearch/Llama-2-7b-hf is a
+# byte-identical, UNGATED mirror, so borrowing from it needs no license grant.
+_OPENELM_TOKENIZER = "NousResearch/Llama-2-7b-hf"
+
 
 def guess_apply_chat_template(model_id: str) -> bool:
     mid = model_id.lower()
@@ -61,10 +67,20 @@ def guess_enable_thinking(model_id: str) -> bool | None:
     return False if "qwen3" in model_id.lower() else None
 
 
+def guess_tokenizer_id(model_id: str) -> str | None:
+    """A tokenizer to borrow when the repo ships none. OpenELM -> ungated Llama-2
+    mirror. None => use the model's own repo. Overridable via ModelSpec.tokenizer_id."""
+    return _OPENELM_TOKENIZER if "openelm" in model_id.lower() else None
+
+
 # --- max_model_len clamp ---------------------------------------------------
 
 def _max_position_embeddings(cfg: dict) -> int | None:
-    for key in ("max_position_embeddings", "n_positions", "max_seq_len", "seq_length"):
+    # "max_context_length" is OpenELM's key; without it OpenELM (and any repo that
+    # names its window that way) would fall through to the 32768 cap instead of its
+    # true ~2048 window. Standard keys are checked first so they win when both exist.
+    for key in ("max_position_embeddings", "n_positions", "max_seq_len",
+                "seq_length", "max_context_length"):
         val = cfg.get(key)
         if val:
             return int(val)
@@ -107,6 +123,7 @@ class ResolvedModel:
     architecture: str
     enable_thinking: bool | None
     max_model_len: int
+    tokenizer_id: str | None = None  # borrowed tokenizer (OpenELM); None => own repo
 
 
 def resolve(
@@ -132,6 +149,7 @@ def resolve(
         else guess_enable_thinking(spec.id)
     )
     max_model_len = resolve_max_model_len(spec.id, spec.max_model_len_cap, fetch_config)
+    tokenizer_id = spec.tokenizer_id or guess_tokenizer_id(spec.id)
     return ResolvedModel(
         spec=spec,
         apply_chat_template=apply_ct,
@@ -140,4 +158,5 @@ def resolve(
         architecture=architecture,
         enable_thinking=thinking,
         max_model_len=max_model_len,
+        tokenizer_id=tokenizer_id,
     )

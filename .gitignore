@@ -64,3 +64,5 @@ data/*.jsonl
 .DS_Store
 Thumbs.db
 .impeccable
+
+tutorbench-responses/
