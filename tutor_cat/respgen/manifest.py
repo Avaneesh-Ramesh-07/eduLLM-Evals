@@ -47,6 +47,10 @@ class ModelSpec:
     architecture: str | None = None     # "causal" | "seq2seq"
     enable_thinking: bool | None = None  # Qwen3: False to suppress <think> traces
     revision: str | None = None          # pin a commit SHA; None => resolve at load
+    # UNTESTED: override the tokenizer source repo. Needed for models that ship
+    # no tokenizer and point at a gated one (e.g. OpenELM -> Llama-2). None =>
+    # registry.resolve() derives it (ungated mirror) from the model id.
+    tokenizer_id: str | None = None
     extra: dict = field(default_factory=dict)
 
 

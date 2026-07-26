@@ -43,18 +43,44 @@ SAMPLING_VERSION = "qmatrix-human-review-v1"
 
 SKILL_DEFINITIONS = {
     "content": (
-        "Accurate subject-matter knowledge, calculations, facts, concepts, or "
-        "domain reasoning needed to satisfy the criterion."
+        "Subject-matter correctness: correct facts, definitions, computations, "
+        "formulas, units, or solution steps. Mark 1 whenever the criterion checks "
+        "that a domain claim is correct \u2014 including supplying a correct answer, "
+        "a correct hint, or a correct correction of the student. Do not mark for tone "
+        "or formatting that does not hinge on any domain fact."
     ),
     "diagnosis": (
-        "Identifying or reasoning about the student's specific understanding, "
-        "error, misconception, or likely source of difficulty."
+        "Reading, or acting on, THIS student's specific error, misconception, "
+        "knowledge gap, or state of understanding from what they said or did. Mark 1 "
+        "when the criterion requires pinpointing OR correcting/addressing the "
+        "student's specific mistake. Broad rule: any phrasing that asks the tutor to "
+        "correct or address the student's error counts, even if it does not name the "
+        "specific misconception. A generic 'provide the correct solution' with no "
+        "reference to the student's mistake is content only. Merely acknowledging that "
+        "the student is confused/worried/frustrated \u2014 without engaging what "
+        "specifically they got wrong \u2014 requires NO skill (all-zero)."
     ),
     "scaffolding": (
-        "Structuring guidance that helps the student make progress: hints, "
-        "questions, intermediate steps, or appropriately withheld support."
+        "Pedagogical structuring of the help: hints instead of answers, withholding "
+        "the solution, decomposing into steps, guiding questions, or 'explain (not just "
+        "state) why'. Mark 1 when the criterion constrains the FORM of the help. Do not "
+        "mark for merely stating a correct fact, for an OPTIONAL enrichment check ('can "
+        "include ...'), or for correcting an error by itself."
     ),
 }
+
+# Not per-skill checkboxes, but shown as page-level guidance for the two cross-cutting
+# decisions reviewers make (mark all three 0, and pick the primary skill).
+ALL_ZERO_GUIDANCE = (
+    "Some criteria require none of the three skills. Tone/affect/empathy, formatting, "
+    "spelling/orthography, and conversational moves (acknowledge confusion, check for "
+    "understanding, offer further help, be encouraging) load no skill \u2014 mark all "
+    "three 0 and set the primary skill to None."
+)
+PRIMARY_SKILL_GUIDANCE = (
+    "The single most central skill among those you marked 1. It must be one of the "
+    "skills you marked 1, and is None only when all three are 0."
+)
 
 
 @dataclass(frozen=True)
@@ -339,6 +365,8 @@ body {{ font-family: system-ui, sans-serif; max-width: 1050px; margin: 0 auto; p
 .definition {{ min-height: 7em; font-size: .9rem; color: #39434d; }}
 select, textarea {{ display: block; width: 100%; max-width: 700px; margin: 4px 0 12px; padding: 6px; }}
 button {{ padding: 9px 15px; font-weight: 600; cursor: pointer; }}
+.export-panel {{ display: none; border: 2px solid #3578b8; border-radius: 8px; padding: 14px; margin: 18px 0; background: #f2f8ff; }}
+.export-panel textarea {{ max-width: none; width: 100%; box-sizing: border-box; font-family: ui-monospace, monospace; }}
 .instruction {{ font-weight: 600; }}
 @media (max-width: 760px) {{ .skills {{ grid-template-columns: 1fr; }} .definition {{ min-height: auto; }} }}
 </style>
@@ -347,8 +375,16 @@ button {{ padding: 9px 15px; font-weight: 600; cursor: pointer; }}
 <h1>Q-matrix human review — Reviewer {reviewer}</h1>
 <p>You have 20 criteria. Budget about 45–60 seconds each. Review the criterion itself—not whether a particular tutor answered it correctly.</p>
 <p><strong>Decision rule:</strong> assign 1 only if a tutor cannot reasonably satisfy the criterion without demonstrating that skill. Otherwise assign 0. Do not infer that every desirable tutoring behavior is required.</p>
-<div class="sticky"><strong>Progress:</strong> <span id="progress">0 / 20 complete</span> &nbsp; <button type="button" id="export">Validate and download CSV</button></div>
+<p><strong>No skill required (all-zero):</strong> {html.escape(ALL_ZERO_GUIDANCE)}</p>
+<p><strong>Primary skill:</strong> {html.escape(PRIMARY_SKILL_GUIDANCE)}</p>
+<div class="sticky"><strong>Progress:</strong> <span id="progress">0 / 20 complete</span> &nbsp; <button type="button" id="save-file">Save CSV as file…</button> <button type="button" id="show-current">Show/copy current CSV</button> <button type="button" id="export">Legacy download</button></div>
 <form id="review-form">{''.join(cards)}</form>
+<section id="export-panel" class="export-panel">
+  <h2>CSV backup</h2>
+  <p>This box is a browser-independent fallback. Copy it into a text file named <code>qmatrix_review_{reviewer}.csv</code>.</p>
+  <button type="button" id="copy-csv">Copy CSV</button>
+  <textarea id="csv-output" rows="12" spellcheck="false"></textarea>
+</section>
 <script>
 const reviewer = {json.dumps(reviewer)};
 const storageKey = {json.dumps(storage_key)};
@@ -359,9 +395,15 @@ function state() {{
   new FormData(form).forEach((value, key) => out[key] = value);
   return out;
 }}
-function save() {{ localStorage.setItem(storageKey, JSON.stringify(state())); updateProgress(); }}
+function save() {{
+  try {{ localStorage.setItem(storageKey, JSON.stringify(state())); }}
+  catch (error) {{ console.warn("Browser storage unavailable; use Show/copy current CSV for a backup.", error); }}
+  updateProgress();
+}}
 function restore() {{
-  const saved = JSON.parse(localStorage.getItem(storageKey) || "{{}}");
+  let saved = {{}};
+  try {{ saved = JSON.parse(localStorage.getItem(storageKey) || "{{}}"); }}
+  catch (error) {{ console.warn("Could not restore browser storage.", error); }}
   Object.entries(saved).forEach(([name, value]) => {{
     const fields = form.elements[name];
     if (!fields) return;
@@ -380,27 +422,72 @@ function updateProgress() {{
   const cards = [...document.querySelectorAll(".item")];
   document.getElementById("progress").textContent = `${{cards.filter(complete).length}} / ${{cards.length}} complete`;
 }}
-function csvCell(value) {{ return '"' + String(value ?? "").replaceAll('"', '""') + '"'; }}
-document.getElementById("export").addEventListener("click", () => {{
+function csvCell(value) {{ return '"' + String(value == null ? "" : value).replace(/"/g, '""') + '"'; }}
+function buildCsv(requireComplete) {{
   const cards = [...document.querySelectorAll(".item")];
   const missing = cards.filter(card => !complete(card));
-  if (missing.length) {{ alert(`Please finish all required fields. ${{missing.length}} criteria remain incomplete.`); return; }}
+  if (requireComplete && missing.length) {{
+    alert(`Please finish all required fields. ${{missing.length}} criteria remain incomplete.`);
+    return null;
+  }}
   const header = ["reviewer", "criterion_id", "content", "diagnosis", "scaffolding", "primary_skill", "confidence", "notes"];
   const rows = [header];
   cards.forEach(card => {{
     const cid = card.dataset.criterionId;
+    const content = form.querySelector(`input[name="${{cid}}__content"]:checked`);
+    const diagnosis = form.querySelector(`input[name="${{cid}}__diagnosis"]:checked`);
+    const scaffolding = form.querySelector(`input[name="${{cid}}__scaffolding"]:checked`);
     rows.push([reviewer, cid,
-      form.querySelector(`input[name="${{cid}}__content"]:checked`).value,
-      form.querySelector(`input[name="${{cid}}__diagnosis"]:checked`).value,
-      form.querySelector(`input[name="${{cid}}__scaffolding"]:checked`).value,
+      content ? content.value : "",
+      diagnosis ? diagnosis.value : "",
+      scaffolding ? scaffolding.value : "",
       form.elements[`${{cid}}__primary`].value,
       form.elements[`${{cid}}__confidence`].value,
       form.elements[`${{cid}}__notes`].value]);
   }});
-  const csv = rows.map(row => row.map(csvCell).join(",")).join("\n") + "\n";
+  return rows.map(row => row.map(csvCell).join(",")).join("\n") + "\n";
+}}
+function showCsv(csv) {{
+  const panel = document.getElementById("export-panel");
+  const output = document.getElementById("csv-output");
+  panel.style.display = "block"; output.value = csv; output.focus(); output.select();
+  try {{ document.execCommand("copy"); }} catch (error) {{ console.warn("Automatic copy unavailable.", error); }}
+  panel.scrollIntoView({{behavior: "smooth", block: "start"}});
+}}
+document.getElementById("show-current").addEventListener("click", () => showCsv(buildCsv(false)));
+document.getElementById("copy-csv").addEventListener("click", () => {{
+  const output = document.getElementById("csv-output"); output.focus(); output.select();
+  const copied = document.execCommand("copy");
+  alert(copied ? "CSV copied to the clipboard." : "Press Ctrl+C (or Cmd+C) to copy the selected CSV.");
+}});
+document.getElementById("save-file").addEventListener("click", async () => {{
+  const csv = buildCsv(true); if (csv === null) return;
+  if (typeof window.showSaveFilePicker !== "function") {{
+    showCsv(csv);
+    alert("This browser does not provide the native Save As API. Open this packet through localhost in Chrome or Edge, or use the visible CSV backup.");
+    return;
+  }}
+  try {{
+    const handle = await window.showSaveFilePicker({{
+      suggestedName: `qmatrix_review_${{reviewer}}.csv`,
+      types: [{{description: "CSV file", accept: {{"text/csv": [".csv"]}}}}],
+    }});
+    const writable = await handle.createWritable();
+    await writable.write(csv); await writable.close();
+    alert(`Saved qmatrix_review_${{reviewer}}.csv successfully.`);
+  }} catch (error) {{
+    if (error.name !== "AbortError") {{
+      showCsv(csv);
+      alert(`Save As failed: ${{error.message}}. The CSV is preserved in the backup box.`);
+    }}
+  }}
+}});
+document.getElementById("export").addEventListener("click", () => {{
+  const csv = buildCsv(true); if (csv === null) return; showCsv(csv);
   const url = URL.createObjectURL(new Blob([csv], {{type: "text/csv;charset=utf-8"}}));
-  const link = document.createElement("a"); link.href = url; link.download = `qmatrix_review_${{reviewer}}.csv`; link.click();
-  URL.revokeObjectURL(url);
+  const link = document.createElement("a"); link.href = url; link.download = `qmatrix_review_${{reviewer}}.csv`;
+  document.body.appendChild(link); link.click(); link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
 }});
 form.addEventListener("change", save); form.addEventListener("input", save); restore(); updateProgress();
 </script>

@@ -106,6 +106,7 @@ class HFBackend:
         max_model_len: int = 32768,
         architecture: str = "causal",
         device: str = "cuda",
+        tokenizer_id: str | None = None,
     ):
         import torch  # lazy
         from transformers import AutoTokenizer  # lazy
@@ -116,8 +117,13 @@ class HFBackend:
         self.device = device
         self._torch = torch
 
+        # Models that ship no tokenizer (OpenELM) point tokenizer_id at an
+        # ungated mirror; the tokenizer revision must NOT be the model's SHA, so
+        # only pin the revision when loading from the model repo itself.
+        tok_src = tokenizer_id or model_id
+        tok_revision = revision if tokenizer_id is None else None
         self.tokenizer = AutoTokenizer.from_pretrained(
-            model_id, revision=revision, trust_remote_code=True
+            tok_src, revision=tok_revision, trust_remote_code=True
         )
         if self.tokenizer.pad_token is None:
             self.tokenizer.pad_token = self.tokenizer.eos_token

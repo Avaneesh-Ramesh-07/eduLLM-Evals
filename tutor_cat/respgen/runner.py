@@ -79,30 +79,87 @@ def _prompt_tokens_and_truncate(
     return tokenizer.decode(ids, skip_special_tokens=False), len(ids), True
 
 
+def _build_hf_backend(resolved: ResolvedModel, rev: str | None):
+    from .backends import HFBackend
+
+    return HFBackend(
+        resolved.spec.id,
+        revision=rev,
+        max_model_len=resolved.max_model_len,
+        architecture=resolved.architecture,
+        tokenizer_id=resolved.tokenizer_id,
+    )
+
+
+def _smoke_test(backend) -> None:
+    smoke = backend.generate(["Say OK."], GenParams(max_new_tokens=8, temperature=0.0))
+    if not smoke or smoke[0].text is None:
+        raise RuntimeError("smoke test produced no output")
+
+
+def _free_backend(backend) -> None:
+    """Best-effort GPU-memory release between models in a reused worker process.
+
+    UNTESTED. vLLM leaves KV-cache blocks / CUDA graphs / NCCL state that plain
+    GC doesn't reclaim, so a worker that loads model after model accumulates
+    device memory until a later engine init OOMs (the leading hypothesis for the
+    generic 'Engine core initialization failed' shards). Guarded so it can never
+    raise and abort an otherwise-finished model."""
+    if backend is None:
+        return
+    try:
+        import gc
+
+        try:
+            from vllm.distributed.parallel_state import destroy_model_parallel
+
+            destroy_model_parallel()
+        except Exception:
+            pass
+        for attr in ("llm", "model"):
+            if hasattr(backend, attr):
+                setattr(backend, attr, None)
+        gc.collect()
+        try:
+            import torch
+
+            if torch.cuda.is_available():
+                torch.cuda.empty_cache()
+        except Exception:
+            pass
+    except Exception:
+        pass
+
+
 def _load_backend(resolved: ResolvedModel):
     """Construct the backend and run a tiny smoke generation (must yield output).
-    Returns (backend, revision, tokenizer)."""
+    Returns (backend, revision, tokenizer).
+
+    UNTESTED: when the vLLM engine fails to initialize (e.g. an architecture the
+    installed vLLM can't serve), fall back to the transformers path rather than
+    dead-lettering all 662 scenarios. This only runs on the vLLM error path, so
+    models that already load under vLLM are unaffected."""
     spec = resolved.spec
     revision = _resolve_revision(spec.id, spec.revision)
     rev = revision or None
     if resolved.backend == "hf_fallback":
-        from .backends import HFBackend
+        backend = _build_hf_backend(resolved, rev)
+        _smoke_test(backend)
+        return backend, revision, backend.tokenizer
 
-        backend = HFBackend(
-            spec.id,
-            revision=rev,
-            max_model_len=resolved.max_model_len,
-            architecture=resolved.architecture,
-        )
-    else:
-        from .backends import VLLMBackend
+    from .backends import VLLMBackend
 
+    backend = None
+    try:
         backend = VLLMBackend(spec.id, revision=rev, max_model_len=resolved.max_model_len)
-
-    smoke = backend.generate(["Say OK."], GenParams(max_new_tokens=8, temperature=0.0))
-    if not smoke or smoke[0].text is None:
-        raise RuntimeError("smoke test produced no output")
-    return backend, revision, backend.tokenizer
+        _smoke_test(backend)
+        return backend, revision, backend.tokenizer
+    except Exception:
+        # Release whatever vLLM partially allocated, then retry on transformers.
+        _free_backend(backend)
+        backend = _build_hf_backend(resolved, rev)
+        _smoke_test(backend)
+        return backend, revision, backend.tokenizer
 
 
 def run_model(
@@ -125,7 +182,9 @@ def run_model(
     gen_params_rec = R.generation_params(
         spec.temperature, spec.top_p, spec.max_new_tokens, spec.repetition_penalty, spec.seed
     )
-    writer = ShardWriter(path)
+    # --no-resume regenerates from scratch: truncate so new rows replace the old
+    # shard (e.g. a prior run's 662 error cells) instead of appending after them.
+    writer = ShardWriter(path, truncate=not resume)
 
     # --- load (+ smoke test); a failure marks every outstanding cell as Issue ---
     try:
@@ -206,6 +265,9 @@ def run_model(
         writer.write(rec)
         written += 1
     writer.close()
+    # Free this model's GPU memory before the worker pulls the next model off
+    # the queue (outputs are already flushed above, so this can't affect them).
+    _free_backend(backend)
     uploaded = maybe_upload(path, s3_uri)
     return {
         "model": spec.id,
@@ -230,10 +292,11 @@ def dry_run(
     lines: list[str] = ["=== model resolution ==="]
     for spec in specs:
         r = resolve(spec, fetch_config=fetch_config)
+        tok = f" tokenizer={r.tokenizer_id}" if r.tokenizer_id else ""
         lines.append(
             f"{spec.id}\n    backend={r.backend} gated={r.gated} arch={r.architecture} "
             f"chat_template~{r.apply_chat_template} max_model_len={r.max_model_len} "
-            f"thinking={r.enable_thinking}"
+            f"thinking={r.enable_thinking}{tok}"
         )
     lines.append("\n=== sample prompts ===")
     for s in scenarios[:n]:

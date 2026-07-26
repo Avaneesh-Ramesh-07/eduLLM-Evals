@@ -1,0 +1,2074 @@
+{
+  "generated_at": "2026-07-26T00:52:28.552484+00:00",
+  "applied": true,
+  "seed": 42,
+  "n_records": 6462,
+  "human_review_v1": {
+    "n_changed": 7,
+    "changes": [
+      {
+        "criterion_id": "tb_0620_c05",
+        "version": "human_review_v1",
+        "changes": [
+          {
+            "field": "q_mapping.diagnosis",
+            "from": 0,
+            "to": 1
+          }
+        ],
+        "prior": {
+          "q_mapping": {
+            "content": 1,
+            "diagnosis": 0,
+            "scaffolding": 1
+          },
+          "primary_skill": "scaffolding",
+          "discrimination": {
+            "content": 1.1732,
+            "diagnosis": 0.0,
+            "scaffolding": 1.9408
+          },
+          "difficulty": -1.0623
+        },
+        "new": {
+          "q_mapping": {
+            "content": 1,
+            "diagnosis": 1,
+            "scaffolding": 1
+          },
+          "primary_skill": "scaffolding",
+          "discrimination": {
+            "content": 1.1732,
+            "diagnosis": 1.3747,
+            "scaffolding": 1.7853
+          },
+          "difficulty": -1.0623
+        }
+      },
+      {
+        "criterion_id": "tb_0125_c01",
+        "version": "human_review_v1",
+        "changes": [
+          {
+            "field": "q_mapping.diagnosis",
+            "from": 1,
+            "to": 0
+          },
+          {
+            "field": "primary_skill",
+            "from": "diagnosis",
+            "to": null
+          }
+        ],
+        "prior": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 1,
+            "scaffolding": 0
+          },
+          "primary_skill": "diagnosis",
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 1.3977,
+            "scaffolding": 0.0
+          },
+          "difficulty": -0.497
+        },
+        "new": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 0
+          },
+          "primary_skill": null,
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 0.0
+          },
+          "difficulty": -0.497
+        }
+      },
+      {
+        "criterion_id": "tb_0016_c04",
+        "version": "human_review_v1",
+        "changes": [
+          {
+            "field": "q_mapping.scaffolding",
+            "from": 1,
+            "to": 0
+          }
+        ],
+        "prior": {
+          "q_mapping": {
+            "content": 1,
+            "diagnosis": 0,
+            "scaffolding": 1
+          },
+          "primary_skill": "content",
+          "discrimination": {
+            "content": 1.5496,
+            "diagnosis": 0.0,
+            "scaffolding": 1.2363
+          },
+          "difficulty": -0.9551
+        },
+        "new": {
+          "q_mapping": {
+            "content": 1,
+            "diagnosis": 0,
+            "scaffolding": 0
+          },
+          "primary_skill": "content",
+          "discrimination": {
+            "content": 1.5496,
+            "diagnosis": 0.0,
+            "scaffolding": 0.0
+          },
+          "difficulty": -0.9551
+        }
+      },
+      {
+        "criterion_id": "tb_0215_c05",
+        "version": "human_review_v1",
+        "changes": [
+          {
+            "field": "q_mapping.scaffolding",
+            "from": 0,
+            "to": 1
+          },
+          {
+            "field": "primary_skill",
+            "from": "content",
+            "to": "scaffolding"
+          }
+        ],
+        "prior": {
+          "q_mapping": {
+            "content": 1,
+            "diagnosis": 0,
+            "scaffolding": 0
+          },
+          "primary_skill": "content",
+          "discrimination": {
+            "content": 1.8112,
+            "diagnosis": 0.0,
+            "scaffolding": 0.0
+          },
+          "difficulty": 0.3465
+        },
+        "new": {
+          "q_mapping": {
+            "content": 1,
+            "diagnosis": 0,
+            "scaffolding": 1
+          },
+          "primary_skill": "scaffolding",
+          "discrimination": {
+            "content": 1.2829,
+            "diagnosis": 0.0,
+            "scaffolding": 1.754
+          },
+          "difficulty": 0.3465
+        }
+      },
+      {
+        "criterion_id": "tb_0576_c05",
+        "version": "human_review_v1",
+        "changes": [
+          {
+            "field": "q_mapping.content",
+            "from": 1,
+            "to": 0
+          }
+        ],
+        "prior": {
+          "q_mapping": {
+            "content": 1,
+            "diagnosis": 0,
+            "scaffolding": 1
+          },
+          "primary_skill": "scaffolding",
+          "discrimination": {
+            "content": 1.1862,
+            "diagnosis": 0.0,
+            "scaffolding": 1.9973
+          },
+          "difficulty": 0.0919
+        },
+        "new": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 1
+          },
+          "primary_skill": "scaffolding",
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 1.6747
+          },
+          "difficulty": 0.0919
+        }
+      },
+      {
+        "criterion_id": "tb_0056_c06",
+        "version": "human_review_v1",
+        "changes": [
+          {
+            "field": "q_mapping.scaffolding",
+            "from": 1,
+            "to": 0
+          }
+        ],
+        "prior": {
+          "q_mapping": {
+            "content": 1,
+            "diagnosis": 0,
+            "scaffolding": 1
+          },
+          "primary_skill": "content",
+          "discrimination": {
+            "content": 1.2303,
+            "diagnosis": 0.0,
+            "scaffolding": 0.9361
+          },
+          "difficulty": 1.1542
+        },
+        "new": {
+          "q_mapping": {
+            "content": 1,
+            "diagnosis": 0,
+            "scaffolding": 0
+          },
+          "primary_skill": "content",
+          "discrimination": {
+            "content": 1.2303,
+            "diagnosis": 0.0,
+            "scaffolding": 0.0
+          },
+          "difficulty": 1.1542
+        }
+      },
+      {
+        "criterion_id": "tb_0113_c01",
+        "version": "human_review_v1",
+        "changes": [
+          {
+            "field": "q_mapping.diagnosis",
+            "from": 1,
+            "to": 0
+          },
+          {
+            "field": "primary_skill",
+            "from": "diagnosis",
+            "to": null
+          }
+        ],
+        "prior": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 1,
+            "scaffolding": 0
+          },
+          "primary_skill": "diagnosis",
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 1.9769,
+            "scaffolding": 0.0
+          },
+          "difficulty": -1.0055
+        },
+        "new": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 0
+          },
+          "primary_skill": null,
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 0.0
+          },
+          "difficulty": -1.0055
+        }
+      }
+    ]
+  },
+  "qmatrix_rulefix_v1": {
+    "n_changed": 40,
+    "changes": [
+      {
+        "criterion_id": "tb_0006_c09",
+        "version": "qmatrix_rulefix_v1",
+        "changes": [
+          {
+            "field": "q_mapping.scaffolding",
+            "from": 1,
+            "to": 0
+          },
+          {
+            "field": "primary_skill",
+            "from": "scaffolding",
+            "to": null
+          }
+        ],
+        "prior": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 1
+          },
+          "primary_skill": "scaffolding",
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 0.5884
+          },
+          "difficulty": 0.2369
+        },
+        "new": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 0
+          },
+          "primary_skill": null,
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 0.0
+          },
+          "difficulty": 0.2369
+        }
+      },
+      {
+        "criterion_id": "tb_0008_c05",
+        "version": "qmatrix_rulefix_v1",
+        "changes": [
+          {
+            "field": "q_mapping.diagnosis",
+            "from": 1,
+            "to": 0
+          },
+          {
+            "field": "primary_skill",
+            "from": "diagnosis",
+            "to": null
+          }
+        ],
+        "prior": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 1,
+            "scaffolding": 0
+          },
+          "primary_skill": "diagnosis",
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.9945,
+            "scaffolding": 0.0
+          },
+          "difficulty": -0.3563
+        },
+        "new": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 0
+          },
+          "primary_skill": null,
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 0.0
+          },
+          "difficulty": -0.3563
+        }
+      },
+      {
+        "criterion_id": "tb_0017_c01",
+        "version": "qmatrix_rulefix_v1",
+        "changes": [
+          {
+            "field": "q_mapping.diagnosis",
+            "from": 1,
+            "to": 0
+          },
+          {
+            "field": "primary_skill",
+            "from": "diagnosis",
+            "to": null
+          }
+        ],
+        "prior": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 1,
+            "scaffolding": 0
+          },
+          "primary_skill": "diagnosis",
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 1.6028,
+            "scaffolding": 0.0
+          },
+          "difficulty": 0.1927
+        },
+        "new": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 0
+          },
+          "primary_skill": null,
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 0.0
+          },
+          "difficulty": 0.1927
+        }
+      },
+      {
+        "criterion_id": "tb_0019_c08",
+        "version": "qmatrix_rulefix_v1",
+        "changes": [
+          {
+            "field": "q_mapping.content",
+            "from": 1,
+            "to": 0
+          },
+          {
+            "field": "primary_skill",
+            "from": "content",
+            "to": null
+          }
+        ],
+        "prior": {
+          "q_mapping": {
+            "content": 1,
+            "diagnosis": 0,
+            "scaffolding": 0
+          },
+          "primary_skill": "content",
+          "discrimination": {
+            "content": 1.9585,
+            "diagnosis": 0.0,
+            "scaffolding": 0.0
+          },
+          "difficulty": -0.5232
+        },
+        "new": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 0
+          },
+          "primary_skill": null,
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 0.0
+          },
+          "difficulty": -0.5232
+        }
+      },
+      {
+        "criterion_id": "tb_0039_c01",
+        "version": "qmatrix_rulefix_v1",
+        "changes": [
+          {
+            "field": "q_mapping.diagnosis",
+            "from": 1,
+            "to": 0
+          },
+          {
+            "field": "primary_skill",
+            "from": "diagnosis",
+            "to": null
+          }
+        ],
+        "prior": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 1,
+            "scaffolding": 0
+          },
+          "primary_skill": "diagnosis",
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 1.5072,
+            "scaffolding": 0.0
+          },
+          "difficulty": 0.4153
+        },
+        "new": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 0
+          },
+          "primary_skill": null,
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 0.0
+          },
+          "difficulty": 0.4153
+        }
+      },
+      {
+        "criterion_id": "tb_0047_c01",
+        "version": "qmatrix_rulefix_v1",
+        "changes": [
+          {
+            "field": "q_mapping.diagnosis",
+            "from": 1,
+            "to": 0
+          },
+          {
+            "field": "primary_skill",
+            "from": "diagnosis",
+            "to": null
+          }
+        ],
+        "prior": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 1,
+            "scaffolding": 0
+          },
+          "primary_skill": "diagnosis",
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 1.6872,
+            "scaffolding": 0.0
+          },
+          "difficulty": -0.0849
+        },
+        "new": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 0
+          },
+          "primary_skill": null,
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 0.0
+          },
+          "difficulty": -0.0849
+        }
+      },
+      {
+        "criterion_id": "tb_0050_c01",
+        "version": "qmatrix_rulefix_v1",
+        "changes": [
+          {
+            "field": "q_mapping.diagnosis",
+            "from": 1,
+            "to": 0
+          },
+          {
+            "field": "primary_skill",
+            "from": "diagnosis",
+            "to": null
+          }
+        ],
+        "prior": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 1,
+            "scaffolding": 0
+          },
+          "primary_skill": "diagnosis",
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 1.4834,
+            "scaffolding": 0.0
+          },
+          "difficulty": -1.0878
+        },
+        "new": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 0
+          },
+          "primary_skill": null,
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 0.0
+          },
+          "difficulty": -1.0878
+        }
+      },
+      {
+        "criterion_id": "tb_0057_c09",
+        "version": "qmatrix_rulefix_v1",
+        "changes": [
+          {
+            "field": "q_mapping.scaffolding",
+            "from": 1,
+            "to": 0
+          },
+          {
+            "field": "primary_skill",
+            "from": "scaffolding",
+            "to": null
+          }
+        ],
+        "prior": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 1
+          },
+          "primary_skill": "scaffolding",
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 0.9027
+          },
+          "difficulty": 0.0762
+        },
+        "new": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 0
+          },
+          "primary_skill": null,
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 0.0
+          },
+          "difficulty": 0.0762
+        }
+      },
+      {
+        "criterion_id": "tb_0057_c13",
+        "version": "qmatrix_rulefix_v1",
+        "changes": [
+          {
+            "field": "q_mapping.diagnosis",
+            "from": 1,
+            "to": 0
+          },
+          {
+            "field": "primary_skill",
+            "from": "diagnosis",
+            "to": null
+          }
+        ],
+        "prior": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 1,
+            "scaffolding": 0
+          },
+          "primary_skill": "diagnosis",
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 1.8953,
+            "scaffolding": 0.0
+          },
+          "difficulty": -0.6832
+        },
+        "new": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 0
+          },
+          "primary_skill": null,
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 0.0
+          },
+          "difficulty": -0.6832
+        }
+      },
+      {
+        "criterion_id": "tb_0064_c07",
+        "version": "qmatrix_rulefix_v1",
+        "changes": [
+          {
+            "field": "q_mapping.content",
+            "from": 1,
+            "to": 0
+          },
+          {
+            "field": "primary_skill",
+            "from": "content",
+            "to": null
+          }
+        ],
+        "prior": {
+          "q_mapping": {
+            "content": 1,
+            "diagnosis": 0,
+            "scaffolding": 0
+          },
+          "primary_skill": "content",
+          "discrimination": {
+            "content": 1.6893,
+            "diagnosis": 0.0,
+            "scaffolding": 0.0
+          },
+          "difficulty": -0.5624
+        },
+        "new": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 0
+          },
+          "primary_skill": null,
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 0.0
+          },
+          "difficulty": -0.5624
+        }
+      },
+      {
+        "criterion_id": "tb_0084_c01",
+        "version": "qmatrix_rulefix_v1",
+        "changes": [
+          {
+            "field": "q_mapping.diagnosis",
+            "from": 1,
+            "to": 0
+          },
+          {
+            "field": "primary_skill",
+            "from": "diagnosis",
+            "to": null
+          }
+        ],
+        "prior": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 1,
+            "scaffolding": 0
+          },
+          "primary_skill": "diagnosis",
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 1.4275,
+            "scaffolding": 0.0
+          },
+          "difficulty": -0.9372
+        },
+        "new": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 0
+          },
+          "primary_skill": null,
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 0.0
+          },
+          "difficulty": -0.9372
+        }
+      },
+      {
+        "criterion_id": "tb_0088_c07",
+        "version": "qmatrix_rulefix_v1",
+        "changes": [
+          {
+            "field": "q_mapping.scaffolding",
+            "from": 1,
+            "to": 0
+          },
+          {
+            "field": "primary_skill",
+            "from": "scaffolding",
+            "to": null
+          }
+        ],
+        "prior": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 1
+          },
+          "primary_skill": "scaffolding",
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 1.6365
+          },
+          "difficulty": -0.8954
+        },
+        "new": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 0
+          },
+          "primary_skill": null,
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 0.0
+          },
+          "difficulty": -0.8954
+        }
+      },
+      {
+        "criterion_id": "tb_0096_c03",
+        "version": "qmatrix_rulefix_v1",
+        "changes": [
+          {
+            "field": "q_mapping.diagnosis",
+            "from": 1,
+            "to": 0
+          },
+          {
+            "field": "primary_skill",
+            "from": "diagnosis",
+            "to": null
+          }
+        ],
+        "prior": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 1,
+            "scaffolding": 0
+          },
+          "primary_skill": "diagnosis",
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 1.6923,
+            "scaffolding": 0.0
+          },
+          "difficulty": -0.158
+        },
+        "new": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 0
+          },
+          "primary_skill": null,
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 0.0
+          },
+          "difficulty": -0.158
+        }
+      },
+      {
+        "criterion_id": "tb_0104_c01",
+        "version": "qmatrix_rulefix_v1",
+        "changes": [
+          {
+            "field": "q_mapping.diagnosis",
+            "from": 1,
+            "to": 0
+          },
+          {
+            "field": "primary_skill",
+            "from": "diagnosis",
+            "to": null
+          }
+        ],
+        "prior": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 1,
+            "scaffolding": 0
+          },
+          "primary_skill": "diagnosis",
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 1.86,
+            "scaffolding": 0.0
+          },
+          "difficulty": 0.1285
+        },
+        "new": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 0
+          },
+          "primary_skill": null,
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 0.0
+          },
+          "difficulty": 0.1285
+        }
+      },
+      {
+        "criterion_id": "tb_0111_c05",
+        "version": "qmatrix_rulefix_v1",
+        "changes": [
+          {
+            "field": "q_mapping.scaffolding",
+            "from": 1,
+            "to": 0
+          },
+          {
+            "field": "primary_skill",
+            "from": "scaffolding",
+            "to": null
+          }
+        ],
+        "prior": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 1
+          },
+          "primary_skill": "scaffolding",
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 1.3028
+          },
+          "difficulty": -0.9521
+        },
+        "new": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 0
+          },
+          "primary_skill": null,
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 0.0
+          },
+          "difficulty": -0.9521
+        }
+      },
+      {
+        "criterion_id": "tb_0125_c07",
+        "version": "qmatrix_rulefix_v1",
+        "changes": [
+          {
+            "field": "q_mapping.scaffolding",
+            "from": 1,
+            "to": 0
+          },
+          {
+            "field": "primary_skill",
+            "from": "scaffolding",
+            "to": null
+          }
+        ],
+        "prior": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 1
+          },
+          "primary_skill": "scaffolding",
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 1.0344
+          },
+          "difficulty": -0.9228
+        },
+        "new": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 0
+          },
+          "primary_skill": null,
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 0.0
+          },
+          "difficulty": -0.9228
+        }
+      },
+      {
+        "criterion_id": "tb_0134_c02",
+        "version": "qmatrix_rulefix_v1",
+        "changes": [
+          {
+            "field": "q_mapping.scaffolding",
+            "from": 1,
+            "to": 0
+          },
+          {
+            "field": "primary_skill",
+            "from": "scaffolding",
+            "to": null
+          }
+        ],
+        "prior": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 1
+          },
+          "primary_skill": "scaffolding",
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 0.9113
+          },
+          "difficulty": 1.1869
+        },
+        "new": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 0
+          },
+          "primary_skill": null,
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 0.0
+          },
+          "difficulty": 1.1869
+        }
+      },
+      {
+        "criterion_id": "tb_0166_c01",
+        "version": "qmatrix_rulefix_v1",
+        "changes": [
+          {
+            "field": "q_mapping.diagnosis",
+            "from": 1,
+            "to": 0
+          },
+          {
+            "field": "primary_skill",
+            "from": "diagnosis",
+            "to": null
+          }
+        ],
+        "prior": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 1,
+            "scaffolding": 0
+          },
+          "primary_skill": "diagnosis",
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 1.5271,
+            "scaffolding": 0.0
+          },
+          "difficulty": 1.0634
+        },
+        "new": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 0
+          },
+          "primary_skill": null,
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 0.0
+          },
+          "difficulty": 1.0634
+        }
+      },
+      {
+        "criterion_id": "tb_0168_c09",
+        "version": "qmatrix_rulefix_v1",
+        "changes": [
+          {
+            "field": "q_mapping.diagnosis",
+            "from": 1,
+            "to": 0
+          },
+          {
+            "field": "primary_skill",
+            "from": "diagnosis",
+            "to": null
+          }
+        ],
+        "prior": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 1,
+            "scaffolding": 0
+          },
+          "primary_skill": "diagnosis",
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.9208,
+            "scaffolding": 0.0
+          },
+          "difficulty": -0.4695
+        },
+        "new": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 0
+          },
+          "primary_skill": null,
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 0.0
+          },
+          "difficulty": -0.4695
+        }
+      },
+      {
+        "criterion_id": "tb_0213_c10",
+        "version": "qmatrix_rulefix_v1",
+        "changes": [
+          {
+            "field": "q_mapping.scaffolding",
+            "from": 1,
+            "to": 0
+          },
+          {
+            "field": "primary_skill",
+            "from": "scaffolding",
+            "to": null
+          }
+        ],
+        "prior": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 1
+          },
+          "primary_skill": "scaffolding",
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 1.0874
+          },
+          "difficulty": 0.291
+        },
+        "new": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 0
+          },
+          "primary_skill": null,
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 0.0
+          },
+          "difficulty": 0.291
+        }
+      },
+      {
+        "criterion_id": "tb_0215_c01",
+        "version": "qmatrix_rulefix_v1",
+        "changes": [
+          {
+            "field": "q_mapping.diagnosis",
+            "from": 1,
+            "to": 0
+          },
+          {
+            "field": "primary_skill",
+            "from": "diagnosis",
+            "to": null
+          }
+        ],
+        "prior": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 1,
+            "scaffolding": 0
+          },
+          "primary_skill": "diagnosis",
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 1.764,
+            "scaffolding": 0.0
+          },
+          "difficulty": -0.7785
+        },
+        "new": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 0
+          },
+          "primary_skill": null,
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 0.0
+          },
+          "difficulty": -0.7785
+        }
+      },
+      {
+        "criterion_id": "tb_0217_c04",
+        "version": "qmatrix_rulefix_v1",
+        "changes": [
+          {
+            "field": "q_mapping.diagnosis",
+            "from": 1,
+            "to": 0
+          },
+          {
+            "field": "primary_skill",
+            "from": "diagnosis",
+            "to": null
+          }
+        ],
+        "prior": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 1,
+            "scaffolding": 0
+          },
+          "primary_skill": "diagnosis",
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 1.2811,
+            "scaffolding": 0.0
+          },
+          "difficulty": 0.7682
+        },
+        "new": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 0
+          },
+          "primary_skill": null,
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 0.0
+          },
+          "difficulty": 0.7682
+        }
+      },
+      {
+        "criterion_id": "tb_0253_c08",
+        "version": "qmatrix_rulefix_v1",
+        "changes": [
+          {
+            "field": "q_mapping.scaffolding",
+            "from": 1,
+            "to": 0
+          },
+          {
+            "field": "primary_skill",
+            "from": "scaffolding",
+            "to": null
+          }
+        ],
+        "prior": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 1
+          },
+          "primary_skill": "scaffolding",
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 1.1108
+          },
+          "difficulty": -0.2234
+        },
+        "new": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 0
+          },
+          "primary_skill": null,
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 0.0
+          },
+          "difficulty": -0.2234
+        }
+      },
+      {
+        "criterion_id": "tb_0301_c02",
+        "version": "qmatrix_rulefix_v1",
+        "changes": [
+          {
+            "field": "q_mapping.diagnosis",
+            "from": 1,
+            "to": 0
+          },
+          {
+            "field": "primary_skill",
+            "from": "diagnosis",
+            "to": null
+          }
+        ],
+        "prior": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 1,
+            "scaffolding": 0
+          },
+          "primary_skill": "diagnosis",
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 1.6669,
+            "scaffolding": 0.0
+          },
+          "difficulty": -0.2554
+        },
+        "new": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 0
+          },
+          "primary_skill": null,
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 0.0
+          },
+          "difficulty": -0.2554
+        }
+      },
+      {
+        "criterion_id": "tb_0333_c02",
+        "version": "qmatrix_rulefix_v1",
+        "changes": [
+          {
+            "field": "q_mapping.scaffolding",
+            "from": 1,
+            "to": 0
+          },
+          {
+            "field": "primary_skill",
+            "from": "scaffolding",
+            "to": null
+          }
+        ],
+        "prior": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 1
+          },
+          "primary_skill": "scaffolding",
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 2.188
+          },
+          "difficulty": -1.2791
+        },
+        "new": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 0
+          },
+          "primary_skill": null,
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 0.0
+          },
+          "difficulty": -1.2791
+        }
+      },
+      {
+        "criterion_id": "tb_0343_c06",
+        "version": "qmatrix_rulefix_v1",
+        "changes": [
+          {
+            "field": "q_mapping.diagnosis",
+            "from": 1,
+            "to": 0
+          },
+          {
+            "field": "primary_skill",
+            "from": "diagnosis",
+            "to": null
+          }
+        ],
+        "prior": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 1,
+            "scaffolding": 0
+          },
+          "primary_skill": "diagnosis",
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 1.1777,
+            "scaffolding": 0.0
+          },
+          "difficulty": -0.2366
+        },
+        "new": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 0
+          },
+          "primary_skill": null,
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 0.0
+          },
+          "difficulty": -0.2366
+        }
+      },
+      {
+        "criterion_id": "tb_0355_c01",
+        "version": "qmatrix_rulefix_v1",
+        "changes": [
+          {
+            "field": "q_mapping.diagnosis",
+            "from": 1,
+            "to": 0
+          },
+          {
+            "field": "primary_skill",
+            "from": "diagnosis",
+            "to": null
+          }
+        ],
+        "prior": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 1,
+            "scaffolding": 0
+          },
+          "primary_skill": "diagnosis",
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 1.7776,
+            "scaffolding": 0.0
+          },
+          "difficulty": 0.0362
+        },
+        "new": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 0
+          },
+          "primary_skill": null,
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 0.0
+          },
+          "difficulty": 0.0362
+        }
+      },
+      {
+        "criterion_id": "tb_0390_c07",
+        "version": "qmatrix_rulefix_v1",
+        "changes": [
+          {
+            "field": "q_mapping.scaffolding",
+            "from": 1,
+            "to": 0
+          },
+          {
+            "field": "primary_skill",
+            "from": "scaffolding",
+            "to": null
+          }
+        ],
+        "prior": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 1
+          },
+          "primary_skill": "scaffolding",
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 1.7165
+          },
+          "difficulty": 0.72
+        },
+        "new": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 0
+          },
+          "primary_skill": null,
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 0.0
+          },
+          "difficulty": 0.72
+        }
+      },
+      {
+        "criterion_id": "tb_0464_c15",
+        "version": "qmatrix_rulefix_v1",
+        "changes": [
+          {
+            "field": "q_mapping.content",
+            "from": 1,
+            "to": 0
+          },
+          {
+            "field": "q_mapping.diagnosis",
+            "from": 1,
+            "to": 0
+          },
+          {
+            "field": "primary_skill",
+            "from": "diagnosis",
+            "to": null
+          }
+        ],
+        "prior": {
+          "q_mapping": {
+            "content": 1,
+            "diagnosis": 1,
+            "scaffolding": 0
+          },
+          "primary_skill": "diagnosis",
+          "discrimination": {
+            "content": 0.8108,
+            "diagnosis": 1.065,
+            "scaffolding": 0.0
+          },
+          "difficulty": 0.2536
+        },
+        "new": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 0
+          },
+          "primary_skill": null,
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 0.0
+          },
+          "difficulty": 0.2536
+        }
+      },
+      {
+        "criterion_id": "tb_0468_c07",
+        "version": "qmatrix_rulefix_v1",
+        "changes": [
+          {
+            "field": "q_mapping.content",
+            "from": 1,
+            "to": 0
+          },
+          {
+            "field": "q_mapping.scaffolding",
+            "from": 1,
+            "to": 0
+          },
+          {
+            "field": "primary_skill",
+            "from": "scaffolding",
+            "to": null
+          }
+        ],
+        "prior": {
+          "q_mapping": {
+            "content": 1,
+            "diagnosis": 0,
+            "scaffolding": 1
+          },
+          "primary_skill": "scaffolding",
+          "discrimination": {
+            "content": 0.8521,
+            "diagnosis": 0.0,
+            "scaffolding": 1.3445
+          },
+          "difficulty": 0.9578
+        },
+        "new": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 0
+          },
+          "primary_skill": null,
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 0.0
+          },
+          "difficulty": 0.9578
+        }
+      },
+      {
+        "criterion_id": "tb_0473_c10",
+        "version": "qmatrix_rulefix_v1",
+        "changes": [
+          {
+            "field": "q_mapping.scaffolding",
+            "from": 1,
+            "to": 0
+          },
+          {
+            "field": "primary_skill",
+            "from": "scaffolding",
+            "to": null
+          }
+        ],
+        "prior": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 1
+          },
+          "primary_skill": "scaffolding",
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 0.9084
+          },
+          "difficulty": 0.338
+        },
+        "new": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 0
+          },
+          "primary_skill": null,
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 0.0
+          },
+          "difficulty": 0.338
+        }
+      },
+      {
+        "criterion_id": "tb_0475_c14",
+        "version": "qmatrix_rulefix_v1",
+        "changes": [
+          {
+            "field": "q_mapping.content",
+            "from": 1,
+            "to": 0
+          },
+          {
+            "field": "primary_skill",
+            "from": "content",
+            "to": null
+          }
+        ],
+        "prior": {
+          "q_mapping": {
+            "content": 1,
+            "diagnosis": 0,
+            "scaffolding": 0
+          },
+          "primary_skill": "content",
+          "discrimination": {
+            "content": 1.5549,
+            "diagnosis": 0.0,
+            "scaffolding": 0.0
+          },
+          "difficulty": -0.1554
+        },
+        "new": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 0
+          },
+          "primary_skill": null,
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 0.0
+          },
+          "difficulty": -0.1554
+        }
+      },
+      {
+        "criterion_id": "tb_0489_c06",
+        "version": "qmatrix_rulefix_v1",
+        "changes": [
+          {
+            "field": "q_mapping.diagnosis",
+            "from": 1,
+            "to": 0
+          },
+          {
+            "field": "primary_skill",
+            "from": "diagnosis",
+            "to": null
+          }
+        ],
+        "prior": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 1,
+            "scaffolding": 0
+          },
+          "primary_skill": "diagnosis",
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 1.8636,
+            "scaffolding": 0.0
+          },
+          "difficulty": -0.6757
+        },
+        "new": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 0
+          },
+          "primary_skill": null,
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 0.0
+          },
+          "difficulty": -0.6757
+        }
+      },
+      {
+        "criterion_id": "tb_0512_c01",
+        "version": "qmatrix_rulefix_v1",
+        "changes": [
+          {
+            "field": "q_mapping.scaffolding",
+            "from": 1,
+            "to": 0
+          },
+          {
+            "field": "primary_skill",
+            "from": "scaffolding",
+            "to": null
+          }
+        ],
+        "prior": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 1
+          },
+          "primary_skill": "scaffolding",
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 2.1772
+          },
+          "difficulty": -1.55
+        },
+        "new": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 0
+          },
+          "primary_skill": null,
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 0.0
+          },
+          "difficulty": -1.55
+        }
+      },
+      {
+        "criterion_id": "tb_0573_c10",
+        "version": "qmatrix_rulefix_v1",
+        "changes": [
+          {
+            "field": "q_mapping.content",
+            "from": 1,
+            "to": 0
+          },
+          {
+            "field": "primary_skill",
+            "from": "content",
+            "to": null
+          }
+        ],
+        "prior": {
+          "q_mapping": {
+            "content": 1,
+            "diagnosis": 0,
+            "scaffolding": 0
+          },
+          "primary_skill": "content",
+          "discrimination": {
+            "content": 1.2534,
+            "diagnosis": 0.0,
+            "scaffolding": 0.0
+          },
+          "difficulty": 0.3851
+        },
+        "new": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 0
+          },
+          "primary_skill": null,
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 0.0
+          },
+          "difficulty": 0.3851
+        }
+      },
+      {
+        "criterion_id": "tb_0583_c08",
+        "version": "qmatrix_rulefix_v1",
+        "changes": [
+          {
+            "field": "q_mapping.diagnosis",
+            "from": 1,
+            "to": 0
+          },
+          {
+            "field": "primary_skill",
+            "from": "diagnosis",
+            "to": null
+          }
+        ],
+        "prior": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 1,
+            "scaffolding": 0
+          },
+          "primary_skill": "diagnosis",
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 1.4138,
+            "scaffolding": 0.0
+          },
+          "difficulty": -0.3515
+        },
+        "new": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 0
+          },
+          "primary_skill": null,
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 0.0
+          },
+          "difficulty": -0.3515
+        }
+      },
+      {
+        "criterion_id": "tb_0589_c01",
+        "version": "qmatrix_rulefix_v1",
+        "changes": [
+          {
+            "field": "q_mapping.diagnosis",
+            "from": 1,
+            "to": 0
+          },
+          {
+            "field": "primary_skill",
+            "from": "diagnosis",
+            "to": null
+          }
+        ],
+        "prior": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 1,
+            "scaffolding": 0
+          },
+          "primary_skill": "diagnosis",
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 1.8135,
+            "scaffolding": 0.0
+          },
+          "difficulty": -0.8426
+        },
+        "new": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 0
+          },
+          "primary_skill": null,
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 0.0
+          },
+          "difficulty": -0.8426
+        }
+      },
+      {
+        "criterion_id": "tb_0596_c08",
+        "version": "qmatrix_rulefix_v1",
+        "changes": [
+          {
+            "field": "q_mapping.diagnosis",
+            "from": 1,
+            "to": 0
+          },
+          {
+            "field": "primary_skill",
+            "from": "diagnosis",
+            "to": null
+          }
+        ],
+        "prior": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 1,
+            "scaffolding": 0
+          },
+          "primary_skill": "diagnosis",
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 1.783,
+            "scaffolding": 0.0
+          },
+          "difficulty": 0.8096
+        },
+        "new": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 0
+          },
+          "primary_skill": null,
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 0.0
+          },
+          "difficulty": 0.8096
+        }
+      },
+      {
+        "criterion_id": "tb_0604_c02",
+        "version": "qmatrix_rulefix_v1",
+        "changes": [
+          {
+            "field": "q_mapping.diagnosis",
+            "from": 1,
+            "to": 0
+          },
+          {
+            "field": "primary_skill",
+            "from": "diagnosis",
+            "to": null
+          }
+        ],
+        "prior": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 1,
+            "scaffolding": 0
+          },
+          "primary_skill": "diagnosis",
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 2.0541,
+            "scaffolding": 0.0
+          },
+          "difficulty": -0.1826
+        },
+        "new": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 0
+          },
+          "primary_skill": null,
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 0.0
+          },
+          "difficulty": -0.1826
+        }
+      },
+      {
+        "criterion_id": "tb_0607_c06",
+        "version": "qmatrix_rulefix_v1",
+        "changes": [
+          {
+            "field": "q_mapping.scaffolding",
+            "from": 1,
+            "to": 0
+          },
+          {
+            "field": "primary_skill",
+            "from": "scaffolding",
+            "to": null
+          }
+        ],
+        "prior": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 1
+          },
+          "primary_skill": "scaffolding",
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 1.6344
+          },
+          "difficulty": -0.976
+        },
+        "new": {
+          "q_mapping": {
+            "content": 0,
+            "diagnosis": 0,
+            "scaffolding": 0
+          },
+          "primary_skill": null,
+          "discrimination": {
+            "content": 0.0,
+            "diagnosis": 0.0,
+            "scaffolding": 0.0
+          },
+          "difficulty": -0.976
+        }
+      }
+    ]
+  }
+}

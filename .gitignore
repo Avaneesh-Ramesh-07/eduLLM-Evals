@@ -3,6 +3,7 @@
 !.env.example
 
 # Python bytecode and caches
+tutorbench-responses/
 __pycache__/
 *.py[cod]
 *$py.class

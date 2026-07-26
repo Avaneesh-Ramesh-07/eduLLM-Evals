@@ -82,7 +82,9 @@ DEFAULT_MODEL = "claude-group/claude-opus-4-8"
 MAX_TOKENS = 3000
 DEFAULT_CONCURRENCY = 8
 # v2: dropped `adaptation` -> 3 skills. v3: added model-designated `primary_skill`.
-PROMPT_VERSION = "qmatrix-v3-3skill-primary"
+# v4: sharpened `diagnosis` (broad address-the-error rule; acknowledging confusion is
+# all-zero) + conservative 1-placement policy. Matches "Skill Definitions v2" (v2.1).
+PROMPT_VERSION = "qmatrix-v4-3skill-diagnosis-sharpened"
 
 SKILLS = ("content", "diagnosis", "scaffolding")
 
@@ -133,28 +135,39 @@ item-response-theory (MIRT) study of AI tutors. You will be shown a tutoring sce
 a single rubric criterion used to score a tutor's response. Decide which of three latent
 tutoring skills a competent tutor MUST exercise in order to satisfy that criterion.
 
-THE THREE SKILLS
-- content: Subject-matter correctness. The criterion turns on accurate domain knowledge --
-  correct facts, definitions, computations, formulas, or solution steps.
+THE THREE SKILLS (mark 1 only if the criterion cannot be satisfied without the skill; default 0)
+- content: Subject-matter correctness -- correct facts, definitions, computations,
+  formulas, or solution steps. Load it whenever the criterion checks that a domain claim is
+  correct, INCLUDING supplying a correct answer, a correct hint, or a correct correction.
     Positive: "The response correctly computes the second derivative."
-    Negative: a criterion purely about tone or formatting that does not hinge on any
-    domain fact.
-- diagnosis: Reading the STUDENT's specific error, misconception, knowledge gap, or state
-  of understanding from what they said or did -- not merely solving the problem.
+    Negative: a criterion purely about tone/formatting with no domain fact at stake.
+- diagnosis: Reading, or acting on, THIS student's SPECIFIC error, misconception, knowledge
+  gap, or state of understanding from what they said or did.
     Positive: "The response identifies that the student added the denominators."
-    Negative: "The response states the correct final answer" (no reading of a student error).
-- scaffolding: Pedagogical structuring of the help -- decomposing into steps, giving hints
-  instead of revealing answers, asking guiding questions, sequencing support, promoting
-  active learning.
+    Positive (broad address-the-error rule): ANY criterion asking the tutor to correct or
+    address THE STUDENT'S error loads diagnosis, even if it does not name the specific
+    misconception (engaging the student's error presupposes reading it).
+    Negative (content only): a GENERIC "provide the correct solution" with no reference to the
+    student's mistake is content, not diagnosis.
+    Negative (all-zero): "acknowledge the student's confusion" -- generic empathy that does
+    NOT engage a specific mistake requires NO skill. Merely acknowledging a feeling is not
+    diagnosis.
+- scaffolding: Pedagogical structuring of the help -- hints instead of answers, withholding
+  the solution, decomposing into steps, guiding questions, or "explain (not just state) why".
     Positive: "The response gives a hint without revealing the full solution."
-    Negative: "The response is factually correct" (correctness, not structuring).
+    Negative: "The response states the correct fact" (content, not structuring); an OPTIONAL
+    extra check ("can include ...") is not required scaffolding; correcting an error is not,
+    by itself, scaffolding.
+
+PLACEMENT: default to 0. Be conservative -- missed loadings are recovered later from the
+calibration data (EFA / misfit), whereas spurious 1s hurt dimensional separability. On a
+genuine coin-flip you may lean 1 for scaffolding, but stay strict for content/diagnosis.
+
+A criterion may load several skills or NONE. All-zero cases include tone/affect/empathy,
+formatting, spelling, and conversational moves (acknowledge confusion, check for
+understanding, offer further help).
 
 LABELING RULES
-- Mark a skill 1 ONLY IF a tutor could not reliably satisfy the criterion without
-  exercising that skill. Default to 0. Be conservative -- do not mark a skill just because
-  it might plausibly help.
-- Skills may overlap: a criterion can require several skills. A criterion may also
-  legitimately require none of the three (all zeros) -- e.g. a pure formatting check.
 - The criterion metadata (primary_skill, criticality, objectivity, explicitness) is a HINT
   from the source dataset, not ground truth. Judge from the criterion text and scenario.
 - For EVERY skill you mark 1, add one entry to "justifications" containing:

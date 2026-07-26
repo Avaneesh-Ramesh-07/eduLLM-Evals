@@ -47,12 +47,14 @@ def completed_ids(path: str | Path, key: str = "Scenario") -> set[str]:
 
 
 class ShardWriter:
-    """Append-only, line-buffered JSONL writer."""
+    """Line-buffered JSONL writer. Appends by default (resume); ``truncate=True``
+    starts a fresh shard, which a ``--no-resume`` regenerate needs so new rows
+    don't pile up on top of a previous run's rows (e.g. old error cells)."""
 
-    def __init__(self, path: str | Path):
+    def __init__(self, path: str | Path, truncate: bool = False):
         self.path = Path(path)
         self.path.parent.mkdir(parents=True, exist_ok=True)
-        self._f = self.path.open("a", encoding="utf-8")
+        self._f = self.path.open("w" if truncate else "a", encoding="utf-8")
 
     def write(self, obj: dict[str, Any]) -> None:
         self._f.write(json.dumps(obj, ensure_ascii=False) + "\n")

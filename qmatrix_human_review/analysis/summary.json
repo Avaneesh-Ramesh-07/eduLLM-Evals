@@ -1,0 +1,182 @@
+{
+  "sampling_version": "qmatrix-human-review-v1",
+  "n_criteria": 25,
+  "n_criterion_reviews": 60,
+  "n_binary_skill_labels": 75,
+  "input_validation": "passed",
+  "human_agreement": {
+    "content": {
+      "n_labels": 25,
+      "unanimous": 21,
+      "unanimous_rate": 0.84,
+      "unresolved_two_rater_splits": 3
+    },
+    "diagnosis": {
+      "n_labels": 25,
+      "unanimous": 16,
+      "unanimous_rate": 0.64,
+      "unresolved_two_rater_splits": 5
+    },
+    "scaffolding": {
+      "n_labels": 25,
+      "unanimous": 20,
+      "unanimous_rate": 0.8,
+      "unresolved_two_rater_splits": 2
+    }
+  },
+  "pairwise_cohen_kappa": {
+    "content": {
+      "A-B": {
+        "n": 15,
+        "agreement": 0.9333,
+        "kappa": 0.8571
+      },
+      "A-C": {
+        "n": 15,
+        "agreement": 0.9333,
+        "kappa": 0.8571
+      },
+      "B-C": {
+        "n": 15,
+        "agreement": 0.8,
+        "kappa": 0.6154
+      }
+    },
+    "diagnosis": {
+      "A-B": {
+        "n": 15,
+        "agreement": 0.7333,
+        "kappa": 0.4444
+      },
+      "A-C": {
+        "n": 15,
+        "agreement": 0.6,
+        "kappa": 0.1667
+      },
+      "B-C": {
+        "n": 15,
+        "agreement": 0.8,
+        "kappa": 0.4444
+      }
+    },
+    "scaffolding": {
+      "A-B": {
+        "n": 15,
+        "agreement": 0.8,
+        "kappa": 0.5872
+      },
+      "A-C": {
+        "n": 15,
+        "agreement": 0.7333,
+        "kappa": 0.4545
+      },
+      "B-C": {
+        "n": 15,
+        "agreement": 0.9333,
+        "kappa": 0.8649
+      }
+    }
+  },
+  "core_fleiss_kappa": {
+    "content": {
+      "n_items": 10,
+      "agreement": 0.9333,
+      "kappa": 0.85
+    },
+    "diagnosis": {
+      "n_items": 10,
+      "agreement": 0.7333,
+      "kappa": 0.3651
+    },
+    "scaffolding": {
+      "n_items": 10,
+      "agreement": 0.8,
+      "kappa": 0.5928
+    }
+  },
+  "ai_vs_human": {
+    "content": {
+      "n": 25,
+      "resolved": 22,
+      "unresolved": 3,
+      "tp": 12,
+      "fp": 1,
+      "fn": 0,
+      "tn": 9,
+      "accuracy": 0.9545,
+      "precision": 0.9231,
+      "recall": 1.0,
+      "f1": 0.96
+    },
+    "diagnosis": {
+      "n": 25,
+      "resolved": 20,
+      "unresolved": 5,
+      "tp": 2,
+      "fp": 1,
+      "fn": 3,
+      "tn": 14,
+      "accuracy": 0.8,
+      "precision": 0.6667,
+      "recall": 0.4,
+      "f1": 0.5
+    },
+    "scaffolding": {
+      "n": 25,
+      "resolved": 23,
+      "unresolved": 2,
+      "tp": 7,
+      "fp": 2,
+      "fn": 1,
+      "tn": 13,
+      "accuracy": 0.8696,
+      "precision": 0.7778,
+      "recall": 0.875,
+      "f1": 0.8235
+    },
+    "overall": {
+      "n": 75,
+      "resolved": 65,
+      "unresolved": 10,
+      "tp": 21,
+      "fp": 4,
+      "fn": 4,
+      "tn": 36,
+      "accuracy": 0.8769,
+      "precision": 0.84,
+      "recall": 0.84,
+      "f1": 0.84
+    }
+  },
+  "ai_vs_human_by_sampling_stratum": {
+    "changed": {
+      "n": 36,
+      "resolved": 33,
+      "unresolved": 3,
+      "tp": 11,
+      "fp": 3,
+      "fn": 2,
+      "tn": 17,
+      "accuracy": 0.8485,
+      "precision": 0.7857,
+      "recall": 0.8462,
+      "f1": 0.8148
+    },
+    "stable": {
+      "n": 39,
+      "resolved": 32,
+      "unresolved": 7,
+      "tp": 10,
+      "fp": 1,
+      "fn": 2,
+      "tn": 19,
+      "accuracy": 0.9062,
+      "precision": 0.9091,
+      "recall": 0.8333,
+      "f1": 0.8696
+    }
+  },
+  "adjudication_rows": 32,
+  "adjudication_binary_labels": 22,
+  "adjudication_primary_skill_rows": 10
+}

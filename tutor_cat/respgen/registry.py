@@ -29,6 +29,14 @@ _HF_FALLBACK_MARKERS = (
 # Encoder-decoder (seq2seq) families: need AutoModelForSeq2SeqLM, no chat template.
 _SEQ2SEQ_MARKERS = ("flan-t5", "t5-", "-t5", "bart", "pegasus", "flan-ul2", "ul2")
 
+# Models that ship NO tokenizer of their own and reference a *gated* one, so a
+# bare AutoTokenizer.from_pretrained(model_id) 403s (OpenELM -> meta-llama/
+# Llama-2-7b-hf). Map them onto an ungated, byte-identical mirror so no HF
+# license grant is needed. id-substring -> tokenizer repo. (UNTESTED)
+_TOKENIZER_OVERRIDES = {
+    "openelm": "NousResearch/Llama-2-7b-hf",
+}
+
 
 def guess_apply_chat_template(model_id: str) -> bool:
     mid = model_id.lower()
@@ -57,6 +65,16 @@ def guess_enable_thinking(model_id: str) -> bool | None:
     """Qwen3 emits <think> reasoning by default; disable for clean tutor output.
     None => don't pass the kwarg (model doesn't support it)."""
     return False if "qwen3" in model_id.lower() else None
+
+
+def guess_tokenizer_id(model_id: str) -> str | None:
+    """Ungated tokenizer mirror for models that ship none (e.g. OpenELM). None =>
+    load the tokenizer from the model repo itself (the common case). (UNTESTED)"""
+    mid = model_id.lower()
+    for marker, tok in _TOKENIZER_OVERRIDES.items():
+        if marker in mid:
+            return tok
+    return None
 
 
 # --- max_model_len clamp ---------------------------------------------------
@@ -105,6 +123,7 @@ class ResolvedModel:
     architecture: str
     enable_thinking: bool | None
     max_model_len: int
+    tokenizer_id: str | None = None  # None => load tokenizer from the model repo
 
 
 def resolve(
@@ -130,6 +149,7 @@ def resolve(
         else guess_enable_thinking(spec.id)
     )
     max_model_len = resolve_max_model_len(spec.id, spec.max_model_len_cap, fetch_config)
+    tokenizer_id = spec.tokenizer_id or guess_tokenizer_id(spec.id)
     return ResolvedModel(
         spec=spec,
         apply_chat_template=apply_ct,
@@ -138,4 +158,5 @@ def resolve(
         architecture=architecture,
         enable_thinking=thinking,
         max_model_len=max_model_len,
+        tokenizer_id=tokenizer_id,
     )
