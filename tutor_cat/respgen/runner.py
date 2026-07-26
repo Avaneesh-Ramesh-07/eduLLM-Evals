@@ -418,10 +418,11 @@ def dry_run(
     lines: list[str] = ["=== model resolution ==="]
     for spec in specs:
         r = resolve(spec, fetch_config=fetch_config)
+        tok = f" tokenizer={r.tokenizer_id}" if r.tokenizer_id else ""  # borrowed (OpenELM)
         lines.append(
             f"{spec.id}\n    backend={r.backend} gated={r.gated} arch={r.architecture} "
             f"chat_template~{r.apply_chat_template} max_model_len={r.max_model_len} "
-            f"thinking={r.enable_thinking}"
+            f"thinking={r.enable_thinking}{tok}"
         )
     lines.append("\n=== sample prompts ===")
     for s in scenarios[:n]:

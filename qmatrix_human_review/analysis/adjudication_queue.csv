@@ -1,0 +1,149 @@
+criterion_id,scenario_id,skill,review_group,sampling_target,sampling_stratum,n_raters,rating_A,rating_B,rating_C,human_unanimous,human_consensus,ai_label,human_ai_match,issue_type,ai_value,provisional_human_value,confidence_A,confidence_B,confidence_C,notes_A,notes_B,notes_C,criterion,scenario_prompt,adjudicated_value,adjudication_rationale
+tb_0620_c05,tb_0620,content,CORE,changed_0_to_1:content,changed,3,1,0,1,False,1,1,True,human_disagreement,1,1,medium,high,medium,,,"Main point is providing hint, but it also needs knowledge of what the answer should be and what exactly the student doesn't understand.",The response must include a hint in the form of probing questions or suggestions for the student to identify what the error is trying to say about incompatible types. ,"Umm, I think we're supposed to use StringBuilder for this because our teacher said string concatenation in loops is inefficient? Let me try...
+
+```java
+/**
+* Concatenates 'b' to 'a' 'count' number of times
+*/
+public String concatenateStrings(String a, String b, int count) {
+    StringBuilder builder = new StringBuilder();
+    
+    // I add the first string
+    builder.append(a);
+    
+    // Now I need to add string b multiple times
+    for (int i = 0; i < count; i++) {
+        builder.append(b);
+    }
+    
+    // I think I return it like this?
+    return builder;  // This gives me an error but I don't know why
+}
+```
+
+Wait, I'm getting a compile error. The IDE says ""incompatible types: StringBuilder cannot be converted to String"". I don't get it - I thought StringBuilder was supposed to help with string operations? I'm not sure how to get the actual String back from the StringBuilder...",,
+tb_0620_c05,tb_0620,diagnosis,CORE,changed_0_to_1:content,changed,3,1,0,1,False,1,0,False,human_disagreement;human_vs_ai,0,1,medium,high,medium,,,"Main point is providing hint, but it also needs knowledge of what the answer should be and what exactly the student doesn't understand.",The response must include a hint in the form of probing questions or suggestions for the student to identify what the error is trying to say about incompatible types. ,"Umm, I think we're supposed to use StringBuilder for this because our teacher said string concatenation in loops is inefficient? Let me try...
+
+```java
+/**
+* Concatenates 'b' to 'a' 'count' number of times
+*/
+public String concatenateStrings(String a, String b, int count) {
+    StringBuilder builder = new StringBuilder();
+    
+    // I add the first string
+    builder.append(a);
+    
+    // Now I need to add string b multiple times
+    for (int i = 0; i < count; i++) {
+        builder.append(b);
+    }
+    
+    // I think I return it like this?
+    return builder;  // This gives me an error but I don't know why
+}
+```
+
+Wait, I'm getting a compile error. The IDE says ""incompatible types: StringBuilder cannot be converted to String"". I don't get it - I thought StringBuilder was supposed to help with string operations? I'm not sure how to get the actual String back from the StringBuilder...",,
+tb_0125_c01,tb_0125,diagnosis,CORE,changed_0_to_1:diagnosis,changed,3,1,0,0,False,0,1,False,human_disagreement;human_vs_ai,1,0,medium,medium,high,,,Just about addressing student distress.,"Must explicitly acknowledge the student’s stated worry that “multiplying the 2 % by 99.5 % feels like double-counting,” and respond with an empathetic phrase (e.g., “I hear your concern,” “Great question—let’s unpack it”).","I’m a little stuck on the part where you calculate P(Positive).
+Why do you multiply 0.02 by 0.995 instead of using 0.98, and where exactly does that 0.02 come from?",,
+tb_0125_c01,tb_0125,scaffolding,CORE,changed_0_to_1:diagnosis,changed,3,1,0,0,False,0,0,True,human_disagreement,0,0,medium,medium,high,,,Just about addressing student distress.,"Must explicitly acknowledge the student’s stated worry that “multiplying the 2 % by 99.5 % feels like double-counting,” and respond with an empathetic phrase (e.g., “I hear your concern,” “Great question—let’s unpack it”).","I’m a little stuck on the part where you calculate P(Positive).
+Why do you multiply 0.02 by 0.995 instead of using 0.98, and where exactly does that 0.02 come from?",,
+tb_0125_c01,tb_0125,primary_skill,CORE,changed_0_to_1:diagnosis,changed,3,diagnosis,none,none,False,none,diagnosis,False,human_disagreement;human_vs_ai,diagnosis,none,medium,medium,high,,,Just about addressing student distress.,"Must explicitly acknowledge the student’s stated worry that “multiplying the 2 % by 99.5 % feels like double-counting,” and respond with an empathetic phrase (e.g., “I hear your concern,” “Great question—let’s unpack it”).","I’m a little stuck on the part where you calculate P(Positive).
+Why do you multiply 0.02 by 0.995 instead of using 0.98, and where exactly does that 0.02 come from?",,
+tb_0016_c04,tb_0016,scaffolding,CORE,changed_0_to_1:scaffolding,changed,3,0,0,0,True,0,1,False,human_vs_ai,1,0,medium,medium,high,,,Provide fact.,Response must clearly state ionic dissociation of both reactants before describing the reaction.,Why does the equation show 2 moles of silver nitrate reacting with only 1 mole of copper(II)chloride? Shouldn't the amounts be the same if they are just swapping ions?,,
+tb_0215_c05,tb_0215,scaffolding,CORE,changed_1_to_0:scaffolding,changed,3,1,0,1,False,1,0,False,human_disagreement;human_vs_ai,0,1,high,medium,medium,,,Emphasis on explanation (intermediate steps?) not just content.,"The response must explain, not just state, why rolling without slipping means the point of contact has zero relative velocity.",I don't understand why we even include the kinetic energy. Doesn't the problem just state that the body can roll? How is it possible to know that the body is not just sliding? I have a really hard time visualizing this in my head.,,
+tb_0215_c05,tb_0215,primary_skill,CORE,changed_1_to_0:scaffolding,changed,3,scaffolding,content,scaffolding,False,scaffolding,content,False,human_disagreement;human_vs_ai,content,scaffolding,high,medium,medium,,,Emphasis on explanation (intermediate steps?) not just content.,"The response must explain, not just state, why rolling without slipping means the point of contact has zero relative velocity.",I don't understand why we even include the kinetic energy. Doesn't the problem just state that the body can roll? How is it possible to know that the body is not just sliding? I have a really hard time visualizing this in my head.,,
+tb_0091_c06,tb_0091,diagnosis,CORE,stable_positive:content,stable,3,1,0,0,False,0,0,True,human_disagreement,0,0,medium,high,high,,,"Get right answer, use right method.",The response must calculate the correct probability of choosing two black pots out of 25 as .0479 by using p = .22 and 1-p = .78.,"I am confused on how to set up the binomial because the ratio is 44 for black pots, but I keep getting .00009 which is so small that I cannot round to three significant figures. Where am I going wrong in the calculation? ",,
+tb_0091_c06,tb_0091,scaffolding,CORE,stable_positive:content,stable,3,1,0,0,False,0,0,True,human_disagreement,0,0,medium,high,high,,,"Get right answer, use right method.",The response must calculate the correct probability of choosing two black pots out of 25 as .0479 by using p = .22 and 1-p = .78.,"I am confused on how to set up the binomial because the ratio is 44 for black pots, but I keep getting .00009 which is so small that I cannot round to three significant figures. Where am I going wrong in the calculation? ",,
+tb_0162_c06,tb_0162,primary_skill,CORE,stable_positive:diagnosis,stable,3,diagnosis,content,scaffolding,False,,diagnosis,,human_disagreement,diagnosis,,medium,low,medium,,,"Error correction, must still be correct.","The model must correct the student's error by explaining that fertilization does not create ""RW, TW, Rt, and Tt gametes"" but rather creates single diploid individuals with complete genotypes like RW/Tt. ","I'm sorry, but I think I'm confused. How did you get RW/Tt, RW/tt, WW/Tt, and WW/tt from plant 1 and plant 2? I don't really understand this step. Wouldn't the plant 1 R,T gamete combine with the plant 2 W,t gamete to produce RW, TW, Rt, and Tt gametes?",,
+tb_0120_c02,tb_0120,diagnosis,CORE,stable_all_zero,stable,3,1,1,0,False,1,0,False,human_disagreement;human_vs_ai,0,1,high,low,high,,,Just about talking to student.,The response must acknowledge the student's state of confusion.,"Wait I'm confused. Given these are half reactions, I thought the values needed to be cut in half. So wouldn't it be .40-.17 to get .23?",,
+tb_0120_c02,tb_0120,primary_skill,CORE,stable_all_zero,stable,3,diagnosis,diagnosis,none,False,diagnosis,none,False,human_disagreement;human_vs_ai,none,diagnosis,high,low,high,,,Just about talking to student.,The response must acknowledge the student's state of confusion.,"Wait I'm confused. Given these are half reactions, I thought the values needed to be cut in half. So wouldn't it be .40-.17 to get .23?",,
+tb_0576_c05,tb_0576,content,AB,changed_0_to_1:content,changed,2,0,0,,True,0,1,False,human_vs_ai,1,0,high,medium,,,,,The response must give a hint in the form of a question or suggestion for the student to consider how we would find the probability of each component in the partition of event A.,"# Probability Problem: Vacation Rental Car Bidding
+
+Okay, so this is a conditional probability problem. I need to find the probability that their bid was $20 per day, given that their bid was accepted.
+
+I have the following information given:
+
+- 50% of people bid $30/day, and 90% of these bids are accepted
+- 40% of people bid $25/day, and 60% of these bids are accepted
+- 10% of people bid $20/day, and 5% of these bids are accepted
+
+I think I need to use Bayes' theorem for this. Let me set up the events:
+
+- Let B₃₀ = bid $30/day
+- Let B₂₅ = bid $25/day
+- Let B₂₀ = bid $20/day
+- Let A = bid is accepted
+
+I'm looking for P(B₂₀|A) = the probability the bid was $20 given it was accepted.
+
+Using Bayes' theorem: P(B₂₀|A) = \[P(A|B₂₀) × P(B₂₀)\] / P(A)
+
+I know:
+
+- P(B₂₀) = 0.10
+- P(A|B₂₀) = 0.05
+
+For P(A), I need to find the total probability of acceptance, but I'm stuck here. How do I find P(A)? I'm confused about how to finish the problem...",,
+tb_0056_c06,tb_0056,scaffolding,AB,stable_positive:scaffolding,stable,2,0,0,,True,0,1,False,human_vs_ai,1,0,high,low,,,,,The model can include an additional conceptual check (e.g. using first derivative sign change test).,"I thought the second derivative at $t = \pi$ is positive because $H-1$ is positive and $\sin\left(\frac{\pi}{2}\right)$ is also positive. When I plugged it into the formula  $\frac{d^2H}{dt^2} = \frac{1}{4}(H-1)(\cos^2(t/2)-\sin(t/2))$, I just added the terms and got something positive. So I'm confused why the graph is concave down. Shouldn't a positive second derivative mean it's a minimum, not a maximum?
+Also, since both cosine squared and sine are between 0 and 1, I figured their difference couldn't be negative.",,
+tb_0020_c07,tb_0020,diagnosis,AB,stable_positive:content,stable,2,1,0,,False,,0,,human_disagreement,0,,medium,medium,,,,,The response must demonstrate that the final ratio of offspring color resulting from this genetic model matches the ratio in the original question. It should at least point out the segregation of each gene: a 1 : 2 : 1 segregation at gene A (black : gray : brown) and a 3 : 1 segregation at gene B (pigmented : white).,"This question is really confusingly worded! It says ""A heterozygous individuals have gray coat, while homozygous individuals have either black or brown coat."" I know heterozygous individuals would be Aa for allele A. But if they are grey, then AA individuals are also grey, but this implies they would be black or brown. And then aa individuals are randomly black or brown? And why do you label the alleles as A1 and A2 instead of A and a?",,
+tb_0129_c01,tb_0129,diagnosis,AB,stable_all_zero,stable,2,1,1,,True,1,0,False,human_vs_ai,0,1,high,low,,,,,The response must acknowledge the student's expressed confusion.,"Wait, why does sodium sulfate dissociate completely and barium sulfate not? I'm confused, won't they both dissociate the same amount because they're both sulfates? I thought the solubility rules say sulfates are soluble. Also, if barium sulfate precipitates, doesn't that mean it had dissociated into ions and then reformed with the sulfate anion from sodium sulfate? Which means it was soluble for a bit? I'm also not sure what's going on in part b) cos why does H⁺ react with SO₄²⁻ when they are dissociated ions floating around in solution, does it precipitate out as HSO₄Cl? Why does this count as reacting, but you haven't mentioned Ba²⁺ reacting with Cl⁻? Wouldn't that push the equilibrium back the other way? Wouldn't BaCl precipitate out? Also, because HCl is an acid, and acids are corrosive, wouldn't it break apart SO₄²⁻ into S and O atoms? I don't think I understand Le Chatelier's principle. What do you mean by ""shifts to the right"" and ""shifts to the left""?",,
+tb_0129_c01,tb_0129,primary_skill,AB,stable_all_zero,stable,2,diagnosis,diagnosis,,True,diagnosis,none,False,human_vs_ai,none,diagnosis,high,low,,,,,The response must acknowledge the student's expressed confusion.,"Wait, why does sodium sulfate dissociate completely and barium sulfate not? I'm confused, won't they both dissociate the same amount because they're both sulfates? I thought the solubility rules say sulfates are soluble. Also, if barium sulfate precipitates, doesn't that mean it had dissociated into ions and then reformed with the sulfate anion from sodium sulfate? Which means it was soluble for a bit? I'm also not sure what's going on in part b) cos why does H⁺ react with SO₄²⁻ when they are dissociated ions floating around in solution, does it precipitate out as HSO₄Cl? Why does this count as reacting, but you haven't mentioned Ba²⁺ reacting with Cl⁻? Wouldn't that push the equilibrium back the other way? Wouldn't BaCl precipitate out? Also, because HCl is an acid, and acids are corrosive, wouldn't it break apart SO₄²⁻ into S and O atoms? I don't think I understand Le Chatelier's principle. What do you mean by ""shifts to the right"" and ""shifts to the left""?",,
+tb_0113_c01,tb_0113,diagnosis,AC,changed_0_to_1:diagnosis,changed,2,1,,0,False,,1,,human_disagreement,1,,medium,,high,,,Just about talking to student.,The model response must acknowledge the student's confusion.,"Mostly clear, but there is one particular element that confuses me. Why do you bother about finding the forces perpendicular to the incline? I thought we were just calculating the forces along the incline. And how could the block supposedly be moving upward while all forces along the incline are acting downward?",,
+tb_0113_c01,tb_0113,primary_skill,AC,changed_0_to_1:diagnosis,changed,2,diagnosis,,none,False,,diagnosis,,human_disagreement,diagnosis,,medium,,high,,,Just about talking to student.,The model response must acknowledge the student's confusion.,"Mostly clear, but there is one particular element that confuses me. Why do you bother about finding the forces perpendicular to the incline? I thought we were just calculating the forces along the incline. And how could the block supposedly be moving upward while all forces along the incline are acting downward?",,
+tb_0314_c04,tb_0314,scaffolding,AC,stable_positive:content,stable,2,0,,1,False,,0,,human_disagreement,0,,high,,medium,,,"Explanation of steps, but also needs correct knowledge in first place.","The response must analyze the sign of $$s''(t)$$ by explaining that since $$t > 0$$, every term in the expression $\frac{t(2t^2 + 27)}{(t^2+9)^{3/2}}$ is positive, which proves that $$s''(t) > 0$","In part \((c)\), you found the maximum of the derivative \(s'(t)\) by simplifying the differentiation again. However, I am confused about how you got \(s''(t)\) in the solution.",,
+tb_0314_c04,tb_0314,primary_skill,AC,stable_positive:content,stable,2,content,,scaffolding,False,,content,,human_disagreement,content,,high,,medium,,,"Explanation of steps, but also needs correct knowledge in first place.","The response must analyze the sign of $$s''(t)$$ by explaining that since $$t > 0$$, every term in the expression $\frac{t(2t^2 + 27)}{(t^2+9)^{3/2}}$ is positive, which proves that $$s''(t) > 0$","In part \((c)\), you found the maximum of the derivative \(s'(t)\) by simplifying the differentiation again. However, I am confused about how you got \(s''(t)\) in the solution.",,
+tb_0047_c07,tb_0047,content,AC,stable_positive:diagnosis,stable,2,0,,1,False,,1,,human_disagreement,1,,medium,,medium,,,"Correct the error, but also provide the correct erm.",The response must correct the student stating that the correct y-intercept term does not square R: the correct term is  a(V – b)/(R V²).,"Ok, just wondering why the slope and y-intercept in the given problem van der Waals equation depend on b, but in your final equation, only the slope ((V-b)/aR) depends on b, and it's inverted for some reason? And there's some kind of problem with your intercept value (a(V-b)/(RV)^2) because a negative value for T at P=0 doesn't seem possible. I mean, physically, what does it even mean to have no pressure? ",,
+tb_0047_c07,tb_0047,diagnosis,AC,stable_positive:diagnosis,stable,2,0,,1,False,,1,,human_disagreement,1,,medium,,medium,,,"Correct the error, but also provide the correct erm.",The response must correct the student stating that the correct y-intercept term does not square R: the correct term is  a(V – b)/(R V²).,"Ok, just wondering why the slope and y-intercept in the given problem van der Waals equation depend on b, but in your final equation, only the slope ((V-b)/aR) depends on b, and it's inverted for some reason? And there's some kind of problem with your intercept value (a(V-b)/(RV)^2) because a negative value for T at P=0 doesn't seem possible. I mean, physically, what does it even mean to have no pressure? ",,
+tb_0047_c07,tb_0047,scaffolding,AC,stable_positive:diagnosis,stable,2,1,,0,False,,0,,human_disagreement,0,,medium,,medium,,,"Correct the error, but also provide the correct erm.",The response must correct the student stating that the correct y-intercept term does not square R: the correct term is  a(V – b)/(R V²).,"Ok, just wondering why the slope and y-intercept in the given problem van der Waals equation depend on b, but in your final equation, only the slope ((V-b)/aR) depends on b, and it's inverted for some reason? And there's some kind of problem with your intercept value (a(V-b)/(RV)^2) because a negative value for T at P=0 doesn't seem possible. I mean, physically, what does it even mean to have no pressure? ",,
+tb_0047_c07,tb_0047,primary_skill,AC,stable_positive:diagnosis,stable,2,scaffolding,,diagnosis,False,,diagnosis,,human_disagreement,diagnosis,,medium,,medium,,,"Correct the error, but also provide the correct erm.",The response must correct the student stating that the correct y-intercept term does not square R: the correct term is  a(V – b)/(R V²).,"Ok, just wondering why the slope and y-intercept in the given problem van der Waals equation depend on b, but in your final equation, only the slope ((V-b)/aR) depends on b, and it's inverted for some reason? And there's some kind of problem with your intercept value (a(V-b)/(RV)^2) because a negative value for T at P=0 doesn't seem possible. I mean, physically, what does it even mean to have no pressure? ",,
+tb_0268_c03,tb_0268,diagnosis,AC,stable_all_zero,stable,2,1,,0,False,,0,,human_disagreement,0,,medium,,high,,,Just address confusion.,The model must acknowledge the student's confusion.,"I think I'm misunderstanding something here. I totally understand why the trait cannot be either autosomal dominant or X-linked dominant. I even understand that the trait must be recessive. But I'm confused why I-2 having affected children with an unaffected male partner (I-1) would rule out autosomal recessive inheritance. With an autosomal recessive trait, couldn't I-2 still have affected children with I-1 if he is a heterozygous carrier of the affected allele?",,
+tb_0268_c03,tb_0268,primary_skill,AC,stable_all_zero,stable,2,diagnosis,,none,False,,none,,human_disagreement,none,,medium,,high,,,Just address confusion.,The model must acknowledge the student's confusion.,"I think I'm misunderstanding something here. I totally understand why the trait cannot be either autosomal dominant or X-linked dominant. I even understand that the trait must be recessive. But I'm confused why I-2 having affected children with an unaffected male partner (I-1) would rule out autosomal recessive inheritance. With an autosomal recessive trait, couldn't I-2 still have affected children with I-1 if he is a heterozygous carrier of the affected allele?",,
+tb_0554_c02,tb_0554,content,BC,changed_0_to_1:scaffolding,changed,2,,0,1,False,,1,,human_disagreement,1,,,medium,low,,,"Make suggestion, know the right abbreviations, and identify that these are wrong.",The response must suggest that the student recheck the abbreviations they used for glutamic acid and valine. ,"# Hemoglobin Mutation in Sickle Cell Disease
+
+Wild type is glutamic acid (Gln, Q) -> CAA, CAG\
+Mutant is valine (Val, V) -> GUU, GUA, GUC, GUG\
+More than one is substituted?
+
+Well glutamic acid to valine will impact structure and function because glutamic acid has bulky, charged side chain. Valine is hydrophobic and small. If it's on the surface of hemoglobin, it's going to want to hide away from the aqueous environment around it. ",,
+tb_0554_c02,tb_0554,diagnosis,BC,changed_0_to_1:scaffolding,changed,2,,0,1,False,,1,,human_disagreement,1,,,medium,low,,,"Make suggestion, know the right abbreviations, and identify that these are wrong.",The response must suggest that the student recheck the abbreviations they used for glutamic acid and valine. ,"# Hemoglobin Mutation in Sickle Cell Disease
+
+Wild type is glutamic acid (Gln, Q) -> CAA, CAG\
+Mutant is valine (Val, V) -> GUU, GUA, GUC, GUG\
+More than one is substituted?
+
+Well glutamic acid to valine will impact structure and function because glutamic acid has bulky, charged side chain. Valine is hydrophobic and small. If it's on the surface of hemoglobin, it's going to want to hide away from the aqueous environment around it. ",,
+tb_0554_c02,tb_0554,primary_skill,BC,changed_0_to_1:scaffolding,changed,2,,scaffolding,diagnosis,False,,diagnosis,,human_disagreement,diagnosis,,,medium,low,,,"Make suggestion, know the right abbreviations, and identify that these are wrong.",The response must suggest that the student recheck the abbreviations they used for glutamic acid and valine. ,"# Hemoglobin Mutation in Sickle Cell Disease
+
+Wild type is glutamic acid (Gln, Q) -> CAA, CAG\
+Mutant is valine (Val, V) -> GUU, GUA, GUC, GUG\
+More than one is substituted?
+
+Well glutamic acid to valine will impact structure and function because glutamic acid has bulky, charged side chain. Valine is hydrophobic and small. If it's on the surface of hemoglobin, it's going to want to hide away from the aqueous environment around it. ",,
+tb_0546_c07,tb_0546,content,BC,stable_positive:diagnosis,stable,2,,0,1,False,,1,,human_disagreement,1,,,medium,medium,,,"Identify student specific issue, knowledge of what should have been done.","The response must identify the student is unable to proceed because without calling `super(start)`, the inherited `current` field remains uninitialized, so `advance()` logic never applies to the right starting value.","# 
+
+```java
+ppublic class ArithmeticProgression extends Progression {
+    private long increment;
+
+    // Constructor sets default increment
+    public ArithmeticProgression() {
+        this(0, 1);  // default start = 0, increment = 1
+    }
+
+    // Constructor with increment only
+    public ArithmeticProgression(long inc) {
+        this.increment = inc;
+    }
+
+    // Constructor with start and increment
+    public ArithmeticProgression(long start, long inc) {
+        increment = inc;
+        start = current;  // trying to set current to start
+    }
+
+    // I think I also need to override advance?
+}
+```",,

@@ -1,0 +1,61 @@
+reviewer,criterion_id,scenario_id,review_group,sampling_target,content,diagnosis,scaffolding,primary_skill,confidence,notes
+A,tb_0620_c05,tb_0620,CORE,changed_0_to_1:content,1,1,1,scaffolding,medium,
+B,tb_0620_c05,tb_0620,CORE,changed_0_to_1:content,0,0,1,scaffolding,high,
+C,tb_0620_c05,tb_0620,CORE,changed_0_to_1:content,1,1,1,scaffolding,medium,"Main point is providing hint, but it also needs knowledge of what the answer should be and what exactly the student doesn't understand."
+A,tb_0125_c01,tb_0125,CORE,changed_0_to_1:diagnosis,0,1,1,diagnosis,medium,
+B,tb_0125_c01,tb_0125,CORE,changed_0_to_1:diagnosis,0,0,0,none,medium,
+C,tb_0125_c01,tb_0125,CORE,changed_0_to_1:diagnosis,0,0,0,none,high,Just about addressing student distress.
+A,tb_0016_c04,tb_0016,CORE,changed_0_to_1:scaffolding,1,0,0,content,medium,
+B,tb_0016_c04,tb_0016,CORE,changed_0_to_1:scaffolding,1,0,0,content,medium,
+C,tb_0016_c04,tb_0016,CORE,changed_0_to_1:scaffolding,1,0,0,content,high,Provide fact.
+A,tb_0569_c08,tb_0569,CORE,changed_1_to_0:content,0,0,1,scaffolding,medium,
+B,tb_0569_c08,tb_0569,CORE,changed_1_to_0:content,0,0,1,scaffolding,high,
+C,tb_0569_c08,tb_0569,CORE,changed_1_to_0:content,0,0,1,scaffolding,medium,Criteria itself seems to just be about withholding correct answer.
+A,tb_0240_c07,tb_0240,CORE,changed_1_to_0:diagnosis,1,0,0,content,high,
+B,tb_0240_c07,tb_0240,CORE,changed_1_to_0:diagnosis,1,0,0,content,low,
+C,tb_0240_c07,tb_0240,CORE,changed_1_to_0:diagnosis,1,0,0,content,high,Correct answer.
+A,tb_0215_c05,tb_0215,CORE,changed_1_to_0:scaffolding,1,0,1,scaffolding,high,
+B,tb_0215_c05,tb_0215,CORE,changed_1_to_0:scaffolding,1,0,0,content,medium,
+C,tb_0215_c05,tb_0215,CORE,changed_1_to_0:scaffolding,1,0,1,scaffolding,medium,Emphasis on explanation (intermediate steps?) not just content.
+A,tb_0091_c06,tb_0091,CORE,stable_positive:content,1,1,1,content,medium,
+B,tb_0091_c06,tb_0091,CORE,stable_positive:content,1,0,0,content,high,
+C,tb_0091_c06,tb_0091,CORE,stable_positive:content,1,0,0,content,high,"Get right answer, use right method."
+A,tb_0162_c06,tb_0162,CORE,stable_positive:diagnosis,1,1,0,diagnosis,medium,
+B,tb_0162_c06,tb_0162,CORE,stable_positive:diagnosis,1,1,0,content,low,
+C,tb_0162_c06,tb_0162,CORE,stable_positive:diagnosis,1,1,0,scaffolding,medium,"Error correction, must still be correct."
+A,tb_0615_c06,tb_0615,CORE,stable_positive:scaffolding,1,0,1,scaffolding,medium,
+B,tb_0615_c06,tb_0615,CORE,stable_positive:scaffolding,1,0,1,scaffolding,medium,
+C,tb_0615_c06,tb_0615,CORE,stable_positive:scaffolding,1,0,1,scaffolding,medium,"Provide hint, still needs to be based in correctness."
+A,tb_0120_c02,tb_0120,CORE,stable_all_zero,0,1,0,diagnosis,high,
+B,tb_0120_c02,tb_0120,CORE,stable_all_zero,0,1,0,diagnosis,low,
+C,tb_0120_c02,tb_0120,CORE,stable_all_zero,0,0,0,none,high,Just about talking to student.
+A,tb_0576_c05,tb_0576,AB,changed_0_to_1:content,0,0,1,scaffolding,high,
+B,tb_0576_c05,tb_0576,AB,changed_0_to_1:content,0,0,1,scaffolding,medium,
+A,tb_0433_c05,tb_0433,AB,changed_1_to_0:diagnosis,1,0,0,content,high,
+B,tb_0433_c05,tb_0433,AB,changed_1_to_0:diagnosis,1,0,0,content,high,
+A,tb_0056_c06,tb_0056,AB,stable_positive:scaffolding,1,0,0,content,high,
+B,tb_0056_c06,tb_0056,AB,stable_positive:scaffolding,1,0,0,content,low,
+A,tb_0020_c07,tb_0020,AB,stable_positive:content,1,1,0,content,medium,
+B,tb_0020_c07,tb_0020,AB,stable_positive:content,1,0,0,content,medium,
+A,tb_0129_c01,tb_0129,AB,stable_all_zero,0,1,0,diagnosis,high,
+B,tb_0129_c01,tb_0129,AB,stable_all_zero,0,1,0,diagnosis,low,
+A,tb_0113_c01,tb_0113,AC,changed_0_to_1:diagnosis,0,1,0,diagnosis,medium,
+C,tb_0113_c01,tb_0113,AC,changed_0_to_1:diagnosis,0,0,0,none,high,Just about talking to student.
+A,tb_0219_c09,tb_0219,AC,changed_1_to_0:scaffolding,1,0,0,content,high,
+C,tb_0219_c09,tb_0219,AC,changed_1_to_0:scaffolding,1,0,0,content,low,Just providing an example?
+A,tb_0314_c04,tb_0314,AC,stable_positive:content,1,0,0,content,high,
+C,tb_0314_c04,tb_0314,AC,stable_positive:content,1,0,1,scaffolding,medium,"Explanation of steps, but also needs correct knowledge in first place."
+A,tb_0047_c07,tb_0047,AC,stable_positive:diagnosis,0,0,1,scaffolding,medium,
+C,tb_0047_c07,tb_0047,AC,stable_positive:diagnosis,1,1,0,diagnosis,medium,"Correct the error, but also provide the correct erm."
+A,tb_0268_c03,tb_0268,AC,stable_all_zero,0,1,0,diagnosis,medium,
+C,tb_0268_c03,tb_0268,AC,stable_all_zero,0,0,0,none,high,Just address confusion.
+B,tb_0554_c02,tb_0554,BC,changed_0_to_1:scaffolding,0,0,1,scaffolding,medium,
+C,tb_0554_c02,tb_0554,BC,changed_0_to_1:scaffolding,1,1,1,diagnosis,low,"Make suggestion, know the right abbreviations, and identify that these are wrong."
+B,tb_0550_c04,tb_0550,BC,changed_1_to_0:content,0,0,1,scaffolding,high,
+C,tb_0550_c04,tb_0550,BC,changed_1_to_0:content,0,0,1,scaffolding,medium,Do not show next step.
+B,tb_0546_c07,tb_0546,BC,stable_positive:diagnosis,0,1,0,diagnosis,medium,
+C,tb_0546_c07,tb_0546,BC,stable_positive:diagnosis,1,1,0,diagnosis,medium,"Identify student specific issue, knowledge of what should have been done."
+B,tb_0582_c01,tb_0582,BC,stable_positive:scaffolding,0,0,1,scaffolding,high,
+C,tb_0582_c01,tb_0582,BC,stable_positive:scaffolding,0,0,1,scaffolding,medium,Just don't give the formula (withhold).
+B,tb_0378_c14,tb_0378,BC,stable_all_zero,0,0,0,none,medium,
+C,tb_0378_c14,tb_0378,BC,stable_all_zero,0,0,0,none,high,About the tutor personality.

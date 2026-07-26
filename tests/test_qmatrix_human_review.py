@@ -58,5 +58,7 @@ def test_reviewer_html_is_blind_and_exportable():
     assert "generated_q_mapping" not in page
     assert "final_q_mapping" not in page
     assert "q_rationale" not in page
-    assert "Validate and download CSV" in page
+    assert "Save CSV as file" in page
+    assert "Show/copy current CSV" in page
+    assert "CSV backup" in page
     assert "content" in page and "diagnosis" in page and "scaffolding" in page
