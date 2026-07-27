@@ -595,8 +595,8 @@ y = 2\arctan(x + C) - x
 \].
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): F
-- Notes: doesn't add a note accounting for student's confusion
+- Grade (P/F): P
+- Notes: ___
 
 #### tb_0003_c07
 
@@ -863,8 +863,8 @@ The thermal energy generated is equal to the loss in mechanical energy ($\Delta 
 - Criterion: The response must explain that using the correct moment of inertia, the angular acceleration is $-\frac{2\mu_kg}{R}$, leading to a time interval of $t=\frac{R\omega_0}{3\mu_kg}$.
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): F
-- Notes: does calculate value but without significant explanation
+- Grade (P/F): P
+- Notes: 
 
 #### tb_0336_c08
 

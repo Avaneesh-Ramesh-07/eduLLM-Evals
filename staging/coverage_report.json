@@ -1,0 +1,75 @@
+{
+  "generated_at": "2026-07-27T16:16:01.958280+00:00",
+  "n_models": 82,
+  "n_criteria": 6462,
+  "total_cells": 529884,
+  "n_filled": 132108,
+  "fill_rate": 0.249315,
+  "per_item_coverage": {
+    "min": 20,
+    "median": 20.0,
+    "max": 23
+  },
+  "per_model_coverage": {
+    "min": 0,
+    "median": 0.0,
+    "max": 6462
+  },
+  "per_item_coverage_histogram": [
+    {
+      "lo": 20.0,
+      "hi": 20.3,
+      "n_criteria": 3746
+    },
+    {
+      "lo": 20.3,
+      "hi": 20.6,
+      "n_criteria": 0
+    },
+    {
+      "lo": 20.6,
+      "hi": 20.9,
+      "n_criteria": 0
+    },
+    {
+      "lo": 20.9,
+      "hi": 21.2,
+      "n_criteria": 2587
+    },
+    {
+      "lo": 21.2,
+      "hi": 21.5,
+      "n_criteria": 0
+    },
+    {
+      "lo": 21.5,
+      "hi": 21.8,
+      "n_criteria": 0
+    },
+    {
+      "lo": 21.8,
+      "hi": 22.1,
+      "n_criteria": 106
+    },
+    {
+      "lo": 22.1,
+      "hi": 22.4,
+      "n_criteria": 0
+    },
+    {
+      "lo": 22.4,
+      "hi": 22.7,
+      "n_criteria": 0
+    },
+    {
+      "lo": 22.7,
+      "hi": 23.0,
+      "n_criteria": 23
+    }
+  ],
+  "zero_variance": {
+    "all_fail": 3802,
+    "all_pass": 15,
+    "variant": 2645
+  }
+}

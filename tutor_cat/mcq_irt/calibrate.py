@@ -39,12 +39,24 @@ class Calibration:
         return {it: float(v) for it, v in zip(self.items, self.b)}
 
 
-def fit_2pl(mat: pd.DataFrame, method: str = "girth") -> Calibration:
-    """Fit 2PL on a complete (no-NaN) model x item matrix. `method` is
-    'girth' (default), 'rasch' (1PL), or 'pyirt' (optional)."""
-    mat = mat.dropna(axis=0, how="any")
+def fit_2pl(
+    mat: pd.DataFrame, method: str = "girth", allow_missing: bool = False
+) -> Calibration:
+    """Fit 2PL on a model x item matrix. `method` is 'girth' (default), 'rasch'
+    (1PL), or 'pyirt' (optional).
+
+    By default the matrix is treated as dense: any row with a hole (NaN) is
+    dropped so girth/rasch see a complete block (existing behaviour, unchanged).
+
+    ``allow_missing=True`` is honoured ONLY for ``method='pyirt'``: it skips the
+    row-dropna so the Bayesian fitter can consume a sparse matrix, writing just
+    the present (non-NaN) responses per subject. It is ignored for girth/rasch,
+    which cannot handle holes -- those paths always dense-drop as before.
+    """
+    sparse_pyirt = allow_missing and method == "pyirt"
+    if not sparse_pyirt:
+        mat = mat.dropna(axis=0, how="any")
     items = list(mat.columns)
-    data = mat.to_numpy(dtype=int).T  # girth wants (n_items, n_persons)
 
     if method == "pyirt":
         a, b = _fit_pyirt(mat)
@@ -52,6 +64,7 @@ def fit_2pl(mat: pd.DataFrame, method: str = "girth") -> Calibration:
     elif method == "rasch":
         from girth import rasch_mml
 
+        data = mat.to_numpy(dtype=int).T  # girth wants (n_items, n_persons)
         est = rasch_mml(data)
         b = np.asarray(est["Difficulty"], dtype=float)
         a = np.ones_like(b)
@@ -59,6 +72,7 @@ def fit_2pl(mat: pd.DataFrame, method: str = "girth") -> Calibration:
     else:
         from girth import twopl_mml
 
+        data = mat.to_numpy(dtype=int).T  # girth wants (n_items, n_persons)
         est = twopl_mml(data)
         a = np.asarray(est["Discrimination"], dtype=float)
         b = np.asarray(est["Difficulty"], dtype=float)
@@ -111,7 +125,11 @@ def _fit_pyirt(mat: pd.DataFrame) -> tuple[np.ndarray, np.ndarray]:
         path = Path(d) / "responses.jsonlines"
         with path.open("w", encoding="utf-8") as f:
             for model, row in mat.iterrows():
-                resp = {str(it): int(v) for it, v in row.items()}
+                # Write only present responses; NaN holes are simply omitted so
+                # py-irt marginalises over the missing cells (sparse path).
+                resp = {str(it): int(v) for it, v in row.items() if pd.notna(v)}
+                if not resp:
+                    continue
                 f.write(json.dumps({"subject_id": str(model), "responses": resp}) + "\n")
         dataset = Dataset.from_jsonlines(path)
         trainer = IrtModelTrainer(config=IrtConfig(model_type="2pl"), dataset=dataset)

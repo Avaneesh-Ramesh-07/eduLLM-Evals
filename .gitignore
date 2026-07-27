@@ -3,7 +3,10 @@
 !.env.example
 
 # Python bytecode and caches
+staging/judge_inputs.jsonl
 tutorbench-responses/
+tutorbench-responses-v2/
+grading/
 __pycache__/
 *.py[cod]
 *$py.class
