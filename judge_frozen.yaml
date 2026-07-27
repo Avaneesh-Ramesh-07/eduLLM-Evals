@@ -1,0 +1,37 @@
+# =====================================================================
+# FROZEN JUDGE CONFIG  (provenance block for the TutorBench MIRT run)
+# =====================================================================
+# The calibration grading run REUSES the teammate's judge runner
+# (aws_judge_handoff/scripts/run_judge_validation.py) as the canonical
+# judge-invocation path. The judge is frozen as the "qwen" spec from that
+# runner's JUDGES dict. The fields below are the EXPECTED provenance; the
+# actual per-row provenance is emitted by the teammate's `run` command and is
+# cross-checked at ingest time (a mismatch is warned, not silently accepted).
+#
+# Consumed by: scripts/run_judge_grading.py
+#   - grade --mode ingest-verdicts : cross-checks these vs the verdict rows
+#   - grade --mode call-judge      : thin local smoke test via
+#                                    tutor_cat.judge.OpenAICompatibleJudge
+judge:
+  # --- identity / provenance (must match JUDGES["qwen"] in the teammate runner) ---
+  judge_name: qwen
+  model: Qwen/Qwen3.5-9B
+  hf_revision: c202236235762e1c871ad0ccb60c8ee5ba337b9a
+  adapter: generic-binary
+
+  # --- frozen policy versions emitted on every teammate verdict row ---
+  prompt_version: judge-validation-v3
+  normalization_version: judge-normalization-v3
+  evidence_policy_version: criterion-evidence-gate-v1
+  # The full calibration run uses the canonical prompt variant, single replicate.
+  prompt_variant: canonical
+  replicate_id: r1
+
+  # --- call-judge smoke path only (OpenAI-compatible endpoint, e.g. local vLLM) ---
+  base_url: http://localhost:8000/v1
+  api_key_env: JUDGE_API_KEY
+  temperature: 0.0
+  max_tokens: 1024
+  seed: 42
+  # Only meaningful for the prometheus 1-5 adapter; kept for the smoke path.
+  result_pass_threshold: 4

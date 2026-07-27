@@ -1,0 +1,66 @@
+ZIP MANIFEST — Slack/offline fallback for the Tutor Grading Handoff
+===================================================================
+
+Preferred delivery is GitHub (`main`): the teammate just checks out the repo and
+opens tutor_grading_handoff/README.md. Use this list ONLY if sending a zip over
+Slack instead. Zip these EXACT paths, preserving the repo-relative directory
+layout (paths are relative to the repo root, eduLLM-Evals/).
+
+Handoff folder (this bundle)
+----------------------------
+tutor_grading_handoff/README.md
+tutor_grading_handoff/OPERATIONS.md
+tutor_grading_handoff/requirements.txt
+tutor_grading_handoff/ZIP_MANIFEST.txt
+tutor_grading_handoff/SLACK_MESSAGE.md
+
+Bridge + ingestion scripts
+--------------------------
+scripts/run_judge_grading.py
+scripts/validate_responses.py
+scripts/stage_judge_inputs.py
+
+Frozen judge config
+-------------------
+judge_frozen.yaml
+config.yaml                         # default data paths / judge fallback block
+
+Local package the scripts import (REQUIRED — scripts add repo root to sys.path)
+------------------------------------------------------------------------------
+tutor_cat/                          # whole package (dataio, judge, schemas, mirt, respgen, mcq_irt, ...)
+
+Teammate judge runner + its deps
+--------------------------------
+aws_judge_handoff/                  # whole folder: scripts/run_judge_validation.py,
+                                    # run_judge_suite.sh, requirements-aws.txt,
+                                    # STUDY_DESIGN.json, README.md, SHA256SUMS,
+                                    # inputs/ (example blinded cases)
+
+Frozen dataset inputs
+---------------------
+data/scenarios.jsonl                # scenario prompts + conversation context
+data/rubrics_qmatrix_final.jsonl    # frozen rubric / Q-matrix item bank
+
+NOT included (produced by the teammate's own tutor run on the GPU box)
+---------------------------------------------------------------------
+tutorbench-responses/*.jsonl        # the finished tutor responses (Step 1 input).
+                                    # These come from the FIXED 100-model re-run;
+                                    # do not zip/ship them — they already live on
+                                    # the box that produced them.
+
+Also NOT needed in the zip (created by the scripts at run time)
+--------------------------------------------------------------
+staging/                            # judge_inputs.jsonl, cases.jsonl,
+                                    # cases_index.jsonl, verdicts.jsonl,
+                                    # response_matrix.* — all generated locally.
+outputs/                            # judge verdict JSONLs — generated in Step 2.
+
+Quick zip command (bash, from the repo root)
+--------------------------------------------
+zip -r tutor_grading_handoff.zip \
+  tutor_grading_handoff \
+  scripts/run_judge_grading.py scripts/validate_responses.py scripts/stage_judge_inputs.py \
+  judge_frozen.yaml config.yaml \
+  tutor_cat \
+  aws_judge_handoff \
+  data/scenarios.jsonl data/rubrics_qmatrix_final.jsonl

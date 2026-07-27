@@ -1,0 +1,17 @@
+# Python deps for OUR bridge + ingestion scripts:
+#   scripts/validate_responses.py   (pure stdlib -- listed here only for completeness)
+#   scripts/stage_judge_inputs.py   (needs numpy, via tutor_cat.schemas/mirt)
+#   scripts/run_judge_grading.py    (needs numpy, PyYAML, httpx)
+#
+# httpx is required even for --mode ingest-verdicts because run_judge_grading.py
+# imports tutor_cat.judge (which imports httpx) for the call-judge smoke path.
+#
+# These scripts import the local `tutor_cat/` package directly from the repo root
+# (via sys.path); there is nothing to pip-install for tutor_cat itself.
+#
+# NOTE: the JUDGE INFERENCE dependencies (vllm==0.26.0, boto3) are NOT here --
+# install those on the GPU box from aws_judge_handoff/requirements-aws.txt.
+
+numpy
+PyYAML
+httpx
