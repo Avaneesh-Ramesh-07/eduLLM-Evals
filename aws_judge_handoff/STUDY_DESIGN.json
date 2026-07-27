@@ -1,0 +1,27 @@
+{
+  "study_version": "judge-reliability-v2-evidence-gated-development",
+  "study_id": "judge-validation-v3-evidence-gated",
+  "prompt_version": "judge-validation-v3",
+  "normalization_version": "judge-normalization-v3",
+  "evidence_policy_version": "criterion-evidence-gate-v1",
+  "data_role": "development_recalibration",
+  "case_reuse_note": "These 261 cases were used to diagnose v2 and are not an untouched final acceptance set.",
+  "final_acceptance_requires": "A separately labeled, unseen scenario-level holdout evaluated after configurations are frozen.",
+  "case_count": 261,
+  "waves_per_judge": [
+    {"wave": "canonical_r1", "prompt_variant": "canonical", "replicate_id": "r1"},
+    {"wave": "canonical_r2", "prompt_variant": "canonical", "replicate_id": "r2"},
+    {"wave": "canonical_r3", "prompt_variant": "canonical", "replicate_id": "r3"},
+    {"wave": "whitespace_r1", "prompt_variant": "whitespace", "replicate_id": "r1"},
+    {"wave": "header_synonyms_r1", "prompt_variant": "header_synonyms", "replicate_id": "r1"},
+    {"wave": "instruction_politeness_r1", "prompt_variant": "instruction_politeness", "replicate_id": "r1"}
+  ],
+  "acceptance_thresholds": {
+    "criterion_macro_f1_min": 0.80,
+    "critical_failure_sensitivity_min": 0.90,
+    "test_retest_strict_agreement_min": 0.90,
+    "mapped_primary_skill_macro_f1_min": 0.70,
+    "prompt_variant_flip_rate_max": 0.10
+  },
+  "formal_marginal_reliability": "not_identifiable_from_this_design"
+}
