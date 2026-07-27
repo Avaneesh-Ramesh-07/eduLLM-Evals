@@ -166,3 +166,125 @@ def _print_summary(summary: dict[str, Any]) -> None:
               f"(mean SE {s['cat']['mean_se_at_stop']:.3f}); "
               f"theta recovery corr={rec.get('corr')}, MAE={rec.get('mae'):.3f}; "
               f"pIRT MAE={pirt['mae']:.3f}")
+
+
+def run_kfold(
+    mcq_dir: str | Path,
+    benchmarks: list[str] | None = None,
+    out_dir: str | Path = "runs/mcq_irt_kfold",
+    *,
+    k: int = 10,
+    seed: int = 0,
+    se_stop: float = 0.3,
+    max_items: int = 50,
+    method: str = "girth",
+    min_point_biserial: float = 0.05,
+) -> dict[str, Any]:
+    """K-fold cross-validation over models: every model is held out once and
+    measured by CAT while its fold's complement calibrates the bank. Also fits a
+    final bank on ALL models (for deployment). Validation metrics are aggregated
+    over all models, so the effective test set is the whole roster."""
+    benchmarks = benchmarks or DEFAULT_BENCHMARKS
+    out = Path(out_dir)
+    out.mkdir(parents=True, exist_ok=True)
+    grid = normal_grid()
+
+    summary: dict[str, Any] = {
+        "config": {"mcq_dir": str(mcq_dir), "benchmarks": benchmarks, "k": k,
+                   "seed": seed, "se_stop": se_stop, "max_items": max_items,
+                   "method": method, "min_point_biserial": min_point_biserial},
+        "benchmarks": {},
+    }
+
+    for bm in benchmarks:
+        print(f"[{bm}] loading + filtering...", flush=True)
+        kept, frep = filter_items(load_benchmark(mcq_dir, bm), benchmark=bm,
+                                  min_point_biserial=min_point_biserial)
+        models = list(kept.index)
+
+        # Final bank on ALL models (this is what tells us if discriminations are sane).
+        final = fit_2pl(kept, method=method)
+        print(f"[{bm}] FINAL bank ({final.method}) on {len(models)} models: "
+              f"a median={float(np.median(final.a)):.2f} max={float(np.max(final.a)):.2f} "
+              f"({final.n_extreme_a} extreme); {frep.n_items_kept}/{frep.n_items_raw} items kept",
+              flush=True)
+        items_df = final.as_frame().join(frep.item_stats[["p_value", "point_biserial"]])
+        items_df.to_csv(out / f"{bm}_items.csv")
+        report.plot_ab_hist(final.a, final.b, bm, out / f"{bm}_ab_hist.png")
+
+        # Stratified k folds: order by overall accuracy, round-robin, so each fold
+        # spans the ability range rather than clustering weak or strong models.
+        order = list(kept.mean(axis=1).sort_values().index)
+        folds: list[list[str]] = [[] for _ in range(k)]
+        for i, m in enumerate(order):
+            folds[i % k].append(m)
+
+        cat_theta: dict[str, float] = {}
+        full_theta: dict[str, float] = {}
+        obs_acc: dict[str, float] = {}
+        pred_acc: dict[str, float] = {}
+        n_used: dict[str, int] = {}
+        se_end: dict[str, float] = {}
+
+        for fi, test_models in enumerate(folds):
+            if not test_models:
+                continue
+            calib_models = [m for m in models if m not in set(test_models)]
+            cal = fit_2pl(kept.loc[calib_models], method=method)
+            a, b, items = cal.a, cal.b, cal.items
+            a_by, b_by = cal.a_by_item(), cal.b_by_item()
+            for m in test_models:
+                r = kept.loc[m, items].to_numpy(float)
+                ft = eap(r, a, b, grid)[0]
+                resp_by = {it: int(kept.loc[m, it]) for it in items}
+                cr = run_cat(resp_by, a_by, b_by, max_items=max_items, se_stop=se_stop, grid=grid)
+                cat_theta[m], full_theta[m] = cr.theta, ft
+                obs_acc[m], pred_acc[m] = float(r.mean()), float(prob_2pl(ft, a, b).mean())
+                n_used[m], se_end[m] = cr.n_items, cr.se
+            print(f"[{bm}] fold {fi + 1}/{k}: {len(test_models)} held out, "
+                  f"{len(calib_models)} calibrated", flush=True)
+
+        ct = [cat_theta[m] for m in models]
+        ftl = [full_theta[m] for m in models]
+        d = np.asarray([pred_acc[m] - obs_acc[m] for m in models])
+        report.plot_theta_recovery(ct, ftl, bm, out / f"{bm}_theta_recovery.png")
+
+        summary["benchmarks"][bm] = {
+            "n_models": frep.n_models,
+            "n_items_raw": frep.n_items_raw,
+            "n_items_kept": frep.n_items_kept,
+            "dropped": {"all_pass": len(frep.dropped_all_pass),
+                        "all_fail": len(frep.dropped_all_fail),
+                        "low_point_biserial": len(frep.dropped_low_pbis)},
+            "fit_method": final.method,
+            "final_bank": {"n_extreme_a": final.n_extreme_a,
+                           "a": _dist(final.a), "b": _dist(final.b)},
+            "kfold": {
+                "k": k,
+                "n_validated": len(models),
+                "theta_recovery": _recovery(ct, ftl),
+                "pirt": {"mae": float(np.abs(d).mean()),
+                         "corr": _corr([pred_acc[m] for m in models], [obs_acc[m] for m in models])},
+                "cat_mean_items_to_stop": float(np.mean([n_used[m] for m in models])),
+                "cat_mean_se_at_stop": float(np.mean([se_end[m] for m in models])),
+                "cat_max_items_hit": int(sum(1 for m in models if n_used[m] >= max_items)),
+            },
+        }
+
+    report.save_json(summary, out / "summary.json")
+    return summary
+
+
+def _print_kfold_summary(summary: dict[str, Any]) -> None:
+    cfg = summary["config"]
+    print(f"k-fold validation (k={cfg['k']})")
+    for bm, s in summary["benchmarks"].items():
+        fb, kf, rec = s["final_bank"], s["kfold"], s["kfold"]["theta_recovery"]
+        print(f"\n[{bm}] {s['n_models']} models, {s['n_items_kept']}/{s['n_items_raw']} items "
+              f"(dropped {s['dropped']}), fit={s['fit_method']}")
+        print(f"  final bank: a median={fb['a'].get('median'):.2f} "
+              f"(max {fb['a'].get('max'):.2f}, {fb['n_extreme_a']} extreme); "
+              f"b median={fb['b'].get('median'):.2f}")
+        print(f"  CV over {kf['n_validated']} models: theta recovery corr={rec.get('corr')}, "
+              f"MAE={rec.get('mae'):.3f}; pIRT MAE={kf['pirt']['mae']:.3f}; "
+              f"CAT {kf['cat_mean_items_to_stop']:.1f} items to SE<{cfg['se_stop']}")
