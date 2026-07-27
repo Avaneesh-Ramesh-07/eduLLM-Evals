@@ -8,8 +8,9 @@ The CAT / MIRT evaluation loop scores a tutor per criterion with the compensator
     p_i = sigmoid( (q_i ⊙ a_i) · θ − b_i )
 
 which needs, for every criterion, a scalar **difficulty** ``b_i`` and a per-skill
-**discrimination** vector ``a_i = (a_content, a_diagnosis, a_scaffolding)``. Normally these
-are *calibrated* from real judge responses. This is a preliminary experiment, so instead of
+**discrimination** vector ``a_i``, one entry per axis of that dataset's ``q_mapping``
+(TutorBench: content/diagnosis/scaffolding; pass ``--skills`` for any other q-matrix).
+Normally these are *calibrated* from real judge responses. This is a preliminary experiment, so instead of
 calibrating we **synthesize** plausible values, grounded in the metadata each criterion
 already carries (so the values are reproducible and defensible rather than arbitrary noise):
 
@@ -43,6 +44,13 @@ Usage
     # Augment the finalized set in place (writes both .jsonl and .json, one-time .bak):
     python assign_irt_params.py
 
+    # A dataset on its own q-matrix axes (WildBench's 11 task-type tags):
+    python assign_irt_params.py \\
+        --input data/WildBench/rubrics.jsonl \\
+        --skills advice_seeking,brainstorming,coding_debugging,creative_writing,\\
+data_analysis,editing,information_seeking,math,planning,reasoning,role_playing \\
+        --log-dir data/WildBench/irt_logs --no-json
+
 Outputs
 -------
 - The augmented rubric records, written back **in place** to
@@ -75,6 +83,11 @@ DEFAULT_INPUT = DATA_DIR / "rubrics_qmatrix_final.jsonl"
 LOG_DIR = Path("qmatrix_irt_logs")
 
 # The three latent tutoring skills (order matters: it fixes the RNG draw order).
+# This is the TutorBench q-matrix. Other datasets carry their own axes -- APUSH is
+# (describe, explain), WildBench is its 11 task-type tags -- so pass --skills to
+# match the q_mapping keys of the file being processed. Getting this wrong is
+# silent: q.get(skill) misses for every criterion and the whole file lands on
+# a = 0.0, which reads as "unscorable" rather than as an error.
 SKILLS = ("content", "diagnosis", "scaffolding")
 
 DEFAULT_SEED = 42
@@ -174,7 +187,9 @@ def compute_difficulty(record: dict, rng: np.random.Generator) -> float:
     return round(float(np.clip(b, *B_CLIP)), ROUND)
 
 
-def compute_discrimination(record: dict, rng: np.random.Generator) -> dict[str, float]:
+def compute_discrimination(
+    record: dict, rng: np.random.Generator, skills: tuple[str, ...]
+) -> dict[str, float]:
     """
     Synthesize the per-skill discrimination vector ``a_i``.
 
@@ -187,11 +202,11 @@ def compute_discrimination(record: dict, rng: np.random.Generator) -> dict[str, 
     obj_f = A_OBJECTIVITY.get(record.get("objectivity"), 1.0)
     crit_f = A_CRITICALITY.get(record.get("criticality"), 1.0)
 
-    loaded = [s for s in SKILLS if q.get(s) == 1]
+    loaded = [s for s in skills if q.get(s) == 1]
     primary_loaded = primary in loaded
 
     out: dict[str, float] = {}
-    for skill in SKILLS:  # fixed order -> deterministic draws
+    for skill in skills:  # fixed order -> deterministic draws
         if q.get(skill) != 1:
             out[skill] = 0.0
             continue
@@ -205,12 +220,12 @@ def compute_discrimination(record: dict, rng: np.random.Generator) -> dict[str, 
     return out
 
 
-def assign_params(record: dict, seed: int) -> dict:
+def assign_params(record: dict, seed: int, skills: tuple[str, ...]) -> dict:
     """Add ``difficulty`` / ``discrimination`` / ``irt_params`` to a record (in place)."""
     rng = criterion_rng(record["criterion_id"], seed)
     # Draw difficulty first, then discrimination, in a fixed order for determinism.
     record["difficulty"] = compute_difficulty(record, rng)
-    record["discrimination"] = compute_discrimination(record, rng)
+    record["discrimination"] = compute_discrimination(record, rng, skills)
     record["irt_params"] = {
         "source": "synthetic",
         "method": METHOD_VERSION,
@@ -229,14 +244,14 @@ def sigmoid(z: float) -> float:
     return 1.0 / (1.0 + math.exp(-z))
 
 
-def summarize(records: list[dict], seed: int) -> dict:
+def summarize(records: list[dict], seed: int, skills: tuple[str, ...]) -> dict:
     """Compute summary statistics and assemble the run manifest."""
     bs = np.array([r["difficulty"] for r in records], dtype=float)
     # Pass probability at the initial ability theta = 0: p = sigmoid(-b).
     p0 = np.array([sigmoid(-b) for b in bs], dtype=float)
 
     a_stats = {}
-    for skill in SKILLS:
+    for skill in skills:
         vals = np.array(
             [r["discrimination"][skill] for r in records if r["discrimination"][skill] > 0.0],
             dtype=float,
@@ -252,7 +267,7 @@ def summarize(records: list[dict], seed: int) -> dict:
     empty_q = sum(
         1
         for r in records
-        if not any((r.get("q_mapping") or {}).get(s) == 1 for s in SKILLS)
+        if not any((r.get("q_mapping") or {}).get(s) == 1 for s in skills)
     )
 
     def pct(arr: np.ndarray, q: float) -> float:
@@ -262,6 +277,7 @@ def summarize(records: list[dict], seed: int) -> dict:
         "generated_at": utcnow_iso(),
         "method": METHOD_VERSION,
         "seed": seed,
+        "skills": list(skills),
         "n_records": len(records),
         "n_empty_q_mapping": empty_q,
         "constants": {
@@ -302,7 +318,10 @@ def summarize(records: list[dict], seed: int) -> dict:
 
 def print_summary(manifest: dict) -> None:
     """Print a compact human-readable view of the manifest."""
+    skills = manifest["skills"]
+    width = max(len(s) for s in skills)
     print(f"records:            {manifest['n_records']}")
+    print(f"skills:             {', '.join(skills)}")
     print(f"empty q_mapping:    {manifest['n_empty_q_mapping']} (all-zero -> unscorable, a=0)")
     d = manifest["difficulty"]
     print(
@@ -310,11 +329,11 @@ def print_summary(manifest: dict) -> None:
         f"mean={d['mean']} std={d['std']} "
         f"[min={d['min']} p25={d['p25']} p50={d['p50']} p75={d['p75']} max={d['max']}]"
     )
-    for skill in SKILLS:
+    for skill in skills:
         s = manifest["discrimination"][skill]
         if s["n_loaded"]:
             print(
-                f"discrim a[{skill:<11}] n={s['n_loaded']:<5} "
+                f"discrim a[{skill:<{width}}] n={s['n_loaded']:<5} "
                 f"mean={s['mean']} median={s['median']} min={s['min']} max={s['max']}"
             )
     p = manifest["pass_prob_at_theta0"]
@@ -340,16 +359,51 @@ def maybe_backup(path: Path, no_backup: bool) -> None:
         print(f"backup:  {path} -> {bak}")
 
 
+def resolve_skills(records: list[dict], requested: tuple[str, ...]) -> tuple[str, ...]:
+    """
+    Check the requested skill axes against the q_mapping keys actually present.
+
+    Without this the failure is silent rather than loud: ``q.get(skill)`` simply misses
+    on every record, so a mismatched axis list yields a=0.0 everywhere, which the
+    downstream MIRT loop reads as a legitimately unscorable item set.
+    """
+    present: dict[str, None] = {}  # dict preserves first-seen order
+    for r in records:
+        for k in (r.get("q_mapping") or {}):
+            present.setdefault(k, None)
+
+    missing = [s for s in requested if s not in present]
+    if missing:
+        raise SystemExit(
+            f"--skills {list(requested)} do not appear in this file's q_mapping.\n"
+            f"  missing:      {missing}\n"
+            f"  keys present: {list(present)}\n"
+            "Pass --skills matching the dataset's q-matrix axes."
+        )
+    extra = [k for k in present if k not in requested]
+    if extra:
+        raise SystemExit(
+            f"q_mapping carries axes not in --skills: {extra}\n"
+            "They would get no discrimination entry at all. Include them or drop them explicitly."
+        )
+    return requested
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--input", type=Path, default=DEFAULT_INPUT,
                         help=f"Input rubric JSONL (default: {DEFAULT_INPUT}).")
     parser.add_argument("--output", type=Path, default=None,
                         help="Output JSONL. Default: in place (== --input). A .json twin is written alongside.")
+    parser.add_argument("--skills", type=str, default=",".join(SKILLS),
+                        help="Comma-separated q_mapping axes, in order (order fixes the RNG draw "
+                             f"order, so do not reorder an existing run). Default: {','.join(SKILLS)}.")
     parser.add_argument("--seed", type=int, default=DEFAULT_SEED,
                         help=f"Global RNG seed (default: {DEFAULT_SEED}).")
     parser.add_argument("--no-backup", action="store_true",
                         help="Do not write one-time .bak copies before an in-place overwrite.")
+    parser.add_argument("--no-json", action="store_true",
+                        help="Skip the pretty-printed .json twin (it roughly doubles on-disk size).")
     parser.add_argument("--log-dir", type=Path, default=LOG_DIR,
                         help=f"Directory for the run manifest (default: {LOG_DIR}).")
     args = parser.parse_args()
@@ -361,19 +415,23 @@ def main() -> None:
     records = read_jsonl(args.input)
     print(f"read:    {len(records)} records from {args.input}")
 
+    skills = resolve_skills(records, tuple(s.strip() for s in args.skills.split(",") if s.strip()))
+
     for record in records:
-        assign_params(record, args.seed)
+        assign_params(record, args.seed, skills)
 
     if in_place:
         maybe_backup(out_jsonl, args.no_backup)
-        maybe_backup(out_json, args.no_backup)
+        if not args.no_json:
+            maybe_backup(out_json, args.no_backup)
 
     write_jsonl(out_jsonl, records)
-    write_json(out_json, records)
     print(f"wrote:   {out_jsonl}")
-    print(f"wrote:   {out_json}")
+    if not args.no_json:
+        write_json(out_json, records)
+        print(f"wrote:   {out_json}")
 
-    manifest = summarize(records, args.seed)
+    manifest = summarize(records, args.seed, skills)
     args.log_dir.mkdir(parents=True, exist_ok=True)
     manifest_path = args.log_dir / "manifest.json"
     write_json_obj(manifest_path, manifest)

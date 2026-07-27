@@ -1,0 +1,151 @@
+{
+  "generated_at": "2026-07-26T22:53:42.517079+00:00",
+  "method": "metadata_heuristic_v1",
+  "seed": 42,
+  "skills": [
+    "advice_seeking",
+    "brainstorming",
+    "coding_debugging",
+    "creative_writing",
+    "data_analysis",
+    "editing",
+    "information_seeking",
+    "math",
+    "planning",
+    "reasoning",
+    "role_playing"
+  ],
+  "n_records": 11667,
+  "n_empty_q_mapping": 0,
+  "constants": {
+    "B_BASE": 0.0,
+    "B_EXPLICITNESS": {
+      "explicit": -0.4,
+      "implicit": 0.4
+    },
+    "B_CRITICALITY": {
+      "critical": 0.0,
+      "not_critical": 0.0,
+      "critical_negative": -0.3
+    },
+    "B_JITTER_SD": 0.5,
+    "B_CLIP": [
+      -2.5,
+      2.5
+    ],
+    "A_BASE": 1.0,
+    "A_OBJECTIVITY": {
+      "objective": 1.2,
+      "subjective": 0.8
+    },
+    "A_CRITICALITY": {
+      "critical": 1.15,
+      "not_critical": 0.9,
+      "critical_negative": 1.25
+    },
+    "A_PRIMARY": 1.2,
+    "A_SECONDARY": 0.85,
+    "A_NEUTRAL": 1.0,
+    "A_JITTER_LOG_SD": 0.15,
+    "A_CLIP": [
+      0.3,
+      2.5
+    ]
+  },
+  "difficulty": {
+    "mean": -0.3985,
+    "std": 0.5041,
+    "min": -2.2952,
+    "p25": -0.7307,
+    "p50": -0.3993,
+    "p75": -0.0577,
+    "max": 1.4955
+  },
+  "discrimination": {
+    "advice_seeking": {
+      "n_loaded": 227,
+      "mean": 1.6733,
+      "median": 1.6668,
+      "min": 1.0254,
+      "max": 2.5
+    },
+    "brainstorming": {
+      "n_loaded": 269,
+      "mean": 1.6509,
+      "median": 1.6353,
+      "min": 1.1697,
+      "max": 2.5
+    },
+    "coding_debugging": {
+      "n_loaded": 1906,
+      "mean": 1.6735,
+      "median": 1.6481,
+      "min": 1.0075,
+      "max": 2.5
+    },
+    "creative_writing": {
+      "n_loaded": 1858,
+      "mean": 1.6837,
+      "median": 1.6647,
+      "min": 0.9722,
+      "max": 2.5
+    },
+    "data_analysis": {
+      "n_loaded": 347,
+      "mean": 1.6567,
+      "median": 1.6434,
+      "min": 1.0559,
+      "max": 2.3374
+    },
+    "editing": {
+      "n_loaded": 965,
+      "mean": 1.6743,
+      "median": 1.6468,
+      "min": 1.0502,
+      "max": 2.5
+    },
+    "information_seeking": {
+      "n_loaded": 1969,
+      "mean": 1.6766,
+      "median": 1.664,
+      "min": 0.9706,
+      "max": 2.5
+    },
+    "math": {
+      "n_loaded": 919,
+      "mean": 1.6506,
+      "median": 1.6305,
+      "min": 0.9997,
+      "max": 2.5
+    },
+    "planning": {
+      "n_loaded": 1464,
+      "mean": 1.6751,
+      "median": 1.6568,
+      "min": 1.0506,
+      "max": 2.5
+    },
+    "reasoning": {
+      "n_loaded": 1421,
+      "mean": 1.6735,
+      "median": 1.6487,
+      "min": 1.0494,
+      "max": 2.5
+    },
+    "role_playing": {
+      "n_loaded": 322,
+      "mean": 1.6594,
+      "median": 1.6434,
+      "min": 1.0048,
+      "max": 2.5
+    }
+  },
+  "pass_prob_at_theta0": {
+    "mean": 0.5929,
+    "min": 0.1831,
+    "p25": 0.5144,
+    "p50": 0.5985,
+    "p75": 0.675,
+    "max": 0.9085
+  }
+}
