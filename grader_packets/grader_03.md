@@ -632,7 +632,7 @@ y = 2\arctan(x + C) - x
 - Criterion: The response must identify that the student's solution [let u=x+y, \(\frac{du}{dx} = \frac{dy}{dx}\)] is incorrect.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): F
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0003_c04
@@ -1031,7 +1031,7 @@ If they had written `B obj = new B();`, it would have made the question slightly
 - Criterion: The response must clarify that reveal() is defined in class A and therefore always executes A's version of secret(), regardless of the runtime type of obj
 - Primary skill: `content`
 - Criticality: `critical`
-- Grade (P/F): F
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0335_c04

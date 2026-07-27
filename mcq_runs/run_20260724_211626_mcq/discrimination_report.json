@@ -1,0 +1,44 @@
+{
+  "n_items": 25,
+  "n_models": 24,
+  "all_pass_item_ids": [
+    "cdpk_main-110"
+  ],
+  "all_fail_item_ids": [
+    "cdpk_main-103",
+    "cdpk_main-11",
+    "cdpk_main-117",
+    "cdpk_main-119",
+    "cdpk_main-12"
+  ],
+  "all_pass_count": 1,
+  "all_fail_count": 5,
+  "per_item_pass_count": {
+    "cdpk_main-0": 11,
+    "cdpk_main-1": 20,
+    "cdpk_main-10": 11,
+    "cdpk_main-100": 9,
+    "cdpk_main-101": 9,
+    "cdpk_main-102": 19,
+    "cdpk_main-103": 0,
+    "cdpk_main-104": 14,
+    "cdpk_main-105": 23,
+    "cdpk_main-106": 23,
+    "cdpk_main-107": 13,
+    "cdpk_main-108": 9,
+    "cdpk_main-109": 23,
+    "cdpk_main-11": 0,
+    "cdpk_main-110": 24,
+    "cdpk_main-111": 23,
+    "cdpk_main-112": 14,
+    "cdpk_main-113": 23,
+    "cdpk_main-114": 10,
+    "cdpk_main-115": 20,
+    "cdpk_main-116": 9,
+    "cdpk_main-117": 0,
+    "cdpk_main-118": 23,
+    "cdpk_main-119": 0,
+    "cdpk_main-12": 0
+  },
+  "note": "Items where every model passed (all_pass) or every model failed (all_fail) carry little or no discrimination. They are reported here but NOT dropped from response_matrix.csv; a later IRT/Q-matrix step decides how to handle them."
+}
