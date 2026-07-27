@@ -160,7 +160,7 @@ If the pedigree question expects a single answer, it is probably aiming for **X-
 - Criterion: The response must explicitly acknowledge the student's stated confusion and respond empathetically before giving the explanation
 - Primary skill: ``
 - Criticality: `critical`
-- Grade (P/F): F
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0012_c02
