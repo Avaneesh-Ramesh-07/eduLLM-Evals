@@ -1,0 +1,810 @@
+{
+  "wall_clock_sec": 0.005481,
+  "n_models": 24,
+  "n_items": 25,
+  "n_calls": 600,
+  "timing": {
+    "overall": {
+      "count": 600,
+      "mean": 0.038875,
+      "median": 0.042,
+      "min": 0.015,
+      "max": 0.057,
+      "total": 23.325
+    },
+    "per_model": {
+      "gemma-3-270m-it": {
+        "count": 25,
+        "mean": 0.046,
+        "median": 0.046,
+        "min": 0.046,
+        "max": 0.046,
+        "total": 1.15
+      },
+      "smollm2-360m-instruct": {
+        "count": 25,
+        "mean": 0.05,
+        "median": 0.05,
+        "min": 0.05,
+        "max": 0.05,
+        "total": 1.25
+      },
+      "minicpm4-0.5b": {
+        "count": 25,
+        "mean": 0.026,
+        "median": 0.026,
+        "min": 0.026,
+        "max": 0.026,
+        "total": 0.65
+      },
+      "falcon-h1-0.5b-instruct": {
+        "count": 25,
+        "mean": 0.043,
+        "median": 0.043,
+        "min": 0.043,
+        "max": 0.043,
+        "total": 1.075
+      },
+      "h2o-danube3-500m-chat": {
+        "count": 25,
+        "mean": 0.023,
+        "median": 0.023,
+        "min": 0.023,
+        "max": 0.023,
+        "total": 0.575
+      },
+      "bloomz-560m": {
+        "count": 25,
+        "mean": 0.015,
+        "median": 0.015,
+        "min": 0.015,
+        "max": 0.015,
+        "total": 0.375
+      },
+      "qwen3.5-0.8b": {
+        "count": 25,
+        "mean": 0.057,
+        "median": 0.057,
+        "min": 0.057,
+        "max": 0.057,
+        "total": 1.425
+      },
+      "gemma-3-1b-it": {
+        "count": 25,
+        "mean": 0.025,
+        "median": 0.025,
+        "min": 0.025,
+        "max": 0.025,
+        "total": 0.625
+      },
+      "tinyllama-1.1b-chat": {
+        "count": 25,
+        "mean": 0.047,
+        "median": 0.047,
+        "min": 0.047,
+        "max": 0.047,
+        "total": 1.175
+      },
+      "lfm2.5-1.2b-instruct": {
+        "count": 25,
+        "mean": 0.053,
+        "median": 0.053,
+        "min": 0.053,
+        "max": 0.053,
+        "total": 1.325
+      },
+      "llama-3.2-1b-instruct": {
+        "count": 25,
+        "mean": 0.046,
+        "median": 0.046,
+        "min": 0.046,
+        "max": 0.046,
+        "total": 1.15
+      },
+      "granite-4.0-h-1b": {
+        "count": 25,
+        "mean": 0.044,
+        "median": 0.044,
+        "min": 0.044,
+        "max": 0.044,
+        "total": 1.1
+      },
+      "olmo-2-0425-1b-instruct": {
+        "count": 25,
+        "mean": 0.053,
+        "median": 0.053,
+        "min": 0.053,
+        "max": 0.053,
+        "total": 1.325
+      },
+      "qwen2.5-math-1.5b-instruct": {
+        "count": 25,
+        "mean": 0.02,
+        "median": 0.02,
+        "min": 0.02,
+        "max": 0.02,
+        "total": 0.5
+      },
+      "qwen2.5-coder-1.5b-instruct": {
+        "count": 25,
+        "mean": 0.037,
+        "median": 0.037,
+        "min": 0.037,
+        "max": 0.037,
+        "total": 0.925
+      },
+      "falcon-h1-1.5b-instruct": {
+        "count": 25,
+        "mean": 0.026,
+        "median": 0.026,
+        "min": 0.026,
+        "max": 0.026,
+        "total": 0.65
+      },
+      "smollm2-1.7b-instruct": {
+        "count": 25,
+        "mean": 0.041,
+        "median": 0.041,
+        "min": 0.041,
+        "max": 0.041,
+        "total": 1.025
+      },
+      "deepseek-r1-distill-qwen-1.5b": {
+        "count": 25,
+        "mean": 0.057,
+        "median": 0.057,
+        "min": 0.057,
+        "max": 0.057,
+        "total": 1.425
+      },
+      "internlm2_5-1_8b-chat": {
+        "count": 25,
+        "mean": 0.034,
+        "median": 0.034,
+        "min": 0.034,
+        "max": 0.034,
+        "total": 0.85
+      },
+      "qwen3.5-2b": {
+        "count": 25,
+        "mean": 0.02,
+        "median": 0.02,
+        "min": 0.02,
+        "max": 0.02,
+        "total": 0.5
+      },
+      "granite-3.3-2b-instruct": {
+        "count": 25,
+        "mean": 0.031,
+        "median": 0.031,
+        "min": 0.031,
+        "max": 0.031,
+        "total": 0.775
+      },
+      "lfm2-2.6b": {
+        "count": 25,
+        "mean": 0.034,
+        "median": 0.034,
+        "min": 0.034,
+        "max": 0.034,
+        "total": 0.85
+      },
+      "gemma-2-2b-it": {
+        "count": 25,
+        "mean": 0.051,
+        "median": 0.051,
+        "min": 0.051,
+        "max": 0.051,
+        "total": 1.275
+      },
+      "flan-t5-xl": {
+        "count": 25,
+        "mean": 0.054,
+        "median": 0.054,
+        "min": 0.054,
+        "max": 0.054,
+        "total": 1.35
+      }
+    }
+  },
+  "parsing": {
+    "parsed_via_totals": {
+      "direct": 519,
+      "opus_fallback": 42,
+      "unparseable": 39
+    },
+    "per_model": {
+      "gemma-3-270m-it": {
+        "direct": 21,
+        "opus_fallback": 4,
+        "unparseable": 0
+      },
+      "smollm2-360m-instruct": {
+        "direct": 23,
+        "opus_fallback": 0,
+        "unparseable": 2
+      },
+      "minicpm4-0.5b": {
+        "direct": 21,
+        "opus_fallback": 2,
+        "unparseable": 2
+      },
+      "falcon-h1-0.5b-instruct": {
+        "direct": 18,
+        "opus_fallback": 4,
+        "unparseable": 3
+      },
+      "h2o-danube3-500m-chat": {
+        "direct": 22,
+        "opus_fallback": 1,
+        "unparseable": 2
+      },
+      "bloomz-560m": {
+        "direct": 23,
+        "opus_fallback": 1,
+        "unparseable": 1
+      },
+      "qwen3.5-0.8b": {
+        "direct": 20,
+        "opus_fallback": 2,
+        "unparseable": 3
+      },
+      "gemma-3-1b-it": {
+        "direct": 22,
+        "opus_fallback": 3,
+        "unparseable": 0
+      },
+      "tinyllama-1.1b-chat": {
+        "direct": 17,
+        "opus_fallback": 4,
+        "unparseable": 4
+      },
+      "lfm2.5-1.2b-instruct": {
+        "direct": 22,
+        "opus_fallback": 3,
+        "unparseable": 0
+      },
+      "llama-3.2-1b-instruct": {
+        "direct": 23,
+        "opus_fallback": 1,
+        "unparseable": 1
+      },
+      "granite-4.0-h-1b": {
+        "direct": 21,
+        "opus_fallback": 2,
+        "unparseable": 2
+      },
+      "olmo-2-0425-1b-instruct": {
+        "direct": 20,
+        "opus_fallback": 3,
+        "unparseable": 2
+      },
+      "qwen2.5-math-1.5b-instruct": {
+        "direct": 24,
+        "opus_fallback": 0,
+        "unparseable": 1
+      },
+      "qwen2.5-coder-1.5b-instruct": {
+        "direct": 23,
+        "opus_fallback": 0,
+        "unparseable": 2
+      },
+      "falcon-h1-1.5b-instruct": {
+        "direct": 18,
+        "opus_fallback": 2,
+        "unparseable": 5
+      },
+      "smollm2-1.7b-instruct": {
+        "direct": 22,
+        "opus_fallback": 2,
+        "unparseable": 1
+      },
+      "deepseek-r1-distill-qwen-1.5b": {
+        "direct": 22,
+        "opus_fallback": 3,
+        "unparseable": 0
+      },
+      "internlm2_5-1_8b-chat": {
+        "direct": 23,
+        "opus_fallback": 1,
+        "unparseable": 1
+      },
+      "qwen3.5-2b": {
+        "direct": 22,
+        "opus_fallback": 2,
+        "unparseable": 1
+      },
+      "granite-3.3-2b-instruct": {
+        "direct": 23,
+        "opus_fallback": 0,
+        "unparseable": 2
+      },
+      "lfm2-2.6b": {
+        "direct": 21,
+        "opus_fallback": 1,
+        "unparseable": 3
+      },
+      "gemma-2-2b-it": {
+        "direct": 24,
+        "opus_fallback": 0,
+        "unparseable": 1
+      },
+      "flan-t5-xl": {
+        "direct": 24,
+        "opus_fallback": 1,
+        "unparseable": 0
+      }
+    },
+    "unparseable_total": 39,
+    "recovered_by_opus_total": 42,
+    "per_model_unparseable": {
+      "gemma-3-270m-it": {
+        "unparseable": 0,
+        "recovered_by_opus": 4
+      },
+      "smollm2-360m-instruct": {
+        "unparseable": 2,
+        "recovered_by_opus": 0
+      },
+      "minicpm4-0.5b": {
+        "unparseable": 2,
+        "recovered_by_opus": 2
+      },
+      "falcon-h1-0.5b-instruct": {
+        "unparseable": 3,
+        "recovered_by_opus": 4
+      },
+      "h2o-danube3-500m-chat": {
+        "unparseable": 2,
+        "recovered_by_opus": 1
+      },
+      "bloomz-560m": {
+        "unparseable": 1,
+        "recovered_by_opus": 1
+      },
+      "qwen3.5-0.8b": {
+        "unparseable": 3,
+        "recovered_by_opus": 2
+      },
+      "gemma-3-1b-it": {
+        "unparseable": 0,
+        "recovered_by_opus": 3
+      },
+      "tinyllama-1.1b-chat": {
+        "unparseable": 4,
+        "recovered_by_opus": 4
+      },
+      "lfm2.5-1.2b-instruct": {
+        "unparseable": 0,
+        "recovered_by_opus": 3
+      },
+      "llama-3.2-1b-instruct": {
+        "unparseable": 1,
+        "recovered_by_opus": 1
+      },
+      "granite-4.0-h-1b": {
+        "unparseable": 2,
+        "recovered_by_opus": 2
+      },
+      "olmo-2-0425-1b-instruct": {
+        "unparseable": 2,
+        "recovered_by_opus": 3
+      },
+      "qwen2.5-math-1.5b-instruct": {
+        "unparseable": 1,
+        "recovered_by_opus": 0
+      },
+      "qwen2.5-coder-1.5b-instruct": {
+        "unparseable": 2,
+        "recovered_by_opus": 0
+      },
+      "falcon-h1-1.5b-instruct": {
+        "unparseable": 5,
+        "recovered_by_opus": 2
+      },
+      "smollm2-1.7b-instruct": {
+        "unparseable": 1,
+        "recovered_by_opus": 2
+      },
+      "deepseek-r1-distill-qwen-1.5b": {
+        "unparseable": 0,
+        "recovered_by_opus": 3
+      },
+      "internlm2_5-1_8b-chat": {
+        "unparseable": 1,
+        "recovered_by_opus": 1
+      },
+      "qwen3.5-2b": {
+        "unparseable": 1,
+        "recovered_by_opus": 2
+      },
+      "granite-3.3-2b-instruct": {
+        "unparseable": 2,
+        "recovered_by_opus": 0
+      },
+      "lfm2-2.6b": {
+        "unparseable": 3,
+        "recovered_by_opus": 1
+      },
+      "gemma-2-2b-it": {
+        "unparseable": 1,
+        "recovered_by_opus": 0
+      },
+      "flan-t5-xl": {
+        "unparseable": 0,
+        "recovered_by_opus": 1
+      }
+    }
+  },
+  "scoring": {
+    "total_pass": 330,
+    "total_fail": 270,
+    "overall_accuracy": 0.55,
+    "per_model": {
+      "gemma-3-270m-it": {
+        "pass": 15,
+        "fail": 10,
+        "accuracy": 0.6
+      },
+      "smollm2-360m-instruct": {
+        "pass": 13,
+        "fail": 12,
+        "accuracy": 0.52
+      },
+      "minicpm4-0.5b": {
+        "pass": 13,
+        "fail": 12,
+        "accuracy": 0.52
+      },
+      "falcon-h1-0.5b-instruct": {
+        "pass": 13,
+        "fail": 12,
+        "accuracy": 0.52
+      },
+      "h2o-danube3-500m-chat": {
+        "pass": 12,
+        "fail": 13,
+        "accuracy": 0.48
+      },
+      "bloomz-560m": {
+        "pass": 14,
+        "fail": 11,
+        "accuracy": 0.56
+      },
+      "qwen3.5-0.8b": {
+        "pass": 15,
+        "fail": 10,
+        "accuracy": 0.6
+      },
+      "gemma-3-1b-it": {
+        "pass": 16,
+        "fail": 9,
+        "accuracy": 0.64
+      },
+      "tinyllama-1.1b-chat": {
+        "pass": 12,
+        "fail": 13,
+        "accuracy": 0.48
+      },
+      "lfm2.5-1.2b-instruct": {
+        "pass": 17,
+        "fail": 8,
+        "accuracy": 0.68
+      },
+      "llama-3.2-1b-instruct": {
+        "pass": 15,
+        "fail": 10,
+        "accuracy": 0.6
+      },
+      "granite-4.0-h-1b": {
+        "pass": 12,
+        "fail": 13,
+        "accuracy": 0.48
+      },
+      "olmo-2-0425-1b-instruct": {
+        "pass": 13,
+        "fail": 12,
+        "accuracy": 0.52
+      },
+      "qwen2.5-math-1.5b-instruct": {
+        "pass": 14,
+        "fail": 11,
+        "accuracy": 0.56
+      },
+      "qwen2.5-coder-1.5b-instruct": {
+        "pass": 12,
+        "fail": 13,
+        "accuracy": 0.48
+      },
+      "falcon-h1-1.5b-instruct": {
+        "pass": 12,
+        "fail": 13,
+        "accuracy": 0.48
+      },
+      "smollm2-1.7b-instruct": {
+        "pass": 16,
+        "fail": 9,
+        "accuracy": 0.64
+      },
+      "deepseek-r1-distill-qwen-1.5b": {
+        "pass": 14,
+        "fail": 11,
+        "accuracy": 0.56
+      },
+      "internlm2_5-1_8b-chat": {
+        "pass": 12,
+        "fail": 13,
+        "accuracy": 0.48
+      },
+      "qwen3.5-2b": {
+        "pass": 14,
+        "fail": 11,
+        "accuracy": 0.56
+      },
+      "granite-3.3-2b-instruct": {
+        "pass": 14,
+        "fail": 11,
+        "accuracy": 0.56
+      },
+      "lfm2-2.6b": {
+        "pass": 13,
+        "fail": 12,
+        "accuracy": 0.52
+      },
+      "gemma-2-2b-it": {
+        "pass": 14,
+        "fail": 11,
+        "accuracy": 0.56
+      },
+      "flan-t5-xl": {
+        "pass": 15,
+        "fail": 10,
+        "accuracy": 0.6
+      }
+    },
+    "per_item_pass": {
+      "cdpk_main-0": 11,
+      "cdpk_main-1": 20,
+      "cdpk_main-10": 11,
+      "cdpk_main-100": 9,
+      "cdpk_main-101": 9,
+      "cdpk_main-102": 19,
+      "cdpk_main-103": 0,
+      "cdpk_main-104": 14,
+      "cdpk_main-105": 23,
+      "cdpk_main-106": 23,
+      "cdpk_main-107": 13,
+      "cdpk_main-108": 9,
+      "cdpk_main-109": 23,
+      "cdpk_main-11": 0,
+      "cdpk_main-110": 24,
+      "cdpk_main-111": 23,
+      "cdpk_main-112": 14,
+      "cdpk_main-113": 23,
+      "cdpk_main-114": 10,
+      "cdpk_main-115": 20,
+      "cdpk_main-116": 9,
+      "cdpk_main-117": 0,
+      "cdpk_main-118": 23,
+      "cdpk_main-119": 0,
+      "cdpk_main-12": 0
+    },
+    "per_item_fail": {
+      "cdpk_main-0": 13,
+      "cdpk_main-1": 4,
+      "cdpk_main-10": 13,
+      "cdpk_main-100": 15,
+      "cdpk_main-101": 15,
+      "cdpk_main-102": 5,
+      "cdpk_main-103": 24,
+      "cdpk_main-104": 10,
+      "cdpk_main-105": 1,
+      "cdpk_main-106": 1,
+      "cdpk_main-107": 11,
+      "cdpk_main-108": 15,
+      "cdpk_main-109": 1,
+      "cdpk_main-11": 24,
+      "cdpk_main-110": 0,
+      "cdpk_main-111": 1,
+      "cdpk_main-112": 10,
+      "cdpk_main-113": 1,
+      "cdpk_main-114": 14,
+      "cdpk_main-115": 4,
+      "cdpk_main-116": 15,
+      "cdpk_main-117": 24,
+      "cdpk_main-118": 1,
+      "cdpk_main-119": 24,
+      "cdpk_main-12": 24
+    }
+  },
+  "examples": {
+    "pass": [
+      {
+        "model": "gemma-3-270m-it",
+        "item_id": "cdpk_main-0",
+        "question": "At a preschool level, the educational team needs to evaluate in everyday contexts the following learning objective from the Natural Environment Exploration core: \"Communicate some basic properties of the natural elements they explore, such as colors, textures, sizes, temperatures among others\". Which performance of the children would demonstrate the achievement of the selected learning objective?",
+        "raw_output": "Answer: D",
+        "parsed_answer": "D",
+        "correct_answer": "D",
+        "parsed_via": "direct"
+      },
+      {
+        "model": "gemma-3-270m-it",
+        "item_id": "cdpk_main-1",
+        "question": "A first-grade teacher is designing a group activity to work on the skill of exploring along with the class objective: \"Identify the senses and their function.\" To begin the activity, she will give each group a banana, an orange, and a pear, and will ask them to smell, look at, touch, and taste each fruit. Considering the above situation, which of the following activities could the teacher include next so that the students achieve the stated objective?",
+        "raw_output": "Answer: C",
+        "parsed_answer": "C",
+        "correct_answer": "C",
+        "parsed_via": "direct"
+      },
+      {
+        "model": "gemma-3-270m-it",
+        "item_id": "cdpk_main-10",
+        "question": "As part of the unit \"My Planet\", an educator must explain to the children what elements make up the weather. Which of the following elements should the educator consider in their explanation?",
+        "raw_output": "Answer: C",
+        "parsed_answer": "C",
+        "correct_answer": "C",
+        "parsed_via": "direct"
+      },
+      {
+        "model": "gemma-3-270m-it",
+        "item_id": "cdpk_main-102",
+        "question": "A teacher of a 12th grade class has asked the students to relate environmental pollution with acid rain. Which of the following activities should they work on to correspond to a scientific inquiry?",
+        "raw_output": "I'd go with the second option.",
+        "parsed_answer": "B",
+        "correct_answer": "B",
+        "parsed_via": "opus_fallback"
+      },
+      {
+        "model": "gemma-3-270m-it",
+        "item_id": "cdpk_main-104",
+        "question": "A teacher of a 1st year high school class, during a session on environmental issues, must evaluate the following objective: \"Understand the effects of emissions of chemical agents on the depletion of the ozone layer.\" Which activity would allow this teacher to collect evidence regarding the achievement of the proposed objective?",
+        "raw_output": "Answer: A",
+        "parsed_answer": "A",
+        "correct_answer": "A",
+        "parsed_via": "direct"
+      }
+    ],
+    "fail": [
+      {
+        "model": "gemma-3-270m-it",
+        "item_id": "cdpk_main-100",
+        "question": "A third year high school teacher explains to the students the structural properties of neurons in the transmission of the nerve impulse. When she mentions that the nerve impulse is transmitted faster in axons of larger diameter, one student says she does not understand her explanation. The teacher decides to use an alternative representation. Which of the following ways of presenting the content would allow the teacher to correctly illustrate why axons of larger diameter conduct the nerve impulse faster?",
+        "raw_output": "Answer: A",
+        "parsed_answer": "A",
+        "correct_answer": "B",
+        "parsed_via": "direct"
+      },
+      {
+        "model": "gemma-3-270m-it",
+        "item_id": "cdpk_main-101",
+        "question": "A teacher needs to work with the following learning objective with 2nd year high school students: “Develop a scientific explanation, based on evidence, about the processes of genetic inheritance in animals”. Which of the following activities would allow them to address this objective?",
+        "raw_output": "Answer: A",
+        "parsed_answer": "A",
+        "correct_answer": "D",
+        "parsed_via": "direct"
+      },
+      {
+        "model": "gemma-3-270m-it",
+        "item_id": "cdpk_main-103",
+        "question": "A teacher asked the students to carry out the following experimental design, with the objective that they demonstrate mechanisms of passive transport of solutes and solvents through a membrane: 1. Add a concentrated sucrose solution to the interior of a permeable bag. 2. Place the bag in a container that has a sucrose solution at a lower concentration than that of the bag. 3. Observe what happens after a few minutes. What limitation does the model designed by the teacher have with respect to the stated objective?",
+        "raw_output": "Answer: B",
+        "parsed_answer": "B",
+        "correct_answer": "A",
+        "parsed_via": "direct"
+      },
+      {
+        "model": "gemma-3-270m-it",
+        "item_id": "cdpk_main-108",
+        "question": "In the preparation of a class for 2nd grade secondary students, a teacher seeks an appropriate educational resource to be used in the classroom with which the students can compare the sizes and distances between the Sun and its planets to scale. Which of the following resources to be used in the classroom is suitable to address the objective of the lesson?",
+        "raw_output": "Answer: A",
+        "parsed_answer": "A",
+        "correct_answer": "B",
+        "parsed_via": "direct"
+      },
+      {
+        "model": "gemma-3-270m-it",
+        "item_id": "cdpk_main-11",
+        "question": "Consider the following situation: An educator is covering the content about the ocean in the unit on Living Beings and Their Environment. For this, she shows a video in which the sea is seen during a day of swells. One of the children asks why swells occur. Which of the following phenomena should the educator mention as the main cause of the swells?",
+        "raw_output": "Answer: B",
+        "parsed_answer": "B",
+        "correct_answer": "A",
+        "parsed_via": "direct"
+      }
+    ],
+    "recovered_by_opus": [
+      {
+        "model": "gemma-3-270m-it",
+        "item_id": "cdpk_main-102",
+        "question": "A teacher of a 12th grade class has asked the students to relate environmental pollution with acid rain. Which of the following activities should they work on to correspond to a scientific inquiry?",
+        "raw_output": "I'd go with the second option.",
+        "parsed_answer": "B",
+        "correct_answer": "B",
+        "parsed_via": "opus_fallback"
+      },
+      {
+        "model": "gemma-3-270m-it",
+        "item_id": "cdpk_main-117",
+        "question": "A teacher is working with a 3rd grade class on the unit of Chemical Equilibrium, with the objective \"Analyze the variation in concentration of reactants and products in a chemical reaction,\" through the following concentration vs. time graph. When asking her students about the concept of equilibrium constant, she realizes that most of them are only making a literal reading of the graph. What question could the teacher ask to help the students understand the variation in concentrations in a chemical reaction by interpreting the graph?",
+        "raw_output": "I'd go with the first option.",
+        "parsed_answer": "A",
+        "correct_answer": "D",
+        "parsed_via": "opus_fallback"
+      },
+      {
+        "model": "gemma-3-270m-it",
+        "item_id": "cdpk_main-118",
+        "question": "A teacher has planned to work on the objective of graphically representing the variation of pH in a controlled neutralization in their class. Therefore, the teacher asks the senior year students to construct the titration curve of a weak acid with a strong base, for which the concentrations and volumes of both substances are provided. As the exercise progresses, the teacher observes that most students have only managed to construct the curve up to the equivalence point, because they obtain negative pH values after that point. Which of the following remedial activities would allow the teacher to redirect the students to complete the construction of the titration curve?",
+        "raw_output": "I'd go with the third option.",
+        "parsed_answer": "C",
+        "correct_answer": "C",
+        "parsed_via": "opus_fallback"
+      },
+      {
+        "model": "gemma-3-270m-it",
+        "item_id": "cdpk_main-12",
+        "question": "A preschool teacher shows the children an animated video depicting a phenomenon caused by the tilt of the Earth's axis. This tilt causes the northern and southern hemispheres to be unequally illuminated by the Sun during the Earth's orbit around it. What Earth phenomenon is the educator trying to explain with this resource?",
+        "raw_output": "I'd go with the first option.",
+        "parsed_answer": "A",
+        "correct_answer": "B",
+        "parsed_via": "opus_fallback"
+      },
+      {
+        "model": "minicpm4-0.5b",
+        "item_id": "cdpk_main-115",
+        "question": "A third-year high school teacher is designing a written test to evaluate the rotational kinematics unit. If one of the evaluation indicators is \"They use the mathematical relationships that describe uniform circular motion to solve various problems,\" which of the following items is most appropriate to evidence their achievement?",
+        "raw_output": "I'd go with the first option.",
+        "parsed_answer": "A",
+        "correct_answer": "A",
+        "parsed_via": "opus_fallback"
+      }
+    ],
+    "unparseable": [
+      {
+        "model": "smollm2-360m-instruct",
+        "item_id": "cdpk_main-1",
+        "question": "A first-grade teacher is designing a group activity to work on the skill of exploring along with the class objective: \"Identify the senses and their function.\" To begin the activity, she will give each group a banana, an orange, and a pear, and will ask them to smell, look at, touch, and taste each fruit. Considering the above situation, which of the following activities could the teacher include next so that the students achieve the stated objective?",
+        "raw_output": "Hmm, this one is genuinely tricky and I cannot decide.",
+        "parsed_answer": null,
+        "correct_answer": "C",
+        "parsed_via": "unparseable"
+      },
+      {
+        "model": "smollm2-360m-instruct",
+        "item_id": "cdpk_main-109",
+        "question": "A teacher plans the next class with 1st grade high school students with the objective \"Recognize the importance of seismological research in the construction of geological knowledge\". Which of the following activities is coherent with this objective?",
+        "raw_output": "Hmm, this one is genuinely tricky and I cannot decide.",
+        "parsed_answer": null,
+        "correct_answer": "A",
+        "parsed_via": "unparseable"
+      },
+      {
+        "model": "minicpm4-0.5b",
+        "item_id": "cdpk_main-1",
+        "question": "A first-grade teacher is designing a group activity to work on the skill of exploring along with the class objective: \"Identify the senses and their function.\" To begin the activity, she will give each group a banana, an orange, and a pear, and will ask them to smell, look at, touch, and taste each fruit. Considering the above situation, which of the following activities could the teacher include next so that the students achieve the stated objective?",
+        "raw_output": "Hmm, this one is genuinely tricky and I cannot decide.",
+        "parsed_answer": null,
+        "correct_answer": "C",
+        "parsed_via": "unparseable"
+      },
+      {
+        "model": "minicpm4-0.5b",
+        "item_id": "cdpk_main-100",
+        "question": "A third year high school teacher explains to the students the structural properties of neurons in the transmission of the nerve impulse. When she mentions that the nerve impulse is transmitted faster in axons of larger diameter, one student says she does not understand her explanation. The teacher decides to use an alternative representation. Which of the following ways of presenting the content would allow the teacher to correctly illustrate why axons of larger diameter conduct the nerve impulse faster?",
+        "raw_output": "Hmm, this one is genuinely tricky and I cannot decide.",
+        "parsed_answer": null,
+        "correct_answer": "B",
+        "parsed_via": "unparseable"
+      },
+      {
+        "model": "falcon-h1-0.5b-instruct",
+        "item_id": "cdpk_main-100",
+        "question": "A third year high school teacher explains to the students the structural properties of neurons in the transmission of the nerve impulse. When she mentions that the nerve impulse is transmitted faster in axons of larger diameter, one student says she does not understand her explanation. The teacher decides to use an alternative representation. Which of the following ways of presenting the content would allow the teacher to correctly illustrate why axons of larger diameter conduct the nerve impulse faster?",
+        "raw_output": "Hmm, this one is genuinely tricky and I cannot decide.",
+        "parsed_answer": null,
+        "correct_answer": "B",
+        "parsed_via": "unparseable"
+      }
+    ]
+  }
+}
