@@ -226,12 +226,22 @@ def validate(scenarios: list[dict], rubrics: list[dict]) -> list[str]:
     return errs
 
 
+# json.dumps(ensure_ascii=False) leaves U+2028/U+2029 raw, and three WildBench prompts
+# contain them. Python's file iterator does not treat them as line breaks, but
+# str.splitlines() and JavaScript's JSON.parse both do -- so a consumer that reads this
+# file either of those ways sees more "lines" than we wrote, and the extra fragments are
+# not valid JSON. Escaping them back to \u form decodes to the identical character.
+# Keyed by chr() so this source file stays pure ASCII: a literal U+2028 here would
+# be vulnerable to exactly the mangling it exists to prevent.
+LINE_SEPS = {0x2028: "\\u2028", 0x2029: "\\u2029"}
+
+
 def write(name: str, rows: list[dict]) -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     path = OUT_DIR / name
     with path.open("w", encoding="utf-8", newline="\n") as fh:
         for r in rows:
-            fh.write(json.dumps(r, ensure_ascii=False) + "\n")
+            fh.write(json.dumps(r, ensure_ascii=False).translate(LINE_SEPS) + "\n")
     size = path.stat().st_size / 1e6
     print(f"wrote {path.relative_to(ROOT)}  ({len(rows)} rows, {size:.1f} MB)")
 

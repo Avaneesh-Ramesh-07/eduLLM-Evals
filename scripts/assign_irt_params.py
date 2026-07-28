@@ -136,11 +136,19 @@ def read_jsonl(path: Path) -> list[dict]:
     return records
 
 
+# ensure_ascii=False leaves U+2028/U+2029 raw. Python's file iterator does not treat them
+# as line breaks, but str.splitlines() and JavaScript's JSON.parse both do, so a consumer
+# reading the file either of those ways sees more "lines" than we wrote and the extra
+# fragments are not valid JSON. Escaping them back to \u form decodes to the same
+# character. Keyed by codepoint so this source file stays pure ASCII.
+LINE_SEPS = {0x2028: "\\u2028", 0x2029: "\\u2029"}
+
+
 def write_jsonl(path: Path, records: Iterable[dict]) -> None:
-    """Write one JSON object per line."""
-    with open(path, "w", encoding="utf-8") as f:
+    """Write one JSON object per line (LF endings on every platform)."""
+    with open(path, "w", encoding="utf-8", newline="\n") as f:
         for r in records:
-            f.write(json.dumps(r, ensure_ascii=False) + "\n")
+            f.write(json.dumps(r, ensure_ascii=False).translate(LINE_SEPS) + "\n")
 
 
 def write_json(path: Path, records: list[dict]) -> None:
