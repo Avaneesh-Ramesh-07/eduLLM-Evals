@@ -335,7 +335,7 @@ The original concentration of the weak acid $\text{HA}$ in the 25 mL sample is *
 - Criterion: The response needs to guide the student to realize that the moles of NaOH at the endpoint are approximately equal to the initial moles of HA. 
 - Primary skill: `scaffolding`
 - Criticality: `critical`
-- Grade (P/F): F
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0355_c07
@@ -730,7 +730,7 @@ You had the right idea—you just needed to switch from comparing against 25 to 
 - Criterion: The response must acknowledge elements of the student's current work, such as identifying 2^7 as the largest power of two in an 8-bit representation or calculating digits up to the fourth place.
 - Primary skill: `diagnosis`
 - Criticality: `critical`
-- Grade (P/F): F
+- Grade (P/F): P
 - Notes: ____
 
 #### tb_0500_c02

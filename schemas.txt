@@ -52,6 +52,64 @@ Rubric Schema:
   "version": "1.0"
 }
 
+InFoBench Scenario Schema: - source: https://huggingface.co/datasets/kqsong/InFoBench (500 scenarios / 2250 criteria)
+{
+  "scenario_id": "ifb_0000", - ifb_<zero-based 4-digit index>
+  "source_id": "user_oriented_task_167", - InFoBench "id"; join key back to HuggingFace
+  "use_case": "instruction_following",
+  "subject": "Quora", - InFoBench "category" (raw domain/source string)
+  "subset": "Easy_set", - native InFoBench difficulty band (Easy_set / Hard_set), preserved
+  "grade_band": null,
+  "modality": "text", - all text for now until image/multimodal is added
+  "prompt": "Choose an appealing title for your post.\n\nThe typical avocado is over 300 calories...", - "instruction", with the "input" context block appended after a blank line only when non-empty (225/500 rows)
+  "conversation_context": [], - InFoBench is single-turn
+  "reference_solution": null, - InFoBench ships no reference answer
+  "criterion_ids": ["ifb_0000_c01", "ifb_0000_c02", "ifb_0000_c03"],
+  "source": "https://huggingface.co/datasets/kqsong/InFoBench",
+  "split": "calibration",
+  "version": "1.0"
+}
+
+InFoBench Rubric Schema: - one binary criterion per decomposed_question; multi-label q_mapping
+{
+  "criterion_id": "ifb_0000_c01",
+  "scenario_id": "ifb_0000",
+  "criterion": "Is the generated text a post title?", - one InFoBench decomposed_question
+  "expected_evidence": [], - InFoBench ships none
+  "scoring_type": "binary", - no polytomous for now
+  "score_anchors": null,
+  "question_label": ["Format"], - RAW native InFoBench label list, preserved verbatim (multi-label: e.g. ["Content", "Format"]); the annotation the q_mapping is derived from
+  "primary_skill": "format", - slug of the first label
+  "q_mapping": {
+    "content": 0,
+    "format": 1,
+    "number": 0,
+    "style": 0,
+    "linguistic": 0
+  }, - MIRT skill mapping over the 5 InFoBench constraint types; multi-hot, so may sum to >1
+  "q_rationale": "Derived from the InFoBench question_label(s) ['Format']",
+  "criticality": "critical", - PLACEHOLDER (uniform; InFoBench has no native value), matches WildBench
+  "objectivity": "objective", - PLACEHOLDER (uniform)
+  "explicitness": "explicit", - PLACEHOLDER (uniform)
+  "source": "https://huggingface.co/datasets/kqsong/InFoBench",
+  "status": "approved",
+  "version": "1.0",
+  "difficulty": -0.3878, - MIRT item difficulty b_i (scalar). Synthetic (see irt_params); appended by assign_irt_params.py
+  "discrimination": {
+    "content": 0.0,
+    "format": 1.6381,
+    "number": 0.0,
+    "style": 0.0,
+    "linguistic": 0.0
+  }, - MIRT per-skill discrimination a_i; 0.0 where q_mapping=0 (masked by q_i ⊙ a_i regardless)
+  "irt_params": {
+    "source": "synthetic",
+    "method": "metadata_heuristic_v1",
+    "seed": 42,
+    "version": "1.0"
+  } - provenance; "synthetic" = generated (not calibrated), swappable later
+}
+
 Judge Result Schema:
 {
   "run_id": "run_20260721_001",

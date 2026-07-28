@@ -1,0 +1,103 @@
+{
+  "generated_at": "2026-07-27T16:52:42.143458+00:00",
+  "method": "metadata_heuristic_v1",
+  "seed": 42,
+  "skills": [
+    "content",
+    "format",
+    "number",
+    "style",
+    "linguistic"
+  ],
+  "n_records": 2250,
+  "n_empty_q_mapping": 0,
+  "constants": {
+    "B_BASE": 0.0,
+    "B_EXPLICITNESS": {
+      "explicit": -0.4,
+      "implicit": 0.4
+    },
+    "B_CRITICALITY": {
+      "critical": 0.0,
+      "not_critical": 0.0,
+      "critical_negative": -0.3
+    },
+    "B_JITTER_SD": 0.5,
+    "B_CLIP": [
+      -2.5,
+      2.5
+    ],
+    "A_BASE": 1.0,
+    "A_OBJECTIVITY": {
+      "objective": 1.2,
+      "subjective": 0.8
+    },
+    "A_CRITICALITY": {
+      "critical": 1.15,
+      "not_critical": 0.9,
+      "critical_negative": 1.25
+    },
+    "A_PRIMARY": 1.2,
+    "A_SECONDARY": 0.85,
+    "A_NEUTRAL": 1.0,
+    "A_JITTER_LOG_SD": 0.15,
+    "A_CLIP": [
+      0.3,
+      2.5
+    ]
+  },
+  "difficulty": {
+    "mean": -0.4024,
+    "std": 0.4909,
+    "min": -2.1428,
+    "p25": -0.7421,
+    "p50": -0.4045,
+    "p75": -0.0694,
+    "max": 1.332
+  },
+  "discrimination": {
+    "content": {
+      "n_loaded": 1395,
+      "mean": 1.5864,
+      "median": 1.5946,
+      "min": 0.7523,
+      "max": 2.4567
+    },
+    "format": {
+      "n_loaded": 794,
+      "mean": 1.532,
+      "median": 1.5313,
+      "min": 0.7773,
+      "max": 2.5
+    },
+    "number": {
+      "n_loaded": 419,
+      "mean": 1.4981,
+      "median": 1.4904,
+      "min": 0.8166,
+      "max": 2.5
+    },
+    "style": {
+      "n_loaded": 190,
+      "mean": 1.4927,
+      "median": 1.4971,
+      "min": 0.7976,
+      "max": 2.5
+    },
+    "linguistic": {
+      "n_loaded": 168,
+      "mean": 1.5264,
+      "median": 1.542,
+      "min": 0.8579,
+      "max": 2.4743
+    }
+  },
+  "pass_prob_at_theta0": {
+    "mean": 0.5941,
+    "min": 0.2088,
+    "p25": 0.5173,
+    "p50": 0.5998,
+    "p75": 0.6775,
+    "max": 0.895
+  }
+}
